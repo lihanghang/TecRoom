@@ -1,7 +1,7 @@
 # Regular expressions usages 
 关于正则表达式的结合PDF文本抽取实例的一些用法总结。]
 -
-[TOC]
+@[TOC]
 
 
 # 简介和场景
