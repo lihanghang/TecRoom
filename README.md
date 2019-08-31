@@ -1,5 +1,5 @@
-# python3_Application
-python3.5+的一些应用实践。包含基础编程、具体应用等
+# AI工程实践能力总结
+包括工程研发过程心得、使用工具、编码问题等总结 
 -
 ## 书籍推荐
 - 《流畅的Python》  主要是编程的语法内容等   
@@ -14,4 +14,4 @@ python3.5+的一些应用实践。包含基础编程、具体应用等
 - [CSDN](https://blog.csdn.net/lihangll)  
 - [个人网站](https://lihanghang.top/)  
 - 邮箱：lihanghang@memect.co 
-- Updated on July 7, 2019 
+- Updated on August 31, 2019 
