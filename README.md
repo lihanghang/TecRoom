@@ -5,7 +5,7 @@
 - 《流畅的Python》  主要是编程的语法内容等   
 - 《编写可读代码的艺术》 编码规范等  
 - 《Docker从入门到实践》Docker工具学习  
-  + [笔记总结](http://naotu.baidu.com/file339d9e188959763fdd324e2b01faca66?token=ed8427e091fed5e8)
+  + [笔记总结](http://naotu.baidu.com/file/339d9e188959763fdd324e2b01faca66?token=ed8427e091fed5e8)
 
 ## AI开发工程师之路
 > 方法论总结
