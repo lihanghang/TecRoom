@@ -15,10 +15,13 @@
 ## AI开发工程师之路
 > 方法论总结
 - [AI研发工程师成长指南](https://mp.weixin.qq.com/s/Ni7rwT6bOW7ny_-tGZGOiA)
+- 
+> 自然语言处理应用实践
+- [NLP理论与实践](http://naotu.baidu.com/file/d03df875f9cfc487c8ab0b0749f3f521?token=3a6ae390bb328293)
 
 ---  
 - [日常开发总结](https://github.com/lihanghang/python3_Application/wiki)
 - [CSDN](https://blog.csdn.net/lihangll)  
 - [个人网站](https://lihanghang.top/)  
 - 邮箱：lihanghang@memect.co 
-- Updated on September 8, 2019 
+- Updated on September 14, 2019 
