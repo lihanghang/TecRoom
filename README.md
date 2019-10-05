@@ -6,6 +6,7 @@
 - 《编写可读代码的艺术》 编码规范等 
 - 《[python3 cookbook](https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html)》 python进阶知识，深入python原理等 
 - 《[python 进阶](https://docs.pythontab.com/interpy/#python)》  深入python语法等  
+- 《[编写高质量代码改善 Python 程序的 91 个建议](https://l1nwatch.gitbook.io/writing_solid_python_code_gitbook/di-1-zhang-yin-lun)》 
 
 ## 环境部署
 - 《Docker从入门到实践》Docker工具学习  
