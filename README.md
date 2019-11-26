@@ -19,10 +19,11 @@
 - 
 > 自然语言处理应用实践
 - [NLP理论与实践](http://naotu.baidu.com/file/d03df875f9cfc487c8ab0b0749f3f521?token=3a6ae390bb328293)
-
+> 知识图谱工程实践
+- ……
 ---  
 - [日常开发总结](https://github.com/lihanghang/python3_Application/wiki)
 - [CSDN](https://blog.csdn.net/lihangll)  
 - [个人网站](https://lihanghang.top/)  
-- 邮箱：lihanghang@memect.co 
-- Updated on September 14, 2019 
+- 邮箱：hanghangli@aliyun.com 
+- Updated on November 26, 2019 
