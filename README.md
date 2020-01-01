@@ -16,6 +16,8 @@
 ## 工具🔧
 > 工程强调效率，有意识借助工具来提升效率很有必要。
 - 
+## 代码风格
+- [编写优雅代码](https://www.kancloud.cn/kancloud/sina-boot-camp/content/%E7%BC%96%E5%86%99%E4%BC%98%E9%9B%85%E4%BB%A3%E7%A0%81.md)
 ## 环境部署
 - 《Docker从入门到实践》Docker工具学习  
   + [笔记总结](http://naotu.baidu.com/file/339d9e188959763fdd324e2b01faca66?token=ed8427e091fed5e8)
@@ -24,7 +26,7 @@
 ## AI开发工程师之路🦌
 > 方法论总结
 - [AI研发工程师成长指南](https://mp.weixin.qq.com/s/Ni7rwT6bOW7ny_-tGZGOiA)
-- 
+- [技术成长](http://blog.2baxb.me/archives/1578)
 > 自然语言处理应用实践
 - [NLP理论与实践](http://naotu.baidu.com/file/d03df875f9cfc487c8ab0b0749f3f521?token=3a6ae390bb328293)
 > 知识图谱工程实践
@@ -34,4 +36,4 @@
 - [CSDN](https://blog.csdn.net/lihangll)  
 - [个人网站](https://lihanghang.top/)  
 - 邮箱：hanghangli@aliyun.com 
-- Updated on December 19, 2019 
+- Updated on January 1, 2020 
