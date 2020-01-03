@@ -2,6 +2,6 @@ Welcome to python3_Application's documentation!
 ===============================================
 
 .. toctree::
-   :maxdepth: 2
-   :glob:
-	hello
+   :maxdepth: 1
+ 
+   doc/about_me
