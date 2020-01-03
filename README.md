@@ -1,4 +1,5 @@
 # AI工程实践能力总结
+> 逐步使用此站点进行总结：https://ai-application-summary.readthedocs.io/ 。Thanks!
 > 包括工程研发过程心得、使用工具、编码实践等总结。个人觉得，虽然这块定位是AI工程，但是对于工程来说最基本的编程思维和实操能力是必须的。因此，无论AI还是NO AI 还是重在工程（思维和具备一定应用场景的强撸代码能力）。
 ---
 ## 编程书籍推荐📖
@@ -36,4 +37,4 @@
 - [CSDN](https://blog.csdn.net/lihangll)  
 - [个人网站](https://lihanghang.top/)  
 - 邮箱：hanghangli@aliyun.com 
-- Updated on January 1, 2020 
+- Updated on January 3, 2020 
