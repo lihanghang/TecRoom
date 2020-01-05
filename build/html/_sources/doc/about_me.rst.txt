@@ -2,4 +2,4 @@
 关于我
 ===============
 
-* Mason
+* `Mason <https://lihanghang.top/about/>`_
