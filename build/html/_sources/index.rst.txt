@@ -59,6 +59,7 @@
     :numbered:
 
     doc/机器智能系列/ml
+    doc/机器智能系列/dl
     doc/机器智能系列/nlp
     doc/机器智能系列/kg
 
