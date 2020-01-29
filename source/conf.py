@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'computing_tec_room'
+project = 'TecRoom'
 copyright = '2020, HangHang'
 author = 'HangHang'
 
