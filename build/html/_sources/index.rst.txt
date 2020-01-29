@@ -56,12 +56,18 @@
 
 .. toctree::
     :caption: 机器智能系列
-    :numbered:
+    :numbered: 
 
     doc/机器智能系列/ml
     doc/机器智能系列/dl
     doc/机器智能系列/nlp
     doc/机器智能系列/kg
+
+.. toctree::
+    :caption: 团队与项目管理
+    :numbered:
+
+    doc/团队与项目管理/team_project
 
 .. toctree::
     :caption: 道与术
