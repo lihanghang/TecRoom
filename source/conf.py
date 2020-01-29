@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Python_Application_Summary'
+project = 'computing_tec_room'
 copyright = '2020, HangHang'
 author = 'HangHang'
 
