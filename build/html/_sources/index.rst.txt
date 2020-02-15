@@ -1,5 +1,10 @@
 欢迎来到：计算机技术磨坊
 ===============================================
+.. toctree::
+    :maxdepth: 2
+    :caption: 关于Room
+
+    doc/关于/about_blog
 
 .. toctree::
     :caption: 编程语言系列
