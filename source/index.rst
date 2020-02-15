@@ -55,8 +55,9 @@
 	doc/分布式与微服务系列/distributeMicroServer
 
 .. toctree::
+    :maxdepth: 2
     :caption: 机器智能系列
-    :numbered: 
+    :numbered:
 
     doc/机器智能系列/ml
     doc/机器智能系列/dl

@@ -19,9 +19,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'TecRoom'
-copyright = '2020, HangHang'
-author = 'HangHang'
+project = "Hang's Tec Room"
+copyright = '2020, LiHangHang'
+author = 'LiHangHang'
 
 # The short X.Y version
 version = ''
