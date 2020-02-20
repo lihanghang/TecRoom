@@ -4,7 +4,9 @@
     :maxdepth: 2
     :caption: 关于Room
 
+    doc/关于/about_me
     doc/关于/about_blog
+        
 
 .. toctree::
     :caption: 编程语言系列
@@ -80,10 +82,3 @@
     :numbered:
 
     doc/道与术/tao-art
-
-.. toctree::
-	:caption: 其他
-	:numbered:
-
-	doc/其他/about_me
-
