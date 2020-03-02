@@ -72,6 +72,12 @@
     doc/机器智能系列/kg
 
 .. toctree::
+    :caption: 开源工具
+    :numbered:
+
+    doc/开源工具/open_source
+
+.. toctree::
     :caption: 团队与项目管理
     :numbered:
 
