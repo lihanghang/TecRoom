@@ -1,5 +1,11 @@
-欢迎来到：计算机技术磨坊
+欢迎来到：计算机技术磨坊。
 ===============================================
+.. note::
+    在这里主要整理编程开发、数据库、数据结构、算法、机器智能等笔记
+
+目录:
+^^^^^
+
 .. toctree::
     :maxdepth: 2
     :caption: 关于Room
@@ -9,20 +15,22 @@
         
 
 .. toctree::
-    :caption: 编程语言系列
+    :caption: 编程语言及开发框架
+    :maxdepth: 2
     :numbered:
 
-    doc/编程语言系列/C++
-    doc/编程语言系列/Java
-    doc/编程语言系列/Python 
-    doc/编程语言系列/PHP
-    doc/编程语言系列/Matlab
+    doc/编程语言及开发框架/C++
+    doc/编程语言及开发框架/Java技术栈/Java
+    doc/编程语言及开发框架/python技术栈/Python
+    doc/编程语言及开发框架/python技术栈/django
+    doc/编程语言及开发框架/PHP
+    doc/编程语言及开发框架/Matlab
 
 .. toctree::
     :caption: 数据结构与算法系列
     :numbered:
 
-    doc/数据结构与算法系列/
+    doc/数据结构与算法系列/dataStruct_algorithm
 
 .. toctree::
     :caption: 设计模式
@@ -70,6 +78,9 @@
     doc/机器智能系列/dl
     doc/机器智能系列/nlp
     doc/机器智能系列/kg
+    doc/机器智能系列/框架/pytorch
+    doc/机器智能系列/框架/tensorflow
+
 
 .. toctree::
     :caption: 开源工具
