@@ -16,7 +16,7 @@ update: 2020-03-04
 #### 模型（Model）
 1. 明确优于隐式
     + 字段不应该仅仅根据字段的名称来假定某些行为
-    + 多使用[关键字参数]()
+    + 多使用[关键字参数](https://www.liaoxuefeng.com/wiki/1016959663602400/1017261630425888)
         > 什么是关键字参数？如： *args, **kwargs。使用关键字参数可增加函数的灵活性，健壮性。
 2. 包括所有相关领域逻辑
     + 遵循[Active Record](https://zh.wikipedia.org/zh-cn/Active_Record)模式
