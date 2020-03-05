@@ -34,6 +34,7 @@
 
 .. toctree::
     :caption: 设计模式
+    :maxdepth: 2
     :numbered:
 
     doc/设计模式/design-pattern

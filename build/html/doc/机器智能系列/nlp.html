@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>3. 自然语言处理 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  <title>3. 自然语言理解 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
   
 
   
@@ -95,13 +95,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../关于/about_me.html">关于我</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../关于/about_blog.html">我的技术屋</a></li>
 </ul>
-<p class="caption"><span class="caption-text">编程语言系列</span></p>
+<p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言系列/C++.html">1. C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言系列/Java.html">2. Java</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言系列/Python.html">3. 我们一起学Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言系列/PHP.html">4. PHP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言系列/Matlab.html">5. Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/C++.html">1. C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Java.html">2. Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">3. python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/django.html">4. Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/PHP.html">5. PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Matlab.html">6. Matlab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
 </ul>
 <p class="caption"><span class="caption-text">设计模式</span></p>
 <ul>
@@ -132,8 +137,26 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ml.html">1. 机器学习</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dl.html">2. 深度学习</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">3. 自然语言处理</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. 自然语言理解</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">3.1. 书籍推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">3.2. 什么是 自然语言 理解？</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">3.2.1. 自然语言？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.2.2. 自然语言理解？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">3.2.3. 自然语言的特点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.2.4. 难点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3.2.5. 未来</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">3.2.6. 自然语言理解交叉科学</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="kg.html">4. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="框架/pytorch.html">5. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="框架/tensorflow.html">6. Tensorflow</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开源工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../开源工具/open_source.html">1. 优秀开源工具</a></li>
 </ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
@@ -187,7 +210,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>3. 自然语言处理</li>
+      <li>3. 自然语言理解</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -207,15 +230,121 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>3. 自然语言处理<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>一、 📚书籍推荐</p>
+<h1>3. 自然语言理解<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>3.1. 书籍推荐<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ol class="simple">
-<li>《Speech and Language Processing, 2nd Edition》<ul>
+<li>《<a class="reference external" href="https://book.douban.com/subject/2403834//">Speech and Language Processing, 2nd Edition</a>》<ul>
 <li>内容全面，覆盖面广</li>
-<li>https://book.douban.com/subject/2403834//</li>
+</ul>
+</li>
+<li>《统计自然语言处理》 宗成庆</li>
+<li>《信息检索导论》</li>
+<li>《语言本能-人类语言进化的奥秘》</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>3.2. 什么是 自然语言 理解？<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h3>3.2.1. 自然语言？<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>和编程语言相对的语言称为自然语言。</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h3>3.2.2. 自然语言理解？<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>目的：使计算机理解人类的自然语言。</li>
+<li>本质：结构预测的过程。如输出一句话的句法结构或者语义结构。</li>
+<li>从无结构化序列预测有结构的语义。<ul>
+<li>词性标注、命名实体识别、依存分析、句法分析、指代消解等任务。</li>
+</ul>
+</li>
+<li>数据驱动的自然语言理解<ul>
+<li>深度学习技术的突破</li>
+</ul>
+</li>
+<li>语义表示（核心）<ul>
+<li>one-hot （0/1）也称独热编码<ul>
+<li>表示简单，但局限性很大，如相似度计算。</li>
+</ul>
+</li>
+<li>分布式语义表示 （空间表示）<ul>
+<li>目前最主要的表示形式。</li>
+<li>1986年提出的方法。</li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
+</div>
+<div class="section" id="id6">
+<h3>3.2.3. 自然语言的特点<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>歧义性多。</li>
+</ol>
+<blockquote>
+<div>南京市/长江大桥。南京市长/江大桥。</div></blockquote>
+<ul class="simple">
+<li>关键目标：消除歧义性。</li>
+</ul>
+<ol class="simple">
+<li>递归性</li>
+</ol>
+<blockquote>
+<div>你好/不好意思。 你/好不好意思。</div></blockquote>
+<ol class="simple">
+<li>主观性</li>
+</ol>
+<blockquote>
+<div>仔细体会这两句：别回了。 我没事，你忙你的。</div></blockquote>
+<ol class="simple">
+<li>社会性<ul>
+<li>敬语、语言协调等</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h3>3.2.4. 难点<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>语言的语义表示<ul>
+<li>世界（社会/客观）、心智（人/主观）、语言三者相互影响。</li>
+</ul>
+</li>
+<li>将人类的知识融入到语义表示的过程中。<ul>
+<li>人类知识相当于给足了上下文信息</li>
+</ul>
+</li>
+<li>多模态复杂语境的理解 (说话的表情、手势动作、场景等)<ul>
+<li>欢迎/新老/师生/前来/参观！</li>
+<li>欢迎/新老师/生前/来参观！</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h3>3.2.5. 未来<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>句子消歧。</li>
+<li>引入知识。如知识图谱。</li>
+<li>多级的跨句子建模。</li>
+<li>生成句子更符合当下对话场景。</li>
+<li>理解并创作。</li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h3>3.2.6. 自然语言理解交叉科学<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>计算机科学</li>
+<li>脑科学</li>
+<li>语言学</li>
+<li>语言哲学</li>
+<li>心理学、社会学、认知学</li>
+<li>神经语言学、汉语言学</li>
+</ol>
+</div>
+</div>
 </div>
 
 

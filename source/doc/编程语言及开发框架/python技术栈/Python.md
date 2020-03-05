@@ -1,6 +1,6 @@
 # python
 
-## 第一部分 📚书籍推荐 📖
+## 书籍推荐
 1. 🔥🔥🔥《流畅的Python》
     - 能够解决大部分疑难杂症
 2. 🔥🔥🔥《[python3 cookbook](https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html)》 
