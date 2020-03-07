@@ -124,21 +124,28 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. Docker</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">1.1. 书籍推荐</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. 初识Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">1.3. Docker架构（组件）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">1.3.1. 基本架构图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">1.3.2. 核心组件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">1.3.3. 通过Docker开发和部署的流程图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">1.2. 初识Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.3. Docker架构（组件）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.3.1. 基本架构图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.3.2. 核心组件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1.3.3. 通过Docker开发和部署的流程图</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#docker-mac">1.4. 安装Docker（MAC)并注册国内镜像加速器</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">1.4.1. 安装</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">1.4.2. 配置阿里云镜像加速器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">1.4.1. 安装</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">1.4.2. 配置阿里云镜像加速器</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id11">1.5. Docker常用命令</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id12">1.5. Docker常用命令</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#docker-daemon">1.5.1. Docker服务（Daemon）相关命令</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#docker-image">1.5.2. Docker镜像（Image）相关命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-container">1.5.3. docker容器（container）相关命令</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">1.6. Docker容器的数据卷</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">1.6.1. 概念及作用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">1.6.2. 配置数据卷</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">1.6.3. 配置数据卷容器</a></li>
 </ul>
 </li>
 </ul>
@@ -241,10 +248,21 @@
 <h1>1. Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id1">
 <h2>1.1. 书籍推荐<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
-<p>访问 <a class="reference external" href="https://www.gitbook.com/download/pdf/book/yeasy/docker_practice">docker_practice</a> 下载。</p>
+<ul class="simple">
+<li>访问 <a class="reference external" href="https://www.gitbook.com/download/pdf/book/yeasy/docker_practice">docker_practice</a> 下载。</li>
+<li>《Docker开发实践》</li>
+<li><dl class="first docutils">
+<dt>其他</dt>
+<dd><ul class="first last">
+<li>访问 <a class="reference external" href="https://www.runoob.com/docker/docker-tutorial.html">菜鸟教程</a> 查看。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
-<div class="section" id="id2">
-<h2>1.2. 初识Docker<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h2>1.2. 初识Docker<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">总的来说，Docker属于运维部署领域。如果是应用者就是熟练的在合适的场景下操作相应的命令；如果是进一步研究其底层原理，那需要的基础就要多些了，比如虚拟化技术。</p>
@@ -268,18 +286,18 @@
 </ol>
 <p><em>Docker是一种容器技术，解决软件跨环境迁移的问题！</em></p>
 </div>
-<div class="section" id="id3">
-<h2>1.3. Docker架构（组件）<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h2>1.3. Docker架构（组件）<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="admonition important">
 <p class="first admonition-title">重要</p>
 <p class="last">Docker采用C/S架构。Docker客户端（Client）可以通过命令行形式或API来与提供Docker服务（Server）的守护进程进行通信。</p>
 </div>
-<div class="section" id="id4">
-<h3>1.3.1. 基本架构图<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id5">
+<h3>1.3.1. 基本架构图<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/2020-03-06-docker架构.png"><img alt="../../_images/2020-03-06-docker架构.png" src="../../_images/2020-03-06-docker架构.png" style="width: 600px;" /></a>
 </div>
-<div class="section" id="id5">
-<h3>1.3.2. 核心组件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id6">
+<h3>1.3.2. 核心组件<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <div class="admonition important">
 <p class="first admonition-title">重要</p>
 <p class="last">Docker共包含三大核心组件：<strong>镜像（image）、容器（container）、仓库（Repository）</strong>。镜像和容器可以类比面向对象编程中类和实例的关系，image-&gt;class、container-&gt;instance。仓库可类别代码控制中心，负责存储和共享用户的镜像。</p>
@@ -315,8 +333,8 @@
 </li>
 </ol>
 </div>
-<div class="section" id="id6">
-<h3>1.3.3. 通过Docker开发和部署的流程图<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id7">
+<h3>1.3.3. 通过Docker开发和部署的流程图<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">利用下图能更好的理解Docker在日常开发、部署中的应用流程和三大组件。</p>
@@ -366,8 +384,8 @@
 <p class="first admonition-title">小技巧</p>
 <p class="last">MAC系统可以直接安装桌面版Docker，社区版就够用了。关于镜像加速器推荐使用国内阿里云镜像加速器，配置也比较容易，配置后再使用docker镜像就比较快了。</p>
 </div>
-<div class="section" id="id7">
-<h3>1.4.1. 安装<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id8">
+<h3>1.4.1. 安装<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li>点击 <a class="reference external" href="https://hub.docker.com/editions/community/docker-ce-desktop-mac/">下载</a> docker桌面版。</li>
 <li>查看docker版本，验证是否安装成功</li>
@@ -379,8 +397,8 @@ Docker version <span class="m">19</span>.03.5, build 633a0ea
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="id9">
-<h3>1.4.2. 配置阿里云镜像加速器<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id10">
+<h3>1.4.2. 配置阿里云镜像加速器<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -396,8 +414,8 @@ Docker version <span class="m">19</span>.03.5, build 633a0ea
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="id11">
-<h2>1.5. Docker常用命令<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id12">
+<h2>1.5. Docker常用命令<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">本章是docker知识的重点，基本都是命令。跟着命令敲起你的小键盘吧。</p>
@@ -565,6 +583,158 @@ Deleted: sha256:c8078e8ab06d8dabd6c30cffb03951fa035d85f75c19a83ace29b01cb3ecd272
 </dl>
 </li>
 </ol>
+</div>
+<div class="section" id="docker-container">
+<h3>1.5.3. docker容器（container）相关命令<a class="headerlink" href="#docker-container" title="永久链接至标题">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">查看</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>docker ps</dt>
+<dd><ul class="first last">
+<li>查看正在开启的容器</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>docker ps -a</dt>
+<dd><ul class="first last">
+<li>查看所有创建的容器列表</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS                                         NAMES
+3c7e127ff4ae        nginx:v3            <span class="s2">&quot;/bin/bash&quot;</span>              <span class="m">29</span> minutes ago      Exited <span class="o">(</span><span class="m">0</span><span class="o">)</span> <span class="m">25</span> minutes ago                                                 web_server
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">创建</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li>docker run -it –name=container_name  image_name:tag  /bin/bash</li>
+<li>docker run -id –name=container_name  image_name:tag  /bin/bash</li>
+<li><dl class="first docutils">
+<dt>退出容器：执行exit命令。</dt>
+<dd><ul class="first last">
+<li>退出后容器将关闭</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name<span class="o">=</span>web_server nginx:v3 /bin/bash
+
+root@3c7e127ff4ae:/# ls
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+
+$ docker run -id --name<span class="o">=</span>app_server  nginx:v3  /bin/bash
+
+4b19f6042d9739a3dba3eccd93d4404259883ecf0f6402232124357914835b30
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">进入</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">docker exec -it [容器名称] /bin/bash</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker <span class="nb">exec</span> -it app_server /bin/bash
+root@4b19f6042d97:/#
+$ <span class="nb">exit</span>
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+4b19f6042d97        nginx:v3            <span class="s2">&quot;/bin/bash&quot;</span>         <span class="m">4</span> minutes ago       Up <span class="m">4</span> minutes        <span class="m">80</span>/tcp              app_server
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>启动</dt>
+<dd><ul class="first last simple">
+<li>docker start [app_server]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>停止</dt>
+<dd><ul class="first last simple">
+<li>docker stop [app_server]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>删除</dt>
+<dd><ul class="first simple">
+<li><dl class="first docutils">
+<dt>docker rm app_server</dt>
+<dd><ul class="first last">
+<li>删除单个</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>docker rm `docker ps -aq`</dt>
+<dd><ul class="first last">
+<li>删除所有</li>
+<li>q标志表示只列出容器ID，不列出其他信息。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">`符号是键盘table上方的键位</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>查看容器信息</dt>
+<dd><ul class="first last simple">
+<li>docker inspect [app_server]</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id14">
+<h2>1.6. Docker容器的数据卷<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">主要探讨容器中的应用数据管理相关话题。如数据如何保存、外部如何使用数据等。</p>
+</div>
+<div class="section" id="id15">
+<h3>1.6.1. 概念及作用<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id16">
+<h3>1.6.2. 配置数据卷<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id17">
+<h3>1.6.3. 配置数据卷容器<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 </div>

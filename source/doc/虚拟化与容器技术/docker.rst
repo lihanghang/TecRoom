@@ -4,7 +4,10 @@ Docker
 
 书籍推荐
 ========
-访问 `docker_practice <https://www.gitbook.com/download/pdf/book/yeasy/docker_practice>`_ 下载。
+- 访问 `docker_practice <https://www.gitbook.com/download/pdf/book/yeasy/docker_practice>`_ 下载。
+- 《Docker开发实践》
+- 其他
+    + 访问 `菜鸟教程 <https://www.runoob.com/docker/docker-tutorial.html>`_ 查看。
 
 初识Docker
 ============
@@ -227,3 +230,98 @@ Docker镜像（Image）相关命令
         Untagged: mysql:5.6
         Untagged: mysql@sha256:a72a05bcf3914c902070765a506b1c8c17c06400258e7b574965763099dee9e1
         Deleted: sha256:c8078e8ab06d8dabd6c30cffb03951fa035d85f75c19a83ace29b01cb3ecd272
+
+docker容器（container）相关命令
+-------------------------------
+
+1. 查看
+
+    .. tip::
+
+        - docker ps 
+            + 查看正在开启的容器
+        - docker ps -a
+            + 查看所有创建的容器列表
+
+    .. code-block:: bash
+
+        $ docker ps
+        CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+        $ docker ps -a
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS                                         NAMES
+        3c7e127ff4ae        nginx:v3            "/bin/bash"              29 minutes ago      Exited (0) 25 minutes ago                                                 web_server
+
+
+#. 创建
+
+    .. tip::
+
+            - docker run -it --name=container_name  image_name:tag  /bin/bash
+            - docker run -id --name=container_name  image_name:tag  /bin/bash
+            - 退出容器：执行exit命令。
+                + 退出后容器将关闭
+
+    .. code-block:: bash
+
+        $ docker run -it --name=web_server nginx:v3 /bin/bash
+
+        root@3c7e127ff4ae:/# ls
+        bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+        boot  etc  lib   media  opt  root  sbin  sys  usr
+
+        $ docker run -id --name=app_server  nginx:v3  /bin/bash
+
+        4b19f6042d9739a3dba3eccd93d4404259883ecf0f6402232124357914835b30
+        
+#. 进入
+
+    .. tip::
+
+        docker exec -it [容器名称] /bin/bash
+
+    .. code-block:: bash
+
+        $ docker exec -it app_server /bin/bash
+        root@4b19f6042d97:/#
+        $ exit
+        $ docker ps
+        CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+        4b19f6042d97        nginx:v3            "/bin/bash"         4 minutes ago       Up 4 minutes        80/tcp              app_server
+
+#. 启动
+    - docker start [app_server]
+
+#. 停止
+    - docker stop [app_server]
+
+#. 删除
+    - docker rm app_server
+        + 删除单个
+    - docker rm \`docker ps -aq\`
+        + 删除所有
+        + q标志表示只列出容器ID，不列出其他信息。
+
+    .. note::
+
+        \`符号是键盘table上方的键位
+
+
+#. 查看容器信息
+    - docker inspect [app_server]
+  
+Docker容器的数据卷
+==================
+
+.. tip::
+
+    主要探讨容器中的应用数据管理相关话题。如数据如何保存、外部如何使用数据等。
+
+概念及作用
+--------------
+
+配置数据卷
+----------
+
+配置数据卷容器
+---------------
