@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="2. K8S" href="k8s.html" />
+    <link rel="next" title="2. Kubernetes（K8S）" href="k8s.html" />
     <link rel="prev" title="1. MySQL" href="../数据库系列/mysql.html" /> 
 </head>
 
@@ -143,14 +143,25 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id14">1.6. Docker容器的数据卷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id15">1.6.1. 概念及作用</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">1.6.2. 配置数据卷</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">1.6.3. 配置数据卷容器</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">1.6.1. 概念及作用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id16">1.6.1.1. 概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">1.6.1.2. 作用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id18">1.6.2. 配置数据卷</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">1.6.3. 配置 数据卷容器</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id20">1.7. Docker使用案例（应用部署实战）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mysql">1.7.1. MySQL部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tomcat">1.7.2. Tomcat部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nginx">1.7.3. Nginx部署</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redis">1.7.4. Redis部署</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="k8s.html">2. K8S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="k8s.html">2. Kubernetes（K8S）</a></li>
 </ul>
 <p class="caption"><span class="caption-text">服务器</span></p>
 <ul>
@@ -246,6 +257,10 @@
             
   <div class="section" id="docker">
 <h1>1. Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h1>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">更新日期：2020-03-08</p>
+</div>
 <div class="section" id="id1">
 <h2>1.1. 书籍推荐<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
@@ -569,15 +584,43 @@ docker.io/library/mysql:5.6
 <dd><div class="first admonition tip">
 <p class="first admonition-title">小技巧</p>
 <ul class="last simple">
-<li>单个删除 docker rmi image-id/[name]:[tag]</li>
-<li>删除本次所有镜像docker rmi <cite>docker images -q</cite></li>
+<li><dl class="first docutils">
+<dt>单个删除 docker rmi image-id/[name]:[tag]</dt>
+<dd><ul class="first last">
+<li>rmi。rm就是删除，i参数指的就是镜像。可以指定一个或多个镜像名称或者镜像的ID，多个镜像之间可以使用空格隔开。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>删除本次所有镜像: docker rmi <cite>docker images -q</cite></dt>
+<dd><ul class="first last">
+<li>docker images -q 列出所有镜像的ID</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
-<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker rmi c8078e
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker rmi c8078e
 Untagged: mysql:5.6
 Untagged: mysql@sha256:a72a05bcf3914c902070765a506b1c8c17c06400258e7b574965763099dee9e1
 Deleted: sha256:c8078e8ab06d8dabd6c30cffb03951fa035d85f75c19a83ace29b01cb3ecd272
 </pre></div>
+</div>
+<div class="last admonition warning">
+<p class="first admonition-title">警告</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>如果不能删除成功，可能是因为这个镜像正在被容器使用。</dt>
+<dd><ul class="first last">
+<li>可以使用 -f参数强制删除。</li>
+<li>也可以先移除正在使用该镜像的容器后再删除。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 </dd>
 </dl>
@@ -729,12 +772,172 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 </div>
 <div class="section" id="id15">
 <h3>1.6.1. 概念及作用<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
-</div>
 <div class="section" id="id16">
-<h3>1.6.2. 配置数据卷<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<h4>1.6.1.1. 概念<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>数据卷是宿主机中的一个目录或文件。</li>
+<li>容器目录（文件）和数据卷目录（文件）绑定后，双方修改会立即同步。</li>
+<li>一个数据卷可被多个容器挂载；一个容器也可挂载多个数据卷。</li>
+</ol>
+</div></blockquote>
 </div>
 <div class="section" id="id17">
-<h3>1.6.3. 配置数据卷容器<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<h4>1.6.1.2. 作用<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>可持久化保存容器数据。</li>
+<li>实现外部机器和容器间接通信。</li>
+<li>容器之间进行数据交换。</li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>1.6.2. 配置数据卷<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>创建容器时，使用-v参数</dt>
+<dd><ul class="first last">
+<li>docker run …… -v 宿主机目录（文件）:容器内部目录（文件）</li>
+<li>目录不存在时，会自动创建。</li>
+<li>目录是绝对路径。</li>
+<li>可以挂载多个数据卷。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<a class="last reference internal image-reference" href="../../_images/docker数据卷.png"><img alt="../../_images/docker数据卷.png" src="../../_images/docker数据卷.png" style="width: 700px;" /></a>
+</div>
+<ol class="arabic">
+<li><p class="first">挂载单个数据卷：将本机的host_data目录挂载到容器的container_data下</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name<span class="o">=</span>c1 -v /Users/hanghangli/Desktop/host_data:/root/container_data  nginx:v3
+<span class="c1"># 进入容器</span>
+<span class="nv">$docker</span> <span class="nb">exec</span> -it c1 /bin/bash
+<span class="nv">$root</span>@2c651df94731:/# <span class="nb">cd</span> root/
+<span class="c1"># 可以看到在容器内已经有了挂载目录</span>
+<span class="nv">$root</span>@2c651df94731:~# ls
+container_data
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">一个容器挂载多个数据卷：将本机的data_1.txt、data_2.txt文件挂载到容器的container_data_1.txt、container_data_2.txt</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name<span class="o">=</span>c2 <span class="se">\</span>
+-v /Users/hanghangli/Desktop/data_1.txt:/root/container_data_1.txt <span class="se">\</span>
+-v /Users/hanghangli/Desktop/data_1.txt:/root/container_data_2.txt <span class="se">\</span>
+nginx:v3
+<span class="c1"># 进入容器</span>
+$ docker <span class="nb">exec</span> -it c2 /bin/bash
+$ ls root/
+<span class="c1"># 可以看到在容器内已经有了挂载的两个文件</span>
+container_data_1.txt  container_data_2.txt
+$ cat container_data_1.txt
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">多个容器挂载一个数据卷。c3与c4容器挂载一个config.ini.txt文件</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name<span class="o">=</span>c3 <span class="se">\</span>
+-v /Users/hanghangli/Desktop/config.ini.txt:/root/container_config.ini.txt.txt <span class="se">\</span>
+nginx:v3
+$ docker run -it --name<span class="o">=</span>c4 <span class="se">\</span>
+-v /Users/hanghangli/Desktop/config.ini.txt:/root/container_config.ini.txt <span class="se">\</span>
+nginx:v3
+<span class="c1"># 现在修改一下config.ini.txt文件内容并查看下容器的数据卷是否同步了修改。</span>
+<span class="c1"># 先看下c3容器</span>
+$ docker <span class="nb">exec</span> -it c3 /bin/bash
+$ root@d8b63fe631cb:~# ls
+    container_config.ini.txt.txt
+$ root@d8b63fe631cb:~# cat container_config.ini.txt.txt
+    我修改了宿主机的配置文件。
+$ root@d8b63fe631cb:~# <span class="nb">exit</span>
+<span class="c1"># 再看下c4容器</span>
+$ docker <span class="nb">exec</span> -it c4 /bin/bash
+$ root@cfb85d4cb3c4:/# cat root/container_config.ini.txt
+    我修改了宿主机的配置文件。
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id19">
+<h3>1.6.3. 配置 数据卷容器<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="simple">
+<li>使用场景：的时，并不想指定挂载的宿主机的目录，只想实现容器与容器之间的数据共享。</li>
+<li>上面的方法是给每个容器挂载本地数据卷，这样在容器比较少的情况下是一个好方法。但当我们的容器很多且都有挂载数据卷的需求，上面的方式就显得不够高效和友好。</li>
+<li>我们可以考虑专门做个挂载数据卷的容器，让它专门负责数据卷挂载，其他容器直接挂载这个数据卷容器即可。这样就增加了可扩展行和可维护性！</li>
+</ul>
+<p>⚠️无论数据卷容器停止还是删除都不会影响其他容器对于数据卷的使用！</p>
+<ul class="simple">
+<li>容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/docker数据卷容器.png"><img alt="../../_images/docker数据卷容器.png" src="../../_images/docker数据卷容器.png" style="width: 700px;" /></a>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>创建数据卷容器test_1</dt>
+<dd><ol class="first last arabic">
+<li>docker run -it –name=test_1 -v /volume image:tag /bin/bash</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>挂载数据卷test_1给容器test_2、test_3</dt>
+<dd><ol class="first last arabic" start="2">
+<li>docker run -it –name=test_2 –volumes-from test_1 image:tag /bin/bash</li>
+<li>docker run -it –name=test_3 –volumes-from test_1 image:tag /bin/bash</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建数据卷容器 会自动分配一个目录</span>
+$ docker run -it --name<span class="o">=</span>test_1 -v /volume nginx  /bin/bash
+
+<span class="c1"># 挂载test_1到test_2</span>
+$ docker run -it --name<span class="o">=</span>test_2 --volumes-from test_1 nginx  /bin/bash
+<span class="c1"># 挂载test_1到test_3</span>
+$ docker run -it --name<span class="o">=</span>test_3 --volumes-from test_1 nginx  /bin/bash
+
+<span class="c1"># 我们可以测试数据同步情况，我在test_1容器/volume目录新建一个config.ini，看下test_2和test_3下是否会出现呢？</span>
+$ root@75fb3393fb19:/volume# <span class="nb">echo</span> <span class="s2">&quot;hello,Docker&quot;</span> &gt;&gt; config.ini
+<span class="c1"># 在test_2下的volume目录中查看写入内容</span>
+$ docker <span class="nb">exec</span> -it test_2 /bin/bash
+$ root@95025edc8a00:/# cat volume/config.ini
+    hello,Docker
+<span class="c1"># 类似的test_3下也会出现的，自己看下吧，聪明的你看到了吗？</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id20">
+<h2>1.7. Docker使用案例（应用部署实战）<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！</p>
+</div>
+<div class="section" id="mysql">
+<h3>1.7.1. MySQL部署<a class="headerlink" href="#mysql" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="tomcat">
+<h3>1.7.2. Tomcat部署<a class="headerlink" href="#tomcat" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="nginx">
+<h3>1.7.3. Nginx部署<a class="headerlink" href="#nginx" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="redis">
+<h3>1.7.4. Redis部署<a class="headerlink" href="#redis" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 </div>
@@ -747,7 +950,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="k8s.html" class="btn btn-neutral float-right" title="2. K8S" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="k8s.html" class="btn btn-neutral float-right" title="2. Kubernetes（K8S）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../数据库系列/mysql.html" class="btn btn-neutral float-left" title="1. MySQL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

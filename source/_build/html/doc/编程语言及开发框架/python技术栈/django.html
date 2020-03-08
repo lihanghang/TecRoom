@@ -1,0 +1,446 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Django &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0',
+              LANGUAGE:'zh_CN',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="5. PHP" href="../PHP.html" />
+    <link rel="prev" title="3. python" href="Python.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Hang's Tec Room
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">关于Room</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../关于/about_me.html">关于我</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../关于/about_blog.html">我的技术屋</a></li>
+</ul>
+<p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../C++.html">1. C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Java技术栈/Java.html">2. Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python.html">3. python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Django</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">4.1. 设计哲学（理念）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.1.1. 各组件设计原则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#model">4.1.1.1. 模型（Model）</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#api">4.1.2. 数据库API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#url">4.1.3. URL设计</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4.1.4. 模板系统</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">4.1.5. 视图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.1.6. 缓存框架</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">4.2. </a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PHP.html">5. PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab.html">6. Matlab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">设计模式</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../设计模式/design-pattern.html">1. 设计模式</a></li>
+</ul>
+<p class="caption"><span class="caption-text">计算机网络技术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../计算机网络技术/computer-network.html">1. 计算机网络系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据库系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../数据库系列/mysql.html">1. MySQL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../虚拟化与容器技术/docker.html">1. Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../虚拟化与容器技术/k8s.html">2. Kubernetes（K8S）</a></li>
+</ul>
+<p class="caption"><span class="caption-text">服务器</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../服务器/server.html">1. 服务器系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../分布式与微服务系列/distributeMicroServer.html">1. 分布式与微服务系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">机器智能系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/ml.html">1. 机器学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/dl.html">2. 深度学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/nlp.html">3. 自然语言理解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/kg.html">4. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/框架/pytorch.html">5. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/框架/tensorflow.html">6. Tensorflow</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开源工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../开源工具/open_source.html">1. 优秀开源工具</a></li>
+</ul>
+<p class="caption"><span class="caption-text">团队与项目管理</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../团队与项目管理/team_project.html">1. 团队与项目管理</a></li>
+</ul>
+<p class="caption"><span class="caption-text">道与术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../道与术/tao-art.html">1. coding的道与术</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Hang's Tec Room</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>4. Django</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/doc/编程语言及开发框架/python技术栈/django.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>update: 2020-03-04</p>
+<div class="section" id="django">
+<h1>4. Django<a class="headerlink" href="#django" title="永久链接至标题">¶</a></h1>
+<blockquote>
+<div>Django框架是使用非常广泛的优秀框架（源自国外一个新闻系统，自带后台），无论其架构设计及构建系统的便利，我们都有必要去学习研究，对于基于其开发系统或者自己设计项目架构都有借鉴意义！</div></blockquote>
+<blockquote>
+<div>这是我大学时的一门课程，在这里再回顾下，将笔记记录于此，与大家一起学习探讨。</div></blockquote>
+<div class="section" id="id1">
+<h2>4.1. 设计哲学（理念）<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ol class="simple">
+<li>基本目标<ul>
+<li>低耦合高内聚。Django本身也是一个技术栈，其构建目标就是各模块，如视图、数据库、模板等部分最大化相互解耦，这就增加了框架的灵活性和可扩展性。</li>
+</ul>
+</li>
+<li>基本原则<ul>
+<li>精简。借助Python语言自身的特性：动态性，如自身机制使框架代码尽可能地精简。</li>
+<li>构建快。能够让开发者快速基于框架进行web开发，把一些通用的、复用的功能代码抽象，使我们专注业务实现。</li>
+<li>不重复造轮子。各功能模块各就其位，减少冗余，提供扩展性强的接口。</li>
+<li>遵循PEP20（翻译为：Python之禅）的原则。</li>
+<li>一致性。</li>
+</ul>
+</li>
+</ol>
+<div class="section" id="id2">
+<h3>4.1.1. 各组件设计原则<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<div class="section" id="model">
+<h4>4.1.1.1. 模型（Model）<a class="headerlink" href="#model" title="永久链接至标题">¶</a></h4>
+<ol>
+<li><p class="first">明确优于隐式</p>
+<ul>
+<li><p class="first">字段不应该仅仅根据字段的名称来假定某些行为</p>
+</li>
+<li><p class="first">多使用<a class="reference external" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017261630425888">关键字参数</a></p>
+<blockquote>
+<div><p>什么是关键字参数？如： *args, **kwargs。使用关键字参数可增加函数的灵活性，健壮性。</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+<li><p class="first">包括所有相关领域逻辑</p>
+<ul>
+<li><p class="first">遵循<a class="reference external" href="https://zh.wikipedia.org/zh-cn/Active_Record">Active Record</a>模式</p>
+<blockquote>
+<div><p>表现为类似ORM的作用</p>
+</div></blockquote>
+</li>
+<li><p class="first">在模型中将数据库表定义为一个object,并尽可能全面的定义表的所需信息</p>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="api">
+<h3>4.1.2. 数据库API<a class="headerlink" href="#api" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>简洁数据操作代码<ul>
+<li>避免再写一些繁琐的数据库操作代码，快速实现业务逻辑。</li>
+</ul>
+</li>
+<li>可选择原始SQL<ul>
+<li>框架支持自定义纯SQL语句，可根据实际业务需求实现。</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="url">
+<h3>4.1.3. URL设计<a class="headerlink" href="#url" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>松耦合<ul>
+<li>URL不用实际的处理函数名耦合</li>
+</ul>
+</li>
+<li>灵活性</li>
+<li>鼓励<ul>
+<li>在URL中应避免出现文件后缀名。</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h3>4.1.4. 模板系统<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>逻辑分类方案<ul>
+<li>view层和Control层分离</li>
+</ul>
+</li>
+<li>避免冗余<ul>
+<li>把一些的通用的视图放在一起。</li>
+</ul>
+</li>
+<li>从HTML中解耦<ul>
+<li>模板系统不应该被设计成只能输出 HTML。它应该同样擅长生成其他基于文本的格式，或者仅仅是纯文本。</li>
+</ul>
+</li>
+<li>设计能力交给开发<ul>
+<li>开发直接编辑相应HTML</li>
+</ul>
+</li>
+<li>更加直接的处理空格</li>
+<li>安全机制<ul>
+<li>内置了开箱即用的模板系统禁止包含恶意代码</li>
+</ul>
+</li>
+<li>可扩展性<ul>
+<li>自定义的模板标签和过滤器背后的理念.</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>4.1.5. 视图<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<ol class="simple">
+<li>简洁<ul>
+<li>传承Python的优良风格</li>
+</ul>
+</li>
+<li>使用请求对象<ul>
+<li>存储当前请求的元数据的对象，直接传给视图函数，避免从全局访问请求数据的视图函数</li>
+</ul>
+</li>
+<li>松耦合<ul>
+<li>不受开发人员使用任意模板的影响</li>
+</ul>
+</li>
+<li>GET 方法和 POST 方法的区别<ul>
+<li>框架是的GET和POST数据很容器区分</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h3>4.1.6. 缓存框架<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div>目的：减少请求系统的资源开销</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">given</span> <span class="n">a</span> <span class="n">URL</span><span class="p">,</span> <span class="k">try</span> <span class="n">finding</span> <span class="n">that</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cache</span>
+<span class="k">if</span> <span class="n">the</span> <span class="n">page</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cache</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">the</span> <span class="n">cached</span> <span class="n">page</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">generate</span> <span class="n">the</span> <span class="n">page</span>
+    <span class="n">save</span> <span class="n">the</span> <span class="n">generated</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">cache</span> <span class="p">(</span><span class="k">for</span> <span class="nb">next</span> <span class="n">time</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">the</span> <span class="n">generated</span> <span class="n">page</span>
+</pre></div>
+</div>
+<ol class="simple">
+<li>更少的代码</li>
+<li>一致性<ul>
+<li>缓存 API 应该为不同的缓存后端提供一致的接口。</li>
+</ul>
+</li>
+<li>可扩展性<ul>
+<li>我不想用自带的缓存，我想用第三方的缓存框架</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>4.2. <a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../PHP.html" class="btn btn-neutral float-right" title="5. PHP" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Python.html" class="btn btn-neutral float-left" title="3. python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, LiHangHang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

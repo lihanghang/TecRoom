@@ -1,0 +1,102 @@
+欢迎来到：计算机技术磨坊。
+===============================================
+.. note::
+    在这里主要整理编程开发、数据库、数据结构、算法、机器智能等笔记
+
+目录:
+^^^^^
+
+.. toctree::
+    :maxdepth: 2
+    :caption: 关于Room
+
+    doc/关于/about_me
+    doc/关于/about_blog
+        
+
+.. toctree::
+    :caption: 编程语言及开发框架
+    :maxdepth: 2
+    :numbered:
+
+    doc/编程语言及开发框架/C++
+    doc/编程语言及开发框架/Java技术栈/Java
+    doc/编程语言及开发框架/python技术栈/Python
+    doc/编程语言及开发框架/python技术栈/django
+    doc/编程语言及开发框架/PHP
+    doc/编程语言及开发框架/Matlab
+
+.. toctree::
+    :caption: 数据结构与算法系列
+    :numbered:
+
+    doc/数据结构与算法系列/dataStruct_algorithm
+
+.. toctree::
+    :caption: 设计模式
+    :maxdepth: 2
+    :numbered:
+
+    doc/设计模式/design-pattern
+
+.. toctree::
+    :caption: 计算机网络技术
+    :numbered:
+
+    doc/计算机网络技术/computer-network
+
+.. toctree::
+	:caption: 数据库系列
+	:numbered:
+
+	doc/数据库系列/mysql
+
+.. toctree::
+	:caption: 虚拟化与容器技术
+	:numbered:
+
+	doc/虚拟化与容器技术/docker
+	doc/虚拟化与容器技术/k8s
+
+.. toctree::
+	:caption: 服务器
+	:numbered:
+
+	doc/服务器/server
+
+.. toctree::
+	:caption: 分布式与微服务系列
+	:numbered:
+
+	doc/分布式与微服务系列/distributeMicroServer
+
+.. toctree::
+    :maxdepth: 2
+    :caption: 机器智能系列
+    :numbered:
+
+    doc/机器智能系列/ml
+    doc/机器智能系列/dl
+    doc/机器智能系列/nlp
+    doc/机器智能系列/kg
+    doc/机器智能系列/框架/pytorch
+    doc/机器智能系列/框架/tensorflow
+
+
+.. toctree::
+    :caption: 开源工具
+    :numbered:
+
+    doc/开源工具/open_source
+
+.. toctree::
+    :caption: 团队与项目管理
+    :numbered:
+
+    doc/团队与项目管理/team_project
+
+.. toctree::
+    :caption: 道与术
+    :numbered:
+
+    doc/道与术/tao-art

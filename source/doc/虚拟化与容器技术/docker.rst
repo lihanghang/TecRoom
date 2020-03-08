@@ -1,6 +1,9 @@
 ==========
 Docker
 ==========
+.. note::
+
+    更新日期：2020-03-08
 
 书籍推荐
 ========
@@ -172,8 +175,7 @@ Docker镜像（Image）相关命令
         - CREATED ：创建时间                            
         - SIZE ：镜像所占的虚拟大小                  
 
-
-#. 搜索 
+#. 搜索
     .. tip::
 
         - docker search [name]
@@ -222,7 +224,9 @@ Docker镜像（Image）相关命令
     .. tip::
 
         - 单个删除 docker rmi image-id/[name]:[tag]
-        - 删除本次所有镜像docker rmi `docker images -q`
+            + rmi。rm就是删除，i参数指的就是镜像。可以指定一个或多个镜像名称或者镜像的ID，多个镜像之间可以使用空格隔开。
+        - 删除本次所有镜像: docker rmi `docker images -q`
+            + docker images -q 列出所有镜像的ID
 
     .. code-block:: bash
 
@@ -230,6 +234,13 @@ Docker镜像（Image）相关命令
         Untagged: mysql:5.6
         Untagged: mysql@sha256:a72a05bcf3914c902070765a506b1c8c17c06400258e7b574965763099dee9e1
         Deleted: sha256:c8078e8ab06d8dabd6c30cffb03951fa035d85f75c19a83ace29b01cb3ecd272
+
+    .. warning::
+
+        - 如果不能删除成功，可能是因为这个镜像正在被容器使用。
+            + 可以使用 -f参数强制删除。
+            + 也可以先移除正在使用该镜像的容器后再删除。
+    
 
 docker容器（container）相关命令
 -------------------------------
@@ -309,7 +320,7 @@ docker容器（container）相关命令
 
 #. 查看容器信息
     - docker inspect [app_server]
-  
+
 Docker容器的数据卷
 ==================
 
@@ -319,9 +330,135 @@ Docker容器的数据卷
 
 概念及作用
 --------------
+概念
+^^^^^
+    1. 数据卷是宿主机中的一个目录或文件。
+    2. 容器目录（文件）和数据卷目录（文件）绑定后，双方修改会立即同步。
+    3. 一个数据卷可被多个容器挂载；一个容器也可挂载多个数据卷。
+
+作用
+^^^^^
+    1. 可持久化保存容器数据。
+    2. 实现外部机器和容器间接通信。
+    3. 容器之间进行数据交换。
 
 配置数据卷
 ----------
+.. tip::
 
-配置数据卷容器
+    1. 创建容器时，使用-v参数
+        + docker run …… -v 宿主机目录（文件）:容器内部目录（文件）
+        + 目录不存在时，会自动创建。
+        + 目录是绝对路径。
+        + 可以挂载多个数据卷。
+
+    .. image:: images/docker/docker数据卷.png
+        :width: 700
+
+1. 挂载单个数据卷：将本机的host_data目录挂载到容器的container_data下
+
+    .. code-block:: bash
+
+        $ docker run -it --name=c1 -v /Users/hanghangli/Desktop/host_data:/root/container_data  nginx:v3
+        # 进入容器
+        $docker exec -it c1 /bin/bash
+        $root@2c651df94731:/# cd root/ 
+        # 可以看到在容器内已经有了挂载目录
+        $root@2c651df94731:~# ls
+        container_data
+
+2. 一个容器挂载多个数据卷：将本机的data_1.txt、data_2.txt文件挂载到容器的container_data_1.txt、container_data_2.txt
+    
+    .. code-block:: bash
+
+        $ docker run -it --name=c2 \
+        -v /Users/hanghangli/Desktop/data_1.txt:/root/container_data_1.txt \
+        -v /Users/hanghangli/Desktop/data_1.txt:/root/container_data_2.txt \
+        nginx:v3
+        # 进入容器
+        $ docker exec -it c2 /bin/bash
+        $ ls root/
+        # 可以看到在容器内已经有了挂载的两个文件
+        container_data_1.txt  container_data_2.txt
+        $ cat container_data_1.txt
+
+3. 多个容器挂载一个数据卷。c3与c4容器挂载一个config.ini.txt文件
+
+    .. code-block:: bash
+
+        $ docker run -it --name=c3 \ 
+        -v /Users/hanghangli/Desktop/config.ini.txt:/root/container_config.ini.txt.txt \
+        nginx:v3
+        $ docker run -it --name=c4 \ 
+        -v /Users/hanghangli/Desktop/config.ini.txt:/root/container_config.ini.txt \
+        nginx:v3
+        # 现在修改一下config.ini.txt文件内容并查看下容器的数据卷是否同步了修改。
+        # 先看下c3容器
+        $ docker exec -it c3 /bin/bash
+        $ root@d8b63fe631cb:~# ls
+            container_config.ini.txt.txt
+        $ root@d8b63fe631cb:~# cat container_config.ini.txt.txt 
+            我修改了宿主机的配置文件。
+        $ root@d8b63fe631cb:~# exit
+        # 再看下c4容器
+        $ docker exec -it c4 /bin/bash
+        $ root@cfb85d4cb3c4:/# cat root/container_config.ini.txt 
+            我修改了宿主机的配置文件。
+
+配置 数据卷容器
 ---------------
+.. tip::
+    - 使用场景：的时，并不想指定挂载的宿主机的目录，只想实现容器与容器之间的数据共享。
+    - 上面的方法是给每个容器挂载本地数据卷，这样在容器比较少的情况下是一个好方法。但当我们的容器很多且都有挂载数据卷的需求，上面的方式就显得不够高效和友好。
+    - 我们可以考虑专门做个挂载数据卷的容器，让它专门负责数据卷挂载，其他容器直接挂载这个数据卷容器即可。这样就增加了可扩展行和可维护性！
+    
+    ⚠️无论数据卷容器停止还是删除都不会影响其他容器对于数据卷的使用！
+    
+    - 容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器
+
+    .. image:: images/docker/docker数据卷容器.png
+        :width: 700
+
+    - 创建数据卷容器test_1
+        1. docker run -it --name=test_1 -v /volume image:tag /bin/bash
+    - 挂载数据卷test_1给容器test_2、test_3
+        2. docker run -it --name=test_2 --volumes-from test_1 image:tag /bin/bash
+        3. docker run -it --name=test_3 --volumes-from test_1 image:tag /bin/bash
+
+.. code-block:: bash
+
+    # 创建数据卷容器 会自动分配一个目录
+    $ docker run -it --name=test_1 -v /volume nginx  /bin/bash
+
+    # 挂载test_1到test_2
+    $ docker run -it --name=test_2 --volumes-from test_1 nginx  /bin/bash
+    # 挂载test_1到test_3
+    $ docker run -it --name=test_3 --volumes-from test_1 nginx  /bin/bash
+
+    # 我们可以测试数据同步情况，我在test_1容器/volume目录新建一个config.ini，看下test_2和test_3下是否会出现呢？
+    $ root@75fb3393fb19:/volume# echo "hello,Docker" >> config.ini
+    # 在test_2下的volume目录中查看写入内容
+    $ docker exec -it test_2 /bin/bash
+    $ root@95025edc8a00:/# cat volume/config.ini 
+        hello,Docker
+    # 类似的test_3下也会出现的，自己看下吧，聪明的你看到了吗？
+
+
+Docker使用案例（应用部署实战）
+==============================
+.. note::
+
+    下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！
+
+
+MySQL部署
+-----------
+
+Tomcat部署
+-----------
+
+Nginx部署
+-----------
+
+Redis部署
+----------
