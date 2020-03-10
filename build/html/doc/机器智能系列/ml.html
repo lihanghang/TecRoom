@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. 机器学习 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  <title>1. 机器学习基础 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
   
 
   
@@ -45,7 +45,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="2. 深度学习" href="dl.html" />
+    <link rel="next" title="3. 深度学习" href="dl.html" />
     <link rel="prev" title="1. 分布式与微服务系列" href="../分布式与微服务系列/distributeMicroServer.html" /> 
 </head>
 
@@ -123,7 +123,7 @@
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../虚拟化与容器技术/docker.html">1. Docker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../虚拟化与容器技术/k8s.html">2. K8S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../虚拟化与容器技术/k8s.html">2. Kubernetes（K8S）</a></li>
 </ul>
 <p class="caption"><span class="caption-text">服务器</span></p>
 <ul>
@@ -135,15 +135,22 @@
 </ul>
 <p class="caption"><span class="caption-text">机器智能系列</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 机器学习</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 机器学习基础</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">1.1. 书籍推荐</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="dl.html">2. 深度学习</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nlp.html">3. 自然语言理解</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kg.html">4. 知识图谱</a></li>
-<li class="toctree-l1"><a class="reference internal" href="框架/pytorch.html">5. Pytorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="框架/tensorflow.html">6. Tensorflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id3">2. 机器学习应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id4">2.1. 常见应用领域</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">2.2. 常见算法回顾</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">2.3. 常用建模工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">2.4. 实际问题建模思路流程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dl.html">3. 深度学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nlp.html">4. 自然语言理解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg.html">5. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="框架/pytorch.html">6. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="框架/tensorflow.html">7. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
@@ -201,13 +208,13 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>1. 机器学习</li>
+      <li>1. 机器学习基础</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/doc/机器智能系列/ml.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/doc/机器智能系列/ml.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -221,12 +228,45 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>1. 机器学习<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1>1. 机器学习基础<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>创建日期：2020-03-11</li>
+<li>更新日期：2020-03-11</li>
+<li>完成日期：进行中……</li>
+</ul>
+</div>
 <div class="section" id="id2">
 <h2>1.1. 书籍推荐<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
-<li>🔥🔥🔥《机器学习》周志华 图文并茂，提纲挈领</li>
-<li>🔥🔥🔥《统计学习方法 第二版》李航 偏数学理论，硬核干货</li>
+<ol class="arabic simple">
+<li>《机器学习》周志华 图文并茂，提纲挈领</li>
+<li>《统计学习方法 第二版》李航 偏数学理论，硬核干货</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>2. 机器学习应用<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id4">
+<h2>2.1. 常见应用领域<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>2.2. 常见算法回顾<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id6">
+<h2>2.3. 常用建模工具<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>scikit-learn</li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h2>2.4. 实际问题建模思路流程<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>数据处理</li>
+<li>特征工程</li>
+<li>模型选择</li>
+<li>调参。寻找最优超参数，交叉验证</li>
+<li>模型分析与模型融合</li>
 </ol>
 </div>
 </div>
@@ -239,7 +279,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dl.html" class="btn btn-neutral float-right" title="2. 深度学习" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dl.html" class="btn btn-neutral float-right" title="3. 深度学习" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../分布式与微服务系列/distributeMicroServer.html" class="btn btn-neutral float-left" title="1. 分布式与微服务系列" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

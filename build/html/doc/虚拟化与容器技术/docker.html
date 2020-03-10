@@ -173,12 +173,13 @@
 </ul>
 <p class="caption"><span class="caption-text">机器智能系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html">1. 机器学习</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">2. 深度学习</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">3. 自然语言理解</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">4. 知识图谱</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">5. Pytorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">6. Tensorflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html">1. 机器学习基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html#id3">2. 机器学习应用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">5. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">6. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">7. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
@@ -936,7 +937,7 @@ $ root@95025edc8a00:/# cat volume/config.ini
 <ul class="last simple">
 <li>下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！</li>
 <li><dl class="first docutils">
-<dt>如果抽象出来部署操作可分为以下几步：</dt>
+<dt>如果抽象出来部署操，可分为以下几步：</dt>
 <dd><ul class="first last">
 <li>搜索需要安装的软件（镜像）。如mysql的版本。</li>
 <li>从仓库获取镜像。从私有或公共仓库获取。</li>
@@ -1021,8 +1022,9 @@ $ docker <span class="nb">exec</span> -it mysql_container /bin/bash
 <span class="c1"># 在容器中登录mysql</span>
 root@e39f78f46f15:/#  mysql -uroot -ppass
 mysql&gt;
-<span class="c1"># 下面我们可以在本地用任意客户端登录mysql，注意端口填写就行。登录后可以常见一个数据库和表，再进入容器就会看到刚才创建的表了。</span>
+<span class="c1"># 下面我们可以在本地用任意客户端登录mysql，注意端口填写3307就行。登录后可以常见一个数据库和表，再进入容器就会看到刚才创建的表了。</span>
 <span class="c1"># 到此，mysql的容器化就完成啦。</span>
+
 <span class="c1"># 其他命令：mysql容器端口的映射信息</span>
 $ docker port mysql_container <span class="m">3306</span>
     <span class="m">0</span>.0.0.0:3307

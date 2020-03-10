@@ -12,8 +12,7 @@
 
     doc/关于/about_me
     doc/关于/about_blog
-        
-
+      
 .. toctree::
     :caption: 编程语言及开发框架
     :maxdepth: 2
@@ -27,6 +26,7 @@
     doc/编程语言及开发框架/Matlab
 
 .. toctree::
+    :maxdepth: 2
     :caption: 数据结构与算法系列
     :numbered:
 
@@ -51,12 +51,15 @@
 
 	doc/数据库系列/mysql
 
-.. toctree::
-	:caption: 虚拟化与容器技术
-	:numbered:
 
-	doc/虚拟化与容器技术/docker
-	doc/虚拟化与容器技术/k8s
+.. toctree::
+    :maxdepth: 3
+    :caption: 虚拟化与容器技术
+    :numbered:
+
+    doc/虚拟化与容器技术/docker
+
+    doc/虚拟化与容器技术/k8s
 
 .. toctree::
 	:caption: 服务器
