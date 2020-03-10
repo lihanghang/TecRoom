@@ -91,6 +91,7 @@ Docker架构（组件）
 .. tip::
 
     MAC系统可以直接安装桌面版Docker，社区版就够用了。关于镜像加速器推荐使用国内阿里云镜像加速器，配置也比较容易，配置后再使用docker镜像就比较快了。
+    官网下载太慢吗？推荐前往：http://get.daocloud.io/。
 
 安装
 ------
@@ -268,8 +269,9 @@ docker容器（container）相关命令
 
     .. tip::
 
-            - docker run -it --name=container_name  image_name:tag  /bin/bash
-            - docker run -id --name=container_name  image_name:tag  /bin/bash
+            - docker run -i -t --name=container_name  image_name:tag  /bin/bash
+            - docker run -i -d --name=container_name  image_name:tag  /bin/bash
+                + -i -d[t] 可以合并为-id[t]。d标志位表示创建后台容器。
             - 退出容器：执行exit命令。
                 + 退出后容器将关闭
 
@@ -448,11 +450,68 @@ Docker使用案例（应用部署实战）
 ==============================
 .. note::
 
-    下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！
-
+    - 下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！
+    - 如果抽象出来部署操，可分为以下几步：
+        + 搜索需要安装的软件（镜像）。如mysql的版本。
+        + 从仓库获取镜像。从私有或公共仓库获取。
+        + 创建容器。创建容器的方式可以是命令行也可以使用Dockerfile文件来build。
+        + 完成。
 
 MySQL部署
 -----------
+1. 目标
+    实现在Docker中部署MySQL，并通过外部客户端操作该容器中的数据库。
+
+    .. tip::
+
+        思考：外部如何访问容器内的数据库呢？
+        解决方案：引入端口映射方法。
+
+2. 过程
+    - 搜索mysql (可省略步骤）
+        docker search mysql:5.6
+    - 拉取mysql
+        docker pull mysql:5.6
+    - 创建容器
+        .. code-block:: bash
+        
+            # 在本地创建一个数据库目录并进入。
+            $ mkdir mysql
+            $ cd ~/mysql
+            # $PWD表示当前目录路径
+            $ docker run -id \      
+            -p 3307:3306 \
+            --name mysql_container \
+            -v $PWD/conf:/etc/mysql/conf.d \
+            -v $PWD/logs:/logs \
+            -v $PWD/data:/var/lib/mysql \
+            -e MYSQL_ROOT_PASSWORD=pass \
+            mysql:5.6
+            e39f78f46f1585225bab52499ad4d81032bc35d52972341503f47bdd1992d277
+            $ docker ps
+            CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+            e39f78f46f15        mysql:5.6           "docker-entrypoint.sh"   7 seconds ago       Up 5 seconds        0.0.0.0:3307->3306/tcp   mysql_container
+
+        + 参数说明
+            - -p 3307:3306  端口映射。将容器mysql的3306映射到主机的3307。
+            - -v $PWD/conf:/etc/mysql/conf.d  挂载数据库配置数据卷。将本地（刚才创建的mysql目录）当前目录的conf挂载到容器/etc/mysql/conf.d
+            - -v $PWD/logs:/logs 挂载日志数据卷。将本地当前目录的logs挂载到容器/logs。
+            - -v $PWD/data:/var/lib/mysql 挂载数据数据卷。将本地当前目录的data挂载到容器/var/lib/mysql
+            - -e MYSQL_ROOT_PASSWORD=pass 初始化root用户的密码
+    - 操作容器中的mysql
+        .. code-block:: bash
+
+            # 进入容器
+            $ docker exec -it mysql_container /bin/bash
+            # 在容器中登录mysql
+            root@e39f78f46f15:/#  mysql -uroot -ppass
+            mysql> 
+            # 下面我们可以在本地用任意客户端登录mysql，注意端口填写3307就行。登录后可以常见一个数据库和表，再进入容器就会看到刚才创建的表了。
+            # 到此，mysql的容器化就完成啦。
+
+            # 其他命令：mysql容器端口的映射信息
+            $ docker port mysql_container 3306
+                0.0.0.0:3307
 
 Tomcat部署
 -----------

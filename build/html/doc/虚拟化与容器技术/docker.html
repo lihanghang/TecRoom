@@ -257,8 +257,8 @@
             
   <div class="section" id="docker">
 <h1>1. Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h1>
-<div class="admonition tip">
-<p class="first admonition-title">小技巧</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
 <p class="last">更新日期：2020-03-08</p>
 </div>
 <div class="section" id="id1">
@@ -397,7 +397,8 @@
 <h2>1.4. 安装Docker（MAC)并注册国内镜像加速器<a class="headerlink" href="#docker-mac" title="永久链接至标题">¶</a></h2>
 <div class="admonition tip">
 <p class="first admonition-title">小技巧</p>
-<p class="last">MAC系统可以直接安装桌面版Docker，社区版就够用了。关于镜像加速器推荐使用国内阿里云镜像加速器，配置也比较容易，配置后再使用docker镜像就比较快了。</p>
+<p class="last">MAC系统可以直接安装桌面版Docker，社区版就够用了。关于镜像加速器推荐使用国内阿里云镜像加速器，配置也比较容易，配置后再使用docker镜像就比较快了。
+官网下载太慢吗？推荐前往：<a class="reference external" href="http://get.daocloud.io/">http://get.daocloud.io/</a>。</p>
 </div>
 <div class="section" id="id8">
 <h3>1.4.1. 安装<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
@@ -668,8 +669,15 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 <div><div class="admonition tip">
 <p class="first admonition-title">小技巧</p>
 <ul class="last simple">
-<li>docker run -it –name=container_name  image_name:tag  /bin/bash</li>
-<li>docker run -id –name=container_name  image_name:tag  /bin/bash</li>
+<li>docker run -i -t –name=container_name  image_name:tag  /bin/bash</li>
+<li><dl class="first docutils">
+<dt>docker run -i -d –name=container_name  image_name:tag  /bin/bash</dt>
+<dd><ul class="first last">
+<li>-i -d[t] 可以合并为-id[t]。d标志位表示创建后台容器。</li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><dl class="first docutils">
 <dt>退出容器：执行exit命令。</dt>
 <dd><ul class="first last">
@@ -925,10 +933,109 @@ $ root@95025edc8a00:/# cat volume/config.ini
 <h2>1.7. Docker使用案例（应用部署实战）<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
-<p class="last">下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！</p>
+<ul class="last simple">
+<li>下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！</li>
+<li><dl class="first docutils">
+<dt>如果抽象出来部署操作可分为以下几步：</dt>
+<dd><ul class="first last">
+<li>搜索需要安装的软件（镜像）。如mysql的版本。</li>
+<li>从仓库获取镜像。从私有或公共仓库获取。</li>
+<li>创建容器。创建容器的方式可以是命令行也可以使用Dockerfile文件来build。</li>
+<li>完成。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 <div class="section" id="mysql">
 <h3>1.7.1. MySQL部署<a class="headerlink" href="#mysql" title="永久链接至标题">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>目标</dt>
+<dd><p class="first">实现在Docker中部署MySQL，并通过外部客户端操作该容器中的数据库。</p>
+<div class="last admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">思考：外部如何访问容器内的数据库呢？
+解决方案：引入端口映射方法。</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>过程</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>搜索mysql (可省略步骤）</dt>
+<dd><p class="first last">docker search mysql:5.6</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>拉取mysql</dt>
+<dd><p class="first last">docker pull mysql:5.6</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>创建容器</dt>
+<dd><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在本地创建一个数据库目录并进入。</span>
+$ mkdir mysql
+$ <span class="nb">cd</span> ~/mysql
+<span class="c1"># $PWD表示当前目录路径</span>
+$ docker run -id <span class="se">\</span>
+-p <span class="m">3307</span>:3306 <span class="se">\</span>
+--name mysql_container <span class="se">\</span>
+-v <span class="nv">$PWD</span>/conf:/etc/mysql/conf.d <span class="se">\</span>
+-v <span class="nv">$PWD</span>/logs:/logs <span class="se">\</span>
+-v <span class="nv">$PWD</span>/data:/var/lib/mysql <span class="se">\</span>
+-e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>pass <span class="se">\</span>
+mysql:5.6
+e39f78f46f1585225bab52499ad4d81032bc35d52972341503f47bdd1992d277
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+e39f78f46f15        mysql:5.6           <span class="s2">&quot;docker-entrypoint.sh&quot;</span>   <span class="m">7</span> seconds ago       Up <span class="m">5</span> seconds        <span class="m">0</span>.0.0.0:3307-&gt;3306/tcp   mysql_container
+</pre></div>
+</div>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>参数说明</dt>
+<dd><ul class="first last">
+<li>-p 3307:3306  端口映射。将容器mysql的3306映射到主机的3307。</li>
+<li>-v $PWD/conf:/etc/mysql/conf.d  挂载数据库配置数据卷。将本地（刚才创建的mysql目录）当前目录的conf挂载到容器/etc/mysql/conf.d</li>
+<li>-v $PWD/logs:/logs 挂载日志数据卷。将本地当前目录的logs挂载到容器/logs。</li>
+<li>-v $PWD/<a class="reference external" href="data:/var/lib/mysql">data:/var/lib/mysql</a> 挂载数据数据卷。将本地当前目录的data挂载到容器/var/lib/mysql</li>
+<li>-e MYSQL_ROOT_PASSWORD=pass 初始化root用户的密码</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>操作容器中的mysql</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入容器</span>
+$ docker <span class="nb">exec</span> -it mysql_container /bin/bash
+<span class="c1"># 在容器中登录mysql</span>
+root@e39f78f46f15:/#  mysql -uroot -ppass
+mysql&gt;
+<span class="c1"># 下面我们可以在本地用任意客户端登录mysql，注意端口填写就行。登录后可以常见一个数据库和表，再进入容器就会看到刚才创建的表了。</span>
+<span class="c1"># 到此，mysql的容器化就完成啦。</span>
+<span class="c1"># 其他命令：mysql容器端口的映射信息</span>
+$ docker port mysql_container <span class="m">3306</span>
+    <span class="m">0</span>.0.0.0:3307
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
 </div>
 <div class="section" id="tomcat">
 <h3>1.7.2. Tomcat部署<a class="headerlink" href="#tomcat" title="永久链接至标题">¶</a></h3>
