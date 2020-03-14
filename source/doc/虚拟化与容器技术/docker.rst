@@ -3,7 +3,7 @@ Docker
 ==========
 .. note::
 
-    更新日期：2020-03-08
+    更新日期：2020-03-15
 
 书籍推荐
 ========
@@ -11,6 +11,7 @@ Docker
 - 《Docker开发实践》
 - 其他
     + 访问 `菜鸟教程 <https://www.runoob.com/docker/docker-tutorial.html>`_ 查看。
+    + 访问Docker `学习路线图 <https://developer.aliyun.com/article/40494?spm=5176.12281978.0.0.377241271ZQV6s>`_ 。
 
 初识Docker
 ============
@@ -515,9 +516,150 @@ MySQL部署
 
 Tomcat部署
 -----------
+1. 目标
+    - 实现在Docker中部署Tomcat，并通过本地浏览器访问网页，确定服务器是否正常工作。
+
+2. 创建过程
+    - 拉取镜像
+        .. code-block:: bash 
+
+            # 在本地创建一个数据库目录并进入。
+            $ mkdir tomcat
+            $ cd tomcat
+            # $PWD表示当前目录路径
+            $ docker pull tomcat             
+            Using default tag: latest
+            latest: Pulling from library/tomcat
+            50e431f79093: Pull complete 
+            dd8c6d374ea5: Pull complete 
+            c85513200d84: Pull complete 
+            55769680e827: Pull complete 
+            e27ce2095ec2: Pull complete 
+            5943eea6cb7c: Pull complete 
+            3ed8ceae72a6: Pull complete 
+            91d1e510d72b: Pull complete 
+            98ce65c663bc: Pull complete 
+            27d4ac9d012a: Pull complete 
+            Digest: sha256:2c90303e910d7d5323935b6dc4f8ba59cc1ec99cf1b71fd6ca5158835cffdc9c
+            Status: Downloaded newer image for tomcat:latest
+    
+    - 创建Tomcat容器
+        .. code-block:: bash 
+
+            # 在本地创建一个数据库目录并进入。
+            $ mkdir tomcat
+            $ cd tomcat
+            # $PWD表示当前目录路径
+
+            $ docker run -id --name=tomcat \
+                -p 8080:8080 \
+                -v $PWD:/usr/local/tomcat/webapps \
+                tomcat
+
+                5949c2cfd5fe1d4d3395996d22804d08e7e5debc8255d032fd12ab1f1d54be4f
+
+    - 使用容器
+        + 在本地机器创建的tomcat目录下
+            - mkdir my_app
+            - echo '<h1>hello,Docker!</h1>' > my_app/index.html
+            - 访问：http://0.0.0.0:8080/my_app/index.html
+            - 大功告成！
 
 Nginx部署
 -----------
+    - 拉取镜像
+        .. code-block:: bash 
 
-Redis部署
-----------
+            $ docker pull nginx
+            Using default tag: latest
+            latest: Pulling from library/nginx
+            68ced04f60ab: Pull complete 
+            28252775b295: Pull complete 
+            a616aa3b0bf2: Pull complete 
+            Digest: sha256:2539d4344dd18e1df02be842ffc435f8e1f699cfc55516e2cf2cb16b7a9aea0b
+            Status: Downloaded newer image for nginx:latest
+
+    - 创建容器并测试
+         .. code-block:: bash 
+
+            # 准备工作
+            $ mkdir nginx
+            $ cd nginx
+            $ mkdir conf html logs
+            $ vim conf/nginx.conf 
+                #user  nobody;
+                worker_processes  1;
+
+                #error_log  logs/error.log;
+                #error_log  logs/error.log  notice;
+                #error_log  logs/error.log  info;
+
+                #pid        logs/nginx.pid;
+
+                events {
+                    worker_connections  1024;
+                }
+
+                http {
+                    include       mime.types;
+                    default_type  application/octet-stream;
+
+                    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                    # '$status $body_bytes_sent "$http_referer" '
+                    # '"$http_user_agent" "$http_x_forwarded_for"';
+                    #access_log  logs/access.log  main;
+                    sendfile        on;
+                    #tcp_nopush     on;
+                    #keepalive_timeout  0;
+                    keepalive_timeout  65;
+                    #gzip  on;
+                include /etc/nginx/conf.d/*.conf;
+                }
+            $ echo '<h1>Hello, Nginx. </h1>' > html/index.html
+            $ docker run -id --name=my_nginx \             
+                -p 80:80 \
+                -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf \
+                -v $PWD/logs:/var/log/nginx \
+                -v $PWD/html:/usr/share/nginx/html \
+                nginx
+            $ 访问0.0.0.0
+                Hello, Nginx.
+
+Redis部署（一个key-value存储系统）
+------------------------------------
+
+    - 目标
+        + 创建Redis容器，并使用本地机器进行访问。
+    - 拉取镜像
+        + docker pull reids
+    - 创建容器
+
+        .. code-block:: bash
+
+            $ docker run -id --name=my_redis \
+            -p 6379:6379 \
+            redis
+            # 内部先测试下
+            $ docker exec -it my_redis /bin/bash
+            $ root@679f5de7ab12:/data# redis-cli 
+            $ 27.0.0.1:6379> set name 'test'
+                OK
+            $ 127.0.0.1:6379> get name
+                "test"
+
+    - 外部连接测试
+        + mac系统下安装Redis 
+            - brew install redis
+
+            .. tip::
+                
+                如果下载太慢可更换brew的仓库源，可参考：https://www.jianshu.com/p/8a2ac505ff3e
+
+        + 连接测试
+
+            .. code-block:: bash 
+
+                $ redis-cli -h 0.0.0.0 -p 6379
+                $ 0.0.0.0:6379> get name
+                    "test"
+
