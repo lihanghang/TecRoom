@@ -159,6 +159,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#redis-key-value">1.7.4. Redis部署（一个key-value存储系统）</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#dockerfile">1.8. 使用Dockerfile制作镜像</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">1.8.1. 镜像原理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">1.8.2. Dockerfile的概念和作用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">1.8.2.1. 镜像制作方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">1.8.3. 案例</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">1.8.3.1. 案例一</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">1.8.3.2. 案例二</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="k8s.html">2. Kubernetes（K8S）</a></li>
@@ -1259,6 +1272,211 @@ $ <span class="m">0</span>.0.0.0:6379&gt; get name
 </li>
 </ul>
 </div></blockquote>
+</div>
+</div>
+<div class="section" id="dockerfile">
+<h2>1.8. 使用Dockerfile制作镜像<a class="headerlink" href="#dockerfile" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id22">
+<h3>1.8.1. 镜像原理<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<ul>
+<li><p class="first">镜像是由特殊的文件系统叠加而成。</p>
+</li>
+<li><p class="first">采用分层的文件系统，通过在只读文件（镜像）上增加可读写层（容器）的形式来改变镜像。</p>
+</li>
+<li><dl class="first docutils">
+<dt>Docker镜像结构图</dt>
+<dd><a class="first reference internal image-reference" href="../../_images/Docker镜像结构.png"><img alt="../../_images/Docker镜像结构.png" src="../../_images/Docker镜像结构.png" style="width: 600px;" /></a>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>bootfs。启动文件系统镜像，复用了宿主机的文件系统。</dt>
+<dd><ul class="first last">
+<li>这也就解释了我们单独下载Ubuntu可能就是好几个G大小，但是利用docker就是几百兆的大小。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>rootfs。根文件系统，也成为根镜像，一般就是一个操作系统。</li>
+<li><dl class="first docutils">
+<dt>Image-1、Image-2。这些就是我们用户的镜像，可以不断叠加，下层为父镜像。</dt>
+<dd><ul class="first last">
+<li>这也就解释了如果单独下载MySQL可能也就几十兆的大小，但使用docker就要几百兆的大小，反而变大了。究其原因，就是只读文件存在依赖的关系，叠加后变大了。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>可读写文件。这一层就是容器了，当我们基于镜像进行容器启动时，就会在最顶层加载一个可读写的文件系统作为容器。</li>
+<li>修改完后就可以提交新的镜像(制作一个新镜像）了。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li></li>
+<li><p class="first">创建新的镜像本质上也就是对已有的镜像文件集合进行增、删、改的操作。</p>
+</li>
+<li><p class="first">这种叠加的方式有利于实现镜像共享、增加可扩展性、减少磁盘空间使用。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id23">
+<h3>1.8.2. Dockerfile的概念和作用<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id24">
+<h4>1.8.2.1. 镜像制作方法<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">容器转镜像（不常用）</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">commit</span> <span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="p">[</span><span class="n">Image</span><span class="o">-</span><span class="n">name</span><span class="p">]:[</span><span class="n">tag</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">save</span> <span class="o">-</span><span class="n">o</span> <span class="p">[</span><span class="n">压缩文件名称</span><span class="p">]</span> <span class="p">[</span><span class="n">Image</span><span class="o">-</span><span class="n">name</span><span class="p">]:[</span><span class="n">tag</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">load</span> <span class="o">-</span><span class="n">i</span> <span class="p">[</span><span class="n">压缩文件名称</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition attention">
+<p class="first admonition-title">注意</p>
+<p class="last">若原有镜像含有挂载文件，则commit时不会将其挂载到新制作的镜像。</p>
+</div>
+<ul>
+<li><dl class="first docutils">
+<dt>操作步骤</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps -a
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                   PORTS                    NAMES
+679f5de7ab12        redis               <span class="s2">&quot;docker-entrypoint.sh&quot;</span>   <span class="m">12</span> hours ago        Up <span class="m">2</span> hours               <span class="m">0</span>.0.0.0:6379-&gt;6379/tcp   my_redis
+
+<span class="c1"># 制作一个Redis镜像名为make_redis</span>
+$ docker commit 679f5de7 make_redis
+
+sha256:c5f603178b0cc95aeb04d3e674060d1268541d361748852d73d7eba652f0c6d3
+<span class="c1"># 查看镜像</span>
+$ docker images
+
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+make_redis          latest              c5f603178b0c        <span class="m">8</span> hours ago         <span class="m">98</span>.21 MB
+redis               latest              f0453552d7f2        <span class="m">32</span> hours ago        <span class="m">98</span>.21 MB
+<span class="c1"># 打包镜像</span>
+$ docker save -o make-redis.tar make_redis
+<span class="c1"># 为了还原镜像，我们先删除存在的</span>
+$ docker rmi c5f6031
+Untagged: make_redis:latest
+Deleted: sha256:c5f603178b0cc95aeb04d3e674060d1268541d361748852d73d7eba652f0c6d3
+Deleted: sha256:88106bcdc3c35ca6ea7bdb8e7dd06d91c921a328587a0f72b87628ffea654945
+<span class="c1"># 加载制作的新镜像</span>
+$ docker load -i make-redis.tar
+    936d71f61caa: Loading layer <span class="m">3</span>.584 kB/3.584 kB
+    Loaded image: make_redis:latest
+<span class="c1"># 查看是否成功还原</span>
+$ docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    make_redis          latest              c5f603178b0c        <span class="m">8</span> hours ago         <span class="m">98</span>.21 MB
+    redis               latest              f0453552d7f2        <span class="m">32</span> hours ago        <span class="m">98</span>.21 MB
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Dockerfile（常用方法）</dt>
+<dd><ul class="first last simple">
+<li>Dockerfile是一个文本文件，包含了一行行的指令。</li>
+<li>不一定叫Dockerfile名称，可根据实际需求来。如nginx_dockerfile</li>
+<li>每一行指令构建一层镜像，基于基础镜像，最终构建出一个新的镜像。</li>
+<li><dl class="first docutils">
+<dt>Dockerfile关键字，可参考：<a class="reference external" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/</a></dt>
+<dd><ul class="first last">
+<li>FROM：父镜像</li>
+<li>RUN：执行命令，[“command-1”, “command-2”]</li>
+<li>CMD: 容器启动命令</li>
+<li>COPY：复制文件</li>
+<li>WORKDIR：工作目录。指定容器内的工作目录</li>
+<li>ADD：添加文件</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id25">
+<h3>1.8.3. 案例<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id26">
+<h4>1.8.3.1. 案例一<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h4>
+<ul>
+<li><dl class="first docutils">
+<dt>任务</dt>
+<dd><dl class="first last docutils">
+<dt>制作一个centos7镜像。保证：</dt>
+<dd><ul class="first last simple">
+<li>默认登录路径为/usr;</li>
+<li>可以使用vim</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>步骤</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull centos:7
+$ docker run -it --name=c1 centos:7
+$ vim Dockerfile
+    # 定义基础镜像
+    FROM centos:7
+    # 作者信息
+    MAINTAINER Mason
+    # 执行操作
+    RUN yum install -y vim
+    # 设置工作目录
+    WORKDIR /usr
+    # 设置启动命令
+    CMD [&quot;/bin/bash&quot;]
+# . 表示的是当前目录，不要忘记写了
+$ docker build -f Dockerfile -t test_centos:1 .
+    Sending build context to Docker daemon 222.6 MB
+    Step 1 : FROM centos:7
+    ---&gt; 5e35e350aded
+    Step 2 : MAINTAINER Mason
+    ---&gt; Using cache
+    ---&gt; efe73e688fd0
+    Step 3 : RUN yum install -y vim
+    ---&gt; Using cache
+    ---&gt; d79eb09c16dc
+    Step 4 : WORKDIR /usr
+    ---&gt; Using cache
+    ---&gt; 0da2b1bca082
+    Step 5 : CMD /bin/bash
+    ---&gt; Running in 697bd23b374a
+    ---&gt; a71548cf9f8e
+$ docker run -it --name c2 test_centos:1
+$ [root@aa24050fdab5 usr]# vim test.txt
+
+# 完成所有任务
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id27">
+<h4>1.8.3.2. 案例二<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>任务</dt>
+<dd>定义Dockerfile，发布一个SpringBoot项目</dd>
+</dl>
+</li>
+<li>步骤</li>
+</ul>
+</div>
 </div>
 </div>
 </div>

@@ -663,3 +663,144 @@ Redis部署（一个key-value存储系统）
                 $ 0.0.0.0:6379> get name
                     "test"
 
+使用Dockerfile制作镜像
+==========================
+镜像原理
+---------
+- 镜像是由特殊的文件系统叠加而成。
+- 采用分层的文件系统，通过在只读文件（镜像）上增加可读写层（容器）的形式来改变镜像。
+- Docker镜像结构图
+    .. image:: images/docker/Docker镜像结构.png
+        :width: 600px
+
+    + bootfs。启动文件系统镜像，复用了宿主机的文件系统。
+        - 这也就解释了我们单独下载Ubuntu可能就是好几个G大小，但是利用docker就是几百兆的大小。
+    + rootfs。根文件系统，也成为根镜像，一般就是一个操作系统。
+    + Image-1、Image-2。这些就是我们用户的镜像，可以不断叠加，下层为父镜像。
+        - 这也就解释了如果单独下载MySQL可能也就几十兆的大小，但使用docker就要几百兆的大小，反而变大了。究其原因，就是只读文件存在依赖的关系，叠加后变大了。
+    + 可读写文件。这一层就是容器了，当我们基于镜像进行容器启动时，就会在最顶层加载一个可读写的文件系统作为容器。
+    + 修改完后就可以提交新的镜像(制作一个新镜像）了。
+- 
+- 创建新的镜像本质上也就是对已有的镜像文件集合进行增、删、改的操作。
+- 这种叠加的方式有利于实现镜像共享、增加可扩展性、减少磁盘空间使用。
+
+Dockerfile的概念和作用
+-------------------------
+镜像制作方法
+^^^^^^^^^^^^^
+1. 容器转镜像（不常用）
+
+    ::
+
+        docker commit [id] [Image-name]:[tag]
+
+    ::
+
+        docker save -o [压缩文件名称] [Image-name]:[tag]
+
+    ::
+
+        docker load -i [压缩文件名称]
+
+    .. Attention::
+        
+        若原有镜像含有挂载文件，则commit时不会将其挂载到新制作的镜像。
+        
+    - 操作步骤
+        .. code-block:: bash
+
+            $ docker ps -a
+
+            CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                   PORTS                    NAMES
+            679f5de7ab12        redis               "docker-entrypoint.sh"   12 hours ago        Up 2 hours               0.0.0.0:6379->6379/tcp   my_redis
+
+            # 制作一个Redis镜像名为make_redis
+            $ docker commit 679f5de7 make_redis
+            
+            sha256:c5f603178b0cc95aeb04d3e674060d1268541d361748852d73d7eba652f0c6d3
+            # 查看镜像
+            $ docker images
+
+            REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+            make_redis          latest              c5f603178b0c        8 hours ago         98.21 MB
+            redis               latest              f0453552d7f2        32 hours ago        98.21 MB
+            # 打包镜像 
+            $ docker save -o make-redis.tar make_redis
+            # 为了还原镜像，我们先删除存在的
+            $ docker rmi c5f6031
+            Untagged: make_redis:latest
+            Deleted: sha256:c5f603178b0cc95aeb04d3e674060d1268541d361748852d73d7eba652f0c6d3
+            Deleted: sha256:88106bcdc3c35ca6ea7bdb8e7dd06d91c921a328587a0f72b87628ffea654945
+            # 加载制作的新镜像
+            $ docker load -i make-redis.tar 
+                936d71f61caa: Loading layer 3.584 kB/3.584 kB
+                Loaded image: make_redis:latest
+            # 查看是否成功还原    
+            $ docker images                            
+                REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+                make_redis          latest              c5f603178b0c        8 hours ago         98.21 MB
+                redis               latest              f0453552d7f2        32 hours ago        98.21 MB
+
+2. Dockerfile（常用方法）
+    - Dockerfile是一个文本文件，包含了一行行的指令。
+    - 不一定叫Dockerfile名称，可根据实际需求来。如nginx_dockerfile
+    - 每一行指令构建一层镜像，基于基础镜像，最终构建出一个新的镜像。
+    - Dockerfile关键字，可参考：https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+        - FROM：父镜像
+        - RUN：执行命令，["command-1", "command-2"]
+        - CMD: 容器启动命令
+        - COPY：复制文件
+        - WORKDIR：工作目录。指定容器内的工作目录
+        - ADD：添加文件
+
+案例
+--------
+案例一
+^^^^^^^
+- 任务
+    制作一个centos7镜像。保证：
+        - 默认登录路径为/usr;
+        - 可以使用vim
+- 步骤
+    ::
+
+        $ docker pull centos:7  
+        $ docker run -it --name=c1 centos:7
+        $ vim Dockerfile           
+            # 定义基础镜像
+            FROM centos:7
+            # 作者信息
+            MAINTAINER Mason
+            # 执行操作
+            RUN yum install -y vim
+            # 设置工作目录
+            WORKDIR /usr
+            # 设置启动命令
+            CMD ["/bin/bash"]
+        # . 表示的是当前目录，不要忘记写了
+        $ docker build -f Dockerfile -t test_centos:1 .
+            Sending build context to Docker daemon 222.6 MB
+            Step 1 : FROM centos:7
+            ---> 5e35e350aded
+            Step 2 : MAINTAINER Mason
+            ---> Using cache
+            ---> efe73e688fd0
+            Step 3 : RUN yum install -y vim
+            ---> Using cache
+            ---> d79eb09c16dc
+            Step 4 : WORKDIR /usr
+            ---> Using cache
+            ---> 0da2b1bca082
+            Step 5 : CMD /bin/bash
+            ---> Running in 697bd23b374a
+            ---> a71548cf9f8e
+        $ docker run -it --name c2 test_centos:1
+        $ [root@aa24050fdab5 usr]# vim test.txt
+
+        # 完成所有任务
+
+案例二
+^^^^^^^^
+- 任务
+    定义Dockerfile，发布一个SpringBoot项目
+- 步骤
