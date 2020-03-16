@@ -172,6 +172,12 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-compose">1.9. docker-compose（服务编排技术）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id28">1.9.1. 服务编排概念</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">1.9.2. 实例</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id30">1.10. 搭建私有仓库</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="k8s.html">2. Kubernetes（K8S）</a></li>
@@ -273,7 +279,7 @@
 <h1>1. Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
-<p class="last">更新日期：2020-03-15</p>
+<p class="last">更新日期：2020-03-16</p>
 </div>
 <div class="section" id="id1">
 <h2>1.1. 书籍推荐<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
@@ -299,7 +305,8 @@
 </div>
 <ol class="arabic simple">
 <li>Docker就是开源的容器引擎，诞生于2013年。最形象的比喻就是集装箱，各自自成体系，互不影响，可任意放在不同的平台。</li>
-<li>Docker是容器的一种，容器是一种轻量级的虚拟技术，相对应的，虚拟机（VMware、VirtualBox等）就是重量级的虚拟技术。</li>
+<li>Docker是容器的一种，容器是一种*轻量级(占用空间小）的虚拟技术*，相对应的，虚拟机（VMware、VirtualBox等）就是重量级的虚拟技术。</li>
+<li>Docker是虚拟化的是操作系统，而虚拟机虚拟化的是硬件。</li>
 <li><dl class="first docutils">
 <dt>最切实的价值是什么？</dt>
 <dd><ul class="first last">
@@ -1478,6 +1485,39 @@ $ [root@aa24050fdab5 usr]# vim test.txt
 </ul>
 </div>
 </div>
+</div>
+<div class="section" id="docker-compose">
+<h2>1.9. docker-compose（服务编排技术）<a class="headerlink" href="#docker-compose" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id28">
+<h3>1.9.1. 服务编排概念<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>docker-compose是一个工具。能够编排多容器分布式部署，以指令集的形式管理容器化应用的开发周期，如构建、启动、停止。</li>
+<li><dl class="first docutils">
+<dt>基本过程</dt>
+<dd><ul class="first last">
+<li>利用Dockerfile定义运行环境镜像。</li>
+<li>使用docker-compose.yml定义组成应用的各服务。</li>
+<li>运行docker-compose up 启动应用。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id29">
+<h3>1.9.2. 实例<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li>安装</li>
+<li>过程</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id30">
+<h2>1.10. 搭建私有仓库<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h2>
 </div>
 </div>
 
