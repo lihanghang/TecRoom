@@ -756,8 +756,8 @@ Dockerfile的概念和作用
 
 案例
 --------
-案例一
-^^^^^^^
+案例一之CentOS安装Vim
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 - 任务
     制作一个centos7镜像。保证：
         - 默认登录路径为/usr;
@@ -801,8 +801,8 @@ Dockerfile的概念和作用
 
         # 完成所有任务
 
-案例二
-^^^^^^^^
+案例二之发布Flask应用
+^^^^^^^^^^^^^^^^^^^^^^
 - 任务
     定义Dockerfile，发布一个Hello,Flask版的Flask-Web项目
 - 步骤
@@ -825,6 +825,7 @@ Dockerfile的概念和作用
             if __name__ == '__main__':
                 app.run(host='0.0.0.0', port=5000, debug=True)
         # 编写Dockerfile文件,名称为flask_dockerfile
+        $ vim flask_dockefile
             FROM centos:7
             # 作者信息
             MAINTAINER Mason
@@ -854,18 +855,170 @@ docker-compose（服务编排技术）
 ===============================
 服务编排概念
 ---------------
+    + 目的：将一系列的容器创建自动化
     + docker-compose是一个工具。能够编排多容器分布式部署，以指令集的形式管理容器化应用的开发周期，如构建、启动、停止。
     + 基本过程
-        + 利用Dockerfile定义运行环境镜像。
+        + 利用Dockerfile文件定义运行环境镜像。
         + 使用docker-compose.yml定义组成应用的各服务。
+            - 前后依赖关系
+            - 容器数量等
         + 运行docker-compose up 启动应用。
 
-实例
-------------
-    + 安装
 
-    + 过程
+安装（Mac系统）
+----------------
+
+    - Mac系统安装Docker后会包含这个工具，直接查看下版本
+
+    ::
+
+        $ docker-compose version  
+        docker-compose version 1.8.1, build 878cff1
+
+实例-发布简单Nginx+Flask-web应用
+--------------------------------------
+
+    .. note::
+
+            - 要发布一个完整的项目就存在很多组件服务，如数据库、反向代理等，逐个启动太过麻烦了，我们可以使用docker-compose工具统一进行定义并启动。
+            - 这个案例就要编排反向代理及flask两个服务应用。
+
+    ::
+
+        # 创建工作目录
+        $ mkdir ~/docker-compose
+        $ cd ~/docker-compose
+        # 编写yml文件。名称是固定的。注意yaml缩进
+        $ vim docker-compose.yml
+
+    ::
+
+        # 这个版本号需要与docker版本对应：https://docs.docker.com/compose/compose-file/
+            version: '2'
+            services:
+                # 服务名称可随便取
+                Nginx:
+                    image: nginx  #镜像名称
+                    ports: #端口映射，启动服务后，直接访问80端口即可（监听6000，6000会映射为5000）
+                        - 80:6000
+                    links: # 和另一个服务关联
+                        - flask-web
+                    volumes: # 配置文件
+                        - ./nginx/conf.d:/etc/nginx/conf.d
+                flask-web: #服务应用名称，可随便取
+                    image: flask-web:1.0 #镜像名称，采用上一个实例的
+                    volumes: #应用目录 
+                        - ../flask-web/:/web_app
+                    ports: #端口映射
+                        - "6000:5000"  
+
+    ::
+
+        $ mkdir -p ./nginx/conf.d
+        # Nginx相关配置
+        $ vim ./nginx/conf.d/server.conf
+
+    ::
+
+        server {
+            listen 6000; #监听6000端口
+            access_log off;
+
+
+            location / {
+            proxy_pass http://flask-web:5000
+            }
+        }
+
+    :: 
+
+        # 回到docker-compose目录，开始启动服务。 
+        $ docker-compose up # 后面-d参数将会后台运行，这里就不加了
+            Starting dockercompose_flask-web_1
+            Starting dockercompose_Nginx_1
+            Attaching to dockercompose_flask-web_1, dockercompose_Nginx_1
+
+    :: 
+
+        若正常启动，则直接在浏览器访问
+            http://0.0.0.0
     
 搭建私有仓库
 ============
+.. note::
 
+    搭建自己的仓库。上传本地镜像并从私有拉取镜像
+
+创建私有仓库
+------------
+- 拉取私有仓库镜像
+    :: 
+
+        $ docker pull registry:2
+
+- 启动仓库
+    ::
+
+        $ docker run -id --name=my_hub -p 9000:5000 registry:2
+
+- 浏览器访问
+    http://127.0.0.1:9000/v2/_catalog
+    可以看到是空的
+- 修改daemon.json
+    .. tip::
+    
+        Mac系统可直接客户端的配置
+
+    .. image:: images/docker/私有仓库.jpg
+     :width: 600px
+
+传并拉镜像
+---------------
+- 传CentOs
+
+::
+
+    # 先重新打个标记
+    $ docker tag centos:7 0.0.0.0:9000/centos:7.1
+    $ docker images
+    REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+    0.0.0.0:9000/centos   7.1                 5e35e350aded        4 months ago        203 MB
+    # 开始传入仓库
+    $ docker push 0.0.0.0:9000/centos:7.1
+        The push refers to a repository [0.0.0.0:9000/centos]
+        77b174a6a187: Pushed 
+        7.1: digest: sha256:934aed62ee9ee05733d233c679a576a1d21aee98ef809493260686aad2bd3e0a size: 529
+    
+:: 
+
+    # 浏览器访问，即可看到上传的镜像
+    http://127.0.0.1:9000/v2/_catalog
+    {
+        repositories: ["centos"]
+    }
+    
+    
+.. Attention::
+
+    - 报错1：
+        - The push refers to a repository [0.0.0.0:9000/centos]
+        - Get https://0.0.0.0:9000/v1/_ping: http: server gave HTTP response to HTTPS client
+    - 解决
+        - 首先，确保添加了安全组insecure-registries：0.0.0.0:9000
+        - 重启shell终端及docker服务
+    - 报错2：
+        - Get https://0.0.0.0:9000/v2/: dial tcp https://0.0.0.0:9000: connect: no route to host
+    - 解决
+        - 重新启动容器：docker start my_hub
+
+- 拉取镜像
+
+::
+
+    $ docker pull 0.0.0.0:9000/centos:7.1
+    Digest: sha256:934aed62ee9ee05733d233c679a576a1d21aee98ef809493260686aad2bd3e0a
+    Status: Image is up to date for 0.0.0.0:9000/centos:7.1
+
+结束
+========
+至此，关于docker的基础知识及命令已完成，后续会继续网络、容器集群管理相关的学习。
