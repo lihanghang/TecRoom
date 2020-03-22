@@ -99,10 +99,13 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/C++.html">1. C++</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Java.html">2. Java</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">3. python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/django.html">4. Django</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/PHP.html">5. PHP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Matlab.html">6. Matlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Spring.html">3. Spring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/SpringBoot.html">4. SpringBoot基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">6. python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/django.html">7. Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/PHP.html">8. PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Matlab.html">9. Matlab</a></li>
 </ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
@@ -1434,6 +1437,7 @@ $ docker images
 <dt>步骤</dt>
 <dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull centos:7
 $ docker run -it --name=c1 centos:7
+# 编写Dockerfile文件
 $ vim Dockerfile
     # 定义基础镜像
     FROM centos:7
@@ -1475,13 +1479,59 @@ $ [root@aa24050fdab5 usr]# vim test.txt
 </div>
 <div class="section" id="id27">
 <h4>1.8.3.2. 案例二<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h4>
-<ul class="simple">
+<ul>
 <li><dl class="first docutils">
 <dt>任务</dt>
-<dd>定义Dockerfile，发布一个SpringBoot项目</dd>
+<dd><p class="first last">定义Dockerfile，发布一个Hello,Flask版的Flask-Web项目</p>
+</dd>
 </dl>
 </li>
-<li>步骤</li>
+<li><p class="first">步骤</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建并进入flask-web目录</span>
+$ <span class="nb">cd</span> flask-web
+<span class="c1"># 写一个启动脚本 app.py</span>
+$ vim app.py
+    <span class="c1">#app.py</span>
+    from flask import Flask
+
+    <span class="nv">app</span> <span class="o">=</span> Flask<span class="o">(</span>__name__<span class="o">)</span>
+
+    @app.route<span class="o">(</span><span class="s1">&#39;/&#39;</span><span class="o">)</span>
+    def index<span class="o">()</span>:
+        <span class="k">return</span> <span class="s1">&#39;&lt;h1&gt; hello, Flask &lt;/h1&gt;&#39;</span>
+
+    <span class="k">if</span> <span class="nv">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span>:
+        app.run<span class="o">(</span><span class="nv">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span>, <span class="nv">port</span><span class="o">=</span><span class="m">5000</span>, <span class="nv">debug</span><span class="o">=</span>True<span class="o">)</span>
+<span class="c1"># 编写Dockerfile文件,名称为flask_dockerfile</span>
+    FROM centos:7
+    <span class="c1"># 作者信息</span>
+    MAINTAINER Mason
+    <span class="c1"># 执行操作</span>
+    RUN yum install -y python3 <span class="o">&amp;&amp;</span> yum -y install epel-release <span class="o">&amp;&amp;</span> yum install -y python-pip
+    RUN pip install flask -i https://pypi.tuna.tsinghua.edu.cn/simple
+    <span class="c1"># 设置工作目录</span>
+    WORKDIR /web_app
+    <span class="c1"># 设置默认命令</span>
+    ENTRYPOINT <span class="o">[</span> <span class="s2">&quot;python&quot;</span> <span class="o">]</span>
+    <span class="c1"># 设置启动命令</span>
+    CMD <span class="o">[</span><span class="s2">&quot;app.py&quot;</span><span class="o">]</span>
+<span class="c1"># 开始构建镜像</span>
+    $ docker build -f flask_dockerfile -t flask-web:1.0 .
+    <span class="c1"># 创建应用容器</span>
+    $ docker run -id <span class="se">\</span>
+    -p <span class="m">5001</span>:5000 <span class="se">\</span>
+    --name web_app <span class="se">\</span>
+    -v <span class="nv">$PWD</span>/flask-web:/web_app <span class="se">\</span>
+    flask-web:1.0
+
+<span class="c1"># 浏览器访问容器应用</span>
+<span class="m">0</span>.0.0.0:5001
+<span class="c1"># 完成</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 </ul>
 </div>
 </div>

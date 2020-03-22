@@ -767,6 +767,7 @@ Dockerfile的概念和作用
 
         $ docker pull centos:7  
         $ docker run -it --name=c1 centos:7
+        # 编写Dockerfile文件
         $ vim Dockerfile           
             # 定义基础镜像
             FROM centos:7
@@ -803,10 +804,51 @@ Dockerfile的概念和作用
 案例二
 ^^^^^^^^
 - 任务
-    定义Dockerfile，发布一个SpringBoot项目
+    定义Dockerfile，发布一个Hello,Flask版的Flask-Web项目
 - 步骤
 
+    .. code-block:: bash 
 
+        # 创建并进入flask-web目录
+        $ cd flask-web
+        # 写一个启动脚本 app.py
+        $ vim app.py
+            #app.py
+            from flask import Flask
+
+            app = Flask(__name__)
+
+            @app.route('/')
+            def index():
+                return '<h1> hello, Flask </h1>'
+
+            if __name__ == '__main__':
+                app.run(host='0.0.0.0', port=5000, debug=True)
+        # 编写Dockerfile文件,名称为flask_dockerfile
+            FROM centos:7
+            # 作者信息
+            MAINTAINER Mason
+            # 执行操作
+            RUN yum install -y python3 && yum -y install epel-release && yum install -y python-pip 
+            RUN pip install flask -i https://pypi.tuna.tsinghua.edu.cn/simple
+            # 设置工作目录
+            WORKDIR /web_app
+            # 设置默认命令
+            ENTRYPOINT [ "python" ]
+            # 设置启动命令
+            CMD ["app.py"]
+        # 开始构建镜像
+            $ docker build -f flask_dockerfile -t flask-web:1.0 . 
+            # 创建应用容器
+            $ docker run -id \
+            -p 5001:5000 \
+            --name web_app \
+            -v $PWD/flask-web:/web_app \
+            flask-web:1.0
+
+        # 浏览器访问容器应用
+        0.0.0.0:5001
+        # 完成
 
 docker-compose（服务编排技术）
 ===============================
