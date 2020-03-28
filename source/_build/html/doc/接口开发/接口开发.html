@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. 接口（Interface）开发 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'zh_CN',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="1. 数据结构与算法系列" href="../数据结构与算法系列/dataStruct_algorithm.html" />
+    <link rel="prev" title="8. Matlab" href="../编程语言及开发框架/Matlab.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Hang's Tec Room
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">关于Room</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../关于/about_me.html">关于我</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../关于/about_blog.html">我的技术屋</a></li>
+</ul>
+<p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/C++.html">1. C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Java.html">2. Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Spring.html">3. Spring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/SpringBoot.html">4. SpringBoot基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">6. python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/django.html">7. Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Matlab.html">8. Matlab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">后端接口开发</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 接口（Interface）开发</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.1. 参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. 几个概念</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.2.1. 图述概念</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.3. 接口的好处</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">1.4. 接口定义原则及规范</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.4.1. 原则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">1.4.2. 规范</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">1.5. 项目结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">1.6. 接口开发经验</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">设计模式</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../设计模式/design-pattern.html">1. 设计模式</a></li>
+</ul>
+<p class="caption"><span class="caption-text">计算机网络技术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../计算机网络技术/computer-network.html">1. 计算机网络系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据库系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html">1. MySQL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../虚拟化与容器技术/docker.html">1. Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../虚拟化与容器技术/k8s.html">2. Kubernetes（K8S）</a></li>
+</ul>
+<p class="caption"><span class="caption-text">服务器</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../服务器/server.html">1. 服务器系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/distributeMicroServer.html">1. 分布式与微服务系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">机器智能系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html">1. 机器学习基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html#id3">2. 机器学习应用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开源工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../开源工具/open_source.html">1. 优秀开源工具</a></li>
+</ul>
+<p class="caption"><span class="caption-text">团队与项目管理</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/team_project.html">1. 团队与项目管理</a></li>
+</ul>
+<p class="caption"><span class="caption-text">道与术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../道与术/tao-art.html">1. coding的道与术</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Hang's Tec Room</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>1. 接口（Interface）开发</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/doc/接口开发/接口开发.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="interface">
+<h1>1. 接口（Interface）开发<a class="headerlink" href="#interface" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>更新时间：2020-03-26</li>
+<li>整理一下日常接口开发规范和经验。主要包含基本概念、设计项目接口、接口开发原则、接口定义规范等。</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>1.1. 参考<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>《理解RESTful架构》 作者： 阮一峰</li>
+<li>《RESTful API 设计指南》作者： 阮一峰</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>1.2. 几个概念<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><strong>平时开发基本都会听到这些高大上的词：API、REST-API、RESTful-API，对于追求事物本质的我就集中梳理总结下。</strong></p>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>API</dt>
+<dd><ul class="first last">
+<li>Application Programming Interface（API）应用程序（编程）接口。 （有点蒙、有点蒙……）</li>
+<li>打个比方你现在用的电脑操作系统windows就是一个接口，这个接口连接了你和电脑的硬件。类似的，API就是连接程序和程序之间的接口。</li>
+<li>现在人工智能产品越来越多，好多公司也开放了功能接口，赋能各行各业，包括个人开发这。这就是接口的价值，你无需了解底层的原理，就可以使用开放的接口进行应用的开发。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>REST API</dt>
+<dd><ul class="first last">
+<li>Representational State Transfer(REST) 表现层状态转化。</li>
+<li><dl class="first docutils">
+<dt>关键的几个概念：资源、表现层、状态转移。</dt>
+<dd><ul class="first last">
+<li>资源：文本、图像、音频等实体；这里涉及两个概念URI和URL，URI统一资源*标识符*，就是标识前面提到资源的，一般用名词定义；URL统一资源*定位符*，URL是一种URI，标识一个资源，并指定对其进行*操作或获取该资源*的方法，一般用动词定义。</li>
+<li>表现层：将资源按照怎样的数据结构来表示。如XML、JSON、txt等；</li>
+<li>状态转移：指的是请求接口的操作，如GET、PUT、DELETE、POST。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RESTful API</dt>
+<dd><ul class="first last">
+<li>理解了REST，再回头看RESTful就简单多了，只要符合REST的设计风格和原则就成为RESTful架构。</li>
+<li>REST不完全等价于RESTful.REST API是Web API设计的一种规范或者指导原则，而RESTful API则是这中架构设计原则或者规范的一种*具体实现*方式之一。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="id3">
+<h3>1.2.1. 图述概念<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p><em>画两张图直观感受下这几个概念的关系。</em></p>
+<ul>
+<li><dl class="first docutils">
+<dt>API</dt>
+<dd><a class="first last reference internal image-reference" href="../../_images/API.png"><img alt="../../_images/API.png" src="../../_images/API.png" style="width: 600px;" /></a>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>URI</dt>
+<dd><a class="first last reference internal image-reference" href="../../_images/URL.png"><img alt="../../_images/URL.png" src="../../_images/URL.png" style="width: 600px;" /></a>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>1.3. 接口的好处<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>提高开发效率。前后端分类，通过约定来解藕前后端的开发。</li>
+<li>便于维护。</li>
+<li>便于功能扩展。</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>1.4. 接口定义原则及规范<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p><em>接口的好处，离不开清晰的原则和规范。只有接口设计的合理才能更好的满足系统的使用和管理。</em></p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">本文就采用Backend For Frontend(BFF层)，称为前端的后台，前端（网页、手机、平板等）的业务操作基于接口完成。</p>
+</div>
+<div class="section" id="id6">
+<h3>1.4.1. 原则<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id7">
+<h3>1.4.2. 规范<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>接口返回规范</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>1.5. 项目结构<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>1.6. 接口开发经验<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../数据结构与算法系列/dataStruct_algorithm.html" class="btn btn-neutral float-right" title="1. 数据结构与算法系列" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../编程语言及开发框架/Matlab.html" class="btn btn-neutral float-left" title="8. Matlab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, LiHangHang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

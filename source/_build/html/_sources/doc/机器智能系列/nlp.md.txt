@@ -1,4 +1,5 @@
 # 自然语言理解
+> 更新日期：2020年3月28日
 ## 书籍推荐
 1. 《[Speech and Language Processing, 2nd Edition](https://book.douban.com/subject/2403834//)》
     - 内容全面，覆盖面广
@@ -52,3 +53,47 @@
 4. 语言哲学
 5. 心理学、社会学、认知学
 6. 神经语言学、汉语言学
+
+## 自然语言技术方向
+### 基于规则驱动
+
+### 基于数据驱动
+- 统计学语言模型
+- 深度语言模型
+
+# CS224n-2019-课程笔记 by Chris Manning
+> [CS224n-2019](https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/).课程源自斯坦福CS course，2019年发布的自然语言处理，算是NLP的经典吧，老爷子讲的也很风趣幽默。Ok, Hello, everyone!一起来追剧吧。
+## 一些说明和资源
+- [课程主页](http://web.stanford.edu/class/cs224n/index.html)
+- 本笔记涉及代码部分将使用pipenv构建虚拟环境。
+- 课后作业使用PyTocrh框架使用。
+    + HW1-HW5.
+    + FP,which is QA .
+- [B站资源](https://www.bilibili.com/video/BV1Eb411H7Pq/?spm_id_from=333.788.videocard.0)
+- [笔记参考](https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/)
+## 词向量（Word Vectors)
+![CS224n](./images/nlp/preface.jpg "NLP")
+### 自然语言和词义
+1. 自然语言
+    - 你永远无法确定任何单词对他人意味着什么。（中文这个情况就更普遍啦）
+    - 写作是另一件让人类变得强大的事情，这实现了知识的传播和共享。
+2. 语言的意义
+    - 通过一个词或句子等来表达概念
+    - 人们通过文字或声音信号等来表达思想、想法
+    - 在写作、艺术中表达含义
+一般通过下面这种普遍语言方式进行意义的思考:
+    signifier(symbol)⇔signified(idea or thing) =denotational semantics 
+3. 语义计算
+    -常见方案
+        + [WordNet]()一个面向语义的英语词典，包含上义词（hypernyms）、同义词（synonym sets）。
+### Word2Vector介绍
+
+### Word2Vector目标函数梯度下降
+
+### 优化误差
+
+### 总结
+
+
+
+

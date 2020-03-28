@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. SpringBoot基础 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'1.0',
+              LANGUAGE:'zh_CN',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="6. python" href="../python技术栈/Python.html" />
+    <link rel="prev" title="3. Spring" href="Spring.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Hang's Tec Room
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">关于Room</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../关于/about_me.html">关于我</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../关于/about_blog.html">我的技术屋</a></li>
+</ul>
+<p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../C++.html">1. C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Java.html">2. Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Spring.html">3. Spring</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. SpringBoot基础</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">4.1. 入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">4.2. 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">4.3. 日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web">4.4. Web开发</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker">4.5. Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">4.6. 数据访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">4.7. 启动配置原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#starters">4.8. 自定义starters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#id6">5. SpringBoot进阶</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id7">5.1. 缓存</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">5.2. 消息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">5.3. 检索</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">5.4. 任务</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">5.5. 安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">5.6. 分布式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">5.7. 开发热部署</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">5.8. 监控管理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python技术栈/Python.html">6. python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python技术栈/django.html">7. Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab.html">8. Matlab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">后端接口开发</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">设计模式</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../设计模式/design-pattern.html">1. 设计模式</a></li>
+</ul>
+<p class="caption"><span class="caption-text">计算机网络技术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../计算机网络技术/computer-network.html">1. 计算机网络系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数据库系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../数据库系列/mysql.html">1. MySQL</a></li>
+</ul>
+<p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../虚拟化与容器技术/docker.html">1. Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../虚拟化与容器技术/k8s.html">2. Kubernetes（K8S）</a></li>
+</ul>
+<p class="caption"><span class="caption-text">服务器</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../服务器/server.html">1. 服务器系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../分布式与微服务系列/distributeMicroServer.html">1. 分布式与微服务系列</a></li>
+</ul>
+<p class="caption"><span class="caption-text">机器智能系列</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/ml.html">1. 机器学习基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/ml.html#id3">2. 机器学习应用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/dl.html">3. 深度学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/nlp.html">4. 自然语言理解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
+</ul>
+<p class="caption"><span class="caption-text">开源工具</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../开源工具/open_source.html">1. 优秀开源工具</a></li>
+</ul>
+<p class="caption"><span class="caption-text">团队与项目管理</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../团队与项目管理/team_project.html">1. 团队与项目管理</a></li>
+</ul>
+<p class="caption"><span class="caption-text">道与术</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../道与术/tao-art.html">1. coding的道与术</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Hang's Tec Room</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>4. SpringBoot基础</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/doc/编程语言及开发框架/Java技术栈/SpringBoot.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="springboot">
+<h1>4. SpringBoot基础<a class="headerlink" href="#springboot" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>开始日期：2020-03-16</li>
+<li>更新日期：2020-03-16</li>
+<li>结束日期：2020-06-01</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>4.1. 入门<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>背景</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>目的是简化Spring的应用开发，约定大于配置。</dt>
+<dd><ul class="first last">
+<li>传统J2EE开发配置繁琐、开发效率低、部署复杂，集成难度大</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Spring的技术大整合</li>
+<li>更多可参考官网：<a class="reference external" href="https://spring.io/projects/spring-boot">https://spring.io/projects/spring-boot</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>优点</dt>
+<dd><ul class="first last">
+<li>快速创建独立运行的Spring项目</li>
+<li>方便发布，直接打Jar包</li>
+<li>starts自动依赖和版本控制</li>
+<li>配置自动化程度高，开发上手容易，不用配置XML</li>
+<li>监控方便</li>
+<li>与云计算技术更好兼容</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2>4.2. 配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>4.3. 日志<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="web">
+<h2>4.4. Web开发<a class="headerlink" href="#web" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="docker">
+<h2>4.5. Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>4.6. 数据访问<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>4.7. 启动配置原理<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="starters">
+<h2>4.8. 自定义starters<a class="headerlink" href="#starters" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+<div class="section" id="id6">
+<h1>5. SpringBoot进阶<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id7">
+<h2>5.1. 缓存<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id8">
+<h2>5.2. 消息<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>5.3. 检索<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id10">
+<h2>5.4. 任务<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id11">
+<h2>5.5. 安全<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id12">
+<h2>5.6. 分布式<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id13">
+<h2>5.7. 开发热部署<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id14">
+<h2>5.8. 监控管理<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../python技术栈/Python.html" class="btn btn-neutral float-right" title="6. python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Spring.html" class="btn btn-neutral float-left" title="3. Spring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, LiHangHang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

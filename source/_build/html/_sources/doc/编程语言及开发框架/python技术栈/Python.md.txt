@@ -1,11 +1,11 @@
 # python
 
 ## 书籍推荐
-1. 🔥🔥🔥《流畅的Python》
+1. 《流畅的Python》
     - 能够解决大部分疑难杂症
-2. 🔥🔥🔥《[python3 cookbook](https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html)》 
-3. 🔥🔥《[python 进阶](https://docs.pythontab.com/interpy/#python)》  深入python语法等  
-4. 🔥🔥《[编写高质量代码改善 Python 程序的 91 个建议](https://l1nwatch.gitbook.io/writing_solid_python_code_gitbook/di-1-zhang-yin-lun)》 
+2. 《[python3 cookbook](https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html)》 
+3. 《[python 进阶](https://docs.pythontab.com/interpy/#python)》  深入python语法等  
+4. 《[编写高质量代码改善 Python 程序的 91 个建议](https://l1nwatch.gitbook.io/writing_solid_python_code_gitbook/di-1-zhang-yin-lun)》 
 ## 第二部分 基础知识 
 > 基础不牢，地动山摇。
 
