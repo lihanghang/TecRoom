@@ -39,12 +39,17 @@ release = '1.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'matplotlib.sphinxext.only_directives',
+    'matplotlib.sphinxext.plot_directive',
+    'IPython.sphinxext.ipython_directive',
+    'IPython.sphinxext.ipython_console_highlighting',
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
-    'sphinx.ext.imgmath',
+    'sphinx.ext.mathjax',
+    'recommonmark',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -55,10 +60,10 @@ templates_path = ['_templates']
 #
 # source_suffix = ['.rst', '.md']
 # source_suffix = '.rst'
-from recommonmark.parser import CommonMarkParser
-source_parsers = {
-    '.md': CommonMarkParser,
-}
+# from recommonmark.parser import CommonMarkParser
+# source_parsers = {
+#     '.md': CommonMarkParser,
+# }
 source_suffix = ['.rst', '.md']
 
 # The master toctree document.
@@ -112,7 +117,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'python3_Applicationdoc'
+htmlhelp_basename = 'Tec Note'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -139,7 +144,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'python3_Application.tex', 'python3\\_Application Documentation',
+    (master_doc, 'Tec Note.tex', 'python3\\_Application Documentation',
      'HangHang', 'manual'),
 ]
 
@@ -149,7 +154,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'python3_application', 'python3_Application Documentation',
+    (master_doc, 'Tec Note', 'python3_Application Documentation',
      [author], 1)
 ]
 
@@ -160,8 +165,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'python3_Application', 'python3_Application Documentation',
-     author, 'python3_Application', 'One line description of project.',
+    (master_doc, 'Tec Note', 'python3_Application Documentation',
+     author, 'Tec Note', 'One line description of project.',
      'Miscellaneous'),
 ]
 

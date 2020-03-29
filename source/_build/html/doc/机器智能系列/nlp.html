@@ -35,6 +35,7 @@
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -45,7 +46,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="6. 知识图谱" href="kg.html" />
+    <link rel="next" title="5. 知识图谱" href="kg.html" />
     <link rel="prev" title="3. 深度学习" href="dl.html" /> 
 </head>
 
@@ -110,6 +111,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
 </ul>
+<p class="caption"><span class="caption-text">项目开发杂谈</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../项目开发杂谈/项目开发杂谈.html">1. 项目开发杂谈</a></li>
+</ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
@@ -152,31 +157,23 @@
 <li class="toctree-l3"><a class="reference internal" href="#id6">4.2.3. 自然语言的特点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id7">4.2.4. 难点</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id8">4.2.5. 未来</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">4.2.6. 自然语言理解交叉科学</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">4.3. 自然语言技术方向</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id11">4.3.1. 基于规则驱动</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">4.3.2. 基于数据驱动</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id13">5.1. 一些说明和资源</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#word-vectors">5.2. 词向量（Word Vectors)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">5.2.1. 自然语言和词义</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#word2vector">5.2.2. Word2Vector介绍</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id15">5.2.3. Word2Vector目标函数梯度下降</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">5.2.4. 优化误差</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">5.2.5. 总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">4.3. 自然语言技术方向</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nlp">4.4. NLP国内外优秀学者及实验室</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#word-vectors">4.5. 词向量（Word Vectors)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">4.5.1. Word Vectors(词向量)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#word2vector">4.5.2. Word2Vector介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">4.5.3. Word2Vector目标函数梯度下降</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">4.5.4. 优化误差</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">4.5.5. 小结</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="kg.html">6. 知识图谱</a></li>
-<li class="toctree-l1"><a class="reference internal" href="框架/pytorch.html">7. Pytorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="框架/tensorflow.html">8. Tensorflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg.html">5. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="框架/pytorch.html">6. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="框架/tensorflow.html">7. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
@@ -240,7 +237,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/doc/机器智能系列/nlp.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/doc/机器智能系列/nlp.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -255,14 +252,20 @@
             
   <div class="section" id="id1">
 <h1>4. 自然语言理解<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<blockquote>
-<div>更新日期：2020年3月28日</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">更新日期：2020年3月28日</p>
+</div>
 <div class="section" id="id2">
 <h2>4.1. 书籍推荐<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
-<li>《<a class="reference external" href="https://book.douban.com/subject/2403834//">Speech and Language Processing, 2nd Edition</a>》<ul>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://book.douban.com/subject/2403834/">《Speech and Language Processing, 2nd Edition》</a></dt>
+<dd><ul class="first last">
 <li>内容全面，覆盖面广</li>
 </ul>
+</dd>
+</dl>
 </li>
 <li>《统计自然语言处理》 宗成庆</li>
 <li>《信息检索导论》</li>
@@ -273,171 +276,311 @@
 <h2>4.2. 什么是 自然语言 理解？<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id4">
 <h3>4.2.1. 自然语言？<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
+<ol class="arabic simple">
 <li>和编程语言相对的语言称为自然语言。</li>
 </ol>
 </div>
 <div class="section" id="id5">
 <h3>4.2.2. 自然语言理解？<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
+<ol class="arabic simple">
 <li>目的：使计算机理解人类的自然语言。</li>
 <li>本质：结构预测的过程。如输出一句话的句法结构或者语义结构。</li>
-<li>从无结构化序列预测有结构的语义。<ul>
+<li><dl class="first docutils">
+<dt>从无结构化序列预测有结构的语义。</dt>
+<dd><ul class="first last">
 <li>词性标注、命名实体识别、依存分析、句法分析、指代消解等任务。</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>数据驱动的自然语言理解<ul>
+<li><dl class="first docutils">
+<dt>数据驱动的自然语言理解</dt>
+<dd><ul class="first last">
 <li>深度学习技术的突破</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>语义表示（核心）<ul>
-<li>one-hot （0/1）也称独热编码<ul>
+<li><dl class="first docutils">
+<dt>语义表示（核心）</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>one-hot （0/1）也称独热编码</dt>
+<dd><ul class="first last">
 <li>表示简单，但局限性很大，如相似度计算。</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>分布式语义表示 （空间表示）<ul>
+<li><dl class="first docutils">
+<dt>分布式语义表示 （空间表示）</dt>
+<dd><ul class="first last">
 <li>目前最主要的表示形式。</li>
 <li>1986年提出的方法。</li>
 </ul>
+</dd>
+</dl>
 </li>
 </ul>
+</dd>
+</dl>
 </li>
 </ol>
 </div>
 <div class="section" id="id6">
 <h3>4.2.3. 自然语言的特点<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
-<li>歧义性多。</li>
-</ol>
-<blockquote>
-<div>南京市/长江大桥。南京市长/江大桥。</div></blockquote>
-<ul class="simple">
-<li>关键目标：消除歧义性。</li>
-</ul>
-<ol class="simple">
-<li>递归性</li>
-</ol>
-<blockquote>
-<div>你好/不好意思。 你/好不好意思。</div></blockquote>
-<ol class="simple">
-<li>主观性</li>
-</ol>
-<blockquote>
-<div>仔细体会这两句：别回了。 我没事，你忙你的。</div></blockquote>
-<ol class="simple">
-<li>社会性<ul>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>歧义性多。</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">南京市/长江大桥。南京市长/江大桥。</span>
+<span class="pre">`</span></code>
+- 关键目标：消除歧义性。</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>递归性</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">你好/不好意思。</span> <span class="pre">你/好不好意思。</span>
+<span class="pre">`</span></code></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>主观性</dt>
+<dd><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">仔细体会这两句：别回了。</span> <span class="pre">我没事，你忙你的。</span>
+<span class="pre">`</span></code></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>社会性</dt>
+<dd><ul class="first last">
 <li>敬语、语言协调等</li>
 </ul>
+</dd>
+</dl>
 </li>
 </ol>
 </div>
 <div class="section" id="id7">
 <h3>4.2.4. 难点<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
-<li>语言的语义表示<ul>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>语言的语义表示</dt>
+<dd><ul class="first last">
 <li>世界（社会/客观）、心智（人/主观）、语言三者相互影响。</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>将人类的知识融入到语义表示的过程中。<ul>
+<li><dl class="first docutils">
+<dt>将人类的知识融入到语义表示的过程中。</dt>
+<dd><ul class="first last">
 <li>人类知识相当于给足了上下文信息</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>多模态复杂语境的理解 (说话的表情、手势动作、场景等)<ul>
+<li><dl class="first docutils">
+<dt>多模态复杂语境的理解 (说话的表情、手势动作、场景等)</dt>
+<dd><ul class="first last">
 <li>欢迎/新老/师生/前来/参观！</li>
 <li>欢迎/新老师/生前/来参观！</li>
 </ul>
+</dd>
+</dl>
 </li>
 </ol>
 </div>
 <div class="section" id="id8">
 <h3>4.2.5. 未来<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
+<ol class="arabic simple">
 <li>句子消歧。</li>
 <li>引入知识。如知识图谱。</li>
 <li>多级的跨句子建模。</li>
 <li>生成句子更符合当下对话场景。</li>
-<li>理解并创作。</li>
 </ol>
+<p>5. 理解并创作。
+自然语言理解交叉科学
+———————-
+1. 计算机科学
+2. 脑科学
+3. 语言学
+4. 语言哲学
+5. 心理学、社会学、认知学
+6. 神经语言学、汉语言学</p>
+</div>
 </div>
 <div class="section" id="id9">
-<h3>4.2.6. 自然语言理解交叉科学<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
-<li>计算机科学</li>
-<li>脑科学</li>
-<li>语言学</li>
-<li>语言哲学</li>
-<li>心理学、社会学、认知学</li>
-<li>神经语言学、汉语言学</li>
-</ol>
-</div>
-</div>
-<div class="section" id="id10">
-<h2>4.3. 自然语言技术方向<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id11">
-<h3>4.3.1. 基于规则驱动<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
-</div>
-<div class="section" id="id12">
-<h3>4.3.2. 基于数据驱动<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<h2>4.3. 自然语言技术方向<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
+<li>基于规则驱动</li>
+<li><dl class="first docutils">
+<dt>基于数据驱动</dt>
+<dd><ul class="first last">
 <li>统计学语言模型</li>
 <li>深度语言模型</li>
 </ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
-</div>
-</div>
-<div class="section" id="cs224n-2019-by-chris-manning">
-<h1>5. CS224n-2019-课程笔记 by Chris Manning<a class="headerlink" href="#cs224n-2019-by-chris-manning" title="永久链接至标题">¶</a></h1>
-<blockquote>
-<div><a class="reference external" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/">CS224n-2019</a>.课程源自斯坦福CS course，2019年发布的自然语言处理，算是NLP的经典吧，老爷子讲的也很风趣幽默。Ok, Hello, everyone!一起来追剧吧。</div></blockquote>
-<div class="section" id="id13">
-<h2>5.1. 一些说明和资源<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<div class="section" id="nlp">
+<h2>4.4. NLP国内外优秀学者及实验室<a class="headerlink" href="#nlp" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://web.stanford.edu/class/cs224n/index.html">课程主页</a></li>
-<li>本笔记涉及代码部分将使用pipenv构建虚拟环境。</li>
-<li>课后作业使用PyTocrh框架使用。<ul>
+<li><a class="reference external" href="https://nlp.stanford.edu/~manning/">Christopher Manning</a></li>
+</ul>
+<p>&gt; <a href="#id22"><span class="problematic" id="id23">`CS224n-2019&lt;https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/&gt;`_</span></a>.课程源自斯坦福CS course，2019年发布的自然语言处理，算是NLP的经典吧，老爷子讲的也很风趣幽默。Ok, Hello, everyone!一起来追剧吧。
+一些说明和资源
+==============
+- <a href="#id24"><span class="problematic" id="id25">`课程主页&lt;http://web.stanford.edu/class/cs224n/index.html&gt;`_</span></a>
+- 本笔记涉及代码部分将使用pipenv构建虚拟环境。（推荐）
+- 课后作业使用PyTocrh框架使用。</p>
+<blockquote>
+<div><ul class="simple">
 <li>HW1-HW5.</li>
 <li>FP,which is QA .</li>
 </ul>
-</li>
-<li><a class="reference external" href="https://www.bilibili.com/video/BV1Eb411H7Pq/?spm_id_from=333.788.videocard.0">B站资源</a></li>
-<li><a class="reference external" href="https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/">笔记参考</a></li>
+</div></blockquote>
+<ul class="simple">
+<li><a href="#id26"><span class="problematic" id="id27">`B站资源&lt;https://www.bilibili.com/video/BV1Eb411H7Pq/?spm_id_from=333.788.videocard.0)&gt;`_</span></a></li>
+<li><a href="#id28"><span class="problematic" id="id29">`笔记参考&lt;https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/&gt;`_</span></a></li>
 </ul>
 </div>
 <div class="section" id="word-vectors">
-<h2>5.2. 词向量（Word Vectors)<a class="headerlink" href="#word-vectors" title="永久链接至标题">¶</a></h2>
-<p><img alt="CS224n" src="../../_images/preface.jpg" /></p>
-<div class="section" id="id14">
-<h3>5.2.1. 自然语言和词义<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
-<li>自然语言<ul>
+<h2>4.5. 词向量（Word Vectors)<a class="headerlink" href="#word-vectors" title="永久链接至标题">¶</a></h2>
+<img alt="images/nlp/preface.jpg" src="images/nlp/preface.jpg" />
+<p>![CS224n](.”NLP”)
+自然语言和词义
+—————
+1. 自然语言</p>
+<blockquote>
+<div><ul class="simple">
 <li>你永远无法确定任何单词对他人意味着什么。（中文这个情况就更普遍啦）</li>
 <li>写作是另一件让人类变得强大的事情，这实现了知识的传播和共享。</li>
 </ul>
-</li>
-<li>语言的意义<ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><dl class="first docutils">
+<dt>语言的意义</dt>
+<dd><ul class="first last">
 <li>通过一个词或句子等来表达概念</li>
 <li>人们通过文字或声音信号等来表达思想、想法</li>
-<li>在写作、艺术中表达含义
-一般通过下面这种普遍语言方式进行意义的思考:
-signifier(symbol)⇔signified(idea or thing) =denotational semantics</li>
+<li>在写作、艺术中表达含义</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>语义计算
--常见方案
-+ <a class="reference external" href="#">WordNet</a>一个面向语义的英语词典，包含上义词（hypernyms）、同义词（synonym sets）。</li>
 </ol>
+<dl class="docutils">
+<dt>一般通过下面这种普遍语言方式进行意义的思考:</dt>
+<dd>signifier(symbol)⇔signified(idea or thing) =denotational semantics</dd>
+</dl>
+<ol class="arabic" start="3">
+<li><dl class="first docutils">
+<dt>语义计算</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>常见方案的不足</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>类似`WordNet &lt;<a class="reference external" href="https://wordnet.princeton.edu/)">https://wordnet.princeton.edu/)</a>&gt;`_一个面向语义的英语词典，包含上义词（hypernyms）、同义词（synonym sets）。</dt>
+<dd><ul class="first last simple">
+<li>没有考虑上下文，忽略一个词的细微差别</li>
+<li>不能及时更新。</li>
+<li>Can’t compute accurate word similarity</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>传统NLP的做法。离散符号表示。one-hot，0-1进行编码：Means one 1, the rest 0s</dt>
+<dd><ul class="first simple">
+<li>向量大小就是词汇表的大小（很多无用的信息）</li>
+<li>无法计算相似度。如下例两个词向量是正交的，点积为0.</li>
+</ul>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">motel</span> <span class="pre">=</span> <span class="pre">[0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0]</span>
+<span class="pre">hotel</span> <span class="pre">=</span> <span class="pre">[0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0]</span>
+<span class="pre">`</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>提取新方案</dt>
+<dd><ul class="first last simple">
+<li>Could try to rely on WordNet’s list of synonyms to get similarity?</li>
+<li>learn to encode similarity in the vectors themselves（学习词自身的编码信息）</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>通过上下文表示词</dt>
+<dd><ul class="first last">
+<li><p class="first">分布式语义：一个词的含义往往是由附近高频出现的词决定的。</p>
+</li>
+<li><p class="first">word出现在文本中，这个Word周围会有由词的集合组成的Context出现。这个上下文是固定一个窗口size的。</p>
+</li>
+<li><dl class="first docutils">
+<dt>我们可以使用存在Word的大量`语料 &lt;<a class="reference external" href="http://ling.cuc.edu.cn/RawPub/)">http://ling.cuc.edu.cn/RawPub/)</a>&gt;`_来学习其向量表示。比如学习“中国科学院”词（实际中会学习每个词），在下列的语料中。</dt>
+<dd><dl class="first docutils">
+<dt><a href="#id10"><span class="problematic" id="id11">``</span></a><a href="#id12"><span class="problematic" id="id13">`</span></a></dt>
+<dd><p class="first last">1.先向获得2009年度国家最高科学技术奖的**中国科学院**院士、复旦大学数学研究所名誉所长谷超豪和
+2.院士、复旦大学数学研究所名誉所长谷超豪和**中国科学院**院士、中国航天科技集团公司高级技术顾
+3.大国”向“造船强国”迈进。 由**中国科学院**和上海市政府共同建设的上海同步辐射光源工
+4. 丽；河南卓越工程管理有限公司董事长邬敏**中国科学院**研究生院教授杨佳十人“全国三八红旗手</p>
+</dd>
+</dl>
+<p class="last"><a href="#id14"><span class="problematic" id="id15">``</span></a><a href="#id16"><span class="problematic" id="id17">`</span></a></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="id18">
+<h3>4.5.1. Word Vectors(词向量)<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<ul class="simple">
+<li>根据一个的词的上下文，来为词构建密集的向量，以使得该向量与出现在类似上下文中的词相似</li>
+<li><dl class="first docutils">
+<dt>Note:引出词嵌入</dt>
+<dd><ul class="first last">
+<li>word vectors are sometimes called <strong>word embeddings</strong> or word representations.</li>
+<li>They are a <strong>distributed representation</strong>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{pmatrix}
+    0.286//
+    0.792//
+\end{pmatrix}\]</div>
 </div>
 <div class="section" id="word2vector">
-<h3>5.2.2. Word2Vector介绍<a class="headerlink" href="#word2vector" title="永久链接至标题">¶</a></h3>
+<h3>4.5.2. Word2Vector介绍<a class="headerlink" href="#word2vector" title="永久链接至标题">¶</a></h3>
 </div>
-<div class="section" id="id15">
-<h3>5.2.3. Word2Vector目标函数梯度下降<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id19">
+<h3>4.5.3. Word2Vector目标函数梯度下降<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 </div>
-<div class="section" id="id16">
-<h3>5.2.4. 优化误差<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id20">
+<h3>4.5.4. 优化误差<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 </div>
-<div class="section" id="id17">
-<h3>5.2.5. 总结<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id21">
+<h3>4.5.5. 小结<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 </div>
@@ -450,7 +593,7 @@ signifier(symbol)⇔signified(idea or thing) =denotational semantics</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kg.html" class="btn btn-neutral float-right" title="6. 知识图谱" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="kg.html" class="btn btn-neutral float-right" title="5. 知识图谱" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="dl.html" class="btn btn-neutral float-left" title="3. 深度学习" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
