@@ -103,7 +103,8 @@ CS224n-2019-课程笔记 by Chris Manning
 
 .. tip::
 
-    `CS224n-2019 <https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/>`_.课程源自斯坦福CS course，2019年发布的自然语言处理，算是NLP的经典吧，老爷子讲的也很风趣幽默。Ok, Hello, everyone!一起来追剧吧。
+    - `CS224n-2019 <https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/>`_.课程源自斯坦福CS course，2019年发布的自然语言处理，算是NLP的经典吧，老爷子讲的也很风趣幽默。Ok, Hello, everyone!一起来追剧吧。
+    - 题外话：课时并不多，所以暗示自己要尽量耐心地把每一节的知识搞懂（慢工出细活，理论知识很重要），自己思考的同时也要动手推导公式甚至编写代码（我就是这么弄得）来刺激大脑理解，难受一阵会发现知识理解很深刻，再回顾此前的知识，豁然开朗！
 
 一些说明和资源
 ==============
@@ -115,7 +116,7 @@ CS224n-2019-课程笔记 by Chris Manning
 - `B站资源 <https://www.bilibili.com/video/BV1Eb411H7Pq/?spm_id_from=333.788.videocard.0)>`_
 - `笔记参考 <https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/>`_
 
-词向量（Word Vectors)
+1-词向量（Word Vectors)
 =========================
 .. image:: ./images/nlp/preface.jpg 
 
@@ -188,8 +189,8 @@ Word2Vector介绍
 ^^^^^^^^^
 1. 我们有个比较大的文本数据集。
 2. 文本中的每个词通过一个固定长度的词向量表示。
-3. 扫描文本中每一个位置 **t** 所表示的词,其中有一个中心词 **c** 和上下文词**o**。
-4. 通过c和o的词向量的相似性，计算在给定c,即中心词来计算O,即上下文的概率。反之亦然。
+3. 扫描文本中每一个位置 **t** 所表示的词,其中有一个中心词 **c** 和上下文词 **o** 。
+4. 通过c和o的词向量的相似性，计算在给定c,即中心词来计算o,即上下文的概率。反之亦然。
 5. 不断调整词向量来最大化上面提到的概率。
 
 - 举例如下
@@ -205,17 +206,36 @@ Word2Vector目标函数
     在每个位置 :math:`t` （t = 1，……，T)，给定一个中心词 :math:`w_j` 和一段固定长度的窗口 :math:`m`，预测上下文中每个单词的概率。
 
 .. math::
-    Likelihood = L(\theta) = \prod_{t=1}^{T}\prod _{\substack{-m\leq j \leq m \\ j\neq 0}}p(w_{t+j}|w_t;\theta)
+    Likelihood = L(\theta) = \prod_{t=1}^{T}\prod _{\substack{-m\leq j \leq m \\ j\neq 0}}P(w_{t+j}|w_t;\theta)
+    
+    其中 \theta 是一个需要全局优化的变量
 
-.. todo::
-    - 目标函数求解
-    - 本节知识点回顾
+- 目标函数 :math:`J(\theta)` （也称为 **代价或损失函数**）,是一个负向对数似然：
 
+    .. math::
+        J(\theta) = -\frac{1}{T}logL(\theta) = -\frac{1}{T}\sum_{t=1}^{T}\sum _{\substack{-m\leq j \leq m \\ j\neq 0}}P(w_{t+j}|w_t;\theta)
 
-优化误差
+.. tip::
+    - 利用对数的特性将目标函数转换为对数求和，减少计算的复杂度。
+    - 最小化目标函数 ⟺最大化预测的准确率
+
+- 通过不断的优化参数最小化误差来训练模型。
+- 为了训练模型，需要计算所有向量的梯度
+    + :math:`\theta` 用一个很长的向量表示所有模型的参数。
+    + 每个单词有个两个向量。
+    + 利用不断移动的梯度来优化这些模型的参数。
+
+梯度计算推导
 -------------------------
+.. todo::
+    - 推导细节描述
+    - 一些边角知识的回顾：向量求导、链式法则
+    - word2vector的概览
 
-小结
+优化：梯度下降的要点
+-----------------------
+
+小结-1
 -------------------------
 
 

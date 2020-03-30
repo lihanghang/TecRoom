@@ -166,7 +166,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id11">5.1. 一些说明和资源</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#word-vectors">5.2. 词向量（Word Vectors)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#word-vectors">5.2. 1-词向量（Word Vectors)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id14">5.2.1. 自然语言和词义</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id16">5.2.2. Word Vectors(词向量)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#word2vector">5.2.3. Word2Vector介绍</a><ul>
@@ -174,8 +174,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id18">5.2.4. Word2Vector目标函数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">5.2.5. 优化误差</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">5.2.6. 小结</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">5.2.5. 梯度计算推导</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">5.2.6. 优化：梯度下降的要点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">5.2.7. 小结-1</a></li>
 </ul>
 </li>
 </ul>
@@ -449,7 +450,10 @@
 <h1>5. CS224n-2019-课程笔记 by Chris Manning<a class="headerlink" href="#cs224n-2019-by-chris-manning" title="永久链接至标题">¶</a></h1>
 <div class="admonition tip">
 <p class="first admonition-title">小技巧</p>
-<p class="last"><a class="reference external" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/">CS224n-2019</a>.课程源自斯坦福CS course，2019年发布的自然语言处理，算是NLP的经典吧，老爷子讲的也很风趣幽默。Ok, Hello, everyone!一起来追剧吧。</p>
+<ul class="last simple">
+<li><a class="reference external" href="https://web.stanford.edu/class/archive/cs/cs224n/cs224n.1194/">CS224n-2019</a>.课程源自斯坦福CS course，2019年发布的自然语言处理，算是NLP的经典吧，老爷子讲的也很风趣幽默。Ok, Hello, everyone!一起来追剧吧。</li>
+<li>题外话：课时并不多，所以暗示自己要尽量耐心地把每一节的知识搞懂（慢工出细活，理论知识很重要），自己思考的同时也要动手推导公式甚至编写代码（我就是这么弄得）来刺激大脑理解，难受一阵会发现知识理解很深刻，再回顾此前的知识，豁然开朗！</li>
+</ul>
 </div>
 <div class="section" id="id11">
 <h2>5.1. 一些说明和资源<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
@@ -470,7 +474,7 @@
 </ul>
 </div>
 <div class="section" id="word-vectors">
-<h2>5.2. 词向量（Word Vectors)<a class="headerlink" href="#word-vectors" title="永久链接至标题">¶</a></h2>
+<h2>5.2. 1-词向量（Word Vectors)<a class="headerlink" href="#word-vectors" title="永久链接至标题">¶</a></h2>
 <img alt="../../_images/preface.jpg" src="../../_images/preface.jpg" />
 <div class="section" id="id14">
 <h3>5.2.1. 自然语言和词义<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
@@ -604,8 +608,8 @@
 <ol class="arabic simple">
 <li>我们有个比较大的文本数据集。</li>
 <li>文本中的每个词通过一个固定长度的词向量表示。</li>
-<li>扫描文本中每一个位置 <strong>t</strong> 所表示的词,其中有一个中心词 <strong>c</strong> 和上下文词**o**。</li>
-<li>通过c和o的词向量的相似性，计算在给定c,即中心词来计算O,即上下文的概率。反之亦然。</li>
+<li>扫描文本中每一个位置 <strong>t</strong> 所表示的词,其中有一个中心词 <strong>c</strong> 和上下文词 <strong>o</strong> 。</li>
+<li>通过c和o的词向量的相似性，计算在给定c,即中心词来计算o,即上下文的概率。反之亦然。</li>
 <li>不断调整词向量来最大化上面提到的概率。</li>
 </ol>
 <ul>
@@ -628,20 +632,52 @@
 </li>
 </ol>
 <div class="math notranslate nohighlight">
-\[\begin{split}Likelihood = L(\theta) = \prod_{t=1}^{T}\prod _{\substack{-m\leq j \leq m \\ j\neq 0}}p(w_{t+j}|w_t;\theta)\end{split}\]</div>
+\[ \begin{align}\begin{aligned}\begin{split}Likelihood = L(\theta) = \prod_{t=1}^{T}\prod _{\substack{-m\leq j \leq m \\ j\neq 0}}P(w_{t+j}|w_t;\theta)\end{split}\\其中 \theta 是一个需要全局优化的变量\end{aligned}\end{align} \]</div>
+<ul>
+<li><p class="first">目标函数 <span class="math notranslate nohighlight">\(J(\theta)\)</span> （也称为 <strong>代价或损失函数</strong>）,是一个负向对数似然：</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}J(\theta) = -\frac{1}{T}logL(\theta) = -\frac{1}{T}\sum_{t=1}^{T}\sum _{\substack{-m\leq j \leq m \\ j\neq 0}}P(w_{t+j}|w_t;\theta)\end{split}\]</div>
+</div></blockquote>
+</li>
+</ul>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li>利用对数的特性将目标函数转换为对数求和，减少计算的复杂度。</li>
+<li>最小化目标函数 ⟺最大化预测的准确率</li>
+</ul>
+</div>
+<ul class="simple">
+<li>通过不断的优化参数最小化误差来训练模型。</li>
+<li><dl class="first docutils">
+<dt>为了训练模型，需要计算所有向量的梯度</dt>
+<dd><ul class="first last">
+<li><span class="math notranslate nohighlight">\(\theta\)</span> 用一个很长的向量表示所有模型的参数。</li>
+<li>每个单词有个两个向量。</li>
+<li>利用不断移动的梯度来优化这些模型的参数。</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h3>5.2.5. 梯度计算推导<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">待处理</p>
 <ul class="last simple">
-<li>目标函数求解</li>
-<li>本节知识点回顾</li>
+<li>推导细节描述</li>
+<li>一些边角知识的回顾：向量求导、链式法则</li>
+<li>word2vector的概览</li>
 </ul>
 </div>
 </div>
-<div class="section" id="id19">
-<h3>5.2.5. 优化误差<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
-</div>
 <div class="section" id="id20">
-<h3>5.2.6. 小结<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<h3>5.2.6. 优化：梯度下降的要点<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id21">
+<h3>5.2.7. 小结-1<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 </div>
