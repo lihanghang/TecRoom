@@ -3,7 +3,8 @@
 ============
 .. note:: 
 
-    更新日期：2020年3月28日
+    更新日期：2020年04月01日
+    
 
 书籍推荐
 ==========
@@ -116,7 +117,7 @@ CS224n-2019-课程笔记 by Chris Manning
 - `B站资源 <https://www.bilibili.com/video/BV1Eb411H7Pq/?spm_id_from=333.788.videocard.0)>`_
 - `笔记参考 <https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/>`_
 
-1-词向量（Word Vectors)
+词向量（Word Vectors)
 =========================
 .. image:: ./images/nlp/preface.jpg 
 
@@ -210,10 +211,37 @@ Word2Vector目标函数
     
     其中 \theta 是一个需要全局优化的变量
 
-- 目标函数 :math:`J(\theta)` （也称为 **代价或损失函数**）,是一个负向对数似然：
+- 目标函数 :math:`J(\theta)` （也称为 **代价或损失函数**）,是一个负对数似然：
 
     .. math::
         J(\theta) = -\frac{1}{T}logL(\theta) = -\frac{1}{T}\sum_{t=1}^{T}\sum _{\substack{-m\leq j \leq m \\ j\neq 0}}P(w_{t+j}|w_t;\theta)
+
+
+Q1： 如何计算 :math:`P(w_{t+j}|w_t;\theta)`?
+
+A1： 每个词w用两个向量表示
+
+    - 当w是中心词时用向量 :math:`v_w` 表示 
+    - 当w是上下文词时用向量 :math:`u_w` 表示 
+
+那么对于一个中心词c和上下文词o可用如下形式表示
+
+    .. math::
+        P(o|c) = \frac{exp(u_o^T v_c)}{\sum_{w\in V} exp(u_w^Tv_c)}
+
+    其中，:math:`u_o^T v_c`点积表示o和c的相似度，点积越大则表示概率越大；:math:`{\sum exp(u_w^Tv_c)}`
+    目的是为了对整个词汇表进行标准化。
+
+- softmax function
+    softmax函数作用是将任意标量 :math:`x_i`映射为概率分布 :math:`p_i` 。
+
+    .. math::
+
+        softmax(x_i) = \frac{exp(x_i)}{\sum_{j=1}^{n} exp(u_w^Tv_c)} = p_i
+
+    - “max"对比较大的 :math:`x_i` 映射比较大的概率
+    - ”soft" 对那些小的 :math:`x_i` 也会给予一定概率
+    - 这是一种常见的操作，如深度学习
 
 .. tip::
     - 利用对数的特性将目标函数转换为对数求和，减少计算的复杂度。
@@ -223,21 +251,100 @@ Word2Vector目标函数
 - 为了训练模型，需要计算所有向量的梯度
     + :math:`\theta` 用一个很长的向量表示所有模型的参数。
     + 每个单词有个两个向量。
+        - Why two vectors? àEasier optimization. Average both at the end.
     + 利用不断移动的梯度来优化这些模型的参数。
 
 梯度计算推导
 -------------------------
-.. todo::
-    - 推导细节描述
-    - 一些边角知识的回顾：向量求导、链式法则
-    - word2vector的概览
+下面开始推导 :math:`P(w_{t+j}|w_t;\theta)`:
+对 :math:`v_c` 求偏微分
 
-优化：梯度下降的要点
------------------------
+.. math::
+    \frac{\partial}{\partial v_c }logP(o|c) 
+    &= \frac{\partial}{\partial v_c }log\frac{exp(u_o^T v_c)}{\sum_{w\in V} exp(u_w^Tv_c)}\\
+    &=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+    &=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+    &=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+    &=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
+    &=u_o-\sum_{w\in V}P(w|c)u_w\\
 
-小结-1
+
+    其中，u_o是我们观测到每个词的值，\sum_{w\in V}P(w|c)u_w是模型的预测值，\\
+    利用梯度下降不断使两者更为接近，使偏微为0.
+
+
+还有对 :math:`u_o` 的偏微过程，大家动手推导下，比较简单的。
+
+.. tip::
+
+    补充一点边角知识，在上面的推导过程中用的到：
+
+    - 向量函数与其导数 :math:`\frac{\partial Ax}{\partial x} = A^T, \frac{\partial x^T A}{\partial x} = A`
+    - 链式法则：:math:`log'f[g(x)] = \frac{1}{f[g(x)]}g'(x)`
+
+
+word2vector的概览
+--------------------
+前面提到的Word2Vector是一种学习词向量的框架（模型），它包含两个实现算法：
+
+1. Skip-grams (SG) （课上讲的就类似这种）
+
+    + 根据中心词周围的上下文单词来预测该词的词向量
+
+2. Continuous Bag of Words (CBOW)
+
+    + 根据中心词预测周围上下文的词的概率分布。
+
+另外提到两个训练的方式：
+
+1. negative sampling (比较简单的方式)
+
+    + 通过抽取负样本来定义目标
+
+2. hierarchical softmax
+
+    + 通过使用一个树来计算所有词的概率来定义目标。
+
+优化：梯度下降与随机梯度下降算法的要点
+--------------------------------------
+- 梯度下降（Gradient Descent，GD）
+    1. 最小化的目标（代价）函数 :math:`J(\theta）`
+    2. 使用梯度下降算法去优化 :math:`J(\theta）`
+    3. 对于当前 :math:`\theta` 采用一个合适的步长（学习率）不断重复计算 :math:`J(\theta）` 的梯度，朝着负向梯度方向。
+
+    .. image:: ./images/nlp/SG.jpg
+
+    4. 更新等式（矩阵）
+
+        .. math::
+
+            \theta^{new} = \theta^{old} - \alpha\nabla_\theta J(\theta)
+
+            其中，\theta = 步长（学习率）
+
+    5. 更新等式（单个参数）
+        .. math::
+
+            \theta_j^{new} = \theta_j^{old} - \alpha\frac{\partial}{\partial \theta_j^{old}}J(\theta)
+
+- 随机梯度下降（Stochastic Gradient Descen, SGD）
+    + 目的
+        进一步解决 :math:`J(\theta）` 的训练效率（因为目标函数包含所有的参数，而且数据集一般都是很大的）问题：太慢了。
+    + Repeatedly sample windows, and update after each one
+
+
+小结
 -------------------------
+- 本节首先从语言的语义问题开始讲起，然后为了表示语义，引出了词向量概念，接着着重讲了Word2Vector框架、原理、算法推导等，最后简单提了下目标函数的优化的方式。
+- 看完并梳理完本节知识，我产生了几个问题：
+    + 词向量提了好多次，那么每个词的词向量究竟是如何产生（计算）的呢？存在哪些方法？
+    + 有几个点的原理还需进一步深入理解：
+        - 负采样、层次采样；区别和前后的优势在哪里？
+        - SG、CBOW算法的细节；本质区别和各自优势是什么？
 
+
+词向量和词义（预告）
+======================
 
 
 
