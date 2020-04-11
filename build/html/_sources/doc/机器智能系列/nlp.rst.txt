@@ -115,7 +115,8 @@ CS224n-2019-课程笔记 by Chris Manning
     + HW1-HW5.
     + FP,which is QA .
 - `B站资源 <https://www.bilibili.com/video/BV1Eb411H7Pq/?spm_id_from=333.788.videocard.0)>`_
-- `笔记参考 <https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/>`_
+- `笔记参考1 <https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/>`_
+- `笔记参考2 <https://www.cnblogs.com/marsggbo/p/10205943.html>`_
 
 词向量（Word Vectors)
 =========================
@@ -343,8 +344,94 @@ word2vector的概览
         - SG、CBOW算法的细节；本质区别和各自优势是什么？
 
 
-词向量和词义（预告）
+词向量和语义
 ======================
+.. note::
+    本节课后，我们就能够开始读一些关于词嵌入方面的论文了。
+
+
+.. image:: ./images/nlp/preface-2.png
+
+Review：word2vec
+-----------------------------
+主要思想
+^^^^^^^^^
+- 这里以skip-gram）模型为例
+    1. 遍历整个语料库的每个词，通过中心词向量预测周围的词向量
+    2. 算法学到的词向量能用来计算词的相似度或语义等相关需求。
+
+关于梯度计算
+^^^^^^^^^^^^^
+- GD。计算效率低，每次对所有样本进行梯度计算
+- SGD。每次只对一个固定大小的样本窗口进行更新，效率较高。
+- 梯度计算存在稀疏性（0比较多）
+    + But in each window, we only have at most 2m + 1 words, so it is very sparse!
+    + 解决方案： 
+        - only update certain rows of full embedding matrices U and V. (使用稀疏矩阵仅更新稀疏性低的词向量矩阵U和V)
+        - you need to keep around a hash for word vectors （使用hash来更新，即k-v，k表示word,v表示其词向量）
+
+基于负采样(negative sample)方法计算
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1. 计算下列式子：
+    .. math::
+
+        P(o|c) = \frac{exp(u_o^T v_c)}{\sum_{w\in V} exp(u_w^Tv_c)}
+    
+    其中 :math:` {\sum_{w\in V} exp(u_w^Tv_c)}` 计算代价非常大（整个语料库计算），如何降低这一块的计算复杂度就是需要考虑的问题。
+
+2. 负采样方法介绍
+    + 主要思想：train binary logistic regressions。除了对中心词窗口大小附近的上下文词取样以外(即true pairs)，还会随机抽取一些噪声和中心词配对（即noise pairs）进行计算，而不是遍历整个词库。
+    + 这个 **负** 指的是噪声数据（无关的语料词 noise pairs）
+
+3. 负采样计算细节
+
+.. tip::
+
+    可参考论文 `Distributed Representations of Words and Phrases and their Compositionality” (Mikolov et al. 2013) <https://github.com/lihanghang/NLP-Knowledge-Graph/raw/master/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/%E8%AF%AD%E8%A8%80%E8%A1%A8%E7%A4%BA%E6%A8%A1%E5%9E%8B/Tomas%20Mikolov%20papers/Distributed%20representations%20of%20words%20and%20phrases%20and%20their%20compositionality.pdf>`_ 第3页。
+
+
++ 最大化下面的目标函数
+
+    .. math::
+
+        J(\theta) = \frac{1}{T}\sum_{t=1}^{T}J_{t}(\theta)
+
+    
+    .. math::
+
+        J_{t}(\theta)=\log \sigma(u_{o}^{T} v_{c})+\sum_{i=1}^{k} \mathbb{E}_{j \sim P(w)}[\log \sigma(-u_{j}^{T} v_{c})]
+        
+        其中，\sigma(x)=\frac{1}{1+e^{-x}}
+        
+    - 公式第一项表示最大化真实的中心词和其上下文词的概率；第二项是最小化负采样的噪声值（中心词及其上下文）的概率，j表示负采样的样本，并以P(w)大小进行随机采样。
+        
+    .. note:: 
+
+        + P(w)，这里使用了N元统计模型且N取1，即一元统计模型（unigram），表示每个词都和其它词独立，和它的上下文无关。每个位置上的词都是从多项分布独立生成的。
+        + 补充N元统计模型，N=2时就为二元统计模型，即每个词和其前1个词有关。一般的，假设每个词 :math:`x_t` 只依赖于其前面的n−1个词（n 阶马尔可夫性质）。
+        + 通过N元统计模型，我们可以计算一个序列的概率，从而判断该序列是否符合自然语言的语法和语义规则。
+        + 这个方法在构建词向量时最大的问题就是 **数据稀疏性**，大家可以思考下为什么？还能想到改进或其他更好的方法？
+
+
+基于共现矩阵生成词向量
+--------------------------
+
+
+Glove词向量模型
+-----------------
+
+词向量评估
+------------
+
+语义
+---------
+
+分类和神经网络的区别
+--------------------
+
+建议
+------
+
 
 
 

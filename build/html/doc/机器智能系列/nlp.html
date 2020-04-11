@@ -167,20 +167,34 @@
 <li class="toctree-l1"><a class="reference internal" href="#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id11">5.1. 一些说明和资源</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#word-vectors">5.2. 词向量（Word Vectors)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id14">5.2.1. 自然语言和词义</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id16">5.2.2. Word Vectors(词向量)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">5.2.1. 自然语言和词义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">5.2.2. Word Vectors(词向量)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#word2vector">5.2.3. Word2Vector介绍</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id17">5.2.3.1. 主要思想</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">5.2.3.1. 主要思想</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#id18">5.2.4. Word2Vector目标函数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">5.2.5. 梯度计算推导</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">5.2.6. word2vector的概览</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">5.2.7. 优化：梯度下降与随机梯度下降算法的要点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">5.2.8. 小结</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">5.2.4. Word2Vector目标函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">5.2.5. 梯度计算推导</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id21">5.2.6. word2vector的概览</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">5.2.7. 优化：梯度下降与随机梯度下降算法的要点</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">5.2.8. 小结</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id23">5.3. 词向量和词义（预告）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id24">5.3. 词向量和语义</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#review-word2vec">5.3.1. Review：word2vec</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id25">5.3.1.1. 主要思想</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">5.3.1.2. 关于梯度计算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#negative-sample">5.3.1.3. 基于负采样(negative sample)方法计算</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id27">5.3.2. 基于共现矩阵生成词向量</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#glove">5.3.3. Glove词向量模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">5.3.4. 词向量评估</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">5.3.5. 语义</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">5.3.6. 分类和神经网络的区别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">5.3.7. 建议</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kg.html">6. 知识图谱</a></li>
@@ -472,14 +486,15 @@
 </dl>
 </li>
 <li><a class="reference external" href="https://www.bilibili.com/video/BV1Eb411H7Pq/?spm_id_from=333.788.videocard.0)">B站资源</a></li>
-<li><a class="reference external" href="https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/">笔记参考</a></li>
+<li><a class="reference external" href="https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/">笔记参考1</a></li>
+<li><a class="reference external" href="https://www.cnblogs.com/marsggbo/p/10205943.html">笔记参考2</a></li>
 </ul>
 </div>
 <div class="section" id="word-vectors">
 <h2>5.2. 词向量（Word Vectors)<a class="headerlink" href="#word-vectors" title="永久链接至标题">¶</a></h2>
 <img alt="../../_images/preface.jpg" src="../../_images/preface.jpg" />
-<div class="section" id="id14">
-<h3>5.2.1. 自然语言和词义<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id15">
+<h3>5.2.1. 自然语言和词义<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li><dl class="first docutils">
 <dt>自然语言</dt>
@@ -574,8 +589,8 @@
 </li>
 </ol>
 </div>
-<div class="section" id="id16">
-<h3>5.2.2. Word Vectors(词向量)<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id17">
+<h3>5.2.2. Word Vectors(词向量)<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li>根据一个的词的上下文，来为词构建密集的向量，以使得该向量与出现在类似上下文中的词相似</li>
 <li><dl class="first docutils">
@@ -605,8 +620,8 @@
 <p class="first admonition-title">注解</p>
 <p class="last">Word2vec (Mikolov et al. 2013) 是一种学习词向量的 <em>框架</em>。</p>
 </div>
-<div class="section" id="id17">
-<h4>5.2.3.1. 主要思想<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id18">
+<h4>5.2.3.1. 主要思想<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
 <ol class="arabic simple">
 <li>我们有个比较大的文本数据集。</li>
 <li>文本中的每个词通过一个固定长度的词向量表示。</li>
@@ -624,8 +639,8 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id18">
-<h3>5.2.4. Word2Vector目标函数<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id19">
+<h3>5.2.4. Word2Vector目标函数<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
 <li><p class="first">思路(后面要说的Skip-grams模型）</p>
 <blockquote>
@@ -701,8 +716,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id19">
-<h3>5.2.5. 梯度计算推导<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id20">
+<h3>5.2.5. 梯度计算推导<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <p>下面开始推导 <span class="math notranslate nohighlight">\(P(w_{t+j}|w_t;\theta)\)</span>:
 对 <span class="math notranslate nohighlight">\(v_c\)</span> 求偏微分</p>
 <div class="math notranslate nohighlight">
@@ -724,8 +739,8 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id20">
-<h3>5.2.6. word2vector的概览<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id21">
+<h3>5.2.6. word2vector的概览<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 <p>前面提到的Word2Vector是一种学习词向量的框架（模型），它包含两个实现算法：</p>
 <ol class="arabic">
 <li><p class="first">Skip-grams (SG) （课上讲的就类似这种）</p>
@@ -761,8 +776,8 @@
 </li>
 </ol>
 </div>
-<div class="section" id="id21">
-<h3>5.2.7. 优化：梯度下降与随机梯度下降算法的要点<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id22">
+<h3>5.2.7. 优化：梯度下降与随机梯度下降算法的要点<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
 <ul>
 <li><dl class="first docutils">
 <dt>梯度下降（Gradient Descent，GD）</dt>
@@ -805,8 +820,8 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id22">
-<h3>5.2.8. 小结<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id23">
+<h3>5.2.8. 小结<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li>本节首先从语言的语义问题开始讲起，然后为了表示语义，引出了词向量概念，接着着重讲了Word2Vector框架、原理、算法推导等，最后简单提了下目标函数的优化的方式。</li>
 <li><dl class="first docutils">
@@ -829,8 +844,122 @@
 </ul>
 </div>
 </div>
-<div class="section" id="id23">
-<h2>5.3. 词向量和词义（预告）<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id24">
+<h2>5.3. 词向量和语义<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">本节课后，我们就能够开始读一些关于词嵌入方面的论文了。</p>
+</div>
+<img alt="../../_images/preface-2.png" src="../../_images/preface-2.png" />
+<div class="section" id="review-word2vec">
+<h3>5.3.1. Review：word2vec<a class="headerlink" href="#review-word2vec" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id25">
+<h4>5.3.1.1. 主要思想<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>这里以skip-gram）模型为例</dt>
+<dd><ol class="first last arabic">
+<li>遍历整个语料库的每个词，通过中心词向量预测周围的词向量</li>
+<li>算法学到的词向量能用来计算词的相似度或语义等相关需求。</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id26">
+<h4>5.3.1.2. 关于梯度计算<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h4>
+<ul class="simple">
+<li>GD。计算效率低，每次对所有样本进行梯度计算</li>
+<li>SGD。每次只对一个固定大小的样本窗口进行更新，效率较高。</li>
+<li><dl class="first docutils">
+<dt>梯度计算存在稀疏性（0比较多）</dt>
+<dd><ul class="first last">
+<li>But in each window, we only have at most 2m + 1 words, so it is very sparse!</li>
+<li><dl class="first docutils">
+<dt>解决方案：</dt>
+<dd><ul class="first last">
+<li>only update certain rows of full embedding matrices U and V. (使用稀疏矩阵仅更新稀疏性低的词向量矩阵U和V)</li>
+<li>you need to keep around a hash for word vectors （使用hash来更新，即k-v，k表示word,v表示其词向量）</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="negative-sample">
+<h4>5.3.1.3. 基于负采样(negative sample)方法计算<a class="headerlink" href="#negative-sample" title="永久链接至标题">¶</a></h4>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>计算下列式子：</dt>
+<dd><div class="first math notranslate nohighlight">
+\[P(o|c) = \frac{exp(u_o^T v_c)}{\sum_{w\in V} exp(u_w^Tv_c)}\]</div>
+<p class="last">其中 :math:` {sum_{win V} exp(u_w^Tv_c)}` 计算代价非常大（整个语料库计算），如何降低这一块的计算复杂度就是需要考虑的问题。</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>负采样方法介绍</dt>
+<dd><ul class="first last simple">
+<li>主要思想：train binary logistic regressions。除了对中心词窗口大小附近的上下文词取样以外(即true pairs)，还会随机抽取一些噪声和中心词配对（即noise pairs）进行计算，而不是遍历整个词库。</li>
+<li>这个 <strong>负</strong> 指的是噪声数据（无关的语料词 noise pairs）</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">负采样计算细节</p>
+</li>
+</ol>
+<div class="admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">可参考论文 <a class="reference external" href="https://github.com/lihanghang/NLP-Knowledge-Graph/raw/master/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/%E8%AF%AD%E8%A8%80%E8%A1%A8%E7%A4%BA%E6%A8%A1%E5%9E%8B/Tomas%20Mikolov%20papers/Distributed%20representations%20of%20words%20and%20phrases%20and%20their%20compositionality.pdf">Distributed Representations of Words and Phrases and their Compositionality” (Mikolov et al. 2013)</a> 第3页。</p>
+</div>
+<ul>
+<li><p class="first">最大化下面的目标函数</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[J(\theta) = \frac{1}{T}\sum_{t=1}^{T}J_{t}(\theta)\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}J_{t}(\theta)=\log \sigma(u_{o}^{T} v_{c})+\sum_{i=1}^{k} \mathbb{E}_{j \sim P(w)}[\log \sigma(-u_{j}^{T} v_{c})]\\其中，\sigma(x)=\frac{1}{1+e^{-x}}\end{aligned}\end{align} \]</div>
+<ul class="simple">
+<li>公式第一项表示最大化真实的中心词和其上下文词的概率；第二项是最小化负采样的噪声值（中心词及其上下文）的概率，j表示负采样的样本，并以P(w)大小进行随机采样。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>P(w)，这里使用了N元统计模型且N取1，即一元统计模型（unigram），表示每个词都和其它词独立，和它的上下文无关。每个位置上的词都是从多项分布独立生成的。</li>
+<li>补充N元统计模型，N=2时就为二元统计模型，即每个词和其前1个词有关。一般的，假设每个词 <span class="math notranslate nohighlight">\(x_t\)</span> 只依赖于其前面的n−1个词（n 阶马尔可夫性质）。</li>
+<li>通过N元统计模型，我们可以计算一个序列的概率，从而判断该序列是否符合自然语言的语法和语义规则。</li>
+<li>这个方法在构建词向量时最大的问题就是 <strong>数据稀疏性</strong>，大家可以思考下为什么？还能想到改进或其他更好的方法？</li>
+</ul>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id27">
+<h3>5.3.2. 基于共现矩阵生成词向量<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="glove">
+<h3>5.3.3. Glove词向量模型<a class="headerlink" href="#glove" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id28">
+<h3>5.3.4. 词向量评估<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id29">
+<h3>5.3.5. 语义<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id30">
+<h3>5.3.6. 分类和神经网络的区别<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id31">
+<h3>5.3.7. 建议<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+</div>
 </div>
 </div>
 
