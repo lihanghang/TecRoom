@@ -415,13 +415,91 @@ Review：word2vec
 
 基于共现矩阵生成词向量
 --------------------------
+But why not capture co-occurrence counts directly?
+1. 主要思想
 
+    - 有一个共现矩阵x，其可选的粒度有两种：固定窗口大小的window、文档级的document
+        + window级别的共现矩阵： 类似有word2vector，利用每个词使用固定的窗口大小来获取其语法或语义信息。
+            - 例如，window_len = 1的单词与单词同时出现的次数来产生基于窗口的co-occurrence matrix。
+                - 语料： I like deep learning. I like NLP. I enjoy flying. c
+                
+                .. image:: images/nlp/co_matrix.png
+
+            - 解释下上述矩阵的含义：按窗口为1，同时出现的原则，I I语料没有这样的表达即同时出现的次数为0，I like 前两条都出现了，即为2。
+            - 简单观察矩阵，就会发现很稀疏，存在大量的0，而且随着语料库的增大，维数也会增大，这显然不是最佳方法，得想办法增加空间的利用率，目标就是稀疏变稠密，以免因稀疏性对下游任务造成影响。
+        
+        + document级别的共现矩阵：基本假设是文档若存在相关联，则其会出现同样的单词。一般使用“Latent Semantic Analysis”（LSA)潜在语义分析方法进行矩阵的生成
+
+2. 问题：怎么对共现矩阵进行降维呢？
+
+    - Singular Value Decomposition（SVD)奇异值分解
+
+        + 将矩阵X分解为 :math:`U \Sigma V^{\top} \Sigma` 是对角阵，其主对角线的每个值都是奇异值；U和 :math:`V^{\top}` 两个正交矩阵
+        
+        .. image:: images/nlp/SVD.png
+
+        .. note::
+        
+            1. SVD就是将一个线性变换分解为两个线性变换，一个线性变换代表旋转，一个线性变换代表拉伸。
+            2. 正交矩阵对应的变换是旋转变换，对角矩阵对应的变换是伸缩变换。
+            3. 这里我们可以再联想对比另外一个经典的降维算法PCA。
+3. Hacks to X
+
+    - 按比例缩放计数会有很大帮助。（怎么讲？）哦，就是对一些高频的功能性（has、the等）词进行缩放，缩放后不会影响句法结构或者语义等
+        + min(X,t), with t ≈ 100
+        + 忽略这些词
+    - 定义一个Ramped windows，统计距离很小（关联度高）的的词。（距离越小，代表关联度越高）
+    - 使用皮尔逊相关系数来替换直接计数方式，并设无关联值为0。
+
+    .. note::
+        Pearson相关系数是衡量向量相似度的一种方法。输出范围为-1到+1, 0代表无相关性，负值为负相关，正值为正相关。
 
 Glove词向量模型
 -----------------
+1. 基于计数和直接预测的比较
 
-词向量评估
-------------
+    .. image:: images/nlp/count_predict.png
+
+    - 基于计数（统计理论）
+    - 直接预测（概率模型或神经网络）
+
+    **到底哪一个方法是正法呢，还是说走向合作呢？答案是合作，相互借鉴才能发挥更大价值（1+1>2)**
+
+2. 探索在向量间的差异中挖掘语义
+    - 方向：能在共现矩阵的概率的比值中看出语义相关
+
+    .. image:: images/nlp/co_matrix_ratio.png
+
+    - 解释下表所传递的信息：当需知道ice冰和steam气的关系时，可借助词k：
+        + 当k=solid，k和ice近似，这时ratio>>1；==> solid与ice有关
+        + 当k=gas，k和steam接近时，ratio<<1；==> gas与steam有关
+        + 当k=water/fashion等与2个词都不相关时，ratio≈1。==> 之间无关
+        
+**通俗的讲下这个比值：1为阈值，当远大于1或远小于1就说明词之间有相关度的；当接近于1时证明无关**
+
+3. 如何表示共现矩阵的概率的比值呢？
+
+    - Log-bilinear model：:math:`w_i \cdot w_j = log P(i|j)`
+    - 使用向量差值表示：:math:`w_x \cdot(w_a - w_b) = log \frac{P(x|a)}{P(x|b)}`
+
+4. Glove目标函数为：
+    .. math::
+
+        J=\sum_{i, j=1}^{V} f\left(X_{i j}\right)\left(w_{i}^{T} \tilde{w}_{j}+b_{i}+\tilde{b}_{j}-\log X_{i j}\right)^{2}
+
+    - 其中f(x)如下图所示：
+
+        .. image:: images/nlp/glove_fun.png
+
+    - :math:`X_{i j}` 表示词j在词i的上下文中出现的次数。
+
+5. Glove的优势
+    + 训练速度快
+    + 可扩展到大语料库
+    + 即时小预料库，其效果也不错
+
+怎样评估词向量？
+------------------
 
 语义
 ---------

@@ -189,7 +189,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id27">5.3.2. 基于共现矩阵生成词向量</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#glove">5.3.3. Glove词向量模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">5.3.4. 词向量评估</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">5.3.4. 怎样评估词向量？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id29">5.3.5. 语义</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id30">5.3.6. 分类和神经网络的区别</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id31">5.3.7. 建议</a></li>
@@ -944,12 +944,162 @@
 </div>
 <div class="section" id="id27">
 <h3>5.3.2. 基于共现矩阵生成词向量<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<p>But why not capture co-occurrence counts directly?
+1. 主要思想</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>有一个共现矩阵x，其可选的粒度有两种：固定窗口大小的window、文档级的document</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>window级别的共现矩阵： 类似有word2vector，利用每个词使用固定的窗口大小来获取其语法或语义信息。</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>例如，window_len = 1的单词与单词同时出现的次数来产生基于窗口的co-occurrence matrix。</dt>
+<dd><ul class="first simple">
+<li>语料： I like deep learning. I like NLP. I enjoy flying. c</li>
+</ul>
+<img alt="../../_images/co_matrix.png" class="last" src="../../_images/co_matrix.png" />
+</dd>
+</dl>
+</li>
+<li><p class="first">解释下上述矩阵的含义：按窗口为1，同时出现的原则，I I语料没有这样的表达即同时出现的次数为0，I like 前两条都出现了，即为2。</p>
+</li>
+<li><p class="first">简单观察矩阵，就会发现很稀疏，存在大量的0，而且随着语料库的增大，维数也会增大，这显然不是最佳方法，得想办法增加空间的利用率，目标就是稀疏变稠密，以免因稀疏性对下游任务造成影响。</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">document级别的共现矩阵：基本假设是文档若存在相关联，则其会出现同样的单词。一般使用“Latent Semantic Analysis”（LSA)潜在语义分析方法进行矩阵的生成</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first">问题：怎么对共现矩阵进行降维呢？</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Singular Value Decomposition（SVD)奇异值分解</p>
+<blockquote>
+<div><ul class="simple">
+<li>将矩阵X分解为 <span class="math notranslate nohighlight">\(U \Sigma V^{\top} \Sigma\)</span> 是对角阵，其主对角线的每个值都是奇异值；U和 <span class="math notranslate nohighlight">\(V^{\top}\)</span> 两个正交矩阵</li>
+</ul>
+<img alt="../../_images/SVD.png" src="../../_images/SVD.png" />
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ol class="last arabic simple">
+<li>SVD就是将一个线性变换分解为两个线性变换，一个线性变换代表旋转，一个线性变换代表拉伸。</li>
+<li>正交矩阵对应的变换是旋转变换，对角矩阵对应的变换是伸缩变换。</li>
+<li>这里我们可以再联想对比另外一个经典的降维算法PCA。</li>
+</ol>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Hacks to X</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>按比例缩放计数会有很大帮助。（怎么讲？）哦，就是对一些高频的功能性（has、the等）词进行缩放，缩放后不会影响句法结构或者语义等</dt>
+<dd><ul class="first last">
+<li>min(X,t), with t ≈ 100</li>
+<li>忽略这些词</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>定义一个Ramped windows，统计距离很小（关联度高）的的词。（距离越小，代表关联度越高）</li>
+<li>使用皮尔逊相关系数来替换直接计数方式，并设无关联值为0。</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">Pearson相关系数是衡量向量相似度的一种方法。输出范围为-1到+1, 0代表无相关性，负值为负相关，正值为正相关。</p>
+</div>
+</div></blockquote>
+</li>
+</ol>
 </div>
 <div class="section" id="glove">
 <h3>5.3.3. Glove词向量模型<a class="headerlink" href="#glove" title="永久链接至标题">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">基于计数和直接预测的比较</p>
+<blockquote>
+<div><img alt="../../_images/count_predict.png" src="../../_images/count_predict.png" />
+<ul class="simple">
+<li>基于计数（统计理论）</li>
+<li>直接预测（概率模型或神经网络）</li>
+</ul>
+<p><strong>到底哪一个方法是正法呢，还是说走向合作呢？答案是合作，相互借鉴才能发挥更大价值（1+1&gt;2)</strong></p>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>探索在向量间的差异中挖掘语义</dt>
+<dd><ul class="first simple">
+<li>方向：能在共现矩阵的概率的比值中看出语义相关</li>
+</ul>
+<img alt="../../_images/co_matrix_ratio.png" src="../../_images/co_matrix_ratio.png" />
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>解释下表所传递的信息：当需知道ice冰和steam气的关系时，可借助词k：</dt>
+<dd><ul class="first last">
+<li>当k=solid，k和ice近似，这时ratio&gt;&gt;1；==&gt; solid与ice有关</li>
+<li>当k=gas，k和steam接近时，ratio&lt;&lt;1；==&gt; gas与steam有关</li>
+<li>当k=water/fashion等与2个词都不相关时，ratio≈1。==&gt; 之间无关</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>通俗的讲下这个比值：1为阈值，当远大于1或远小于1就说明词之间有相关度的；当接近于1时证明无关</strong></p>
+<ol class="arabic" start="3">
+<li><p class="first">如何表示共现矩阵的概率的比值呢？</p>
+<blockquote>
+<div><ul class="simple">
+<li>Log-bilinear model：<span class="math notranslate nohighlight">\(w_i \cdot w_j = log P(i|j)\)</span></li>
+<li>使用向量差值表示：<span class="math notranslate nohighlight">\(w_x \cdot(w_a - w_b) = log \frac{P(x|a)}{P(x|b)}\)</span></li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Glove目标函数为：</dt>
+<dd><div class="first math notranslate nohighlight">
+\[J=\sum_{i, j=1}^{V} f\left(X_{i j}\right)\left(w_{i}^{T} \tilde{w}_{j}+b_{i}+\tilde{b}_{j}-\log X_{i j}\right)^{2}\]</div>
+<ul class="last">
+<li><p class="first">其中f(x)如下图所示：</p>
+<blockquote>
+<div><img alt="../../_images/glove_fun.png" src="../../_images/glove_fun.png" />
+</div></blockquote>
+</li>
+<li><p class="first"><span class="math notranslate nohighlight">\(X_{i j}\)</span> 表示词j在词i的上下文中出现的次数。</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Glove的优势</dt>
+<dd><ul class="first last simple">
+<li>训练速度快</li>
+<li>可扩展到大语料库</li>
+<li>即时小预料库，其效果也不错</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
 </div>
 <div class="section" id="id28">
-<h3>5.3.4. 词向量评估<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<h3>5.3.4. 怎样评估词向量？<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id29">
 <h3>5.3.5. 语义<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
