@@ -456,6 +456,10 @@ But why not capture co-occurrence counts directly?
 
 Glove词向量模型
 -----------------
+.. tip::
+
+    可参考阅读 `Glove <https://nlp.stanford.edu/projects/glove/>`_ 主页
+
 1. 基于计数和直接预测的比较
 
     .. image:: images/nlp/count_predict.png
@@ -474,7 +478,7 @@ Glove词向量模型
         + 当k=solid，k和ice近似，这时ratio>>1；==> solid与ice有关
         + 当k=gas，k和steam接近时，ratio<<1；==> gas与steam有关
         + 当k=water/fashion等与2个词都不相关时，ratio≈1。==> 之间无关
-        
+
 **通俗的讲下这个比值：1为阈值，当远大于1或远小于1就说明词之间有相关度的；当接近于1时证明无关**
 
 3. 如何表示共现矩阵的概率的比值呢？
