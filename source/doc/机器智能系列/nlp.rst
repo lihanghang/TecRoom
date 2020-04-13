@@ -504,12 +504,112 @@ Glove词向量模型
 
 怎样评估词向量？
 ------------------
+1. 问题：如何评估NLP的模型。
+2. 主要从两个方面：内部和外部
+    - 内部（自身评估）
+        + 评估特定或中间子过程：速度快、有利于理解整个模型
+    - 外部（将词向量应用到下游任务，如推荐、搜索、对话等系统中）
+        + 在真实场景下进行评估：消耗时间可能过长、不明确子系统是否有交互问题。
+        + 如果用一个子系统替换另外一个子系统后能提高准确率，那这个模型就很棒了
+        + 词向量应用到搜索、问答等领域来进行效果评估
 
-语义
----------
+3. 评估：词向量
+    + 通过计算余弦距离后并求和来获取语义和相似的句法。
+    + 技巧：丢弃输入的几个关键词，以此来验证词向量的相似度计算性能
+    + 例：a:b :: c:?  man:woman :: king:? man-->king那么woman-->?
+        - 在语料中找到一点 :math:`x_i`，即为和woman最为相近的词
 
-分类和神经网络的区别
---------------------
+    .. math::
+
+        d=\arg \max _{i} \frac{\left(x_{b}-x_{a}+x_{c}\right)^{T} x_{i}}{\left\|x_{b}-x_{a}+x_{c}\right\|}
+
+    .. image:: images/nlp/w2v_eva.png
+
+    + 下面是glove的某些词向量相似度可视化的结果
+        
+        .. image:: images/nlp/glove_vi.png
+
+4. 评估：相似性和参数
+    + Glove的语义或句法相似度表现的更好，如下表：
+
+        .. image:: images/nlp/glove_w2v.png
+
+    + 特点：语料的规模要大、词向量维数为300更合适
+
+        .. image:: images/nlp/glove_dim.png
+
+5. 相关性评估（距离）
+
+    .. image:: images/nlp/glove_corr_eva.png
+
+6. 外部评估
+    + 词向量好不好最直接的方法就是应用到实际场景，比如最常用的NER（命名实体识别）任务中
+
+        .. image:: images/nlp/glove_ner.png
+
+    + glove对于NER任务表现理论上还说的过去，但凭上表中的准确率在工业领域中还是很难拿来用的。那么还有什么好的模型或者思路呢？
+    + 从下一小节就开始尝试将词向量输入到神经网络中，来进一步提升下游任务的性能。
+
+语义及其歧义性
+------------------
+.. note::
+
+    实际上，许多词都是一词多义的，特别是咱们的汉语，更甚有如今曾层出不穷的网络流行语，有时你不懂点八卦还真的猜不来词要表达的真实含义！这就是NLP绕不开的一个问题：歧义性，对应的任务就是：消歧。
+
+- 看下单词 **pike** 的含义
+
+    .. image:: images/nlp/w2v_ambiguity.png
+
+    + 看上图易知词的含义还是相当丰富的，如何相对准确的捕捉到当前场景下（上下文）的真实含义就是值得思考和研究的一个问题。
+
+1. 论文1：Improving Word Representations Via Global Context And Multiple Word Prototypes (Huang et al. 2012)
+    
+    .. image:: images/nlp/cluster_word.png
+
+    + 使用了聚类的思路：通过一些关键词来聚类，但常常出现重叠（误分）的现象
+
+2. 论文2：Linear Algebraic Structure of Word Senses, with Applications to Polysemy
+将同一词的不同语义进行线性叠加
+    
+    .. math::
+
+        v_{\text { pike }}=\alpha_{1} v_{\text { pike }_{1}}+\alpha_{2} v_{\text { pike }_{2}}+\alpha_{3} v_{\text { pike }_{3}} \\ \alpha_{1}=\frac{f_{1}}{f_{1}+f_{2}+f_{3}}
+    
+        f为词出现的频率
+    
+    + 论文的思路来自词向量的稀疏编码，
+
+
+分类（Classification）模型知识点回顾
+----------------------------------------
+1. 样本（数据集）：:math:`\{{x_i, y_i}\}^N，其中x_i为输入（词、句、文档等）y_i就是标签，
+预测的分类目标（正负向、文档主题等）`
+
+2. 例如简单的二分类
+    
+    + 可视化 `地址 <https://cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html>`_
+
+    .. image:: images/nlp/cls_ex.png
+
+3. 一般的机器学习方法或统计方法：假定 :math:`{x_i}` 为固定大小，我们使用sofmax或逻辑回归算法训练权重参数W，以此来寻找一个决策边界。
+   + 例如softmax算法，对于固定的 :math:`{x}` 预测y：
+
+    .. math::
+
+        p(y\mid x)=\frac{exp(W_{j.}x)}{\sum_{c=1}^{C}exp(W_{c.}x)}
+
+
+    .. image:: images/nlp/softmax_detail.png
+
+    + 我们的目标就是最大化正确类别y的概率，不过我们一般为了降低运算的复杂度，会转为下式进行计算：
+
+    .. math::
+
+        -log P(y|x) = -log(\frac{exp(f_y)}{\sum_{c=1}^{C}exp(f_c)})
+
+4. 交叉熵损失
+
+
 
 建议
 ------

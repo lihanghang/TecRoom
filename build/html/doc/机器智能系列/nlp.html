@@ -190,8 +190,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#id27">5.3.2. 基于共现矩阵生成词向量</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#glove">5.3.3. Glove词向量模型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id29">5.3.4. 怎样评估词向量？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">5.3.5. 语义</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id31">5.3.6. 分类和神经网络的区别</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id30">5.3.5. 语义及其歧义性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classification">5.3.6. 分类（Classification）模型知识点回顾</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id32">5.3.7. 建议</a></li>
 </ul>
 </li>
@@ -1104,12 +1104,166 @@
 </div>
 <div class="section" id="id29">
 <h3>5.3.4. 怎样评估词向量？<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">问题：如何评估NLP的模型。</p>
+</li>
+<li><dl class="first docutils">
+<dt>主要从两个方面：内部和外部</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>内部（自身评估）</dt>
+<dd><ul class="first last">
+<li>评估特定或中间子过程：速度快、有利于理解整个模型</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>外部（将词向量应用到下游任务，如推荐、搜索、对话等系统中）</dt>
+<dd><ul class="first last">
+<li>在真实场景下进行评估：消耗时间可能过长、不明确子系统是否有交互问题。</li>
+<li>如果用一个子系统替换另外一个子系统后能提高准确率，那这个模型就很棒了</li>
+<li>词向量应用到搜索、问答等领域来进行效果评估</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>评估：词向量</dt>
+<dd><ul class="first simple">
+<li>通过计算余弦距离后并求和来获取语义和相似的句法。</li>
+<li>技巧：丢弃输入的几个关键词，以此来验证词向量的相似度计算性能</li>
+<li><dl class="first docutils">
+<dt>例：a:b :: c:?  man:woman :: king:? man–&gt;king那么woman–&gt;?</dt>
+<dd><ul class="first last">
+<li>在语料中找到一点 <span class="math notranslate nohighlight">\(x_i\)</span>，即为和woman最为相近的词</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[d=\arg \max _{i} \frac{\left(x_{b}-x_{a}+x_{c}\right)^{T} x_{i}}{\left\|x_{b}-x_{a}+x_{c}\right\|}\]</div>
+<img alt="../../_images/w2v_eva.png" src="../../_images/w2v_eva.png" />
+<ul class="last">
+<li><p class="first">下面是glove的某些词向量相似度可视化的结果</p>
+<blockquote>
+<div><img alt="../../_images/glove_vi.png" src="../../_images/glove_vi.png" />
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>评估：相似性和参数</dt>
+<dd><ul class="first last">
+<li><p class="first">Glove的语义或句法相似度表现的更好，如下表：</p>
+<blockquote>
+<div><img alt="../../_images/glove_w2v.png" src="../../_images/glove_w2v.png" />
+</div></blockquote>
+</li>
+<li><p class="first">特点：语料的规模要大、词向量维数为300更合适</p>
+<blockquote>
+<div><img alt="../../_images/glove_dim.png" src="../../_images/glove_dim.png" />
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">相关性评估（距离）</p>
+<blockquote>
+<div><img alt="../../_images/glove_corr_eva.png" src="../../_images/glove_corr_eva.png" />
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>外部评估</dt>
+<dd><ul class="first last">
+<li><p class="first">词向量好不好最直接的方法就是应用到实际场景，比如最常用的NER（命名实体识别）任务中</p>
+<blockquote>
+<div><img alt="../../_images/glove_ner.png" src="../../_images/glove_ner.png" />
+</div></blockquote>
+</li>
+<li><p class="first">glove对于NER任务表现理论上还说的过去，但凭上表中的准确率在工业领域中还是很难拿来用的。那么还有什么好的模型或者思路呢？</p>
+</li>
+<li><p class="first">从下一小节就开始尝试将词向量输入到神经网络中，来进一步提升下游任务的性能。</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
 </div>
 <div class="section" id="id30">
-<h3>5.3.5. 语义<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<h3>5.3.5. 语义及其歧义性<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">实际上，许多词都是一词多义的，特别是咱们的汉语，更甚有如今曾层出不穷的网络流行语，有时你不懂点八卦还真的猜不来词要表达的真实含义！这就是NLP绕不开的一个问题：歧义性，对应的任务就是：消歧。</p>
 </div>
-<div class="section" id="id31">
-<h3>5.3.6. 分类和神经网络的区别<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<ul>
+<li><p class="first">看下单词 <strong>pike</strong> 的含义</p>
+<blockquote>
+<div><img alt="../../_images/w2v_ambiguity.png" src="../../_images/w2v_ambiguity.png" />
+<ul class="simple">
+<li>看上图易知词的含义还是相当丰富的，如何相对准确的捕捉到当前场景下（上下文）的真实含义就是值得思考和研究的一个问题。</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<ol class="arabic">
+<li><p class="first">论文1：Improving Word Representations Via Global Context And Multiple Word Prototypes (Huang et al. 2012)</p>
+<blockquote>
+<div><img alt="../../_images/cluster_word.png" src="../../_images/cluster_word.png" />
+<ul class="simple">
+<li>使用了聚类的思路：通过一些关键词来聚类，但常常出现重叠（误分）的现象</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<p>2. 论文2：Linear Algebraic Structure of Word Senses, with Applications to Polysemy
+将同一词的不同语义进行线性叠加</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}v_{\text { pike }}=\alpha_{1} v_{\text { pike }_{1}}+\alpha_{2} v_{\text { pike }_{2}}+\alpha_{3} v_{\text { pike }_{3}} \\ \alpha_{1}=\frac{f_{1}}{f_{1}+f_{2}+f_{3}}\end{split}\\f为词出现的频率\end{aligned}\end{align} \]</div>
+<ul class="simple">
+<li>论文的思路来自词向量的稀疏编码，</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="classification">
+<h3>5.3.6. 分类（Classification）模型知识点回顾<a class="headerlink" href="#classification" title="永久链接至标题">¶</a></h3>
+<p>1. 样本（数据集）：<span class="math notranslate nohighlight">\(\{{x_i, y_i}\}^N，其中x_i为输入（词、句、文档等）y_i就是标签，
+预测的分类目标（正负向、文档主题等）\)</span></p>
+<ol class="arabic" start="2">
+<li><p class="first">例如简单的二分类</p>
+<blockquote>
+<div><ul class="simple">
+<li>可视化 <a class="reference external" href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html">地址</a></li>
+</ul>
+<img alt="../../_images/cls_ex.png" src="../../_images/cls_ex.png" />
+</div></blockquote>
+</li>
+<li><p class="first">一般的机器学习方法或统计方法：假定 <span class="math notranslate nohighlight">\({x_i}\)</span> 为固定大小，我们使用sofmax或逻辑回归算法训练权重参数W，以此来寻找一个决策边界。
++ 例如softmax算法，对于固定的 <span class="math notranslate nohighlight">\({x}\)</span> 预测y：</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[p(y\mid x)=\frac{exp(W_{j.}x)}{\sum_{c=1}^{C}exp(W_{c.}x)}\]</div>
+<img alt="../../_images/softmax_detail.png" src="../../_images/softmax_detail.png" />
+<ul class="simple">
+<li>我们的目标就是最大化正确类别y的概率，不过我们一般为了降低运算的复杂度，会转为下式进行计算：</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[-log P(y|x) = -log(\frac{exp(f_y)}{\sum_{c=1}^{C}exp(f_c)})\]</div>
+</div></blockquote>
+</li>
+<li><p class="first">交叉熵损失</p>
+</li>
+</ol>
 </div>
 <div class="section" id="id32">
 <h3>5.3.7. 建议<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
