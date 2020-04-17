@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="6. 知识图谱" href="kg.html" />
+    <link rel="next" title="6. 知识图谱(Knowledge Graph)" href="kg.html" />
     <link rel="prev" title="3. 深度学习" href="dl.html" /> 
 </head>
 
@@ -192,12 +192,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#id29">5.3.4. 怎样评估词向量？</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id30">5.3.5. 语义及其歧义性</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#classification">5.3.6. 分类（Classification）模型知识点回顾</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">5.3.7. 建议</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id32">5.3.7. 小结</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id33">5.4. 神经网络</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg.html">6. 知识图谱(Knowledge Graph)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="框架/pytorch.html">7. Pytorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
@@ -1237,8 +1238,8 @@
 </div>
 <div class="section" id="classification">
 <h3>5.3.6. 分类（Classification）模型知识点回顾<a class="headerlink" href="#classification" title="永久链接至标题">¶</a></h3>
-<p>1. 样本（数据集）：<span class="math notranslate nohighlight">\(\{{x_i, y_i}\}^N，其中x_i为输入（词、句、文档等）y_i就是标签，
-预测的分类目标（正负向、文档主题等）\)</span></p>
+<p>1. 样本（数据集）：<span class="math notranslate nohighlight">\(\{x^{(i)},y^{(i)}\}_{1}^{N}\)</span>，其中x_i为输入（词、句、文档等）y_i就是标签，
+预测的分类目标（正负向、文档主题等）`</p>
 <ol class="arabic" start="2">
 <li><p class="first">例如简单的二分类</p>
 <blockquote>
@@ -1261,13 +1262,76 @@
 \[-log P(y|x) = -log(\frac{exp(f_y)}{\sum_{c=1}^{C}exp(f_c)})\]</div>
 </div></blockquote>
 </li>
-<li><p class="first">交叉熵损失</p>
+<li><dl class="first docutils">
+<dt>交叉熵损失</dt>
+<dd><ol class="first last arabic">
+<li><p class="first">交叉熵的概念源自信息论中的知识，对于样本实际的概率分布P与模型产生的结果概率分布q，其交叉熵可表示为下式：</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[H(p,q) = -\sum_{c=1}^{C}p(c)logq(c)\]</div>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>整个数据集 <span class="math notranslate nohighlight">\(\{x^{(i)},y^{(i)}\}_{1}^{N}\)</span> 的交叉熵可表示为：</dt>
+<dd><div class="first math notranslate nohighlight">
+\[J(\theta) = \frac{1}{N}\sum_{i=1}^{N} - log\bigg(\frac{e^{f_{y_i}}}{\sum_{c=1}^{C}e^{f_c}}\bigg)\]</div>
+<p class="last"><span class="math notranslate nohighlight">\(f_y = f_y(x)=W_y·x=\sum_{j=1}{d}W_{y_j}·x_j\)</span></p>
+</dd>
+</dl>
 </li>
 </ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">优化</p>
+</li>
+</ol>
+<ul class="simple">
+<li>传统机器学习方法优化</li>
+</ul>
+<p>对于 <span class="math notranslate nohighlight">\(\theta\)</span> 的数量一般和权重W的维数一致，线性决策模型至少需要一个d维的词向量输入和生成一个
+C个类别的分布。因此更新模型的权值，我们需要 C⋅d个参数</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\theta =  \begin{bmatrix}{W_{.1}} \\ \vdots \\ {W_{.d}}  \end{bmatrix} = W(::)\in\mathbb{R}^{Cd}\end{split}\]</div>
+<dl class="docutils">
+<dt>梯度优化：更新决策边界的参数</dt>
+<dd><div class="first last math notranslate nohighlight">
+\[\begin{split}\nabla_{\theta}J(\theta) = {\begin{bmatrix} \nabla_{W_{.1}} \\ \vdots \\ \nabla_{W_{.d}}  \end{bmatrix}}\in\mathbb{R}^{Cd}\end{split}\]</div>
+</dd>
+</dl>
+<p>6. 使用神经网络+词向量分类
+一般的分类算法其通常解决的是一些线性问题，表达能力有限，对一些非线性的决策边界无法更好的建模，借用神经网络模型可进一步提升模型的能力。</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>基于神经网络分类(模型的预测能力更强)</dt>
+<dd><img alt="../../_images/neural_cls.jpg" class="first last" src="../../_images/neural_cls.jpg" />
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>词向量与神经网络模型结合</dt>
+<dd><ul class="first simple">
+<li>同时学习权重W和词向量x，参数量为：cd+vd，非常大的参数量，C表示分类大数量，d表示每个词向量维数，V表示词汇表的大小。</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray} \nabla_{\theta}J(\theta) = \begin{bmatrix}\nabla_{W_{.1}} \\ \vdots \\ \nabla_{W_{.d}} \\ \nabla_{aardvark} \\ \vdots \\ \nabla_{zebra} \end{bmatrix} \nonumber \end{eqnarray}\\\end{split}\]</div>
+<ul class="last simple">
+<li>参数量大意味着表达（拟合数据）能力很强（这里可以联系数学中的多项式，参数多了意味着多项式越长，图像也就越复杂），但过犹不及，容易造成过拟合，模型泛化能力不足，怎么办呢？常见做法就是加入 <strong>正则项</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="id32">
-<h3>5.3.7. 建议<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+<h3>5.3.7. 小结<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+<p>本节首先讲了词向量的训练基本过程和常用方法：解决维数高、复杂度高的问题；其次，讲了Golve的主要思想；最后通过分类引出神经网络的优势：非线性能力，能够更好地获取语义信息。后续小节将开始神经网络的篇章。</p>
 </div>
+</div>
+<div class="section" id="id33">
+<h2>5.4. 神经网络<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h2>
 </div>
 </div>
 
@@ -1279,7 +1343,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="kg.html" class="btn btn-neutral float-right" title="6. 知识图谱" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="kg.html" class="btn btn-neutral float-right" title="6. 知识图谱(Knowledge Graph)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="dl.html" class="btn btn-neutral float-left" title="3. 深度学习" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
