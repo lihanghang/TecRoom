@@ -111,6 +111,14 @@
 
     doc/开源工具/open_source
 
+
+.. toctree::
+    :caption: 数学
+    :numbered:
+
+    doc/数学/math
+
+
 .. toctree::
     :caption: 团队与项目管理
     :numbered:
