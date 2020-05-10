@@ -1,11 +1,12 @@
 # python
-
+> 开发口头禅：“Don’t Repeat Yourself”
 ## 书籍推荐
 1. 《流畅的Python》
     - 能够解决大部分疑难杂症
 2. 《[python3 cookbook](https://python3-cookbook.readthedocs.io/zh_CN/latest/index.html)》 
 3. 《[python 进阶](https://docs.pythontab.com/interpy/#python)》  深入python语法等  
 4. 《[编写高质量代码改善 Python 程序的 91 个建议](https://l1nwatch.gitbook.io/writing_solid_python_code_gitbook/di-1-zhang-yin-lun)》 
+5. 《python Cookbook》 
 ## 第一部分 编码规范
 > 良好的习惯我们就从最开始刻意练习，让我们的代码也要同翻译的三字标准一样：**信、雅、达**。这里记录我认为比较好的习惯吧，供大家参考使用。
 1. 缩进规范
@@ -17,7 +18,6 @@
     + 命名要尽量达意！长一点倒不怕，就怕他人看到名字不能很快了解其含义。比如表示订单数量：num、order_num 你说哪个好！
 
 4. 对于嵌套处理尽量不要超过4层。比如for与if的嵌套，按照我的经验这类代码肯定是有优化空间，可以从Python自身的一些好用特性和业务逻辑本身两个角度与优化。
-5. 
 ## 第二部分 基础知识 
 > 基础不牢，地动山摇。
 
@@ -26,6 +26,9 @@
 
 ## 第四部分 高阶知识
 > 会当凌绝顶，一览众山小。
+### 元编程
+> 还记得咱们的开发口头禅吗？对就是“don’t repeat yourself”，Python自身也为我们开发人员提供了一种实现方式，即元编程，目的就是减少重复性代码，主要技术是使用装饰器、类装饰器和元类。
+1. 
 
 ## 第五部分 奇淫技巧知识
 > 高手在民间，不管黑猫白猫抓住老鼠就是好猫。

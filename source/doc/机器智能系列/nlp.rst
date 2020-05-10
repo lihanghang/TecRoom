@@ -758,7 +758,85 @@ Neural NetWork基础
         - 标注工具：`brat <http://brat.nlplab.org/examples.html>`_
 
 3. NER的难点何在？
-    - 
+    - 边界问题。NER任务在文本的处理中是很常用的一个工具，但其本身会对一些文本中的实体边界识别有偏差。这一点在我的实际业务中也遇到过：“股东**李杨楠**近日……”，对人名会识别为：“杨楠”，而实际是：“李杨楠”，我的处理策略之一就是加一个人名词典。
+    - 实体似是而非问题。“Future School"是一个学校（ORG）名称，还是其本意未来的学校。
+    - 不确定是人还是机构或地点。
+    - 实体识别依赖上下文。我遇到的实际业务问题：公司xxx先生，由于公司干扰会将PER：xxx识别为ORG。
+
+**个人结合实际对于上述难点问题有两个解决思路：一是模型本身的调整（语料、结合实体上下文进行分类、引入知识等）；二是维护一个词典，将识别有误的实体添加到字典，这个方法感觉比较常用。**
+
+4. 尝试：词基于窗口（上下文）分类
+    - 思路：classify a word in its context window of neighboring words.
+    - 例如：在实体的上下文中判断是人名、地名、机构名或者什么也不是。
+    - 实现策略
+        + 之一：每个词的上下文存在差别，所以可对上下文窗口的词向量进行平均化，然后再进行单词分类。
+            + 缺点：丢失位置信息。（为什么呢？我想是word embedding被运算的造成的）
+        + 之二：Softmax
+            -  训练一个softmax分类器对实体以及其窗口词（上下文）整体进行分类
+
+            .. image:: images/nlp/ner_base_windows.png
+
+            - 数学含义
+                softmax分类器：
+
+                .. math::
+                    \widehat{y}_y = p(y|x) = {exp(W_y \cdot x) \over \sum ^C_{c=1}exp(W_c \cdot x)}
+                
+                交叉熵损失函数:
+
+                .. math::
+                    J(\theta) = {1\over N} \sum^N_{i=1} -log({e^{f_{yi}}\over \sum^C_{c=1}e^{f_c}})
+        
+        + 进阶之三：多层感知机
+            - 参考论文 `(2011)Natural Language Processing (Almost) from Scratch <http://www.jmlr.org/papers/volume12/collobert11a/collobert11a.pdf>`_
+            - 思路：在softmax分类器加入中间层（引入非线性）提升分类器的分类能力（复杂性）。根据是否是需要分类的实体进行权重的分配。
+            - 神经网络前向计算
+                
+                .. image:: images/nlp/ner_softmax_nerul.png
+            - 中间层可与输入的词向量进行非线性的变换（赋予不同的权重）
+            - Objective Function 我们可使用Hinge损失函数（Max-margin loss）。目的是使目标窗口得分更高，其他窗口得分降低
+                + :math:`s = score("museums  \ in \ Paris \ are \ amazing”)`
+                + :math:`s_c = score("Not \ all \ museums  \ in \ Paris)`
+                + :math:`Minimize(J) =\max(0,1-s+s_{c})`
+                + 函数为不连续可微，因此可计算梯度。
+        
+        .. note::
+            Hinge损失函数(又称，max-margin objective)对于两类分类问题，假设y 和f(x, θ)的取值为{−1, +1}。Hinge
+            损失函数（Hinge Loss Function）为:
+
+            .. math::
+
+                    L(y, f(x, \theta))=\max(0, 1-yf(x, \theta))
 
 
+小练习: 理解并使用Python实现Softmax分类算法。
 
+
+矩阵计算与BP（反向传播）算法
+===============================
+
+矩阵的梯度计算
+----------------
+- 都是基础的高数计算，可直接查看 `幻灯 <http://web.stanford.edu/class/cs224n/slides/cs224n-2020-lecture04-neuralnets.pdf>`_
+    + 求导链式法则
+    + 复合函数求导
+    + Jacobian matrix（Jacobian: Vector in, Vector out）
+    + 推荐补充一份关于微分及BP的 `文稿 <http://cs231n.stanford.edu/handouts/derivatives.pdf>`_
+
+BP算法（重点）
+------------------
+甜点 `Yes you should understand backprop <https://medium.com/@karpathy/yes-you-should-understand-backprop-e2f06eab496b>`_
+
+.. note::
+
+    - 进行微分并使用链式法则。共享参数以减少计算量。
+
+1. 计算图和BP
+
+2. BP算法核心知识
+
+3. 计算效率
+
+
+总结
+-----
