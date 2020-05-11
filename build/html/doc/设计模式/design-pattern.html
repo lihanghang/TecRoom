@@ -123,14 +123,36 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">1. 设计模式</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">1.1. 书籍推荐</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">1.2. 初识设计模式</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">1.2.1. 什么是设计模式？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">1.2. 知识框架图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.3. 初识设计模式</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.3.1. 什么是设计模式？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.3.2. 创建型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">1.3.2.1. 工厂模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">1.3.2.2. 建造者模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.3.2.3. 原型模式</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">1.3. 创建型（5种）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">1.4. 结构型（7种）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">1.5. 行为型（11种）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">1.6. 小实例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">1.3.3. 结构型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">1.3.3.1. 适配器模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">1.3.3.2. 修饰器模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">1.3.3.3. 外观模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">1.3.3.4. 享元模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mvc">1.3.3.5. MVC模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">1.3.3.6. 代理模式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id16">1.3.4. 行为型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">1.3.4.1. 责任链模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">1.3.4.2. 命令模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">1.3.4.3. 解释器模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">1.3.4.4. 观察者模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">1.3.4.5. 状态模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">1.3.4.6. 策略模式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23">1.3.4.7. 模板模式</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -162,13 +184,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../开源工具/open_source.html">1. 优秀开源工具</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数学/math.html">1. 漫谈数学</a></li>
 </ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
@@ -228,7 +254,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/doc/设计模式/design-pattern.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/doc/设计模式/design-pattern.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -241,50 +267,112 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>update: 2020-03-05</p>
-<div class="section" id="id1">
+  <div class="section" id="id1">
 <h1>1. 设计模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<blockquote>
-<div>设计模式比较抽象，都是思想层面的，仅仅是归纳总结的软件设计思路，不是万灵药，切不可生搬硬套。设计模式的目的就是为了是软件系统各功能更灵活、架构清晰、协同性好、可维护性、可扩展性等只要能达到这些目的你的设计模式（抽象类）就是值得点赞的！</div></blockquote>
-<blockquote>
-<div>推荐两本书，可以看看。笔记先记录什么是设计模式（理解角度不唯一）。然后将设计模型划分了三种类型32种：创建型、建构型、行为型。最后利用一个实例来回顾总结。</div></blockquote>
+<p>update: 2020-05-11</p>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">设计模式比较抽象，都是思想层面的，仅仅是归纳总结的软件设计思路，不是万灵药，切不可生搬硬套。设计模式的目的就是为了是软件系统各功能更灵活、架构清晰、协同性好、可维护性、可扩展性等只要能达到这些目的你的设计模式（抽象类）就是值得点赞的！</p>
+</div>
 <div class="section" id="id2">
 <h2>1.1. 书籍推荐<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<ol class="simple">
+<ol class="arabic simple">
 <li>《大话设计模式》</li>
 <li>《设计模式-可复用面向对象软件的基础》（经典）</li>
+<li>《精通Python设计模式》</li>
 </ol>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">推荐两本书，可以看看。第二本书比较全面讲了23种模式，可作为日常完善所需，我重点看了第三本书讲的基于Python常见设计模式，总体划分了三种类型：创建型、结构型、行为型。</p>
+</div>
 </div>
 <div class="section" id="id3">
-<h2>1.2. 初识设计模式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2>1.2. 知识框架图<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<img alt="../../_images/python_design_pattern.png" src="../../_images/python_design_pattern.png" />
+</div>
 <div class="section" id="id4">
-<h3>1.2.1. 什么是设计模式？<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
-<ol class="simple">
-<li>定义<ul>
+<h2>1.3. 初识设计模式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h3>1.3.1. 什么是设计模式？<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li><dl class="first docutils">
+<dt>定义</dt>
+<dd><ul class="first last">
 <li>对用来在特定场景下解决一般设计的问题的类和相互通信的对象的描述。</li>
 </ul>
+</dd>
+</dl>
 </li>
-<li>模式四要素<ol>
+<li><dl class="first docutils">
+<dt>模式四要素</dt>
+<dd><ol class="first last arabic">
 <li>模式名称(P)。</li>
 <li>问题(I)。</li>
 <li>解决方案（S)。</li>
 <li>效果（C)。</li>
 </ol>
+</dd>
+</dl>
 </li>
 </ol>
 </div>
-</div>
-<div class="section" id="id5">
-<h2>1.3. 创建型（5种）<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-</div>
 <div class="section" id="id6">
-<h2>1.4. 结构型（7种）<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
-</div>
+<h3>1.3.2. 创建型<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id7">
-<h2>1.5. 行为型（11种）<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h4>1.3.2.1. 工厂模式<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
 </div>
 <div class="section" id="id8">
-<h2>1.6. 小实例<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<h4>1.3.2.2. 建造者模式<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id9">
+<h4>1.3.2.3. 原型模式<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>1.3.3. 结构型<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id11">
+<h4>1.3.3.1. 适配器模式<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id12">
+<h4>1.3.3.2. 修饰器模式<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id13">
+<h4>1.3.3.3. 外观模式<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id14">
+<h4>1.3.3.4. 享元模式<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="mvc">
+<h4>1.3.3.5. MVC模式<a class="headerlink" href="#mvc" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id15">
+<h4>1.3.3.6. 代理模式<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>1.3.4. 行为型<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id17">
+<h4>1.3.4.1. 责任链模式<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id18">
+<h4>1.3.4.2. 命令模式<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id19">
+<h4>1.3.4.3. 解释器模式<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id20">
+<h4>1.3.4.4. 观察者模式<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id21">
+<h4>1.3.4.5. 状态模式<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id22">
+<h4>1.3.4.6. 策略模式<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id23">
+<h4>1.3.4.7. 模板模式<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h4>
+</div>
+</div>
 </div>
 </div>
 
