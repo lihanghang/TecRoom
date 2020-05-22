@@ -109,6 +109,7 @@
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口框架.html">2. 常见接口框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">项目开发杂谈</span></p>
 <ul>
@@ -129,6 +130,7 @@
 <p class="caption"><span class="caption-text">数据库系列</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html">1. MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html#redis">2. Redis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul>
@@ -150,7 +152,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
@@ -158,13 +160,21 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../开源工具/open_source.html">1. 优秀开源工具</a></li>
 </ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数学/math.html">1. 漫谈数学</a></li>
+</ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/team_project.html">1. 团队与项目管理</a></li>
 </ul>
 <p class="caption"><span class="caption-text">道与术</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. coding的道与术</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. coding的道与术</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.1. 工具/调试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. 精益代码</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -231,9 +241,33 @@
             
   <div class="section" id="coding">
 <h1>1. coding的道与术<a class="headerlink" href="#coding" title="永久链接至标题">¶</a></h1>
-<ul class="simple">
-<li></li>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>将工作中涉及编码的的所见、所听、所感，统统记录在这里。</li>
+<li>创建时间：2020-05-23</li>
+<li>更新时间：2020-05-23</li>
 </ul>
+</div>
+<div class="section" id="id1">
+<h2>1.1. 工具/调试<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>一般来说，使用Pycharm进行开发还是比较方便的，有较为完善的调试工具和交互界面，比较高效。善于使用工具可以大大提高工程开发的效率，要有意识去尝试方便的开发工具。也可以使用VSCode工具（插件化生态做的可以，界面简洁功能同样强大）</li>
+<li>对于一个专业的以开发为营生的人来说，开发前准备好两个基本工具是很有必要的。一是个人喜欢且具备高效率的IDE、二是保证随时能够Google！</li>
+<li>公司的日常开发，必然是协作。这时必须熟练使用GIT命令及创建分支与commit code的规范，开发环境最好使用虚拟环境，推荐使用的工具有：pipenv:虚拟环境管理工具、pyenv:Python版本管理工具。以上都是作为一个有开发经验人所应具备的。</li>
+<li>有一个能力必须在日常实践中有意识的训练：debuge、debuge、debuge!!!</li>
+<li>Docker作为一个工具，在部署环节可大大减少工作量，以配置文件代替大量的复杂环节，对后续的可扩展起到一定帮助作用。</li>
+<li>pycharm 官方学习文档包含工程方面的讲解比较全面，想快速学习相关调试等可以进入官方文档学习。</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>1.2. 精益代码<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>看到公司对于代码的要求：简洁优美、重要的是代码的可扩展能力和易用性，需要在开发中去思考代码如何能够最大化扩展性能。主要有几个特点：封装、高内聚，低耦合、兼容性。</li>
+<li>对于新进公司的人才，当接触到公司庞大的代码时，可以在具体的任务背景下去运行并调试代码，需要带着问题去看代码，如：参数是什么格式或类型、传参过程是怎样的、最终返回了什么等等。还有一个技巧就是参考并手敲（经典的代码2遍起吧）并能运行前人写的代码，注意人家的命名规范和解决问题的思路等等。这个过程可能会有些痛苦（目前（201907）的我）但是成为一个优秀程序员的必经之路，没有什么捷径可走！</li>
+<li>如何写出”有味道”的代码，主要从两个方面入手：一是标准的代码风格；二是优秀的具有逻辑的实现。</li>
+</ol>
+</div>
 </div>
 
 
