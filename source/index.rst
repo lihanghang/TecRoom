@@ -34,6 +34,7 @@
     :numbered:
     
     doc/接口开发/接口开发
+    doc/接口开发/接口框架
 
 .. toctree::
     :maxdepth: 2

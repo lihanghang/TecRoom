@@ -30,8 +30,14 @@
 > 还记得咱们的开发口头禅吗？对就是“don’t repeat yourself”，Python自身也为我们开发人员提供了一种实现方式，即元编程，目的就是减少重复性代码，主要技术是使用装饰器、类装饰器和元类。
 1. 
 
-## 第五部分 奇淫技巧知识
-> 高手在民间，不管黑猫白猫抓住老鼠就是好猫。
+### 多线程
+1. 先要知道GIL（Global Interpreter Lock），Python的一把全局解释锁
+
+### 协程
+> 协程（Coroutine），又称微线程
+1. 
+## 第五部分 性能优化
+1. [性能优化参考之一](https://www.ibm.com/developerworks/cn/linux/l-cn-python-optim/)
 
 ## 第六部分 思考和总结
 > 不忘初心，方得始终，回望过去，是为了更好走向远方。
