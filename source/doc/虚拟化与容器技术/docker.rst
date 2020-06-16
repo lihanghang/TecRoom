@@ -869,6 +869,16 @@ docker-compose（服务编排技术）
             - 容器数量等
         + 运行docker-compose up 启动应用。
 
+日常命令
+----------
+1. 修改docker-compose.yml文件后重启容器
+
+    ::
+
+            $ docker-compose down 
+            # -d参数为后台运行
+            $ docker-compose up -d  
+
 
 安装（Mac系统）
 ----------------

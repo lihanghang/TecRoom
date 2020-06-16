@@ -110,6 +110,7 @@
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口框架.html">2. 常见接口框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">项目开发杂谈</span></p>
 <ul>
@@ -117,7 +118,8 @@
 </ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">设计模式</span></p>
 <ul>
@@ -130,6 +132,7 @@
 <p class="caption"><span class="caption-text">数据库系列</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html">1. MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html#redis">2. Redis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul class="current">
@@ -186,16 +189,17 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#docker-compose">1.10. docker-compose（服务编排技术）</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id27">1.10.1. 服务编排概念</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mac">1.10.2. 安装（Mac系统）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nginx-flask-web">1.10.3. 实例-发布简单Nginx+Flask-web应用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">1.10.2. 日常命令</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mac">1.10.3. 安装（Mac系统）</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nginx-flask-web">1.10.4. 实例-发布简单Nginx+Flask-web应用</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id28">1.11. 搭建私有仓库</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id29">1.11.1. 创建私有仓库</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">1.11.2. 传并拉镜像</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id29">1.11. 搭建私有仓库</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id30">1.11.1. 创建私有仓库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id31">1.11.2. 传并拉镜像</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id31">1.12. 结束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id32">1.12. 结束</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="k8s.html">2. Kubernetes（K8S）</a></li>
@@ -215,13 +219,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../开源工具/open_source.html">1. 优秀开源工具</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数学/math.html">1. 漫谈数学</a></li>
 </ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
@@ -1586,8 +1594,22 @@ $ vim flask_dockefile
 </ul>
 </div></blockquote>
 </div>
+<div class="section" id="id28">
+<h3>1.10.2. 日常命令<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">修改docker-compose.yml文件后重启容器</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose down
+# -d参数为后台运行
+$ docker-compose up -d
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
 <div class="section" id="mac">
-<h3>1.10.2. 安装（Mac系统）<a class="headerlink" href="#mac" title="永久链接至标题">¶</a></h3>
+<h3>1.10.3. 安装（Mac系统）<a class="headerlink" href="#mac" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Mac系统安装Docker后会包含这个工具，直接查看下版本</li>
@@ -1599,7 +1621,7 @@ docker-compose version 1.8.1, build 878cff1
 </div></blockquote>
 </div>
 <div class="section" id="nginx-flask-web">
-<h3>1.10.3. 实例-发布简单Nginx+Flask-web应用<a class="headerlink" href="#nginx-flask-web" title="永久链接至标题">¶</a></h3>
+<h3>1.10.4. 实例-发布简单Nginx+Flask-web应用<a class="headerlink" href="#nginx-flask-web" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">注解</p>
@@ -1665,14 +1687,14 @@ $ docker-compose up # 后面-d参数将会后台运行，这里就不加了
 </div></blockquote>
 </div>
 </div>
-<div class="section" id="id28">
-<h2>1.11. 搭建私有仓库<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id29">
+<h2>1.11. 搭建私有仓库<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">搭建自己的仓库。上传本地镜像并从私有拉取镜像</p>
 </div>
-<div class="section" id="id29">
-<h3>1.11.1. 创建私有仓库<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id30">
+<h3>1.11.1. 创建私有仓库<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
 <ul>
 <li><dl class="first docutils">
 <dt>拉取私有仓库镜像</dt>
@@ -1709,8 +1731,8 @@ $ docker-compose up # 后面-d参数将会后台运行，这里就不加了
 </li>
 </ul>
 </div>
-<div class="section" id="id30">
-<h3>1.11.2. 传并拉镜像<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id31">
+<h3>1.11.2. 传并拉镜像<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li>传CentOs</li>
 </ul>
@@ -1782,8 +1804,8 @@ Status: Image is up to date for 0.0.0.0:9000/centos:7.1
 </div>
 </div>
 </div>
-<div class="section" id="id31">
-<h2>1.12. 结束<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id32">
+<h2>1.12. 结束<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h2>
 <p>至此，关于docker的基础知识及命令已完成，后续会继续网络、容器集群管理、终端运维管理相关的学习。</p>
 </div>
 </div>
