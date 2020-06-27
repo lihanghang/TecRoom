@@ -47,7 +47,7 @@
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="1. 计算机网络系列" href="../计算机网络技术/computer-network.html" />
-    <link rel="prev" title="1. 数据结构与算法系列" href="../数据结构与算法系列/dataStruct_algorithm.html" /> 
+    <link rel="prev" title="1. 数据结构(Data Structure)" href="../数据结构与算法系列/dataStruct_algorithm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -118,7 +118,8 @@
 </ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">设计模式</span></p>
 <ul class="current">
@@ -127,12 +128,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#id4">1.2. 知识框架图</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">1.3. 初识设计模式</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id6">1.3.1. 什么是设计模式？</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oop">1.3.2. OOP（面向对象）七大原则</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#id7">1.4. 创建型（5）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id8">1.4.1. 抽象工厂</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">1.4.2. 生成器</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id10">1.4.3. 工厂方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">1.4.1. 工厂方法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">1.4.2. 抽象工厂</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">1.4.3. 生成器</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id11">1.4.4. 原型</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id12">1.4.5. 单件</a></li>
 </ul>
@@ -293,7 +295,7 @@
 <li>《设计模式-可复用**面向对象**软件的基础》（经典）</li>
 <li>设计模式 <a class="reference external" href="https://www.bilibili.com/video/BV1kW411P7KS">视频课程</a></li>
 </ol>
-<p>** Gong of Four (GOF) **</p>
+<p>** Gong of Four 23(GOF 23) 四个人总结了23种设计原则模式 **</p>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
 <p class="last">推荐两本书，可以看看。第二本书比较全面讲了23种模式，可作为日常完善所需，总体划分了三大类型：创建型、结构型、行为型。</p>
@@ -329,17 +331,32 @@
 </li>
 </ol>
 </div>
+<div class="section" id="oop">
+<h3>1.3.2. OOP（面向对象）七大原则<a class="headerlink" href="#oop" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>开闭原则：对扩展开放，对修改关闭。</li>
+<li>里氏替换原则：继承必须确保超类所拥有的性质在子类中仍然成立。</li>
+<li>依赖倒置原则：要面向接口编程，不要面向实现编程。</li>
+<li>单一职责原则：控制类的粒度大小，将对象解耦，提高其内聚性。</li>
+<li>接口隔离原则：要为各个类建立它们需要的专用接口。</li>
+<li>迪米特法则：只与你的直接朋友交谈，不跟“陌生人”说话。</li>
+<li>合成复用原则：尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现。</li>
+</ol>
+</div>
 </div>
 <div class="section" id="id7">
 <h2>1.4. 创建型（5）<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id8">
-<h3>1.4.1. 抽象工厂<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3>1.4.1. 工厂方法<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id9">
-<h3>1.4.2. 生成器<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<h3>1.4.2. 抽象工厂<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>超级工厂</li>
+</ol>
 </div>
 <div class="section" id="id10">
-<h3>1.4.3. 工厂方法<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<h3>1.4.3. 生成器<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id11">
 <h3>1.4.4. 原型<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
@@ -421,7 +438,7 @@
         <a href="../计算机网络技术/computer-network.html" class="btn btn-neutral float-right" title="1. 计算机网络系列" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../数据结构与算法系列/dataStruct_algorithm.html" class="btn btn-neutral float-left" title="1. 数据结构与算法系列" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../数据结构与算法系列/dataStruct_algorithm.html" class="btn btn-neutral float-left" title="1. 数据结构(Data Structure)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
