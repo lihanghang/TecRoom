@@ -110,6 +110,7 @@
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口框架.html">2. 常见接口框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">项目开发杂谈</span></p>
 <ul>
@@ -117,7 +118,8 @@
 </ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">设计模式</span></p>
 <ul>
@@ -130,6 +132,7 @@
 <p class="caption"><span class="caption-text">数据库系列</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html">1. MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html#redis">2. Redis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul>
@@ -153,20 +156,25 @@
 <li class="toctree-l1"><a class="reference internal" href="#id3">2. 机器学习应用</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id4">2.1. 常见应用领域</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id5">2.2. 常见算法回顾</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">2.3. 常用建模工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id7">2.4. 实际问题建模思路流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">2.3. 模型评价指标</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">2.4. 常用建模工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">2.5. 实际问题建模思路流程</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="dl.html">3. 深度学习</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlp.html">4. 自然语言理解</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg.html">6. 知识图谱(Knowledge Graph)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="框架/pytorch.html">7. Pytorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../开源工具/open_source.html">1. 优秀开源工具</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数学/math.html">1. 漫谈数学</a></li>
 </ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
@@ -245,7 +253,7 @@
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>创建日期：2020-03-11</li>
-<li>更新日期：2020-03-11</li>
+<li>更新日期：2020-09-12</li>
 <li>完成日期：进行中……</li>
 </ul>
 </div>
@@ -266,13 +274,31 @@
 <h2>2.2. 常见算法回顾<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 </div>
 <div class="section" id="id6">
-<h2>2.3. 常用建模工具<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2>2.3. 模型评价指标<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">准确率</p>
+</li>
+<li><p class="first">精确率</p>
+</li>
+<li><p class="first">召回率</p>
+</li>
+<li><dl class="first docutils">
+<dt>精确率+召回率=F1 score</dt>
+<dd><div class="first last math notranslate nohighlight">
+\[F1-measure= \frac{2 * precesion * recall} {(precesion + recall)}\]</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h2>2.4. 常用建模工具<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <ol class="arabic simple">
 <li>scikit-learn</li>
 </ol>
 </div>
-<div class="section" id="id7">
-<h2>2.4. 实际问题建模思路流程<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id8">
+<h2>2.5. 实际问题建模思路流程<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <ol class="arabic simple">
 <li>数据处理</li>
 <li>特征工程</li>
