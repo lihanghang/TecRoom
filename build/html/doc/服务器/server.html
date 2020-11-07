@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. 服务器系列 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  <title>1. Linux 基础知识 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
   
 
   
@@ -110,6 +110,7 @@
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口框架.html">2. 常见接口框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">项目开发杂谈</span></p>
 <ul>
@@ -117,7 +118,8 @@
 </ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构与算法系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">设计模式</span></p>
 <ul>
@@ -130,6 +132,7 @@
 <p class="caption"><span class="caption-text">数据库系列</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html">1. MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html#redis">2. Redis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul>
@@ -138,7 +141,8 @@
 </ul>
 <p class="caption"><span class="caption-text">服务器</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 服务器系列</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Linux 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">2. Linux 常用命令</a></li>
 </ul>
 <p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
 <ul>
@@ -151,13 +155,17 @@
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../开源工具/open_source.html">1. 优秀开源工具</a></li>
+</ul>
+<p class="caption"><span class="caption-text">数学</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../数学/math.html">1. 漫谈数学</a></li>
 </ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
@@ -211,7 +219,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>1. 服务器系列</li>
+      <li>1. Linux 基础知识</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -230,11 +238,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>1. 服务器系列<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<ul class="simple">
-<li></li>
+  <div class="admonition note">
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>创建时间：2020-11-07</li>
+<li>更新时间：2020-11-07</li>
+<li>服务器环境下的基础知识、结合工作场景的常用命令</li>
 </ul>
+</div>
+<div class="section" id="linux">
+<h1>1. Linux 基础知识<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h1>
+</div>
+<div class="section" id="id1">
+<h1>2. Linux 常用命令<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<ul class="simple">
+<li>使用命令本地上传代码/文件到服务器？</li>
+</ul>
+<p>1.
+- 将服务器的文件传输到本地的命令？
+1.</p>
+<ul class="simple">
+<li>在服务器上测试模块代码的步骤？</li>
+</ul>
+<p>1.
+2.
+3.
+4.</p>
 </div>
 
 
