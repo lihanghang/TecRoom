@@ -10,23 +10,17 @@
 
 .. toctree::
     :maxdepth: 2
-    :caption: 关于Room
+    :glob:
 
-    doc/关于/about_me
-    doc/关于/about_blog
-      
+    doc/关于/index
+
 .. toctree::
     :caption: 编程语言及开发框架
     :maxdepth: 2
-    :numbered:
+    :glob:
 
-    doc/编程语言及开发框架/C++
-    doc/编程语言及开发框架/Java技术栈/Java
-    doc/编程语言及开发框架/Java技术栈/Spring
-    doc/编程语言及开发框架/Java技术栈/SpringBoot
-    doc/编程语言及开发框架/python技术栈/Python
-    doc/编程语言及开发框架/python技术栈/django
-    doc/编程语言及开发框架/Matlab
+    doc/编程语言及开发框架/index
+
 
 .. toctree::
     :maxdepth: 2
@@ -110,7 +104,7 @@
     :caption: 开源工具
     :numbered:
 
-    doc/开源工具/open_source
+    doc/开源工具/ETL
 
 
 .. toctree::

@@ -1,4 +1,4 @@
-# python
+# Python基础知识
 > 开发口头禅：“Don’t Repeat Yourself”
 
 > coding env: python3.6+
