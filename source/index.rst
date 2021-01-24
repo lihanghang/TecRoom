@@ -83,9 +83,8 @@
 
 .. toctree::
 	:caption: 分布式与微服务系列
-	:numbered:
 
-	doc/分布式与微服务系列/distributeMicroServer
+	doc/分布式与微服务系列/index
 
 .. toctree::
     :maxdepth: 2
