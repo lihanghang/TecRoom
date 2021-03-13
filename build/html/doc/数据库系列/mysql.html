@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. MySQL &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  <title>1. 关系数据库-MySQL &mdash; Hang&#39;s Tec Room 1.0 文档</title>
   
 
   
@@ -84,10 +84,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">关于Room</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../关于/about_me.html">关于我</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../关于/about_blog.html">我的技术屋</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../关于/about_me.html">1. 关于我</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../关于/about_blog.html">2. 关于技术屋</a></li>
 </ul>
 <p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
 <ul>
@@ -98,8 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">6. Python基础知识</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/常用框架/django.html">7. Django</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Drools.html">8. Drools应用场景</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Drools.html#id1">9. Drools基本概念</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Drools.html">8. Drools规则引擎</a></li>
 </ul>
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
@@ -125,8 +123,15 @@
 </ul>
 <p class="caption"><span class="caption-text">数据库系列</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. MySQL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#redis">2. Redis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 关系数据库-MySQL</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">1.1. 书籍推荐</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. 基础知识</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.2.1. 数据模型（基础核心）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#redis">2. 非关系数据库–Redis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul>
@@ -140,7 +145,8 @@
 </ul>
 <p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/distributeMicroServer.html">1. 分布式与微服务系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/中间件.html">1. 中间件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/distributeMicroServer.html">2. 分布式与微服务系列</a></li>
 </ul>
 <p class="caption"><span class="caption-text">机器智能系列</span></p>
 <ul>
@@ -215,7 +221,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">1. </span>MySQL</li>
+      <li><span class="section-number">1. </span>关系数据库-MySQL</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -235,13 +241,50 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mysql">
-<h1><span class="section-number">1. </span>MySQL<a class="headerlink" href="#mysql" title="永久链接至标题">¶</a></h1>
-<ul class="simple">
-<li></li>
+<h1><span class="section-number">1. </span>关系数据库-MySQL<a class="headerlink" href="#mysql" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>更新日期：2021-03-06
+对数据库的基本概念、深层次知识点做个笔记，如索引及其原理、分布式数据库等。</p>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">1.1. </span>书籍推荐<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>《数据库系统教程(第2版上)/下次》 电子工业出版社 王能斌老师</dt><dd><ul class="simple">
+<li><p>全书共分6篇23章，分上、下两册。2篇分在上册，共有12章；第3～6篇分在下册，共有11章。其中，上册于2008年全面修订。</p></li>
 </ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">1.2. </span>基础知识<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3><span class="section-number">1.2.1. </span>数据模型（基础核心）<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>不同的形式来描述现实世界数据的方法，如层次、结构等</p>
+</div>
+<ol class="arabic simple">
+<li><p>数据</p></li>
+<li><p>数据模型</p></li>
+<li><dl class="simple">
+<dt>数据模式</dt><dd><ul class="simple">
+<li><p>对表结构的描述：DDL，如schema。3级模式：物理（磁盘）、概念（逻辑）、视图（外，最终展示）模式</p></li>
+<li><p>视图，可经过映射计算查看，如：查看公司的证券代码（基本信息表）和公司对应的非财务信息点（非财务表）</p></li>
+<li><p>具备了数据独立性，应用和数据分离</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
 </div>
 <div class="section" id="redis">
-<h1><span class="section-number">2. </span>Redis<a class="headerlink" href="#redis" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">2. </span>非关系数据库–Redis<a class="headerlink" href="#redis" title="永久链接至标题">¶</a></h1>
 </div>
 
 
