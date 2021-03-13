@@ -7,7 +7,7 @@ Spring
 
 参考资料
 ===========
-1. 查看 `Spring <https://developer.ibm.com/zh/languages/java/articles/j-lo-spring-principle/>` 框架的设计理念与设计模式分析。
+1. 查看 `Spring <https://developer.ibm.com/zh/languages/java/articles/j-lo-spring-principle/>`_ 框架的设计理念与设计模式分析。
 
 Spring的设计思想
 ======================
@@ -17,6 +17,4 @@ Spring的设计思想
     - IOC容器就是Context中Bean的关系集合。
     - Core为维护Bean之间关系提供一系列的工具。
 2. 关键是对象之间依赖关系的管理，Spring提供了配置文件形式来管理，即依赖注入机制。
-    - 注入关系是在IOC（IOC，Inversion of Controll）容器中进行管理
-
-
+    - 注入关系是在IOC（IOC，Inversion of Controll）容器中进行管理。
