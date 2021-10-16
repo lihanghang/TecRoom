@@ -118,6 +118,7 @@
     :numbered:
 
     doc/团队与项目管理/team_project
+    doc/团队与项目管理/PM
 
 .. toctree::
     :caption: 道与术
