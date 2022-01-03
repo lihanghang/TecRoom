@@ -11,6 +11,7 @@
 
 2. 本笔记主要通过学习2020年春 `Stanford University CS520 <https://web.stanford.edu/class/cs520/>`_ 知识图谱课程来记录，很有爱的一个名字。知识图谱是人工智能在认知领域目前最佳的实践方向，一起来学习吧
 3. Stanford CS520 - 知识图谱 Knowledge Graph (Spring 2020) `B站资源 <https://www.bilibili.com/video/BV1ui4y1874M?t=126>`_ 
+4. `The Stanford AI Lab Blog  <http://ai.stanford.edu/blog/>`_
 
 
 什么是知识图谱？
@@ -18,6 +19,12 @@
 .. note::
     1. KG是一个存在多环节、结合多技术的 **工程**。
 
+1. store: Resource Description Framework(RDF)
+2. Query language for RDF: SPARQL
+3. Application: searching the Web-Google,Bing, Maps、Smart Assistants-Siri, Cortanta, Echo. 
+4. science application: search, discovery,data exploration. 
+
+   
 
 如何应用知识图谱?
 =================
