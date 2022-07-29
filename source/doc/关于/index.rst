@@ -4,3 +4,4 @@
 
     about_me
     about_blog
+    build_readthedocs
