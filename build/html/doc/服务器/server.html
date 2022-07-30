@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>1. Linux 基础知识 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
+  <title>1. 服务器系列 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
   
 
   
@@ -46,7 +46,7 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="../分布式与微服务系列/index.html" />
+    <link rel="next" title="分布式与微服务" href="../分布式与微服务系列/index.html" />
     <link rel="prev" title="2. Kubernetes（K8S）" href="../虚拟化与容器技术/k8s.html" /> 
 </head>
 
@@ -70,6 +70,10 @@
           
             
             
+              <div class="version">
+                2.1
+              </div>
+            
           
 
           
@@ -92,19 +96,11 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../关于/about_me.html">1. 关于我</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../关于/about_blog.html">2. 关于技术屋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../关于/index.html">公共资源</a></li>
 </ul>
 <p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/C++.html">1. C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Java基础技术体系.html">2. Java基础技术体系</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/Spring.html">3. Spring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/SpringBoot.html">4. SpringBoot基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">6. Python基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/常用框架/django.html">7. Django</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Drools.html">8. Drools规则引擎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/index.html">编程语言及开发框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
@@ -140,13 +136,15 @@
 </ul>
 <p class="caption"><span class="caption-text">服务器</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Linux 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#id1">2. Linux 常用命令</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. 服务器系列</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#linux">1.1. Linux 基础知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">1.2. Linux 常用命令</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/中间件.html">1. 中间件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/distributeMicroServer.html">2. 分布式与微服务系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/index.html">分布式与微服务</a></li>
 </ul>
 <p class="caption"><span class="caption-text">机器智能系列</span></p>
 <ul>
@@ -221,7 +219,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>1. Linux 基础知识</li>
+      <li>1. 服务器系列</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -240,7 +238,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="admonition note">
+  <div class="section" id="id1">
+<h1>1. 服务器系列<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="admonition note">
 <p class="first admonition-title">注解</p>
 <ul class="last simple">
 <li>创建时间：2020-11-07</li>
@@ -249,23 +249,16 @@
 </ul>
 </div>
 <div class="section" id="linux">
-<h1>1. Linux 基础知识<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h1>
+<h2>1.1. Linux 基础知识<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h2>
 </div>
-<div class="section" id="id1">
-<h1>2. Linux 常用命令<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2>1.2. Linux 常用命令<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li>使用命令本地上传代码/文件到服务器？</li>
-</ul>
-<p>1.
-- 将服务器的文件传输到本地的命令？
-1.</p>
-<ul class="simple">
+<li>将服务器的文件传输到本地的命令？</li>
 <li>在服务器上测试模块代码的步骤？</li>
 </ul>
-<p>1.
-2.
-3.
-4.</p>
+</div>
 </div>
 
 
@@ -276,7 +269,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../分布式与微服务系列/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../分布式与微服务系列/index.html" class="btn btn-neutral float-right" title="分布式与微服务" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../虚拟化与容器技术/k8s.html" class="btn btn-neutral float-left" title="2. Kubernetes（K8S）" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

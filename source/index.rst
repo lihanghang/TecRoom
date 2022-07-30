@@ -1,4 +1,4 @@
-欢迎来到：计算机技术屋。Stay Hungry, Stay Foolish
+欢迎来到：计算机技术屋。Stay Hungry, Stay Foolish.
 ===================================================
 .. note::   
 
@@ -6,7 +6,7 @@
     - 更新时间：2020年3月27日.
 
 目录:
-^^^^^
+*****
 
 .. toctree::
     :maxdepth: 2
@@ -16,7 +16,7 @@
 
 .. toctree::
     :caption: 编程语言及开发框架
-    :maxdepth: 2
+    :maxdepth: 3
     :glob:
 
     doc/编程语言及开发框架/index

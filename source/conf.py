@@ -24,7 +24,7 @@ copyright = '2020, LiHangHang'
 author = 'LiHangHang'
 
 # The short X.Y version
-version = ''
+version = '2.1'
 # The full version, including alpha/beta/rc tags
 release = '1.0'
 
