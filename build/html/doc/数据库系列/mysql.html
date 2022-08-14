@@ -100,14 +100,7 @@
 </ul>
 <p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/C++.html">1. C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Java基础技术体系.html">2. Java基础技术体系</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/Spring.html">3. Spring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/SpringBoot.html">4. SpringBoot基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">6. Python基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/常用框架/django.html">7. Django</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Drools.html">8. Drools规则引擎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/index.html">语言及框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
@@ -139,6 +132,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#id3">1.2.1. 数据模型（基础核心）</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">1.3. 设计规约</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.3.1. 建表</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.3.2. 索引</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sqlorm">1.3.3. SQL与ORM的映射</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#redis">2. 非关系数据库–Redis</a></li>
@@ -150,8 +149,7 @@
 </ul>
 <p class="caption"><span class="caption-text">服务器</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../服务器/server.html">1. Linux 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../服务器/server.html#id1">2. Linux 常用命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../服务器/server.html">1. 服务器系列</a></li>
 </ul>
 <p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
 <ul>
@@ -181,10 +179,11 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/team_project.html">1. 团队建设与项目管理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/PM.html">2. 项目管理（Project Manager， PM）的理论与实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/TecLeader.html">3. 技术负责人画像</a></li>
 </ul>
 <p class="caption"><span class="caption-text">道与术</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../道与术/tao-art.html">1. coding的道与术</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../道与术/tao-art.html">1. 道与术</a></li>
 </ul>
 
             
@@ -253,7 +252,7 @@
 <h1>1. 关系数据库-MySQL<a class="headerlink" href="#mysql" title="永久链接至标题">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">注解</p>
-<p class="last">更新日期：2021-03-06
+<p class="last">更新日期：2022-08-13
 对数据库的基本概念、深层次知识点做个笔记，如索引及其原理、分布式数据库等。</p>
 </div>
 <div class="section" id="id1">
@@ -291,6 +290,42 @@
 </dl>
 </li>
 </ol>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>1.3. 设计规约<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h3>1.3.1. 建表<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<ol class="arabic simple">
+<li>表，字段命名。<ol class="arabic">
+<li>必须使用小写字母，禁用保留字（如desc order group等），是否概念可用is_[field_name]方式。</li>
+<li>表名命名。 业务名称_表的用途</li>
+<li>库名。尽量和应用名保持一致。</li>
+</ol>
+</li>
+<li>数据类型。</li>
+<li>分库分表。单表行数据量大于500万行，大小超过2G。</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h3>1.3.2. 索引<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">提高查询效率。</p>
+</div>
+<ol class="arabic simple">
+<li>索引的特性：持久性，有序性。</li>
+<li>索引分类：<ol class="arabic">
+<li>存储方式：聚簇和非聚簇</li>
+<li>数据约束：主键索引，唯一索引，非唯一索引</li>
+<li>索引列数量：单列索引，组合索引</li>
+<li>innodb可以创建的索引： 主键索引，唯一索引，普通索引</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="sqlorm">
+<h3>1.3.3. SQL与ORM的映射<a class="headerlink" href="#sqlorm" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 </div>
