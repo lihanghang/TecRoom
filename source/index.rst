@@ -1,4 +1,4 @@
-欢迎来到：计算机技术屋。Stay Hungry, Stay Foolish
+欢迎来到：计算机技术屋。Stay Hungry, Stay Foolish.
 ===================================================
 .. note::   
 
@@ -6,7 +6,7 @@
     - 更新时间：2020年3月27日.
 
 目录:
-^^^^^
+*****
 
 .. toctree::
     :maxdepth: 2
@@ -67,7 +67,7 @@
 
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :caption: 虚拟化与容器技术
     :numbered:
 
@@ -120,6 +120,7 @@
 
     doc/团队与项目管理/team_project
     doc/团队与项目管理/PM
+    doc/团队与项目管理/TecLeader
 
 .. toctree::
     :caption: 道与术

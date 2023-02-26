@@ -1,48 +1,53 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>1. 设计模式 &mdash; Hang&#39;s Tec Room 1.0 文档</title>
   
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-
+  
   
   
 
   
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
-        <script src="../../_static/translations.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'zh_CN',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="1. 计算机网络系列" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/computer-network.html" />
-    <link rel="prev" title="1. 数据结构(Data Structure)" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html" /> 
+    <link rel="next" title="1. 计算机网络系列" href="../计算机网络技术/computer-network.html" />
+    <link rel="prev" title="1. 数据结构(Data Structure)" href="../数据结构与算法系列/dataStruct_algorithm.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,6 +70,10 @@
           
             
             
+              <div class="version">
+                2.1
+              </div>
+            
           
 
           
@@ -79,7 +88,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -88,33 +96,25 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%85%B3%E4%BA%8E/about_me.html">1. 关于我</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%85%B3%E4%BA%8E/about_blog.html">2. 关于技术屋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../关于/index.html">公共资源</a></li>
 </ul>
 <p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/C%2B%2B.html">1. C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/Java%E5%9F%BA%E7%A1%80%E6%8A%80%E6%9C%AF%E4%BD%93%E7%B3%BB.html">2. Java基础技术体系</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/Spring.html">3. Spring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/SpringBoot.html">4. SpringBoot基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/python%E6%8A%80%E6%9C%AF%E6%A0%88/Python.html">6. Python基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/python%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/django.html">7. Django</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Drools.html">8. Drools规则引擎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/index.html">语言及框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html">1. 接口（Interface）开发</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E6%A1%86%E6%9E%B6.html">2. 常见接口框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口框架.html">2. 常见接口框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">项目开发杂谈</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html">1. 项目开发杂谈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../项目开发杂谈/项目开发杂谈.html">1. 项目开发杂谈</a></li>
 </ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">设计模式</span></p>
 <ul class="current">
@@ -163,61 +163,60 @@
 </ul>
 <p class="caption"><span class="caption-text">计算机网络技术</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/computer-network.html">1. 计算机网络系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../计算机网络技术/computer-network.html">1. 计算机网络系列</a></li>
 </ul>
 <p class="caption"><span class="caption-text">数据库系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html">1. 关系数据库-MySQL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#redis">2. 非关系数据库–Redis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html">1. 关系数据库-MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html#redis">2. 非关系数据库–Redis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html">1. Docker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/k8s.html">2. Kubernetes（K8S）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../虚拟化与容器技术/docker.html">1. Docker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../虚拟化与容器技术/k8s.html">2. Kubernetes（K8S）</a></li>
 </ul>
 <p class="caption"><span class="caption-text">服务器</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html">1. Linux 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html#id1">2. Linux 常用命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../服务器/server.html">1. 服务器系列</a></li>
 </ul>
 <p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/%E4%B8%AD%E9%97%B4%E4%BB%B6.html">1. 中间件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/distributeMicroServer.html">2. 分布式与微服务系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/index.html">分布式与微服务</a></li>
 </ul>
 <p class="caption"><span class="caption-text">机器智能系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/ml.html">1. 机器学习基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/ml.html#id3">2. 机器学习应用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/dl.html">3. 深度学习</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/nlp.html">4. 自然语言理解</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/%E6%A1%86%E6%9E%B6/pytorch.html">7. Pytorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/%E6%A1%86%E6%9E%B6/tensorflow.html">8. Tensorflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html">1. 机器学习基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html#id3">2. 机器学习应用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html">1. ETL工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html#kettle">2. Kettle工具使用笔记</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../开源工具/ETL.html">1. ETL工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../开源工具/ETL.html#kettle">2. Kettle工具使用笔记</a></li>
 </ul>
 <p class="caption"><span class="caption-text">数学</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/math.html">1. 漫谈数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数学/math.html">1. 漫谈数学</a></li>
 </ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html">1. 团队建设与项目管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/team_project.html">1. 团队建设与项目管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/PM.html">2. 项目管理（Project Manager， PM）的理论与实践</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/TecLeader.html">3. 技术负责人画像</a></li>
 </ul>
 <p class="caption"><span class="caption-text">道与术</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%81%93%E4%B8%8E%E6%9C%AF/tao-art.html">1. coding的道与术</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../道与术/tao-art.html">1. 道与术</a></li>
 </ul>
 
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -252,20 +251,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">1. </span>设计模式</li>
+      <li>1. 设计模式</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../_sources/doc/设计模式/design-pattern.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -280,50 +277,52 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">1. </span>设计模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>update: 2020-05-11</p>
+<h1>1. 设计模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>update: 2022-08-13</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<ul class="simple">
-<li><p>设计模式比较抽象，都是思想层面的，仅仅是归纳总结的软件设计思路，不是万灵药，切不可生搬硬套。设计模式的目的就是为了是软件系统各功能更灵活、架构清晰、协同性好、可维护性、可扩展性等只要能达到这些目的你的设计模式（抽象类）就是值得点赞的！</p></li>
-<li><p>还是要有一定的实际的工程的经验再看设计模式，这样容易产生共鸣，不然它可能不是心目的样子，看着它没感觉。</p></li>
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>设计模式比较抽象，都是思想层面的，仅仅是归纳总结的软件设计思路，不是万灵药，切不可生搬硬套。设计模式的目的就是为了是软件系统各功能更灵活、架构清晰、协同性好、可维护性、可扩展性等只要能达到这些目的你的设计模式（抽象类）就是值得点赞的！</li>
+<li>还是要有一定的实际的工程的经验再看设计模式，这样容易产生共鸣，不然它可能不是心目的样子，看着它没感觉。</li>
 </ul>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">1.1. </span>资源推荐<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2>1.1. 资源推荐<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ol class="arabic simple">
-<li><p>《大话设计模式》</p></li>
-<li><p>《设计模式-可复用**面向对象**软件的基础》（经典）</p></li>
-<li><p>设计模式 <a class="reference external" href="https://www.bilibili.com/video/BV1kW411P7KS">视频课程</a></p></li>
+<li>《大话设计模式》</li>
+<li>《设计模式-可复用**面向对象**软件的基础》（经典）</li>
+<li>设计模式 <a class="reference external" href="https://www.bilibili.com/video/BV1kW411P7KS">视频课程</a></li>
 </ol>
 <p>** Gong of Four 23(GOF 23) 四个人总结了23种设计原则模式 **</p>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>推荐两本书，可以看看。第二本书比较全面讲了23种模式，可作为日常完善所需，总体划分了三大类型：创建型、结构型、行为型。</p>
+<p class="first admonition-title">注解</p>
+<p class="last">推荐两本书，可以看看。第二本书比较全面讲了23种模式，可作为日常完善所需，总体划分了三大类型：创建型、结构型、行为型。</p>
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">1.2. </span>知识框架图<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2>1.2. 知识框架图<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <img alt="../../_images/design_pattern.png" src="../../_images/design_pattern.png" />
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">1.3. </span>初识设计模式<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<h2>1.3. 初识设计模式<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id6">
-<h3><span class="section-number">1.3.1. </span>什么是设计模式？<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3>1.3.1. 什么是设计模式？<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
-<li><dl class="simple">
-<dt>定义</dt><dd><ul class="simple">
-<li><p>对用来在特定场景下解决一般设计的问题的类和相互通信的对象的描述。</p></li>
+<li><dl class="first docutils">
+<dt>定义</dt>
+<dd><ul class="first last">
+<li>对用来在特定场景下解决一般设计的问题的类和相互通信的对象的描述。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>模式四要素</dt><dd><ol class="arabic simple">
-<li><p>模式名称(P)。</p></li>
-<li><p>问题(I)。</p></li>
-<li><p>解决方案（S)。</p></li>
-<li><p>效果（C)。</p></li>
+<li><dl class="first docutils">
+<dt>模式四要素</dt>
+<dd><ol class="first last arabic">
+<li>模式名称(P)。</li>
+<li>问题(I)。</li>
+<li>解决方案（S)。</li>
+<li>效果（C)。</li>
 </ol>
 </dd>
 </dl>
@@ -331,97 +330,101 @@
 </ol>
 </div>
 <div class="section" id="oop">
-<h3><span class="section-number">1.3.2. </span>OOP（面向对象）七大原则<a class="headerlink" href="#oop" title="永久链接至标题">¶</a></h3>
+<h3>1.3.2. OOP（面向对象）七大原则<a class="headerlink" href="#oop" title="永久链接至标题">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">作为架构设计的七大原则</p>
+</div>
 <ol class="arabic simple">
-<li><p>开闭原则：对扩展开放，对修改关闭。</p></li>
-<li><p>里氏替换原则：继承必须确保超类所拥有的性质在子类中仍然成立。</p></li>
-<li><p>依赖倒置原则：要面向接口编程，不要面向实现编程。</p></li>
-<li><p>单一职责原则：控制类的粒度大小，将对象解耦，提高其内聚性。</p></li>
-<li><p>接口隔离原则：要为各个类建立它们需要的专用接口。</p></li>
-<li><p>迪米特法则：只与你的直接朋友交谈，不跟“陌生人”说话。</p></li>
-<li><p>合成复用原则：尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现。</p></li>
+<li>开闭原则：对扩展开放，对修改关闭。</li>
+<li>里氏替换原则：继承必须确保超类所拥有的性质在子类中仍然成立。</li>
+<li>依赖倒置原则：要面向接口编程，不要面向实现编程。</li>
+<li>单一职责原则：控制类的粒度大小，将对象解耦，提高其内聚性。</li>
+<li>接口隔离原则：要为各个类建立它们需要的专用接口。</li>
+<li>迪米特法则：只与你的直接朋友交谈，不跟“陌生人”说话。</li>
+<li>合成复用原则：尽量先使用组合或者聚合等关联关系来实现，其次才考虑使用继承关系来实现。</li>
 </ol>
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">1.4. </span>创建型（5）<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2>1.4. 创建型（5）<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id8">
-<h3><span class="section-number">1.4.1. </span>工厂方法<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3>1.4.1. 工厂方法<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">1.4.2. </span>抽象工厂<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<h3>1.4.2. 抽象工厂<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
-<li><p>超级工厂</p></li>
+<li>超级工厂</li>
 </ol>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">1.4.3. </span>生成器<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<h3>1.4.3. 生成器<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">1.4.4. </span>原型<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<h3>1.4.4. 原型<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">1.4.5. </span>单件<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<h3>1.4.5. 单件<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 <div class="section" id="id13">
-<h2><span class="section-number">1.5. </span>结构型（7）<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
+<h2>1.5. 结构型（7）<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id14">
-<h3><span class="section-number">1.5.1. </span>适配器<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
+<h3>1.5.1. 适配器<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id15">
-<h3><span class="section-number">1.5.2. </span>桥接<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
+<h3>1.5.2. 桥接<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id16">
-<h3><span class="section-number">1.5.3. </span>组合<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
+<h3>1.5.3. 组合<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id17">
-<h3><span class="section-number">1.5.4. </span>装饰<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<h3>1.5.4. 装饰<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id18">
-<h3><span class="section-number">1.5.5. </span>外观<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
+<h3>1.5.5. 外观<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id19">
-<h3><span class="section-number">1.5.6. </span>享元<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<h3>1.5.6. 享元<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id20">
-<h3><span class="section-number">1.5.7. </span>代理<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<h3>1.5.7. 代理<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 <div class="section" id="id21">
-<h2><span class="section-number">1.6. </span>行为型（11）<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
+<h2>1.6. 行为型（11）<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id22">
-<h3><span class="section-number">1.6.1. </span>职责链<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
+<h3>1.6.1. 职责链<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id23">
-<h3><span class="section-number">1.6.2. </span>命令<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<h3>1.6.2. 命令<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id24">
-<h3><span class="section-number">1.6.3. </span>解释器<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<h3>1.6.3. 解释器<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id25">
-<h3><span class="section-number">1.6.4. </span>迭代器<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
+<h3>1.6.4. 迭代器<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id26">
-<h3><span class="section-number">1.6.5. </span>中介者<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<h3>1.6.5. 中介者<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id27">
-<h3><span class="section-number">1.6.6. </span>备忘录<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<h3>1.6.6. 备忘录<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id28">
-<h3><span class="section-number">1.6.7. </span>观察者<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<h3>1.6.7. 观察者<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id29">
-<h3><span class="section-number">1.6.8. </span>状态<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
+<h3>1.6.8. 状态<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id30">
-<h3><span class="section-number">1.6.9. </span>策略<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<h3>1.6.9. 策略<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id31">
-<h3><span class="section-number">1.6.10. </span>模板方法<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<h3>1.6.10. 模板方法<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id32">
-<h3><span class="section-number">1.6.11. </span>访问者<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+<h3>1.6.11. 访问者<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
 </div>
 </div>
 </div>
@@ -431,29 +434,29 @@
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/computer-network.html" class="btn btn-neutral float-right" title="1. 计算机网络系列" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html" class="btn btn-neutral float-left" title="1. 数据结构(Data Structure)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="../计算机网络技术/computer-network.html" class="btn btn-neutral float-right" title="1. 计算机网络系列" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../数据结构与算法系列/dataStruct_algorithm.html" class="btn btn-neutral float-left" title="1. 数据结构(Data Structure)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; 版权所有 2020, LiHangHang.
+        &copy; Copyright 2020, LiHangHang
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -461,6 +464,7 @@
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {

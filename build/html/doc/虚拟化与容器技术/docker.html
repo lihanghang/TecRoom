@@ -1,48 +1,53 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-CN" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>1. Docker &mdash; Hang&#39;s Tec Room 1.0 文档</title>
   
 
   
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-
+  
   
   
 
   
-  
-
-  
-
-  
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
-        <script src="../../_static/translations.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'1.0',
+              LANGUAGE:'zh_CN',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="2. Kubernetes（K8S）" href="k8s.html" />
-    <link rel="prev" title="1. 关系数据库-MySQL" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html" /> 
+    <link rel="prev" title="1. 关系数据库-MySQL" href="../数据库系列/mysql.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,6 +70,10 @@
           
             
             
+              <div class="version">
+                2.1
+              </div>
+            
           
 
           
@@ -79,7 +88,6 @@
           
         </div>
 
-        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -88,46 +96,45 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%85%B3%E4%BA%8E/about_me.html">1. 关于我</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%85%B3%E4%BA%8E/about_blog.html">2. 关于技术屋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../关于/index.html">公共资源</a></li>
 </ul>
 <p class="caption"><span class="caption-text">编程语言及开发框架</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/C%2B%2B.html">1. C++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/Java%E5%9F%BA%E7%A1%80%E6%8A%80%E6%9C%AF%E4%BD%93%E7%B3%BB.html">2. Java基础技术体系</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/Spring.html">3. Spring</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/SpringBoot.html">4. SpringBoot基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/python%E6%8A%80%E6%9C%AF%E6%A0%88/Python.html">6. Python基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/python%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/django.html">7. Django</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Drools.html">8. Drools规则引擎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/C++.html">1. C++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/Java基础技术体系.html">2. Java基础技术体系</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/Spring.html">3. Spring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/SpringBoot.html">4. SpringBoot基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Java技术栈/常用框架/SpringBoot.html#id6">5. SpringBoot进阶</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/Python.html">6. Python基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/python技术栈/常用框架/django.html">7. Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../编程语言及开发框架/Drools.html">8. Drools规则引擎</a></li>
 </ul>
 <p class="caption"><span class="caption-text">后端接口开发</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html">1. 接口（Interface）开发</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E6%A1%86%E6%9E%B6.html">2. 常见接口框架</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口开发.html">1. 接口（Interface）开发</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../接口开发/接口框架.html">2. 常见接口框架</a></li>
 </ul>
 <p class="caption"><span class="caption-text">项目开发杂谈</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html">1. 项目开发杂谈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../项目开发杂谈/项目开发杂谈.html">1. 项目开发杂谈</a></li>
 </ul>
 <p class="caption"><span class="caption-text">数据结构与算法系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据结构与算法系列/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">设计模式</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html">1. 设计模式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../设计模式/design-pattern.html">1. 设计模式</a></li>
 </ul>
 <p class="caption"><span class="caption-text">计算机网络技术</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/computer-network.html">1. 计算机网络系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../计算机网络技术/computer-network.html">1. 计算机网络系列</a></li>
 </ul>
 <p class="caption"><span class="caption-text">数据库系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html">1. 关系数据库-MySQL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#redis">2. 非关系数据库–Redis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html">1. 关系数据库-MySQL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数据库系列/mysql.html#redis">2. 非关系数据库–Redis</a></li>
 </ul>
 <p class="caption"><span class="caption-text">虚拟化与容器技术</span></p>
 <ul class="current">
@@ -201,47 +208,46 @@
 </ul>
 <p class="caption"><span class="caption-text">服务器</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html">1. Linux 基础知识</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html#id1">2. Linux 常用命令</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../服务器/server.html">1. Linux 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../服务器/server.html#id1">2. Linux 常用命令</a></li>
 </ul>
 <p class="caption"><span class="caption-text">分布式与微服务系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/%E4%B8%AD%E9%97%B4%E4%BB%B6.html">1. 中间件</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/distributeMicroServer.html">2. 分布式与微服务系列</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../分布式与微服务系列/index.html">分布式与微服务</a></li>
 </ul>
 <p class="caption"><span class="caption-text">机器智能系列</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/ml.html">1. 机器学习基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/ml.html#id3">2. 机器学习应用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/dl.html">3. 深度学习</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/nlp.html">4. 自然语言理解</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/%E6%A1%86%E6%9E%B6/pytorch.html">7. Pytorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/%E6%A1%86%E6%9E%B6/tensorflow.html">8. Tensorflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html">1. 机器学习基础</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/ml.html#id3">2. 机器学习应用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/dl.html">3. 深度学习</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html">4. 自然语言理解</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/pytorch.html">7. Pytorch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../机器智能系列/框架/tensorflow.html">8. Tensorflow</a></li>
 </ul>
 <p class="caption"><span class="caption-text">开源工具</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html">1. ETL工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html#kettle">2. Kettle工具使用笔记</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../开源工具/ETL.html">1. ETL工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../开源工具/ETL.html#kettle">2. Kettle工具使用笔记</a></li>
 </ul>
 <p class="caption"><span class="caption-text">数学</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6/math.html">1. 漫谈数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../数学/math.html">1. 漫谈数学</a></li>
 </ul>
 <p class="caption"><span class="caption-text">团队与项目管理</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html">1. 团队建设与项目管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/team_project.html">1. 团队建设与项目管理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../团队与项目管理/PM.html">2. 项目管理（Project Manager， PM）的理论与实践</a></li>
 </ul>
 <p class="caption"><span class="caption-text">道与术</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%81%93%E4%B8%8E%E6%9C%AF/tao-art.html">1. coding的道与术</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../道与术/tao-art.html">1. coding的道与术</a></li>
 </ul>
 
             
           
         </div>
-        
       </div>
     </nav>
 
@@ -276,20 +282,18 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li><span class="section-number">1. </span>Docker</li>
+      <li>1. Docker</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../_sources/doc/虚拟化与容器技术/docker.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -304,20 +308,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="docker">
-<h1><span class="section-number">1. </span>Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h1>
+<h1>1. Docker<a class="headerlink" href="#docker" title="永久链接至标题">¶</a></h1>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>更新日期：2020-03-23</p>
+<p class="first admonition-title">注解</p>
+<p class="last">更新日期：2020-03-23</p>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">1.1. </span>书籍推荐<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2>1.1. 书籍推荐<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
-<li><p>访问 <a class="reference external" href="https://www.gitbook.com/download/pdf/book/yeasy/docker_practice">docker_practice</a> 下载。</p></li>
-<li><p>《Docker开发实践》</p></li>
-<li><dl class="simple">
-<dt>其他</dt><dd><ul>
-<li><p>访问 <a class="reference external" href="https://www.runoob.com/docker/docker-tutorial.html">菜鸟教程</a> 查看。</p></li>
-<li><p>访问Docker <a class="reference external" href="https://developer.aliyun.com/article/40494?spm=5176.12281978.0.0.377241271ZQV6s">学习路线图</a> 。</p></li>
+<li>访问 <a class="reference external" href="https://www.gitbook.com/download/pdf/book/yeasy/docker_practice">docker_practice</a> 下载。</li>
+<li>《Docker开发实践》</li>
+<li><dl class="first docutils">
+<dt>其他</dt>
+<dd><ul class="first last">
+<li>访问 <a class="reference external" href="https://www.runoob.com/docker/docker-tutorial.html">菜鸟教程</a> 查看。</li>
+<li>访问Docker <a class="reference external" href="https://developer.aliyun.com/article/40494?spm=5176.12281978.0.0.377241271ZQV6s">学习路线图</a> 。</li>
 </ul>
 </dd>
 </dl>
@@ -325,72 +330,76 @@
 </ul>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">1.2. </span>初识Docker<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2>1.2. 初识Docker<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>总的来说，Docker属于运维部署领域。如果是应用者就是熟练的在合适的场景下操作相应的命令；如果是进一步研究其底层原理，那需要的基础就要多些了，比如虚拟化技术。</p>
+<p class="first admonition-title">注解</p>
+<p class="last">总的来说，Docker属于运维部署领域。如果是应用者就是熟练的在合适的场景下操作相应的命令；如果是进一步研究其底层原理，那需要的基础就要多些了，比如虚拟化技术。</p>
 </div>
 <ol class="arabic simple">
-<li><p>Docker就是开源的容器引擎，诞生于2013年。最形象的比喻就是集装箱，各自自成体系，互不影响，可任意放在不同的平台。</p></li>
-<li><p>Docker是容器的一种，容器是一种*轻量级(占用空间小）的虚拟技术*，相对应的，虚拟机（VMware、VirtualBox等）就是重量级的虚拟技术。</p></li>
-<li><p>Docker是虚拟化的是操作系统，而虚拟机虚拟化的是硬件。</p></li>
-<li><dl class="simple">
-<dt>最切实的价值是什么？</dt><dd><ul class="simple">
-<li><p>项目开发有三大基础环境： 开发环境（程序员）、测试环境（测试人员）、生产环境（运维人员）。</p></li>
-<li><p>要保持三者环境的统一Docker的优势不明觉厉。举个例子，小王，程序员一枚，在自己电脑上优雅的完成了业务开发。怀着如释重负的心情将代码推送至测试环境，然后休息，进行吃鸡游戏……。突然，测试人员小李发来消息，小王呀，你昨天推的代码不work呀，小王说：不可能！我本地非常work的，你再仔细看看吧……；小李说：我这真没问题。</p></li>
-<li><p>你看看是不是吃鸡的心情不好了！问题究竟在哪里呢？原来呀小王本地开发环境使用的Python3.7，但是小李所用的测试环境是Python3.6，造成了有些功能不work。如果我们有了Docker，就可以代码+环境保持一致，不再造成上面的尴尬！</p></li>
+<li>Docker就是开源的容器引擎，诞生于2013年。最形象的比喻就是集装箱，各自自成体系，互不影响，可任意放在不同的平台。</li>
+<li>Docker是容器的一种，容器是一种*轻量级(占用空间小）的虚拟技术*，相对应的，虚拟机（VMware、VirtualBox等）就是重量级的虚拟技术。</li>
+<li>Docker是虚拟化的是操作系统，而虚拟机虚拟化的是硬件。</li>
+<li><dl class="first docutils">
+<dt>最切实的价值是什么？</dt>
+<dd><ul class="first last">
+<li>项目开发有三大基础环境： 开发环境（程序员）、测试环境（测试人员）、生产环境（运维人员）。</li>
+<li>要保持三者环境的统一Docker的优势不明觉厉。举个例子，小王，程序员一枚，在自己电脑上优雅的完成了业务开发。怀着如释重负的心情将代码推送至测试环境，然后休息，进行吃鸡游戏……。突然，测试人员小李发来消息，小王呀，你昨天推的代码不work呀，小王说：不可能！我本地非常work的，你再仔细看看吧……；小李说：我这真没问题。</li>
+<li>你看看是不是吃鸡的心情不好了！问题究竟在哪里呢？原来呀小王本地开发环境使用的Python3.7，但是小李所用的测试环境是Python3.6，造成了有些功能不work。如果我们有了Docker，就可以代码+环境保持一致，不再造成上面的尴尬！</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>可移植。MAC、Win、Linux等平台。</p></li>
-<li><p>相互隔离。</p></li>
-<li><p>开销低。</p></li>
+<li>可移植。MAC、Win、Linux等平台。</li>
+<li>相互隔离。</li>
+<li>开销低。</li>
 </ol>
 <p><em>Docker是一种容器技术，解决软件跨环境迁移的问题！</em></p>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">1.3. </span>图述Docker<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<h2>1.3. 图述Docker<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <a class="reference internal image-reference" href="../../_images/overview.png"><img alt="../../_images/overview.png" src="../../_images/overview.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">1.4. </span>Docker架构（组件）<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2>1.4. Docker架构（组件）<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <div class="admonition important">
-<p class="admonition-title">重要</p>
-<p>Docker采用C/S架构。Docker客户端（Client）可以通过命令行形式或API来与提供Docker服务（Server）的守护进程进行通信。</p>
+<p class="first admonition-title">重要</p>
+<p class="last">Docker采用C/S架构。Docker客户端（Client）可以通过命令行形式或API来与提供Docker服务（Server）的守护进程进行通信。</p>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">1.4.1. </span>基本架构图<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<h3>1.4.1. 基本架构图<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/2020-03-06-docker架构.png"><img alt="../../_images/2020-03-06-docker架构.png" src="../../_images/2020-03-06-docker架构.png" style="width: 600px;" /></a>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">1.4.2. </span>核心组件<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3>1.4.2. 核心组件<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <div class="admonition important">
-<p class="admonition-title">重要</p>
-<p>Docker共包含三大核心组件：<strong>镜像（image）、容器（container）、仓库（Repository）</strong>。镜像和容器可以类比面向对象编程中类和实例的关系，image-&gt;class、container-&gt;instance。仓库可类别代码控制中心，负责存储和共享用户的镜像。</p>
+<p class="first admonition-title">重要</p>
+<p class="last">Docker共包含三大核心组件：<strong>镜像（image）、容器（container）、仓库（Repository）</strong>。镜像和容器可以类比面向对象编程中类和实例的关系，image-&gt;class、container-&gt;instance。仓库可类别代码控制中心，负责存储和共享用户的镜像。</p>
 </div>
 <ol class="arabic simple">
-<li><dl class="simple">
-<dt>Image</dt><dd><ul class="simple">
-<li><p>一个只读的静态模板。存储容器所需要的环境和应用的执行代码。相当于是一个root文件系统，比如官方镜像Python:3.9就包含了完整的一套Python3.9最小系统的root文件系统。</p></li>
-<li><p>采用分层机制。</p></li>
+<li><dl class="first docutils">
+<dt>Image</dt>
+<dd><ul class="first last">
+<li>一个只读的静态模板。存储容器所需要的环境和应用的执行代码。相当于是一个root文件系统，比如官方镜像Python:3.9就包含了完整的一套Python3.9最小系统的root文件系统。</li>
+<li>采用分层机制。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Container</dt><dd><ul class="simple">
-<li><p>一个运行时的环境。镜像是静态的定义，容器是镜像运行时的实体。</p></li>
-<li><p>容器就相当于集装箱，不关心里面装什么，所有应用都有统一的生命周期：创建、启动、删除、暂停、重启等。</p></li>
-<li><p>容器也不在乎自己所处的平台。本机、虚拟机、服务器等都可相互移植，对于前面提到的部署都是非常适合的。</p></li>
+<li><dl class="first docutils">
+<dt>Container</dt>
+<dd><ul class="first last">
+<li>一个运行时的环境。镜像是静态的定义，容器是镜像运行时的实体。</li>
+<li>容器就相当于集装箱，不关心里面装什么，所有应用都有统一的生命周期：创建、启动、删除、暂停、重启等。</li>
+<li>容器也不在乎自己所处的平台。本机、虚拟机、服务器等都可相互移植，对于前面提到的部署都是非常适合的。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>Repository</dt><dd><ul class="simple">
-<li><p>Docker采用注册服务器来存储和共享用户的镜像。</p></li>
-<li><p>注册服务器分为公共和私有两种。公共就是官方的Docker Hub，私有就是自己注册一个Docker Hub账号建立自己的私有仓库，便于小范围内的共享。</p></li>
+<li><dl class="first docutils">
+<dt>Repository</dt>
+<dd><ul class="first last">
+<li>Docker采用注册服务器来存储和共享用户的镜像。</li>
+<li>注册服务器分为公共和私有两种。公共就是官方的Docker Hub，私有就是自己注册一个Docker Hub账号建立自己的私有仓库，便于小范围内的共享。</li>
 </ul>
 </dd>
 </dl>
@@ -398,37 +407,43 @@
 </ol>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">1.4.3. </span>通过Docker开发和部署的流程图<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<h3>1.4.3. 通过Docker开发和部署的流程图<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>利用下图能更好的理解Docker在日常开发、部署中的应用流程和三大组件。</p>
+<p class="first admonition-title">注解</p>
+<p class="last">利用下图能更好的理解Docker在日常开发、部署中的应用流程和三大组件。</p>
 </div>
 <a class="reference internal image-reference" href="../../_images/docker-开发部署流程图.png"><img alt="../../_images/docker-开发部署流程图.png" src="../../_images/docker-开发部署流程图.png" style="width: 700px;" /></a>
-<dl class="field-list simple">
-<dt class="field-odd">流程概述</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">流程概述:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><dl>
-<dt>开发主机上</dt><dd><ol class="arabic simple">
-<li><p>创建容器A，创建方法可以手动也可通过Dockerfile文件自动构建。</p></li>
+<li><dl class="first docutils">
+<dt>开发主机上</dt>
+<dd><ol class="first arabic simple">
+<li>创建容器A，创建方法可以手动也可通过Dockerfile文件自动构建。</li>
 </ol>
 <div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>Dockerfile文件后续会讲，这也是最常用的一种构建容器方式。</p>
+<p class="first admonition-title">小技巧</p>
+<p class="last">Dockerfile文件后续会讲，这也是最常用的一种构建容器方式。</p>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>容器A必须基于镜像来创建。镜像A就是容器的静态形式，容器是镜像的动态形式。</p></li>
-<li><p>将容器A保存为镜像A，然后推送到Docker库进行共享</p></li>
+<ol class="last arabic simple" start="2">
+<li>容器A必须基于镜像来创建。镜像A就是容器的静态形式，容器是镜像的动态形式。</li>
+<li>将容器A保存为镜像A，然后推送到Docker库进行共享</li>
 </ol>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>集群环境上</dt><dd><ol class="arabic simple">
-<li><p>在Docker库中搜索所需镜像A，并将其拉取到本地。</p></li>
-<li><p>拉取后在本地就可以运行容器A了。</p></li>
-<li><p>在集群环境中可以运行很多容器，彼此相互独立、互不影响。</p></li>
+<li><dl class="first docutils">
+<dt>集群环境上</dt>
+<dd><ol class="first last arabic simple">
+<li>在Docker库中搜索所需镜像A，并将其拉取到本地。</li>
+<li>拉取后在本地就可以运行容器A了。</li>
+<li>在集群环境中可以运行很多容器，彼此相互独立、互不影响。</li>
 </ol>
 </dd>
 </dl>
@@ -437,17 +452,17 @@
 </div>
 </div>
 <div class="section" id="docker-mac">
-<h2><span class="section-number">1.5. </span>安装Docker（MAC)并注册国内镜像加速器<a class="headerlink" href="#docker-mac" title="永久链接至标题">¶</a></h2>
+<h2>1.5. 安装Docker（MAC)并注册国内镜像加速器<a class="headerlink" href="#docker-mac" title="永久链接至标题">¶</a></h2>
 <div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>MAC系统可以直接安装桌面版Docker，社区版就够用了。关于镜像加速器推荐使用国内阿里云镜像加速器，配置也比较容易，配置后再使用docker镜像就比较快了。
+<p class="first admonition-title">小技巧</p>
+<p class="last">MAC系统可以直接安装桌面版Docker，社区版就够用了。关于镜像加速器推荐使用国内阿里云镜像加速器，配置也比较容易，配置后再使用docker镜像就比较快了。
 官网下载太慢吗？推荐前往：<a class="reference external" href="http://get.daocloud.io/">http://get.daocloud.io/</a>。</p>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">1.5.1. </span>安装<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<h3>1.5.1. 安装<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
-<li><p>点击 <a class="reference external" href="https://hub.docker.com/editions/community/docker-ce-desktop-mac/">下载</a> docker桌面版。</p></li>
-<li><p>查看docker版本，验证是否安装成功</p></li>
+<li>点击 <a class="reference external" href="https://hub.docker.com/editions/community/docker-ce-desktop-mac/">下载</a> docker桌面版。</li>
+<li>查看docker版本，验证是否安装成功</li>
 </ol>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker -v
@@ -457,58 +472,64 @@ Docker version <span class="m">19</span>.03.5, build 633a0ea
 </div></blockquote>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">1.5.2. </span>配置阿里云镜像加速器<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<h3>1.5.2. 配置阿里云镜像加速器<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
 <blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">step-1</dt>
-<dd class="field-odd"><p>使用阿里云或支付宝等账号登录 <a class="reference external" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">阿里云镜像加速器</a> 网站。</p>
-</dd>
-<dt class="field-even">step-2</dt>
-<dd class="field-even"><p>登录后就能看到针对不同操作系统的操作步骤了。如下图所示：</p>
-</dd>
-</dl>
+<div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">step-1:</th><td class="field-body">使用阿里云或支付宝等账号登录 <a class="reference external" href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">阿里云镜像加速器</a> 网站。</td>
+</tr>
+<tr class="field-even field"><th class="field-name">step-2:</th><td class="field-body">登录后就能看到针对不同操作系统的操作步骤了。如下图所示：</td>
+</tr>
+</tbody>
+</table>
 <a class="reference internal image-reference" href="../../_images/2020-03-06阿里云镜像加速器.jpg"><img alt="../../_images/2020-03-06阿里云镜像加速器.jpg" src="../../_images/2020-03-06阿里云镜像加速器.jpg" style="width: 700px;" /></a>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="id14">
-<h2><span class="section-number">1.6. </span>Docker常用命令<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
+<h2>1.6. Docker常用命令<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>本章是docker知识的重点，基本都是命令。跟着命令敲起你的小键盘吧。</p>
+<p class="first admonition-title">注解</p>
+<p class="last">本章是docker知识的重点，基本都是命令。跟着命令敲起你的小键盘吧。</p>
 </div>
 <div class="section" id="docker-daemon">
-<h3><span class="section-number">1.6.1. </span>Docker服务（Daemon）相关命令<a class="headerlink" href="#docker-daemon" title="永久链接至标题">¶</a></h3>
+<h3>1.6.1. Docker服务（Daemon）相关命令<a class="headerlink" href="#docker-daemon" title="永久链接至标题">¶</a></h3>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>mac系统下直接点击客户端就启动了docker服务，非常简单。使用Mac系统，就可以跳过这部分内容了。
+<p class="first admonition-title">注解</p>
+<p class="last">mac系统下直接点击客户端就启动了docker服务，非常简单。使用Mac系统，就可以跳过这部分内容了。
 为了使本笔记不失一般性，这里使用CentOS进行相关命令演示。</p>
 </div>
 <p>休息一下：你们公司更倾向于选择什么操作系统作为服务器呢？centos、RH、Linux？ why? <a class="reference external" href="https://www.zhihu.com/question/19599986">知乎</a> 上有一篇帖子讨论了这个问题。</p>
 <ol class="arabic">
-<li><dl>
-<dt>启动docker服务</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl start docker
+<li><dl class="first docutils">
+<dt>启动docker服务</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl start docker
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>停止docker服务</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl stop docker
+<li><dl class="first docutils">
+<dt>停止docker服务</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl stop docker
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>重启docker服务</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl restart docker
+<li><dl class="first docutils">
+<dt>重启docker服务</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl restart docker
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>查看docker服务状态</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl status docker
+<li><dl class="first docutils">
+<dt>查看docker服务状态</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl status docker
 ● docker.service - Docker Application Container Engine
 Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/docker.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
 Active: active <span class="o">(</span>running<span class="o">)</span> since 四 <span class="m">2019</span>-12-12 <span class="m">10</span>:06:56 CST<span class="p">;</span> <span class="m">2</span> months <span class="m">24</span> days ago
@@ -518,8 +539,9 @@ Docs: https://docs.docker.com
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>开机启动docker服务</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> docker
+<li><dl class="first docutils">
+<dt>开机启动docker服务</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> docker
 </pre></div>
 </div>
 </dd>
@@ -528,14 +550,15 @@ Docs: https://docs.docker.com
 </ol>
 </div>
 <div class="section" id="docker-image">
-<h3><span class="section-number">1.6.2. </span>Docker镜像（Image）相关命令<a class="headerlink" href="#docker-image" title="永久链接至标题">¶</a></h3>
+<h3>1.6.2. Docker镜像（Image）相关命令<a class="headerlink" href="#docker-image" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
-<li><dl>
-<dt>查看</dt><dd><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<ul class="simple">
-<li><p>docker images -q 查看所有镜像ID</p></li>
-<li><p>docker iamges 查看所有镜像信息</p></li>
+<li><dl class="first docutils">
+<dt>查看</dt>
+<dd><div class="first admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li>docker images -q 查看所有镜像ID</li>
+<li>docker iamges 查看所有镜像信息</li>
 </ul>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker images
@@ -545,25 +568,26 @@ nginx               latest              2073e0bcb60e        <span class="m">4</s
 ubuntu              <span class="m">14</span>.04               6e4f1fe62ff1        <span class="m">2</span> months ago        197MB
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">注解</p>
+<div class="last admonition note">
+<p class="first admonition-title">注解</p>
 <p>可以看到，执行命令后列出了已创建（可能你还没有镜像，列表就为空）的镜像。下面针对表头做一个说明。</p>
-<ul class="simple">
-<li><p>REPOSITORY： 仓库名称</p></li>
-<li><p>TAG：版本号，默认为latest</p></li>
-<li><p>IMAGE ID：镜像唯一标识</p></li>
-<li><p>CREATED ：创建时间</p></li>
-<li><p>SIZE ：镜像所占的虚拟大小</p></li>
+<ul class="last simple">
+<li>REPOSITORY： 仓库名称</li>
+<li>TAG：版本号，默认为latest</li>
+<li>IMAGE ID：镜像唯一标识</li>
+<li>CREATED ：创建时间</li>
+<li>SIZE ：镜像所占的虚拟大小</li>
 </ul>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>搜索</dt><dd><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<ul class="simple">
-<li><p>docker search [name]</p></li>
+<li><dl class="first docutils">
+<dt>搜索</dt>
+<dd><div class="first admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li>docker search [name]</li>
 </ul>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker search mysql
@@ -574,19 +598,20 @@ mysql/mysql-server                Optimized MySQL Server Docker images. Create�
 centos/mysql-57-centos7           MySQL <span class="m">5</span>.7 SQL database server                   <span class="m">70</span>
 </pre></div>
 </div>
-<div class="line-block">
+<div class="last line-block">
 <div class="line">搜索是联网进行的，列出可用的镜像。官方镜像搜索网站，可以查看下有没有自己想要的版本。</div>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>拉取（下载）</dt><dd><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<ul class="simple">
-<li><p>docker pull [name]:[tag]</p></li>
-<li><p>不写tag，则默认为latest</p></li>
-<li><p>访问 <a class="reference external" href="https://hub.docker.com/search?q=&amp;type=image">Docker Hub 镜像网站</a>，可以了解更多关于的版本信息。</p></li>
+<li><dl class="first docutils">
+<dt>拉取（下载）</dt>
+<dd><div class="first admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li>docker pull [name]:[tag]</li>
+<li>不写tag，则默认为latest</li>
+<li>访问 <a class="reference external" href="https://hub.docker.com/search?q=&amp;type=image">Docker Hub 镜像网站</a>，可以了解更多关于的版本信息。</li>
 </ul>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull mysql:5.6
@@ -607,26 +632,29 @@ Status: Downloaded newer image <span class="k">for</span> mysql:5.6
 docker.io/library/mysql:5.6
 </pre></div>
 </div>
-<div class="line-block">
+<div class="last line-block">
 <div class="line">上面的拉取镜像过程就体现了分层。</div>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>删除</dt><dd><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>单个删除 docker rmi image-id/[name]:[tag]</dt><dd><ul>
-<li><p>rmi。rm就是删除，i参数指的就是镜像。可以指定一个或多个镜像名称或者镜像的ID，多个镜像之间可以使用空格隔开。</p></li>
+<li><dl class="first docutils">
+<dt>删除</dt>
+<dd><div class="first admonition tip">
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>单个删除 docker rmi image-id/[name]:[tag]</dt>
+<dd><ul class="first last">
+<li>rmi。rm就是删除，i参数指的就是镜像。可以指定一个或多个镜像名称或者镜像的ID，多个镜像之间可以使用空格隔开。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>删除本次所有镜像: docker rmi <cite>docker images -q</cite></dt><dd><ul>
-<li><p>docker images -q 列出所有镜像的ID</p></li>
+<li><dl class="first docutils">
+<dt>删除本次所有镜像: docker rmi <cite>docker images -q</cite></dt>
+<dd><ul class="first last">
+<li>docker images -q 列出所有镜像的ID</li>
 </ul>
 </dd>
 </dl>
@@ -639,13 +667,14 @@ Untagged: mysql@sha256:a72a05bcf3914c902070765a506b1c8c17c06400258e7b57496576309
 Deleted: sha256:c8078e8ab06d8dabd6c30cffb03951fa035d85f75c19a83ace29b01cb3ecd272
 </pre></div>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">警告</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>如果不能删除成功，可能是因为这个镜像正在被容器使用。</dt><dd><ul>
-<li><p>可以使用 -f参数强制删除。</p></li>
-<li><p>也可以先移除正在使用该镜像的容器后再删除。</p></li>
+<div class="last admonition warning">
+<p class="first admonition-title">警告</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>如果不能删除成功，可能是因为这个镜像正在被容器使用。</dt>
+<dd><ul class="first last">
+<li>可以使用 -f参数强制删除。</li>
+<li>也可以先移除正在使用该镜像的容器后再删除。</li>
 </ul>
 </dd>
 </dl>
@@ -658,23 +687,25 @@ Deleted: sha256:c8078e8ab06d8dabd6c30cffb03951fa035d85f75c19a83ace29b01cb3ecd272
 </ol>
 </div>
 <div class="section" id="docker-container">
-<h3><span class="section-number">1.6.3. </span>docker容器（container）相关命令<a class="headerlink" href="#docker-container" title="永久链接至标题">¶</a></h3>
+<h3>1.6.3. docker容器（container）相关命令<a class="headerlink" href="#docker-container" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
-<li><p>查看</p>
+<li><p class="first">查看</p>
 <blockquote>
 <div><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>docker ps</dt><dd><ul>
-<li><p>查看正在开启的容器</p></li>
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>docker ps</dt>
+<dd><ul class="first last">
+<li>查看正在开启的容器</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>docker ps -a</dt><dd><ul>
-<li><p>查看所有创建的容器列表</p></li>
+<li><dl class="first docutils">
+<dt>docker ps -a</dt>
+<dd><ul class="first last">
+<li>查看所有创建的容器列表</li>
 </ul>
 </dd>
 </dl>
@@ -691,22 +722,24 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 </div>
 </div></blockquote>
 </li>
-<li><p>创建</p>
+<li><p class="first">创建</p>
 <blockquote>
 <div><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<ul class="simple">
-<li><p>docker run -i -t –name=container_name  image_name:tag  /bin/bash</p></li>
-<li><dl class="simple">
-<dt>docker run -i -d –name=container_name  image_name:tag  /bin/bash</dt><dd><ul>
-<li><p>-i -d[t] 可以合并为-id[t]。d标志位表示创建后台容器。</p></li>
+<p class="first admonition-title">小技巧</p>
+<ul class="last simple">
+<li>docker run -i -t –name=container_name  image_name:tag  /bin/bash</li>
+<li><dl class="first docutils">
+<dt>docker run -i -d –name=container_name  image_name:tag  /bin/bash</dt>
+<dd><ul class="first last">
+<li>-i -d[t] 可以合并为-id[t]。d标志位表示创建后台容器。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>退出容器：执行exit命令。</dt><dd><ul>
-<li><p>退出后容器将关闭</p></li>
+<li><dl class="first docutils">
+<dt>退出容器：执行exit命令。</dt>
+<dd><ul class="first last">
+<li>退出后容器将关闭</li>
 </ul>
 </dd>
 </dl>
@@ -726,11 +759,11 @@ $ docker run -id --name<span class="o">=</span>app_server  nginx:v3  /bin/bash
 </div>
 </div></blockquote>
 </li>
-<li><p>进入</p>
+<li><p class="first">进入</p>
 <blockquote>
 <div><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>docker exec -it [容器名称] /bin/bash</p>
+<p class="first admonition-title">小技巧</p>
+<p class="last">docker exec -it [容器名称] /bin/bash</p>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker <span class="nb">exec</span> -it app_server /bin/bash
 root@4b19f6042d97:/#
@@ -742,48 +775,54 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 </div>
 </div></blockquote>
 </li>
-<li><dl class="simple">
-<dt>启动</dt><dd><ul class="simple">
-<li><p>docker start [app_server]</p></li>
+<li><dl class="first docutils">
+<dt>启动</dt>
+<dd><ul class="first last simple">
+<li>docker start [app_server]</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>停止</dt><dd><ul class="simple">
-<li><p>docker stop [app_server]</p></li>
+<li><dl class="first docutils">
+<dt>停止</dt>
+<dd><ul class="first last simple">
+<li>docker stop [app_server]</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>删除</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>docker rm app_server</dt><dd><ul>
-<li><p>删除单个</p></li>
+<li><dl class="first docutils">
+<dt>删除</dt>
+<dd><ul class="first simple">
+<li><dl class="first docutils">
+<dt>docker rm app_server</dt>
+<dd><ul class="first last">
+<li>删除单个</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>docker rm `docker ps -aq`</dt><dd><ul>
-<li><p>删除所有</p></li>
-<li><p>q标志表示只列出容器ID，不列出其他信息。</p></li>
+<li><dl class="first docutils">
+<dt>docker rm `docker ps -aq`</dt>
+<dd><ul class="first last">
+<li>删除所有</li>
+<li>q标志表示只列出容器ID，不列出其他信息。</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>`符号是键盘table上方的键位</p>
+<div class="last admonition note">
+<p class="first admonition-title">注解</p>
+<p class="last">`符号是键盘table上方的键位</p>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>查看容器信息</dt><dd><ul class="simple">
-<li><p>docker inspect [app_server]</p></li>
+<li><dl class="first docutils">
+<dt>查看容器信息</dt>
+<dd><ul class="first last simple">
+<li>docker inspect [app_server]</li>
 </ul>
 </dd>
 </dl>
@@ -792,54 +831,55 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 </div>
 </div>
 <div class="section" id="id16">
-<h2><span class="section-number">1.7. </span>Docker容器的数据卷<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
+<h2>1.7. Docker容器的数据卷<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h2>
 <div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>主要探讨容器中的应用数据管理相关话题。如数据如何保存、外部如何使用数据等。</p>
+<p class="first admonition-title">小技巧</p>
+<p class="last">主要探讨容器中的应用数据管理相关话题。如数据如何保存、外部如何使用数据等。</p>
 </div>
 <div class="section" id="id17">
-<h3><span class="section-number">1.7.1. </span>概念及作用<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
+<h3>1.7.1. 概念及作用<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id18">
-<h4><span class="section-number">1.7.1.1. </span>概念<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
+<h4>1.7.1.1. 概念<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>数据卷是宿主机中的一个目录或文件。</p></li>
-<li><p>容器目录（文件）和数据卷目录（文件）绑定后，双方修改会立即同步。</p></li>
-<li><p>一个数据卷可被多个容器挂载；一个容器也可挂载多个数据卷。</p></li>
+<li>数据卷是宿主机中的一个目录或文件。</li>
+<li>容器目录（文件）和数据卷目录（文件）绑定后，双方修改会立即同步。</li>
+<li>一个数据卷可被多个容器挂载；一个容器也可挂载多个数据卷。</li>
 </ol>
 </div></blockquote>
 </div>
 <div class="section" id="id19">
-<h4><span class="section-number">1.7.1.2. </span>作用<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
+<h4>1.7.1.2. 作用<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>可持久化保存容器数据。</p></li>
-<li><p>实现外部机器和容器间接通信。</p></li>
-<li><p>容器之间进行数据交换。</p></li>
+<li>可持久化保存容器数据。</li>
+<li>实现外部机器和容器间接通信。</li>
+<li>容器之间进行数据交换。</li>
 </ol>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="id20">
-<h3><span class="section-number">1.7.2. </span>配置数据卷<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
+<h3>1.7.2. 配置数据卷<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h3>
 <div class="admonition tip">
-<p class="admonition-title">小技巧</p>
+<p class="first admonition-title">小技巧</p>
 <ol class="arabic simple">
-<li><dl class="simple">
-<dt>创建容器时，使用-v参数</dt><dd><ul class="simple">
-<li><p>docker run …… -v 宿主机目录（文件）:容器内部目录（文件）</p></li>
-<li><p>目录不存在时，会自动创建。</p></li>
-<li><p>目录是绝对路径。</p></li>
-<li><p>可以挂载多个数据卷。</p></li>
+<li><dl class="first docutils">
+<dt>创建容器时，使用-v参数</dt>
+<dd><ul class="first last">
+<li>docker run …… -v 宿主机目录（文件）:容器内部目录（文件）</li>
+<li>目录不存在时，会自动创建。</li>
+<li>目录是绝对路径。</li>
+<li>可以挂载多个数据卷。</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ol>
-<a class="reference internal image-reference" href="../../_images/docker数据卷.png"><img alt="../../_images/docker数据卷.png" src="../../_images/docker数据卷.png" style="width: 700px;" /></a>
+<a class="last reference internal image-reference" href="../../_images/docker数据卷.png"><img alt="../../_images/docker数据卷.png" src="../../_images/docker数据卷.png" style="width: 700px;" /></a>
 </div>
 <ol class="arabic">
-<li><p>挂载单个数据卷：将本机的host_data目录挂载到容器的container_data下</p>
+<li><p class="first">挂载单个数据卷：将本机的host_data目录挂载到容器的container_data下</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name<span class="o">=</span>c1 -v /Users/hanghangli/Desktop/host_data:/root/container_data  nginx:v3
 <span class="c1"># 进入容器</span>
@@ -852,7 +892,7 @@ container_data
 </div>
 </div></blockquote>
 </li>
-<li><p>一个容器挂载多个数据卷：将本机的data_1.txt、data_2.txt文件挂载到容器的container_data_1.txt、container_data_2.txt</p>
+<li><p class="first">一个容器挂载多个数据卷：将本机的data_1.txt、data_2.txt文件挂载到容器的container_data_1.txt、container_data_2.txt</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name<span class="o">=</span>c2 <span class="se">\</span>
 -v /Users/hanghangli/Desktop/data_1.txt:/root/container_data_1.txt <span class="se">\</span>
@@ -868,7 +908,7 @@ $ cat container_data_1.txt
 </div>
 </div></blockquote>
 </li>
-<li><p>多个容器挂载一个数据卷。c3与c4容器挂载一个config.ini.txt文件</p>
+<li><p class="first">多个容器挂载一个数据卷。c3与c4容器挂载一个config.ini.txt文件</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -it --name<span class="o">=</span>c3 <span class="se">\</span>
 -v /Users/hanghangli/Desktop/config.ini.txt:/root/container_config.ini.txt.txt <span class="se">\</span>
@@ -895,31 +935,33 @@ $ root@cfb85d4cb3c4:/# cat root/container_config.ini.txt
 </ol>
 </div>
 <div class="section" id="id21">
-<h3><span class="section-number">1.7.3. </span>配置 数据卷容器<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
+<h3>1.7.3. 配置 数据卷容器<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h3>
 <div class="admonition tip">
-<p class="admonition-title">小技巧</p>
+<p class="first admonition-title">小技巧</p>
 <ul class="simple">
-<li><p>使用场景：的时，并不想指定挂载的宿主机的目录，只想实现容器与容器之间的数据共享。</p></li>
-<li><p>上面的方法是给每个容器挂载本地数据卷，这样在容器比较少的情况下是一个好方法。但当我们的容器很多且都有挂载数据卷的需求，上面的方式就显得不够高效和友好。</p></li>
-<li><p>我们可以考虑专门做个挂载数据卷的容器，让它专门负责数据卷挂载，其他容器直接挂载这个数据卷容器即可。这样就增加了可扩展行和可维护性！</p></li>
+<li>使用场景：的时，并不想指定挂载的宿主机的目录，只想实现容器与容器之间的数据共享。</li>
+<li>上面的方法是给每个容器挂载本地数据卷，这样在容器比较少的情况下是一个好方法。但当我们的容器很多且都有挂载数据卷的需求，上面的方式就显得不够高效和友好。</li>
+<li>我们可以考虑专门做个挂载数据卷的容器，让它专门负责数据卷挂载，其他容器直接挂载这个数据卷容器即可。这样就增加了可扩展行和可维护性！</li>
 </ul>
 <p>⚠️无论数据卷容器停止还是删除都不会影响其他容器对于数据卷的使用！</p>
 <ul class="simple">
-<li><p>容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器</p></li>
+<li>容器之间共享一些持续更新的数据，最简单的方式是使用数据卷容器</li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/docker数据卷容器.png"><img alt="../../_images/docker数据卷容器.png" src="../../_images/docker数据卷容器.png" style="width: 700px;" /></a>
-<ul class="simple">
-<li><dl class="simple">
-<dt>创建数据卷容器test_1</dt><dd><ol class="arabic simple">
-<li><p>docker run -it –name=test_1 -v /volume image:tag /bin/bash</p></li>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>创建数据卷容器test_1</dt>
+<dd><ol class="first last arabic">
+<li>docker run -it –name=test_1 -v /volume image:tag /bin/bash</li>
 </ol>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>挂载数据卷test_1给容器test_2、test_3</dt><dd><ol class="arabic simple" start="2">
-<li><p>docker run -it –name=test_2 –volumes-from test_1 image:tag /bin/bash</p></li>
-<li><p>docker run -it –name=test_3 –volumes-from test_1 image:tag /bin/bash</p></li>
+<li><dl class="first docutils">
+<dt>挂载数据卷test_1给容器test_2、test_3</dt>
+<dd><ol class="first last arabic" start="2">
+<li>docker run -it –name=test_2 –volumes-from test_1 image:tag /bin/bash</li>
+<li>docker run -it –name=test_3 –volumes-from test_1 image:tag /bin/bash</li>
 </ol>
 </dd>
 </dl>
@@ -946,17 +988,18 @@ $ root@95025edc8a00:/# cat volume/config.ini
 </div>
 </div>
 <div class="section" id="id22">
-<h2><span class="section-number">1.8. </span>Docker使用案例（应用部署实战）<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
+<h2>1.8. Docker使用案例（应用部署实战）<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<ul class="simple">
-<li><p>下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！</p></li>
-<li><dl class="simple">
-<dt>如果抽象出来部署操，可分为以下几步：</dt><dd><ul>
-<li><p>搜索需要安装的软件（镜像）。如mysql的版本。</p></li>
-<li><p>从仓库获取镜像。从私有或公共仓库获取。</p></li>
-<li><p>创建容器。创建容器的方式可以是命令行也可以使用Dockerfile文件来build。</p></li>
-<li><p>完成。</p></li>
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>下面就进入Docker的在我们开发中的实际应用了，让我们一点点感受它带来的便利吧。加油，老铁们！</li>
+<li><dl class="first docutils">
+<dt>如果抽象出来部署操，可分为以下几步：</dt>
+<dd><ul class="first last">
+<li>搜索需要安装的软件（镜像）。如mysql的版本。</li>
+<li>从仓库获取镜像。从私有或公共仓库获取。</li>
+<li>创建容器。创建容器的方式可以是命令行也可以使用Dockerfile文件来build。</li>
+<li>完成。</li>
 </ul>
 </dd>
 </dl>
@@ -964,32 +1007,37 @@ $ root@95025edc8a00:/# cat volume/config.ini
 </ul>
 </div>
 <div class="section" id="mysql">
-<h3><span class="section-number">1.8.1. </span>MySQL部署<a class="headerlink" href="#mysql" title="永久链接至标题">¶</a></h3>
+<h3>1.8.1. MySQL部署<a class="headerlink" href="#mysql" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
-<li><dl>
-<dt>目标</dt><dd><p>实现在Docker中部署MySQL，并通过外部客户端操作该容器中的数据库。</p>
-<div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>思考：外部如何访问容器内的数据库呢？
+<li><dl class="first docutils">
+<dt>目标</dt>
+<dd><p class="first">实现在Docker中部署MySQL，并通过外部客户端操作该容器中的数据库。</p>
+<div class="last admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">思考：外部如何访问容器内的数据库呢？
 解决方案：引入端口映射方法。</p>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>过程</dt><dd><ul>
-<li><dl class="simple">
-<dt>搜索mysql (可省略步骤）</dt><dd><p>docker search mysql:5.6</p>
+<li><dl class="first docutils">
+<dt>过程</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>搜索mysql (可省略步骤）</dt>
+<dd><p class="first last">docker search mysql:5.6</p>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>拉取mysql</dt><dd><p>docker pull mysql:5.6</p>
+<li><dl class="first docutils">
+<dt>拉取mysql</dt>
+<dd><p class="first last">docker pull mysql:5.6</p>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>创建容器</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在本地创建一个数据库目录并进入。</span>
+<li><dl class="first docutils">
+<dt>创建容器</dt>
+<dd><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在本地创建一个数据库目录并进入。</span>
 $ mkdir mysql
 $ <span class="nb">cd</span> ~/mysql
 <span class="c1"># $PWD表示当前目录路径</span>
@@ -1007,14 +1055,15 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 e39f78f46f15        mysql:5.6           <span class="s2">&quot;docker-entrypoint.sh&quot;</span>   <span class="m">7</span> seconds ago       Up <span class="m">5</span> seconds        <span class="m">0</span>.0.0.0:3307-&gt;3306/tcp   mysql_container
 </pre></div>
 </div>
-<ul class="simple">
-<li><dl class="simple">
-<dt>参数说明</dt><dd><ul>
-<li><p>-p 3307:3306  端口映射。将容器mysql的3306映射到主机的3307。</p></li>
-<li><p>-v $PWD/conf:/etc/mysql/conf.d  挂载数据库配置数据卷。将本地（刚才创建的mysql目录）当前目录的conf挂载到容器/etc/mysql/conf.d</p></li>
-<li><p>-v $PWD/logs:/logs 挂载日志数据卷。将本地当前目录的logs挂载到容器/logs。</p></li>
-<li><p>-v $PWD/<a class="reference external" href="data:/var/lib/mysql">data:/var/lib/mysql</a> 挂载数据数据卷。将本地当前目录的data挂载到容器/var/lib/mysql</p></li>
-<li><p>-e MYSQL_ROOT_PASSWORD=pass 初始化root用户的密码</p></li>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>参数说明</dt>
+<dd><ul class="first last">
+<li>-p 3307:3306  端口映射。将容器mysql的3306映射到主机的3307。</li>
+<li>-v $PWD/conf:/etc/mysql/conf.d  挂载数据库配置数据卷。将本地（刚才创建的mysql目录）当前目录的conf挂载到容器/etc/mysql/conf.d</li>
+<li>-v $PWD/logs:/logs 挂载日志数据卷。将本地当前目录的logs挂载到容器/logs。</li>
+<li>-v $PWD/<a class="reference external" href="data:/var/lib/mysql">data:/var/lib/mysql</a> 挂载数据数据卷。将本地当前目录的data挂载到容器/var/lib/mysql</li>
+<li>-e MYSQL_ROOT_PASSWORD=pass 初始化root用户的密码</li>
 </ul>
 </dd>
 </dl>
@@ -1023,8 +1072,9 @@ e39f78f46f15        mysql:5.6           <span class="s2">&quot;docker-entrypoint
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>操作容器中的mysql</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入容器</span>
+<li><dl class="first docutils">
+<dt>操作容器中的mysql</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入容器</span>
 $ docker <span class="nb">exec</span> -it mysql_container /bin/bash
 <span class="c1"># 在容器中登录mysql</span>
 root@e39f78f46f15:/#  mysql -uroot -ppass
@@ -1047,19 +1097,22 @@ $ docker port mysql_container <span class="m">3306</span>
 </ol>
 </div>
 <div class="section" id="tomcat">
-<h3><span class="section-number">1.8.2. </span>Tomcat部署<a class="headerlink" href="#tomcat" title="永久链接至标题">¶</a></h3>
+<h3>1.8.2. Tomcat部署<a class="headerlink" href="#tomcat" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
-<li><dl class="simple">
-<dt>目标</dt><dd><ul class="simple">
-<li><p>实现在Docker中部署Tomcat，并通过本地浏览器访问网页，确定服务器是否正常工作。</p></li>
+<li><dl class="first docutils">
+<dt>目标</dt>
+<dd><ul class="first last simple">
+<li>实现在Docker中部署Tomcat，并通过本地浏览器访问网页，确定服务器是否正常工作。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>创建过程</dt><dd><ul>
-<li><dl>
-<dt>拉取镜像</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在本地创建一个数据库目录并进入。</span>
+<li><dl class="first docutils">
+<dt>创建过程</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>拉取镜像</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在本地创建一个数据库目录并进入。</span>
 $ mkdir tomcat
 $ <span class="nb">cd</span> tomcat
 <span class="c1"># $PWD表示当前目录路径</span>
@@ -1083,8 +1136,9 @@ Status: Downloaded newer image <span class="k">for</span> tomcat:latest
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>创建Tomcat容器</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在本地创建一个数据库目录并进入。</span>
+<li><dl class="first docutils">
+<dt>创建Tomcat容器</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 在本地创建一个数据库目录并进入。</span>
 $ mkdir tomcat
 $ <span class="nb">cd</span> tomcat
 <span class="c1"># $PWD表示当前目录路径</span>
@@ -1100,14 +1154,16 @@ $ docker run -id --name<span class="o">=</span>tomcat <span class="se">\</span>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>使用容器</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>在本地机器创建的tomcat目录下</dt><dd><ul>
-<li><p>mkdir my_app</p></li>
-<li><p>echo ‘&lt;h1&gt;hello,Docker!&lt;/h1&gt;’ &gt; my_app/index.html</p></li>
-<li><p>访问：<a class="reference external" href="http://0.0.0.0:8080/my_app/index.html">http://0.0.0.0:8080/my_app/index.html</a></p></li>
-<li><p>大功告成！</p></li>
+<li><dl class="first docutils">
+<dt>使用容器</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>在本地机器创建的tomcat目录下</dt>
+<dd><ul class="first last">
+<li>mkdir my_app</li>
+<li>echo ‘&lt;h1&gt;hello,Docker!&lt;/h1&gt;’ &gt; my_app/index.html</li>
+<li>访问：<a class="reference external" href="http://0.0.0.0:8080/my_app/index.html">http://0.0.0.0:8080/my_app/index.html</a></li>
+<li>大功告成！</li>
 </ul>
 </dd>
 </dl>
@@ -1123,11 +1179,12 @@ $ docker run -id --name<span class="o">=</span>tomcat <span class="se">\</span>
 </ol>
 </div>
 <div class="section" id="nginx">
-<h3><span class="section-number">1.8.3. </span>Nginx部署<a class="headerlink" href="#nginx" title="永久链接至标题">¶</a></h3>
+<h3>1.8.3. Nginx部署<a class="headerlink" href="#nginx" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><ul>
-<li><dl>
-<dt>拉取镜像</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull nginx
+<li><dl class="first docutils">
+<dt>拉取镜像</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker pull nginx
 Using default tag: latest
 latest: Pulling from library/nginx
 68ced04f60ab: Pull <span class="nb">complete</span>
@@ -1140,8 +1197,9 @@ Status: Downloaded newer image <span class="k">for</span> nginx:latest
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>创建容器并测试</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 准备工作</span>
+<li><dl class="first docutils">
+<dt>创建容器并测试</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 准备工作</span>
 $ mkdir nginx
 $ <span class="nb">cd</span> nginx
 $ mkdir conf html logs
@@ -1192,24 +1250,26 @@ $ 访问0.0.0.0
 </div></blockquote>
 </div>
 <div class="section" id="redis-key-value">
-<h3><span class="section-number">1.8.4. </span>Redis部署（一个key-value存储系统）<a class="headerlink" href="#redis-key-value" title="永久链接至标题">¶</a></h3>
+<h3>1.8.4. Redis部署（一个key-value存储系统）<a class="headerlink" href="#redis-key-value" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><ul>
-<li><dl class="simple">
-<dt>目标</dt><dd><ul class="simple">
-<li><p>创建Redis容器，并使用本地机器进行访问。</p></li>
+<li><dl class="first docutils">
+<dt>目标</dt>
+<dd><ul class="first last simple">
+<li>创建Redis容器，并使用本地机器进行访问。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>拉取镜像</dt><dd><ul class="simple">
-<li><p>docker pull reids</p></li>
+<li><dl class="first docutils">
+<dt>拉取镜像</dt>
+<dd><ul class="first last simple">
+<li>docker pull reids</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>创建容器</p>
+<li><p class="first">创建容器</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker run -id --name<span class="o">=</span>my_redis <span class="se">\</span>
 -p <span class="m">6379</span>:6379 <span class="se">\</span>
@@ -1225,20 +1285,22 @@ $ <span class="m">127</span>.0.0.1:6379&gt; get name
 </div>
 </div></blockquote>
 </li>
-<li><dl>
-<dt>外部连接测试</dt><dd><ul>
-<li><dl>
-<dt>mac系统下安装Redis</dt><dd><ul class="simple">
-<li><p>brew install redis</p></li>
+<li><dl class="first docutils">
+<dt>外部连接测试</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>mac系统下安装Redis</dt>
+<dd><ul class="first simple">
+<li>brew install redis</li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>如果下载太慢可更换brew的仓库源，可参考：<a class="reference external" href="https://www.jianshu.com/p/8a2ac505ff3e">https://www.jianshu.com/p/8a2ac505ff3e</a></p>
+<div class="last admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">如果下载太慢可更换brew的仓库源，可参考：<a class="reference external" href="https://www.jianshu.com/p/8a2ac505ff3e">https://www.jianshu.com/p/8a2ac505ff3e</a></p>
 </div>
 </dd>
 </dl>
 </li>
-<li><p>连接测试</p>
+<li><p class="first">连接测试</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ redis-cli -h <span class="m">0</span>.0.0.0 -p <span class="m">6379</span>
 $ <span class="m">0</span>.0.0.0:6379&gt; get name
@@ -1256,47 +1318,54 @@ $ <span class="m">0</span>.0.0.0:6379&gt; get name
 </div>
 </div>
 <div class="section" id="dockerfile">
-<h2><span class="section-number">1.9. </span>使用Dockerfile制作镜像<a class="headerlink" href="#dockerfile" title="永久链接至标题">¶</a></h2>
+<h2>1.9. 使用Dockerfile制作镜像<a class="headerlink" href="#dockerfile" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id23">
-<h3><span class="section-number">1.9.1. </span>镜像原理<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
+<h3>1.9.1. 镜像原理<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h3>
 <ul>
-<li><p>镜像是由特殊的文件系统叠加而成。</p></li>
-<li><p>采用分层的文件系统，通过在只读文件（镜像）上增加可读写层（容器）的形式来改变镜像。</p></li>
-<li><dl>
-<dt>Docker镜像结构图</dt><dd><a class="reference internal image-reference" href="../../_images/Docker镜像结构.png"><img alt="../../_images/Docker镜像结构.png" src="../../_images/Docker镜像结构.png" style="width: 600px;" /></a>
-<ul class="simple">
-<li><dl class="simple">
-<dt>bootfs。启动文件系统镜像，复用了宿主机的文件系统。</dt><dd><ul>
-<li><p>这也就解释了我们单独下载Ubuntu可能就是好几个G大小，但是利用docker就是几百兆的大小。</p></li>
+<li><p class="first">镜像是由特殊的文件系统叠加而成。</p>
+</li>
+<li><p class="first">采用分层的文件系统，通过在只读文件（镜像）上增加可读写层（容器）的形式来改变镜像。</p>
+</li>
+<li><dl class="first docutils">
+<dt>Docker镜像结构图</dt>
+<dd><a class="first reference internal image-reference" href="../../_images/Docker镜像结构.png"><img alt="../../_images/Docker镜像结构.png" src="../../_images/Docker镜像结构.png" style="width: 600px;" /></a>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>bootfs。启动文件系统镜像，复用了宿主机的文件系统。</dt>
+<dd><ul class="first last">
+<li>这也就解释了我们单独下载Ubuntu可能就是好几个G大小，但是利用docker就是几百兆的大小。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>rootfs。根文件系统，也成为根镜像，一般就是一个操作系统。</p></li>
-<li><dl class="simple">
-<dt>Image-1、Image-2。这些就是我们用户的镜像，可以不断叠加，下层为父镜像。</dt><dd><ul>
-<li><p>这也就解释了如果单独下载MySQL可能也就几十兆的大小，但使用docker就要几百兆的大小，反而变大了。究其原因，就是只读文件存在依赖的关系，叠加后变大了。</p></li>
+<li>rootfs。根文件系统，也成为根镜像，一般就是一个操作系统。</li>
+<li><dl class="first docutils">
+<dt>Image-1、Image-2。这些就是我们用户的镜像，可以不断叠加，下层为父镜像。</dt>
+<dd><ul class="first last">
+<li>这也就解释了如果单独下载MySQL可能也就几十兆的大小，但使用docker就要几百兆的大小，反而变大了。究其原因，就是只读文件存在依赖的关系，叠加后变大了。</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>可读写文件。这一层就是容器了，当我们基于镜像进行容器启动时，就会在最顶层加载一个可读写的文件系统作为容器。</p></li>
-<li><p>修改完后就可以提交新的镜像(制作一个新镜像）了。</p></li>
+<li>可读写文件。这一层就是容器了，当我们基于镜像进行容器启动时，就会在最顶层加载一个可读写的文件系统作为容器。</li>
+<li>修改完后就可以提交新的镜像(制作一个新镜像）了。</li>
 </ul>
 </dd>
 </dl>
 </li>
 <li></li>
-<li><p>创建新的镜像本质上也就是对已有的镜像文件集合进行增、删、改的操作。</p></li>
-<li><p>这种叠加的方式有利于实现镜像共享、增加可扩展性、减少磁盘空间使用。</p></li>
+<li><p class="first">创建新的镜像本质上也就是对已有的镜像文件集合进行增、删、改的操作。</p>
+</li>
+<li><p class="first">这种叠加的方式有利于实现镜像共享、增加可扩展性、减少磁盘空间使用。</p>
+</li>
 </ul>
 </div>
 <div class="section" id="id24">
-<h3><span class="section-number">1.9.2. </span>Dockerfile的概念和作用<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
+<h3>1.9.2. Dockerfile的概念和作用<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id25">
-<h4><span class="section-number">1.9.2.1. </span>镜像制作方法<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h4>
+<h4>1.9.2.1. 镜像制作方法<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h4>
 <ol class="arabic">
-<li><p>容器转镜像（不常用）</p>
+<li><p class="first">容器转镜像（不常用）</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">commit</span> <span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="p">[</span><span class="n">Image</span><span class="o">-</span><span class="n">name</span><span class="p">]:[</span><span class="n">tag</span><span class="p">]</span>
 </pre></div>
@@ -1308,12 +1377,13 @@ $ <span class="m">0</span>.0.0.0:6379&gt; get name
 </pre></div>
 </div>
 <div class="admonition attention">
-<p class="admonition-title">注意</p>
-<p>若原有镜像含有挂载文件，则commit时不会将其挂载到新制作的镜像。</p>
+<p class="first admonition-title">注意</p>
+<p class="last">若原有镜像含有挂载文件，则commit时不会将其挂载到新制作的镜像。</p>
 </div>
 <ul>
-<li><dl>
-<dt>操作步骤</dt><dd><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps -a
+<li><dl class="first docutils">
+<dt>操作步骤</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ docker ps -a
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                   PORTS                    NAMES
 679f5de7ab12        redis               <span class="s2">&quot;docker-entrypoint.sh&quot;</span>   <span class="m">12</span> hours ago        Up <span class="m">2</span> hours               <span class="m">0</span>.0.0.0:6379-&gt;6379/tcp   my_redis
@@ -1352,19 +1422,21 @@ $ docker images
 </ul>
 </div></blockquote>
 </li>
-<li><dl class="simple">
-<dt>Dockerfile（常用方法）</dt><dd><ul class="simple">
-<li><p>Dockerfile是一个文本文件，包含了一行行的指令。</p></li>
-<li><p>不一定叫Dockerfile名称，可根据实际需求来。如nginx_dockerfile</p></li>
-<li><p>每一行指令构建一层镜像，基于基础镜像，最终构建出一个新的镜像。</p></li>
-<li><dl class="simple">
-<dt>Dockerfile关键字，可参考：<a class="reference external" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/</a></dt><dd><ul>
-<li><p>FROM：父镜像</p></li>
-<li><p>RUN：执行命令，[“command-1”, “command-2”]</p></li>
-<li><p>CMD: 容器启动命令</p></li>
-<li><p>COPY：复制文件</p></li>
-<li><p>WORKDIR：工作目录。指定容器内的工作目录</p></li>
-<li><p>ADD：添加文件</p></li>
+<li><dl class="first docutils">
+<dt>Dockerfile（常用方法）</dt>
+<dd><ul class="first last simple">
+<li>Dockerfile是一个文本文件，包含了一行行的指令。</li>
+<li>不一定叫Dockerfile名称，可根据实际需求来。如nginx_dockerfile</li>
+<li>每一行指令构建一层镜像，基于基础镜像，最终构建出一个新的镜像。</li>
+<li><dl class="first docutils">
+<dt>Dockerfile关键字，可参考：<a class="reference external" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/</a></dt>
+<dd><ul class="first last">
+<li>FROM：父镜像</li>
+<li>RUN：执行命令，[“command-1”, “command-2”]</li>
+<li>CMD: 容器启动命令</li>
+<li>COPY：复制文件</li>
+<li>WORKDIR：工作目录。指定容器内的工作目录</li>
+<li>ADD：添加文件</li>
 </ul>
 </dd>
 </dl>
@@ -1377,23 +1449,26 @@ $ docker images
 </div>
 </div>
 <div class="section" id="id26">
-<h3><span class="section-number">1.9.3. </span>案例<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
+<h3>1.9.3. 案例<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h3>
 <div class="section" id="centosvim">
-<h4><span class="section-number">1.9.3.1. </span>案例一之CentOS安装Vim<a class="headerlink" href="#centosvim" title="永久链接至标题">¶</a></h4>
+<h4>1.9.3.1. 案例一之CentOS安装Vim<a class="headerlink" href="#centosvim" title="永久链接至标题">¶</a></h4>
 <ul>
-<li><dl class="simple">
-<dt>任务</dt><dd><dl class="simple">
-<dt>制作一个centos7镜像。保证：</dt><dd><ul class="simple">
-<li><p>默认登录路径为/usr;</p></li>
-<li><p>可以使用vim</p></li>
+<li><dl class="first docutils">
+<dt>任务</dt>
+<dd><dl class="first last docutils">
+<dt>制作一个centos7镜像。保证：</dt>
+<dd><ul class="first last simple">
+<li>默认登录路径为/usr;</li>
+<li>可以使用vim</li>
 </ul>
 </dd>
 </dl>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>步骤</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull centos:7
+<li><dl class="first docutils">
+<dt>步骤</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull centos:7
 $ docker run -it --name=c1 centos:7
 # 编写Dockerfile文件
 $ vim Dockerfile
@@ -1436,14 +1511,15 @@ $ [root@aa24050fdab5 usr]# vim test.txt
 </ul>
 </div>
 <div class="section" id="flask">
-<h4><span class="section-number">1.9.3.2. </span>案例二之发布Flask应用<a class="headerlink" href="#flask" title="永久链接至标题">¶</a></h4>
+<h4>1.9.3.2. 案例二之发布Flask应用<a class="headerlink" href="#flask" title="永久链接至标题">¶</a></h4>
 <ul>
-<li><dl class="simple">
-<dt>任务</dt><dd><p>定义Dockerfile，发布一个Hello,Flask版的Flask-Web项目</p>
+<li><dl class="first docutils">
+<dt>任务</dt>
+<dd><p class="first last">定义Dockerfile，发布一个Hello,Flask版的Flask-Web项目</p>
 </dd>
 </dl>
 </li>
-<li><p>步骤</p>
+<li><p class="first">步骤</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 创建并进入flask-web目录</span>
 $ <span class="nb">cd</span> flask-web
@@ -1495,25 +1571,27 @@ $ vim flask_dockefile
 </div>
 </div>
 <div class="section" id="docker-compose">
-<h2><span class="section-number">1.10. </span>docker-compose（服务编排技术）<a class="headerlink" href="#docker-compose" title="永久链接至标题">¶</a></h2>
+<h2>1.10. docker-compose（服务编排技术）<a class="headerlink" href="#docker-compose" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id27">
-<h3><span class="section-number">1.10.1. </span>服务编排概念<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
+<h3>1.10.1. 服务编排概念<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>目的：将一系列的容器创建自动化</p></li>
-<li><p>docker-compose是一个工具。能够编排多容器分布式部署，以指令集的形式管理容器化应用的开发周期，如构建、启动、停止。</p></li>
-<li><dl class="simple">
-<dt>基本过程</dt><dd><ul>
-<li><p>利用Dockerfile文件定义运行环境镜像。</p></li>
-<li><dl class="simple">
-<dt>使用docker-compose.yml定义组成应用的各服务。</dt><dd><ul>
-<li><p>前后依赖关系</p></li>
-<li><p>容器数量等</p></li>
+<li>目的：将一系列的容器创建自动化</li>
+<li>docker-compose是一个工具。能够编排多容器分布式部署，以指令集的形式管理容器化应用的开发周期，如构建、启动、停止。</li>
+<li><dl class="first docutils">
+<dt>基本过程</dt>
+<dd><ul class="first last">
+<li>利用Dockerfile文件定义运行环境镜像。</li>
+<li><dl class="first docutils">
+<dt>使用docker-compose.yml定义组成应用的各服务。</dt>
+<dd><ul class="first last">
+<li>前后依赖关系</li>
+<li>容器数量等</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>运行docker-compose up 启动应用。</p></li>
+<li>运行docker-compose up 启动应用。</li>
 </ul>
 </dd>
 </dl>
@@ -1522,9 +1600,9 @@ $ vim flask_dockefile
 </div></blockquote>
 </div>
 <div class="section" id="id28">
-<h3><span class="section-number">1.10.2. </span>日常命令<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
+<h3>1.10.2. 日常命令<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h3>
 <ol class="arabic">
-<li><p>修改docker-compose.yml文件后重启容器</p>
+<li><p class="first">修改docker-compose.yml文件后重启容器</p>
 <blockquote>
 <div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose down
 # -d参数为后台运行
@@ -1536,10 +1614,10 @@ $ docker-compose up -d
 </ol>
 </div>
 <div class="section" id="mac">
-<h3><span class="section-number">1.10.3. </span>安装（Mac系统）<a class="headerlink" href="#mac" title="永久链接至标题">¶</a></h3>
+<h3>1.10.3. 安装（Mac系统）<a class="headerlink" href="#mac" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
-<li><p>Mac系统安装Docker后会包含这个工具，直接查看下版本</p></li>
+<li>Mac系统安装Docker后会包含这个工具，直接查看下版本</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker-compose version
 docker-compose version 1.8.1, build 878cff1
@@ -1548,13 +1626,13 @@ docker-compose version 1.8.1, build 878cff1
 </div></blockquote>
 </div>
 <div class="section" id="nginx-flask-web">
-<h3><span class="section-number">1.10.4. </span>实例-发布简单Nginx+Flask-web应用<a class="headerlink" href="#nginx-flask-web" title="永久链接至标题">¶</a></h3>
+<h3>1.10.4. 实例-发布简单Nginx+Flask-web应用<a class="headerlink" href="#nginx-flask-web" title="永久链接至标题">¶</a></h3>
 <blockquote>
 <div><div class="admonition note">
-<p class="admonition-title">注解</p>
-<ul class="simple">
-<li><p>要发布一个完整的项目就存在很多组件服务，如数据库、反向代理等，逐个启动太过麻烦了，我们可以使用docker-compose工具统一进行定义并启动。</p></li>
-<li><p>这个案例就要编排反向代理及flask两个服务应用。</p></li>
+<p class="first admonition-title">注解</p>
+<ul class="last simple">
+<li>要发布一个完整的项目就存在很多组件服务，如数据库、反向代理等，逐个启动太过麻烦了，我们可以使用docker-compose工具统一进行定义并启动。</li>
+<li>这个案例就要编排反向代理及flask两个服务应用。</li>
 </ul>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 创建工作目录
@@ -1615,49 +1693,53 @@ $ docker-compose up # 后面-d参数将会后台运行，这里就不加了
 </div>
 </div>
 <div class="section" id="id29">
-<h2><span class="section-number">1.11. </span>搭建私有仓库<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h2>
+<h2>1.11. 搭建私有仓库<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h2>
 <div class="admonition note">
-<p class="admonition-title">注解</p>
-<p>搭建自己的仓库。上传本地镜像并从私有拉取镜像</p>
+<p class="first admonition-title">注解</p>
+<p class="last">搭建自己的仓库。上传本地镜像并从私有拉取镜像</p>
 </div>
 <div class="section" id="id30">
-<h3><span class="section-number">1.11.1. </span>创建私有仓库<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<h3>1.11.1. 创建私有仓库<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
 <ul>
-<li><dl>
-<dt>拉取私有仓库镜像</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull registry:2
+<li><dl class="first docutils">
+<dt>拉取私有仓库镜像</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull registry:2
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>启动仓库</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -id --name=my_hub -p 9000:5000 registry:2
+<li><dl class="first docutils">
+<dt>启动仓库</dt>
+<dd><div class="first last highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker run -id --name=my_hub -p 9000:5000 registry:2
 </pre></div>
 </div>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>浏览器访问</dt><dd><p><a class="reference external" href="http://127.0.0.1:9000/v2/_catalog">http://127.0.0.1:9000/v2/_catalog</a>
+<li><dl class="first docutils">
+<dt>浏览器访问</dt>
+<dd><p class="first last"><a class="reference external" href="http://127.0.0.1:9000/v2/_catalog">http://127.0.0.1:9000/v2/_catalog</a>
 可以看到是空的</p>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt>修改daemon.json</dt><dd><div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>Mac系统可直接客户端的配置</p>
+<li><dl class="first docutils">
+<dt>修改daemon.json</dt>
+<dd><div class="first admonition tip">
+<p class="first admonition-title">小技巧</p>
+<p class="last">Mac系统可直接客户端的配置</p>
 </div>
-<a class="reference internal image-reference" href="../../_images/私有仓库.jpg"><img alt="../../_images/私有仓库.jpg" src="../../_images/私有仓库.jpg" style="width: 600px;" /></a>
+<a class="last reference internal image-reference" href="../../_images/私有仓库.jpg"><img alt="../../_images/私有仓库.jpg" src="../../_images/私有仓库.jpg" style="width: 600px;" /></a>
 </dd>
 </dl>
 </li>
 </ul>
 </div>
 <div class="section" id="id31">
-<h3><span class="section-number">1.11.2. </span>传并拉镜像<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<h3>1.11.2. 传并拉镜像<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
-<li><p>传CentOs</p></li>
+<li>传CentOs</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># 先重新打个标记
 $ docker tag centos:7 0.0.0.0:9000/centos:7.1
@@ -1679,34 +1761,38 @@ $ docker push 0.0.0.0:9000/centos:7.1
 </pre></div>
 </div>
 <div class="admonition attention">
-<p class="admonition-title">注意</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>报错1：</dt><dd><ul>
-<li><p>The push refers to a repository [0.0.0.0:9000/centos]</p></li>
-<li><p>Get <a class="reference external" href="https://0.0.0.0:9000/v1/_ping">https://0.0.0.0:9000/v1/_ping</a>: http: server gave HTTP response to HTTPS client</p></li>
+<p class="first admonition-title">注意</p>
+<ul class="last simple">
+<li><dl class="first docutils">
+<dt>报错1：</dt>
+<dd><ul class="first last">
+<li>The push refers to a repository [0.0.0.0:9000/centos]</li>
+<li>Get <a class="reference external" href="https://0.0.0.0:9000/v1/_ping">https://0.0.0.0:9000/v1/_ping</a>: http: server gave HTTP response to HTTPS client</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>解决</dt><dd><ul>
-<li><p>首先，确保添加了安全组insecure-registries：0.0.0.0:9000</p></li>
-<li><p>重启shell终端及docker服务</p></li>
+<li><dl class="first docutils">
+<dt>解决</dt>
+<dd><ul class="first last">
+<li>首先，确保添加了安全组insecure-registries：0.0.0.0:9000</li>
+<li>重启shell终端及docker服务</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>报错2：</dt><dd><ul>
-<li><p>Get <a class="reference external" href="https://0.0.0.0:9000/v2/">https://0.0.0.0:9000/v2/</a>: dial tcp <a class="reference external" href="https://0.0.0.0:9000">https://0.0.0.0:9000</a>: connect: no route to host</p></li>
+<li><dl class="first docutils">
+<dt>报错2：</dt>
+<dd><ul class="first last">
+<li>Get <a class="reference external" href="https://0.0.0.0:9000/v2/">https://0.0.0.0:9000/v2/</a>: dial tcp <a class="reference external" href="https://0.0.0.0:9000">https://0.0.0.0:9000</a>: connect: no route to host</li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><dl class="simple">
-<dt>解决</dt><dd><ul>
-<li><p>重新启动容器：docker start my_hub</p></li>
+<li><dl class="first docutils">
+<dt>解决</dt>
+<dd><ul class="first last">
+<li>重新启动容器：docker start my_hub</li>
 </ul>
 </dd>
 </dl>
@@ -1714,7 +1800,7 @@ $ docker push 0.0.0.0:9000/centos:7.1
 </ul>
 </div>
 <ul class="simple">
-<li><p>拉取镜像</p></li>
+<li>拉取镜像</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull 0.0.0.0:9000/centos:7.1
 Digest: sha256:934aed62ee9ee05733d233c679a576a1d21aee98ef809493260686aad2bd3e0a
@@ -1724,7 +1810,7 @@ Status: Image is up to date for 0.0.0.0:9000/centos:7.1
 </div>
 </div>
 <div class="section" id="id32">
-<h2><span class="section-number">1.12. </span>结束<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h2>
+<h2>1.12. 结束<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h2>
 <p>至此，关于docker的基础知识及命令已完成，后续会继续网络、容器集群管理、终端运维管理相关的学习。</p>
 </div>
 </div>
@@ -1734,29 +1820,29 @@ Status: Image is up to date for 0.0.0.0:9000/centos:7.1
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="k8s.html" class="btn btn-neutral float-right" title="2. Kubernetes（K8S）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html" class="btn btn-neutral float-left" title="1. 关系数据库-MySQL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="k8s.html" class="btn btn-neutral float-right" title="2. Kubernetes（K8S）" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../数据库系列/mysql.html" class="btn btn-neutral float-left" title="1. 关系数据库-MySQL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; 版权所有 2020, LiHangHang.
+        &copy; Copyright 2020, LiHangHang
 
     </p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
@@ -1764,6 +1850,7 @@ Status: Image is up to date for 0.0.0.0:9000/centos:7.1
 
   </div>
   
+
 
   <script type="text/javascript">
       jQuery(function () {
