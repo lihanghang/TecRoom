@@ -97,6 +97,7 @@
     doc/机器智能系列/kg
     doc/机器智能系列/框架/pytorch
     doc/机器智能系列/框架/tensorflow
+    doc/机器智能系列/计算语言学
 
 
 .. toctree::
