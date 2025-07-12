@@ -45,9 +45,7 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
-    'recommonmark',
-    'sphinx.ext.autosectionlabel',
-    'sphinxcontrib.osexample'
+    'recommonmark'
 ]
 
 
