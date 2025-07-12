@@ -43,15 +43,19 @@
 
    + 主要使用random包中的randint模块
 
-   ```python
-   #!/usr/bin/env python3
-   from random import randint
+   ``` python
 
-   # generate dict
-   d = {"name%d" % n :randint(10, 30) for n in range(10)}
-   # generate set
-   s = {randint(10, 30) for _ in range(10)}
+      #!/usr/bin/env python3
+      from random import randint
+
+      # generate dict
+
+      d = {"name%d" % n :randint(10, 30) for n in range(10)}
+      # generate set
+
+      s = {randint(10, 30) for _ in range(10)}
    ```
+
 2. 集合的求交集操作
 
    + key points: keys() of dict、func map, reduce
@@ -59,32 +63,34 @@
    + map 函数：把函数应用到各个元素上，生成一个新序列。
    + reduce 函数：把一系列值归约成单个值。第一个参数是接受两个参数的函数，第二个参数是一个可迭代的对象。看下一个例子：
 
-   ```python
-   from functools import reduce
+      ``` python
+      from functools import reduce
 
-   # example： reduce 
-   reduce(func, iterable)：reduce(lambda a, b: a * b, range(1, 5))
-   >>> 24
-   ```
+      # example： reduce 
+      reduce(func, iterable)：reduce(lambda a, b: a * b, range(1, 5))
+      >>> 24
+      ```
 
-   ```python
-   from random import randint, sample
-   from functools import reduce
+      ``` python
+      from random import randint, sample
+      from functools import reduce
 
-   # random generate three dict
-   s = 'china'
-   d1 = {k: randint(2, 5) for k in sample(s, randint(4, 7))}
-   d2 = {k: randint(2, 5) for k in sample(s, randint(4, 7))}
-   d3 = {k: randint(2, 5) for k in sample(s, randint(4, 7))}
-   # 求以上三个字典的公共键：使用map、all
-   d1 = [d1, d2, d3]
-   [k for k in d1[0] if all(map(lambda d: k in d, d1[1:]))]
-   >>> ['o']
+      # random generate three dict
+      s = 'china'
+      d1 = {k: randint(2, 5) for k in sample(s, randint(4, 7))}
+      d2 = {k: randint(2, 5) for k in sample(s, randint(4, 7))}
+      d3 = {k: randint(2, 5) for k in sample(s, randint(4, 7))}
+      # 求以上三个字典的公共键：使用map、all
+      d1 = [d1, d2, d3]
+      [k for k in d1[0] if all(map(lambda d: k in d, d1[1:]))]
+      >>> ['o']
 
-   # 使用集合运算求交集：reduce。使用场景：存在多个自典时。
-   reduce(lambda dict1, dict2: dict1 & dict2, map(dict.keys, d1))
-   >>> {'o'}
-   ```
+      # 使用集合运算求交集：reduce。使用场景：存在多个自典时。
+   
+      reduce(lambda dict1, dict2: dict1 & dict2, map(dict.keys, d1))
+      >>> {'o'}
+      ```
+
 3. 枚举、命名元组模块
 
 ## 第四部分 高阶知识

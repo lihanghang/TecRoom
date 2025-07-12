@@ -26,7 +26,7 @@ author = 'LiHangHang'
 # The short X.Y version
 version = '2.1'
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = '1.1'
 
 
 # -- General configuration ---------------------------------------------------
@@ -46,7 +46,11 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
     'recommonmark',
+    'sphinx.ext.autosectionlabel',
+    'sphinxcontrib.osexample'
 ]
+
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
