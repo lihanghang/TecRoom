@@ -5,7 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "doc8>=2.0.0",
+    "esbonio>=0.16.5",
     "recommonmark>=0.7.1",
+    "restructuredtext-lint>=1.4.0",
 ]
 
 [[tool.uv.index]]
