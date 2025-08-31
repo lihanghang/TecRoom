@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-
-<html lang="zh-CN" data-content_root="../../">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="lang:clipboard.copy" content="Copy to clipboard">
-  <meta name="lang:clipboard.copied" content="Copied to clipboard">
-  <meta name="lang:search.language" content="en">
-  <meta name="lang:search.pipeline.stopwords" content="True">
-  <meta name="lang:search.pipeline.trimmer" content="True">
-  <meta name="lang:search.result.none" content="No matching documents">
-  <meta name="lang:search.result.one" content="1 matching document">
-  <meta name="lang:search.result.other" content="# matching documents">
-  <meta name="lang:search.tokenizer" content="[\s\-]+">
-
-  
-    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
-
-    <style>
-      body,
+<html data-content_root="../../" lang="zh-CN">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
       input {
         font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
       }
@@ -32,304 +28,1480 @@
       pre {
         font-family: "Roboto Mono", "Courier New", Courier, monospace
       }
-    </style>
-  
-
-  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
-  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
-  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
-  
-  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
-  
-  <meta name="theme-color" content="#3f51b5">
-  <script src="../../_static/javascripts/modernizr.js"></script>
-  
-  
-  
-    <title>6. 知识图谱(Knowledge Graph) &#8212; Hang&#39;s Tec Room 1.1 文档</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <script src="../../_static/documentation_options.js?v=e3d36c67"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../../_static/translations.js?v=beaddf03"></script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <link rel="index" title="索引" href="../../genindex.html" />
-    <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="7. Pytorch" href="%E6%A1%86%E6%9E%B6/pytorch.html" />
-    <link rel="prev" title="4. 自然语言理解" href="nlp.html" /> 
-  
-   
-   
-  </head>
-  <body dir=ltr
-        data-md-color-primary=blue-grey data-md-color-accent=blue>
-  
-  <svg class="md-svg">
-    <defs data-children-count="0">
-      
-      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-      
-    </defs>
-  </svg>
-  
-  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
-  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
-  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
-  <a href="#doc/机器智能系列/kg" tabindex="1" class="md-skip"> Skip to content </a>
-  <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex navheader">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../index.html" title="Hang&#39;s Tec Room 1.1 文档"
-           class="md-header-nav__button md-logo">
-          
-            &nbsp;
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          <span class="md-header-nav__topic">Hang's Tec Room 1.1 文档</span>
-          <span class="md-header-nav__topic"> 6. 知识图谱(Knowledge Graph) </span>
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
-        
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" action="../../search.html" method="get" name="search">
-      <input type="text" class="md-search__input" name="q" placeholder=""Search""
-             autocapitalize="off" autocomplete="off" spellcheck="false"
-             data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="__search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            Type to start searching
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-      </div>
-      
-      
-  
-  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  </style>
+  <link href="../../_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="../../_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="../../_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="../../_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#2196f3" name="theme-color"/>
+  <script src="../../_static/javascripts/modernizr.js">
+  </script>
+  <link href="../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
+  <title>
+   6. 知识图谱(Knowledge Graph) — Hang's Tec Room 2.1.0 文档
+  </title>
+  <link href="../../_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/material.css?v=79c92029" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/graphviz.css?v=4ae1632d" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/copybutton.css?v=76b2166b" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/togglebutton.css?v=13237357" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/sphinx-design.min.css?v=fb60a719" rel="stylesheet" type="text/css"/>
+  <script src="../../_static/documentation_options.js?v=2e1fee42">
+  </script>
+  <script src="../../_static/doctools.js?v=9bcbadda">
+  </script>
+  <script src="../../_static/sphinx_highlight.js?v=dc90522c">
+  </script>
+  <script src="../../_static/clipboard.min.js?v=a7894cd8">
+  </script>
+  <script src="../../_static/copybutton.js?v=f281be69">
+  </script>
   <script>
-    var json_loc = "../../"versions.json"",
+   let toggleHintShow = 'Click to show';
+  </script>
+  <script>
+   let toggleHintHide = 'Click to hide';
+  </script>
+  <script>
+   let toggleOpenOnPrint = 'true';
+  </script>
+  <script src="../../_static/togglebutton.js?v=4a39c7ea">
+  </script>
+  <script src="../../_static/translations.js?v=beaddf03">
+  </script>
+  <script src="../../_static/design-tabs.js?v=f930bc37">
+  </script>
+  <script>
+   var togglebuttonSelector = '.toggle, .admonition.dropdown';
+  </script>
+  <link href="../../genindex.html" rel="index" title="索引"/>
+  <link href="../../search.html" rel="search" title="搜索"/>
+  <link href="%E6%A1%86%E6%9E%B6/pytorch.html" rel="next" title="7. Pytorch"/>
+  <link href="nlp.html" rel="prev" title="4. 自然语言理解"/>
+  <link href="../../_static/images/apple-icon-152x152.png" rel="apple-touch-icon"/>
+ </head>
+ <body data-md-color-accent="cyan" data-md-color-primary="blue" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#doc/机器智能系列/kg" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="../../index.html" title="Hang's Tec Room 2.1.0 文档">
+       <i class="md-icon">
+        
+       </i>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Hang's Tec Room 2.1.0 文档
+       </span>
+       <span class="md-header-nav__topic">
+        6. 知识图谱(Knowledge Graph)
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="../../search.html" class="md-search__form" method="get" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="" search""="" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <div class="md-header-nav__source">
+       <a class="md-source" data-md-source="github" href="https://github.com/lihanghang/TecRoom" title="Go to repository">
+        <div class="md-source__icon">
+         <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <use height="24" width="24" xlink:href="#__github">
+          </use>
+         </svg>
+        </div>
+        <div class="md-source__repository">
+         TecRoom
+        </div>
+       </a>
+      </div>
+     </div>
+     <script src="../../_static/javascripts/version_dropdown.js">
+     </script>
+     <script>
+      var json_loc = "../../"versions.json"",
         target_loc = "../../../",
         text = "Versions";
     $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
-  </script>
-  
-
+     </script>
     </div>
-  </nav>
-</header>
-
-  
+   </nav>
+  </header>
   <div class="md-container">
-    
-    
-    
-  <nav class="md-tabs" data-md-component="tabs">
+   <nav class="md-tabs" data-md-component="tabs">
     <div class="md-tabs__inner md-grid">
-      <ul class="md-tabs__list">
-          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Hang's Tec Room 1.1 文档</a></li>
-      </ul>
+     <ul class="md-tabs__list">
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="../../index.html">
+        主页
+       </a>
+      </li>
+      <li class="md-tabs__item">
+       <a class="md-tabs__link" href="https://lihanghang.top">
+        博客
+       </a>
+      </li>
+     </ul>
     </div>
-  </nav>
-    <main class="md-main">
-      <div class="md-main__inner md-grid" data-md-component="container">
-        
-          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-            <div class="md-sidebar__scrollwrap">
-              <div class="md-sidebar__inner">
-                <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="../../index.html" title="Hang&#39;s Tec Room 1.1 文档" class="md-nav__button md-logo">
-      
-        <img src="../../_static/" alt=" logo" width="48" height="48">
-      
-    </a>
-    <a href="../../index.html"
-       title="Hang&#39;s Tec Room 1.1 文档">Hang's Tec Room 1.1 文档</a>
-  </label>
-  
-
-</nav>
-              </div>
-            </div>
-          </div>
-          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-            <div class="md-sidebar__scrollwrap">
-              <div class="md-sidebar__inner">
-                
-<nav class="md-nav md-nav--secondary">
-    <label class="md-nav__title" for="__toc">"Contents"</label>
-  <ul class="md-nav__list" data-md-scrollfix="">
-        <li class="md-nav__item"><a href="#doc-ji-qi-zhi-neng-xi-lie-kg--page-root" class="md-nav__link">6. 知识图谱(Knowledge Graph)</a><nav class="md-nav">
-              <ul class="md-nav__list">
-        <li class="md-nav__item"><a href="#id1" class="md-nav__link">6.1. 资源推荐</a>
-        </li>
-        <li class="md-nav__item"><a href="#id3" class="md-nav__link">6.2. 什么是知识图谱？</a>
-        </li>
-        <li class="md-nav__item"><a href="#id4" class="md-nav__link">6.3. 如何应用知识图谱?</a>
-        </li>
-        <li class="md-nav__item"><a href="#id5" class="md-nav__link">6.4. 如何构建知识图谱？</a>
-        </li>
-        <li class="md-nav__item"><a href="#id6" class="md-nav__link">6.5. 知识图谱案例介绍</a>
-        </li></ul>
-            </nav>
-        </li>
-    
-<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/doc/机器智能系列/kg.rst.txt">显示源代码</a> </li>
-
-<li id="searchbox" class="md-nav__item"></li>
-
-  </ul>
-</nav>
-              </div>
-            </div>
-          </div>
-        
-        <div class="md-content">
-          <article class="md-content__inner md-typeset" role="main">
-             <section id="knowledge-graph">
-<h1><span class="section-number">6. </span>知识图谱(Knowledge Graph)<a class="headerlink" href="#knowledge-graph" title="Link to this heading">¶</a></h1>
-<section id="id1">
-<h2><span class="section-number">6.1. </span>资源推荐<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
-<ol class="arabic simple">
-<li><dl class="simple">
-<dt>据我了解截止到2020年市面上关于知识图谱的系统性书籍并不多，但是这方面零零散散的资料还是比较多。推荐一本书：</dt><dd><ul class="simple">
-<li><dl class="simple">
-<dt>《 <a class="reference external" href="https://book.douban.com/subject/34788903/)">知识图谱：方法、实践与应用</a> 》</dt><dd><ul>
-<li><p>从知识图谱的各个环节到相关应用都有涉及，属于入门级书籍。</p></li>
-<li><p>如果想快一点了解KG领域，推荐可以快速看看这本书。</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p>本笔记主要通过学习2020年春 <a class="reference external" href="https://web.stanford.edu/class/cs520/">Stanford University CS520</a> 知识图谱课程来记录，很有爱的一个名字。知识图谱是人工智能在认知领域目前最佳的实践方向，一起来学习吧</p></li>
-<li><p>Stanford CS520 - 知识图谱 Knowledge Graph (Spring 2020) <a class="reference external" href="https://www.bilibili.com/video/BV1ui4y1874M?t=126">B站资源</a></p></li>
-<li><p><a class="reference external" href="http://ai.stanford.edu/blog/">The Stanford AI Lab Blog</a></p></li>
-</ol>
-</section>
-<section id="id3">
-<h2><span class="section-number">6.2. </span>什么是知识图谱？<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">备注</p>
-<ol class="arabic simple">
-<li><p>KG是一个存在多环节、结合多技术的 <strong>工程</strong>。</p></li>
-</ol>
-</div>
-<ol class="arabic simple">
-<li><p>store: Resource Description Framework(RDF)</p></li>
-<li><p>Query language for RDF: SPARQL</p></li>
-<li><p>Application: searching the Web-Google,Bing, Maps、Smart Assistants-Siri, Cortanta, Echo.</p></li>
-<li><p>science application: search, discovery,data exploration.</p></li>
-</ol>
-</section>
-<section id="id4">
-<h2><span class="section-number">6.3. </span>如何应用知识图谱?<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
-</section>
-<section id="id5">
-<h2><span class="section-number">6.4. </span>如何构建知识图谱？<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
-</section>
-<section id="id6">
-<h2><span class="section-number">6.5. </span>知识图谱案例介绍<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
-</section>
-</section>
-
-<div class="section ablog__blog_comments">
-   
-</div>
-
-          </article>
-        </div>
+   </nav>
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="../../index.html" title="Hang's Tec Room 2.1.0 文档">
+           <i class="md-icon">
+            
+           </i>
+          </a>
+          <a href="../../index.html" title="Hang's Tec Room 2.1.0 文档">
+           Hang's Tec Room 2.1.0 文档
+          </a>
+         </label>
+         <div class="md-nav__source">
+          <a class="md-source" data-md-source="github" href="https://github.com/lihanghang/TecRoom" title="Go to repository">
+           <div class="md-source__icon">
+            <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             <use height="24" width="24" xlink:href="#__github">
+             </use>
+            </svg>
+           </div>
+           <div class="md-source__repository">
+            TecRoom
+           </div>
+          </a>
+         </div>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             关于
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E5%85%B3%E4%BA%8E/index.html">
+            公共资源
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%85%B3%E4%BA%8E/about_me.html">
+              1. 关于我
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%85%B3%E4%BA%8E/about_blog.html">
+              2. 关于技术屋
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%85%B3%E4%BA%8E/build_readthedocs.html">
+              3. 基于ReadtheDocs托管在线知识库的步骤
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             编程语言及开发框架
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/index.html">
+            语言及框架
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/C%2B%2B.html">
+              1. C++
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/Java%E5%9F%BA%E7%A1%80%E6%8A%80%E6%9C%AF%E4%BD%93%E7%B3%BB.html">
+              2. Java基础技术体系
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/Spring.html">
+              3. Spring
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/SpringBoot.html">
+              4. SpringBoot基础
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Java%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/SpringBoot.html#id6">
+              5. SpringBoot进阶
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/python%E6%8A%80%E6%9C%AF%E6%A0%88/Python.html">
+              6. Python基础知识
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/python%E6%8A%80%E6%9C%AF%E6%A0%88/%E5%B8%B8%E7%94%A8%E6%A1%86%E6%9E%B6/django.html">
+              7. Django
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/Drools.html">
+              8. Drools规则引擎
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             后端接口开发
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html">
+            1. 接口（Interface）开发
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html#id1">
+              1.1. 参考
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html#id2">
+              1.2. 几个概念
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html#id4">
+              1.3. 接口的好处
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html#id5">
+              1.4. 接口定义原则及规范
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html#id11">
+              1.5. 项目结构
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html#id12">
+              1.6. 接口开发经验
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E6%A1%86%E6%9E%B6.html">
+            2. 常见接口框架
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E6%A1%86%E6%9E%B6.html#flask">
+              2.1. Flask
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E6%A1%86%E6%9E%B6.html#fastapi">
+              2.2. FastAPI
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             项目开发杂谈
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html">
+            1. 项目开发杂谈
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html#id2">
+              1.1. 软件迭代的环境问题
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html#id3">
+              1.2. 软件开发的流程
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html#id4">
+              1.3. 工程结构问题
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html#id5">
+              1.4. 本地开发环境
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             数据结构与算法系列
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html">
+            1. 数据结构(Data Structure)
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#id1">
+              1.1. 方法论
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#id3">
+              1.2. 数据结构
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#array">
+              1.3. Array
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#stack-and-queue">
+              1.4. Stack and Queue
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#priorityqueue">
+              1.5. PriorityQueue
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#linkedlist-single-double">
+              1.6. LinkedList(single/double)
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#tree-binary-tree">
+              1.7. Tree/Binary Tree
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#hashtable">
+              1.8. HashTable
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#disjoint-set">
+              1.9. Disjoint Set
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#trie">
+              1.10. Trie
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#bloomfilter">
+              1.11. BloomFilter
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#lru-cache">
+              1.12. LRU Cache
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#algorithm">
+            2. 算法（Algorithm)
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#general-coding">
+              2.1. General Coding
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#in-order-pre-order-post-order-traversal">
+              2.2. In-order/pre-order/Post-order traversal
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#greedy">
+              2.3. Greedy
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#recursion-backtrace">
+              2.4. Recursion/Backtrace
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#breadth-first-search">
+              2.5. Breadth-first search
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#depth-first-search">
+              2.6. Depth-first search
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#divide-and-conquer">
+              2.7. Divide and Conquer
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#dynamic-programming">
+              2.8. Dynamic Programming
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#binary-search">
+              2.9. Binary search
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#graph">
+              2.10. Graph
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             设计模式
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html">
+            1. 设计模式
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html#id2">
+              1.1. 资源推荐
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html#id4">
+              1.2. 知识框架图
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html#id5">
+              1.3. 初识设计模式
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html#id7">
+              1.4. 创建型（5）
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html#id13">
+              1.5. 结构型（7）
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html#id21">
+              1.6. 行为型（11）
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             计算机网络技术
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/computer-network.html">
+            1. 计算机网络系列
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             数据库系列
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html">
+            1. 关系数据库-MySQL
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#id1">
+              1.1. 书籍推荐
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#id2">
+              1.2. 基础知识
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#id4">
+              1.3. 设计规约
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#redis">
+            2. 非关系数据库--Redis
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             虚拟化与容器技术
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html">
+            1. Docker
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id1">
+              1.1. 书籍推荐
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id4">
+              1.2. 初识Docker
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id5">
+              1.3. 图述Docker
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id6">
+              1.4. Docker架构（组件）
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#docker-mac">
+              1.5. 安装Docker（MAC)并注册国内镜像加速器
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id14">
+              1.6. Docker常用命令
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id16">
+              1.7. Docker容器的数据卷
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id22">
+              1.8. Docker使用案例（应用部署实战）
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#dockerfile">
+              1.9. 使用Dockerfile制作镜像
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#docker-compose">
+              1.10. docker-compose（服务编排技术）
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id29">
+              1.11. 搭建私有仓库
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html#id32">
+              1.12. 结束
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/k8s.html">
+            2. Kubernetes（K8S）
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/k8s.html#id1">
+              2.1. 推荐
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             服务器
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html">
+            1. 服务器系列
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html#linux">
+              1.1. Linux 基础知识
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html#id2">
+              1.2. Linux 常用命令
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             分布式与微服务系列
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/index.html">
+            分布式与微服务
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/%E4%B8%AD%E9%97%B4%E4%BB%B6.html">
+              1. 中间件集合
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/distributeMicroServer.html">
+              2. 分布式与微服务系列
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             机器智能系列
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="ml.html">
+            1. 机器学习基础
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="ml.html#id2">
+              1.1. 书籍推荐
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="ml.html#id3">
+            2. 机器学习应用
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="ml.html#id4">
+              2.1. 常见应用领域
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="ml.html#id5">
+              2.2. 常见算法回顾
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="ml.html#id6">
+              2.3. 模型评价指标
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="ml.html#id7">
+              2.4. 常用建模工具
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="ml.html#id8">
+              2.5. 实际问题建模思路流程
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="dl.html">
+            3. 深度学习
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="dl.html#id2">
+              3.1. 书籍推荐
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="dl.html#id3">
+              3.2. 深度学习基本点
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="nlp.html">
+            4. 自然语言理解
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#id2">
+              4.1. 书籍推荐
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#id3">
+              4.2. 什么是 自然语言 理解？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#id10">
+              4.3. 自然语言技术方向
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#nlp">
+              4.4. NLP国内外优秀学者及实验室
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="nlp.html#cs224n-2019-by-chris-manning">
+            5. CS224n-2019-课程笔记 by Chris Manning
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#id11">
+              5.1. 一些说明和资源
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#word-vectors">
+              5.2. 词向量（Word Vectors)
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#id24">
+              5.3. 词向量和语义
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#id33">
+              5.4. 神经网络
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="nlp.html#bp">
+              5.5. 矩阵计算与BP（反向传播）算法
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+           <label class="md-nav__link md-nav__link--active" for="__toc">
+            6. 知识图谱(Knowledge Graph)
+           </label>
+           <a class="md-nav__link md-nav__link--active" href="#">
+            6. 知识图谱(Knowledge Graph)
+           </a>
+           <nav class="md-nav md-nav--secondary">
+            <label class="md-nav__title" for="__toc">
+             "Contents"
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#doc-ji-qi-zhi-neng-xi-lie-kg--page-root">
+               6. 知识图谱(Knowledge Graph)
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id1">
+                  6.1. 资源推荐
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id3">
+                  6.2. 什么是知识图谱？
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id4">
+                  6.3. 如何应用知识图谱?
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id5">
+                  6.4. 如何构建知识图谱？
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id6">
+                  6.5. 知识图谱案例介绍
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__extra_link" href="../../_sources/doc/机器智能系列/kg.rst.txt">
+               显示源代码
+              </a>
+             </li>
+            </ul>
+           </nav>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#id1">
+              6.1. 资源推荐
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#id3">
+              6.2. 什么是知识图谱？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#id4">
+              6.3. 如何应用知识图谱?
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#id5">
+              6.4. 如何构建知识图谱？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#id6">
+              6.5. 知识图谱案例介绍
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="%E6%A1%86%E6%9E%B6/pytorch.html">
+            7. Pytorch
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="%E6%A1%86%E6%9E%B6/pytorch.html#id1">
+              7.1. 书籍推荐
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="%E6%A1%86%E6%9E%B6/tensorflow.html">
+            8. Tensorflow
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="%E6%A1%86%E6%9E%B6/tensorflow.html#id1">
+              8.1. 书籍推荐
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="%E8%AE%A1%E7%AE%97%E8%AF%AD%E8%A8%80%E5%AD%A6.html">
+            9. 计算语言学
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="%E8%AE%A1%E7%AE%97%E8%AF%AD%E8%A8%80%E5%AD%A6.html#id2">
+              9.1. 前沿跟进
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="%E8%AE%A1%E7%AE%97%E8%AF%AD%E8%A8%80%E5%AD%A6.html#id4">
+              9.2. 问题引入【问题驱动学习】
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="%E8%AE%A1%E7%AE%97%E8%AF%AD%E8%A8%80%E5%AD%A6.html#id5">
+              9.3. 定义和特点
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             开源工具
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html">
+            1. ETL工具
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html#kettle">
+            2. Kettle工具使用笔记
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html#id1">
+              2.1. 基本概念
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html#id2">
+              2.2. 应用场景
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             数学物理计算机历史系列
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html">
+            1. 漫谈数学
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html#id2">
+              1.1. 数学家历史
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html#id7">
+              1.2. 怎么理解数学
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html#id8">
+              1.3. 怎么掌握数学的思维方式？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html#id9">
+              1.4. 什么是数学最基本的？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html#id10">
+              1.5. 什么问题是好问题？
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/physics.html">
+            2. 漫谈物理
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/computer.html">
+            3. 漫谈计算机
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             团队与项目管理
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html">
+            1. 团队建设与项目管理
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html#project-management">
+              1.1. 项目管理（Project Management）
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html#id4">
+              1.2. 团队协作
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html#agile">
+              1.3. 敏捷（Agile）开发
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html">
+            2. 项目管理（Project Manager， PM）的理论与实践
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html#id1">
+              2.1. 比较重要的几点
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html#what-pm">
+              2.2. what PM？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html#id2">
+              2.3. 基本概念
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html#id3">
+              2.4. 项目管理工具
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html#id4">
+              2.5. 沟通
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html">
+            3. 技术负责人画像
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html#tl">
+              3.1. 什么是TL？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html#id2">
+              3.2. TL的职责？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html#id3">
+              3.3. 如何做好TL？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html#id4">
+              3.4. TL如何持续成长？
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html#id5">
+              3.5. TL如何赋能团队
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             道与术
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../%E9%81%93%E4%B8%8E%E6%9C%AF/tao-art.html">
+            1. 道与术
+           </a>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E9%81%93%E4%B8%8E%E6%9C%AF/tao-art.html#id2">
+              1.1. 工作
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="../%E9%81%93%E4%B8%8E%E6%9C%AF/tao-art.html#id8">
+              1.2. 软实力方法论集合
+             </a>
+            </li>
+           </ul>
+          </li>
+         </ul>
+        </nav>
+       </div>
       </div>
-    </main>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          "Contents"
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#doc-ji-qi-zhi-neng-xi-lie-kg--page-root">
+            6. 知识图谱(Knowledge Graph)
+           </a>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#id1">
+               6.1. 资源推荐
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#id3">
+               6.2. 什么是知识图谱？
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#id4">
+               6.3. 如何应用知识图谱?
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#id5">
+               6.4. 如何构建知识图谱？
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#id6">
+               6.5. 知识图谱案例介绍
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__extra_link" href="../../_sources/doc/机器智能系列/kg.rst.txt">
+            显示源代码
+           </a>
+          </li>
+          <li class="md-nav__item" id="searchbox">
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <section id="knowledge-graph">
+        <h1>
+         <span class="section-number">
+          6.
+         </span>
+         知识图谱(Knowledge Graph)
+         <a class="headerlink" href="#knowledge-graph" title="Link to this heading">
+          ¶
+         </a>
+        </h1>
+        <section id="id1">
+         <h2>
+          <span class="section-number">
+           6.1.
+          </span>
+          资源推荐
+          <a class="headerlink" href="#id1" title="Link to this heading">
+           ¶
+          </a>
+         </h2>
+         <ol class="arabic simple">
+          <li>
+           <dl class="simple">
+            <dt>
+             据我了解截止到2020年市面上关于知识图谱的系统性书籍并不多，但是这方面零零散散的资料还是比较多。推荐一本书：
+            </dt>
+            <dd>
+             <ul class="simple">
+              <li>
+               <dl class="simple">
+                <dt>
+                 《
+                 <a class="reference external" href="https://book.douban.com/subject/34788903/)">
+                  知识图谱：方法、实践与应用
+                 </a>
+                 》
+                </dt>
+                <dd>
+                 <ul>
+                  <li>
+                   <p>
+                    从知识图谱的各个环节到相关应用都有涉及，属于入门级书籍。
+                   </p>
+                  </li>
+                  <li>
+                   <p>
+                    如果想快一点了解KG领域，推荐可以快速看看这本书。
+                   </p>
+                  </li>
+                 </ul>
+                </dd>
+               </dl>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </li>
+          <li>
+           <p>
+            本笔记主要通过学习2020年春
+            <a class="reference external" href="https://web.stanford.edu/class/cs520/">
+             Stanford University CS520
+            </a>
+            知识图谱课程来记录，很有爱的一个名字。知识图谱是人工智能在认知领域目前最佳的实践方向，一起来学习吧
+           </p>
+          </li>
+          <li>
+           <p>
+            Stanford CS520 - 知识图谱 Knowledge Graph (Spring 2020)
+            <a class="reference external" href="https://www.bilibili.com/video/BV1ui4y1874M?t=126">
+             B站资源
+            </a>
+           </p>
+          </li>
+          <li>
+           <p>
+            <a class="reference external" href="http://ai.stanford.edu/blog/">
+             The Stanford AI Lab Blog
+            </a>
+           </p>
+          </li>
+         </ol>
+        </section>
+        <section id="id3">
+         <h2>
+          <span class="section-number">
+           6.2.
+          </span>
+          什么是知识图谱？
+          <a class="headerlink" href="#id3" title="Link to this heading">
+           ¶
+          </a>
+         </h2>
+         <div class="admonition note">
+          <p class="admonition-title">
+           备注
+          </p>
+          <ol class="arabic simple">
+           <li>
+            <p>
+             KG是一个存在多环节、结合多技术的
+             <strong>
+              工程
+             </strong>
+             。
+            </p>
+           </li>
+          </ol>
+         </div>
+         <ol class="arabic simple">
+          <li>
+           <p>
+            store: Resource Description Framework(RDF)
+           </p>
+          </li>
+          <li>
+           <p>
+            Query language for RDF: SPARQL
+           </p>
+          </li>
+          <li>
+           <p>
+            Application: searching the Web-Google,Bing, Maps、Smart Assistants-Siri, Cortanta, Echo.
+           </p>
+          </li>
+          <li>
+           <p>
+            science application: search, discovery,data exploration.
+           </p>
+          </li>
+         </ol>
+        </section>
+        <section id="id4">
+         <h2>
+          <span class="section-number">
+           6.3.
+          </span>
+          如何应用知识图谱?
+          <a class="headerlink" href="#id4" title="Link to this heading">
+           ¶
+          </a>
+         </h2>
+        </section>
+        <section id="id5">
+         <h2>
+          <span class="section-number">
+           6.4.
+          </span>
+          如何构建知识图谱？
+          <a class="headerlink" href="#id5" title="Link to this heading">
+           ¶
+          </a>
+         </h2>
+        </section>
+        <section id="id6">
+         <h2>
+          <span class="section-number">
+           6.5.
+          </span>
+          知识图谱案例介绍
+          <a class="headerlink" href="#id6" title="Link to this heading">
+           ¶
+          </a>
+         </h2>
+        </section>
+       </section>
+       <div class="section ablog__blog_comments">
+       </div>
+      </article>
+     </div>
+    </div>
+   </main>
   </div>
   <footer class="md-footer">
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-          
-            <a href="nlp.html" title="4. 自然语言理解"
-               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
-               rel="prev">
-              <div class="md-flex__cell md-flex__cell--shrink">
-                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-              </div>
-              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-                <span class="md-flex__ellipsis">
-                  <span
-                      class="md-footer-nav__direction"> "Previous" </span> <span class="section-number">4. </span>自然语言理解 </span>
-              </div>
-            </a>
-          
-          
-            <a href="%E6%A1%86%E6%9E%B6/pytorch.html" title="7. Pytorch"
-               class="md-flex md-footer-nav__link md-footer-nav__link--next"
-               rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
-                class="md-flex__ellipsis"> <span
-                class="md-footer-nav__direction"> "Next" </span> <span class="section-number">7. </span>Pytorch </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink"><i
-                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          
-        </a>
-        
-      </nav>
-    </div>
-    <div class="md-footer-meta md-typeset">
-      <div class="md-footer-meta__inner md-grid">
-        <div class="md-footer-copyright">
-          <div class="md-footer-copyright__highlight">
-              &#169; Copyright 2020, LiHangHang.
-              
-          </div>
-            Created using
-            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
-             and
-            <a href="https://github.com/bashtage/sphinx-material/">Material for
-              Sphinx</a>
-        </div>
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="nlp.html" rel="prev" title="4. 自然语言理解">
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
+       </i>
       </div>
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         "Previous"
+        </span>
+        <span class="section-number">
+         4.
+        </span>
+        自然语言理解
+       </span>
+      </div>
+     </a>
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="%E6%A1%86%E6%9E%B6/pytorch.html" rel="next" title="7. Pytorch">
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         "Next"
+        </span>
+        <span class="section-number">
+         7.
+        </span>
+        Pytorch
+       </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
+       </i>
+      </div>
+     </a>
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2020-2025, LiHangHang.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      8.2.3.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
     </div>
+   </div>
   </footer>
-  <script src="../../_static/javascripts/application.js"></script>
-  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
-  </body>
+  <script src="../../_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
 </html>

@@ -1,3 +1,8 @@
+===================
+Hang's Tec Room
+===================
+
+
 欢迎来到：计算机技术屋。Stay Hungry, Stay Foolish.
 ===================================================
 .. note::
@@ -5,10 +10,9 @@
     - 大家好，我是一名喜欢数学物理哲学历史的软件开发工程师，崇尚用技术解决实际问题，提高效率，致力于用技术创造无限价值。在这里主要整理日常的编程开发、数据库、数据结构、算法、机器智能等笔记，很高兴和各位小伙伴交流、探讨，分享。
     - 更新时间：2025年8月31日.
 
-目录:
-*****
 
 .. toctree::
+    :caption: 关于
     :maxdepth: 2
     :glob:
 
@@ -16,14 +20,14 @@
 
 .. toctree::
     :caption: 编程语言及开发框架
-    :maxdepth: 2
+    :maxdepth: 1
     :glob:
 
     doc/编程语言及开发框架/index
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: 后端接口开发
     :numbered:
 
@@ -38,7 +42,7 @@
     doc/项目开发杂谈/项目开发杂谈
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: 数据结构与算法系列
     :numbered:
 
@@ -48,7 +52,7 @@
 
 .. toctree::
     :caption: 设计模式
-    :maxdepth: 2
+    :maxdepth: 1
     :numbered:
 
     doc/设计模式/design-pattern
@@ -67,7 +71,7 @@
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: 虚拟化与容器技术
     :numbered:
 
@@ -87,7 +91,7 @@
     doc/分布式与微服务系列/index
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: 机器智能系列
     :numbered:
 
@@ -107,7 +111,7 @@
     doc/开源工具/ETL
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :caption: 数学物理计算机历史系列
     :numbered:
 
@@ -118,6 +122,7 @@
 
 .. toctree::
     :caption: 团队与项目管理
+    :maxdepth: 1
     :numbered:
 
     doc/团队与项目管理/team_project

@@ -4,7 +4,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = python3_Application
+SPHINXPROJ    = Hang's Tec Application
 SOURCEDIR     = source
 BUILDDIR      = build
 
