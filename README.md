@@ -1,5 +1,7 @@
 # Tec Room  致读者
 
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 > 技术屋🏠会不断呈现体系化、层次化的技术内容。
 >
 > 欢迎fans关注，关注后第一时间推送更新内容哦。
@@ -53,6 +55,6 @@ Thanks.
 
 - 注：这个工程的现有内容，后续会逐步转向[技术屋](https://wiki.lihanghang.top/)并周期性持久更新。
 - [个人网站](https://lihanghang.top/)
-- 邮箱：hanghangli@aliyun.com
+- 邮箱：<hanghangli@aliyun.com>
 - Updated on February 26, 2023
 - Author: 李航航 北京朝阳
