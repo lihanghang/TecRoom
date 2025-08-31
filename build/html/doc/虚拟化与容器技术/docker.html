@@ -1,224 +1,328 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" data-content_root="../../">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>1. Docker &mdash; Hang&#39;s Tec Room 1.1 文档</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
 
   
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=e3d36c67"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../../_static/translations.js?v=beaddf03"></script>
-    <script src="../../_static/js/theme.js"></script>
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>1. Docker &#8212; Hang&#39;s Tec Room 1.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../../_static/documentation_options.js?v=e3d36c67"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="2. Kubernetes（K8S）" href="k8s.html" />
     <link rel="prev" title="1. 关系数据库-MySQL" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html" /> 
-</head>
-
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-
+  
+   
+   
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#doc/虚拟化与容器技术/docker" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="Hang&#39;s Tec Room 1.1 文档"
+           class="md-header-nav__button md-logo">
           
+            &nbsp;
           
-          <a href="../../index.html" class="icon icon-home">
-            Hang's Tec Room
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%85%B3%E4%BA%8E/index.html">公共资源</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">编程语言及开发框架</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/index.html">语言及框架</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">后端接口开发</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html">1. 接口（Interface）开发</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E6%A1%86%E6%9E%B6.html">2. 常见接口框架</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">项目开发杂谈</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html">1. 项目开发杂谈</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">数据结构与算法系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">设计模式</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html">1. 设计模式</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">计算机网络技术</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/computer-network.html">1. 计算机网络系列</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">数据库系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html">1. 关系数据库-MySQL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#redis">2. 非关系数据库--Redis</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">虚拟化与容器技术</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Docker</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">1.1. 书籍推荐</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">1.2. 初识Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">1.3. 图述Docker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">1.4. Docker架构（组件）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id7">1.4.1. 基本架构图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">1.4.2. 核心组件</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">1.4.3. 通过Docker开发和部署的流程图</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#docker-mac">1.5. 安装Docker（MAC)并注册国内镜像加速器</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id10">1.5.1. 安装</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id12">1.5.2. 配置阿里云镜像加速器</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id14">1.6. Docker常用命令</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#docker-daemon">1.6.1. Docker服务（Daemon）相关命令</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-image">1.6.2. Docker镜像（Image）相关命令</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#docker-container">1.6.3. docker容器（container）相关命令</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id16">1.7. Docker容器的数据卷</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id17">1.7.1. 概念及作用</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id18">1.7.1.1. 概念</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19">1.7.1.2. 作用</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">1.7.2. 配置数据卷</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">1.7.3. 配置 数据卷容器</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id22">1.8. Docker使用案例（应用部署实战）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#mysql">1.8.1. MySQL部署</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#tomcat">1.8.2. Tomcat部署</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nginx">1.8.3. Nginx部署</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#redis-key-value">1.8.4. Redis部署（一个key-value存储系统）</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#dockerfile">1.9. 使用Dockerfile制作镜像</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id23">1.9.1. 镜像原理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id24">1.9.2. Dockerfile的概念和作用</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id25">1.9.2.1. 镜像制作方法</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id26">1.9.3. 案例</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#centosvim">1.9.3.1. 案例一之CentOS安装Vim</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#flask">1.9.3.2. 案例二之发布Flask应用</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#docker-compose">1.10. docker-compose（服务编排技术）</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id27">1.10.1. 服务编排概念</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">1.10.2. 日常命令</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#mac">1.10.3. 安装（Mac系统）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#nginx-flask-web">1.10.4. 实例-发布简单Nginx+Flask-web应用</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id29">1.11. 搭建私有仓库</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id30">1.11.1. 创建私有仓库</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id31">1.11.2. 传并拉镜像</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id32">1.12. 结束</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="k8s.html">2. Kubernetes（K8S）</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">服务器</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html">1. 服务器系列</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">分布式与微服务系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/index.html">分布式与微服务</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">机器智能系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/ml.html">1. 机器学习基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/ml.html#id3">2. 机器学习应用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/dl.html">3. 深度学习</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/nlp.html">4. 自然语言理解</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/nlp.html#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/kg.html">6. 知识图谱(Knowledge Graph)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/%E6%A1%86%E6%9E%B6/pytorch.html">7. Pytorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/%E6%A1%86%E6%9E%B6/tensorflow.html">8. Tensorflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%BA%E5%99%A8%E6%99%BA%E8%83%BD%E7%B3%BB%E5%88%97/%E8%AE%A1%E7%AE%97%E8%AF%AD%E8%A8%80%E5%AD%A6.html">9. 计算语言学</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">开源工具</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html">1. ETL工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html#kettle">2. Kettle工具使用笔记</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">数学物理计算机历史系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html">1. 漫谈数学</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">团队与项目管理</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html">1. 团队建设与项目管理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html">2. 项目管理（Project Manager， PM）的理论与实践</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html">3. 技术负责人画像</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">道与术</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%81%93%E4%B8%8E%E6%9C%AF/tao-art.html">1. 道与术</a></li>
-</ul>
-
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Hang's Tec Room 1.1 文档</span>
+          <span class="md-header-nav__topic"> 1. Docker </span>
         </div>
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Hang's Tec Room</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="页面导航">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">1. </span>Docker</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/doc/虚拟化与容器技术/docker.rst.txt" rel="nofollow"> 查看页面源码</a>
-      </li>
-  </ul>
-  <hr/>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="docker">
-<h1><span class="section-number">1. </span>Docker<a class="headerlink" href="#docker" title="Link to this heading"></a></h1>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Hang's Tec Room 1.1 文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="Hang&#39;s Tec Room 1.1 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="Hang&#39;s Tec Room 1.1 文档">Hang's Tec Room 1.1 文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#doc-xu-ni-hua-yu-rong-qi-ji-zhu-docker--page-root" class="md-nav__link">1. Docker</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id1" class="md-nav__link">1.1. 书籍推荐</a>
+        </li>
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">1.2. 初识Docker</a>
+        </li>
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">1.3. 图述Docker</a>
+        </li>
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">1.4. Docker架构（组件）</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id7" class="md-nav__link">1.4.1. 基本架构图</a>
+        </li>
+        <li class="md-nav__item"><a href="#id8" class="md-nav__link">1.4.2. 核心组件</a>
+        </li>
+        <li class="md-nav__item"><a href="#id9" class="md-nav__link">1.4.3. 通过Docker开发和部署的流程图</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#docker-mac" class="md-nav__link">1.5. 安装Docker（MAC)并注册国内镜像加速器</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id10" class="md-nav__link">1.5.1. 安装</a>
+        </li>
+        <li class="md-nav__item"><a href="#id12" class="md-nav__link">1.5.2. 配置阿里云镜像加速器</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id14" class="md-nav__link">1.6. Docker常用命令</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#docker-daemon" class="md-nav__link">1.6.1. Docker服务（Daemon）相关命令</a>
+        </li>
+        <li class="md-nav__item"><a href="#docker-image" class="md-nav__link">1.6.2. Docker镜像（Image）相关命令</a>
+        </li>
+        <li class="md-nav__item"><a href="#docker-container" class="md-nav__link">1.6.3. docker容器（container）相关命令</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id16" class="md-nav__link">1.7. Docker容器的数据卷</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id17" class="md-nav__link">1.7.1. 概念及作用</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id18" class="md-nav__link">1.7.1.1. 概念</a>
+        </li>
+        <li class="md-nav__item"><a href="#id19" class="md-nav__link">1.7.1.2. 作用</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id20" class="md-nav__link">1.7.2. 配置数据卷</a>
+        </li>
+        <li class="md-nav__item"><a href="#id21" class="md-nav__link">1.7.3. 配置 数据卷容器</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id22" class="md-nav__link">1.8. Docker使用案例（应用部署实战）</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#mysql" class="md-nav__link">1.8.1. MySQL部署</a>
+        </li>
+        <li class="md-nav__item"><a href="#tomcat" class="md-nav__link">1.8.2. Tomcat部署</a>
+        </li>
+        <li class="md-nav__item"><a href="#nginx" class="md-nav__link">1.8.3. Nginx部署</a>
+        </li>
+        <li class="md-nav__item"><a href="#redis-key-value" class="md-nav__link">1.8.4. Redis部署（一个key-value存储系统）</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#dockerfile" class="md-nav__link">1.9. 使用Dockerfile制作镜像</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id23" class="md-nav__link">1.9.1. 镜像原理</a>
+        </li>
+        <li class="md-nav__item"><a href="#id24" class="md-nav__link">1.9.2. Dockerfile的概念和作用</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id25" class="md-nav__link">1.9.2.1. 镜像制作方法</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id26" class="md-nav__link">1.9.3. 案例</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#centosvim" class="md-nav__link">1.9.3.1. 案例一之CentOS安装Vim</a>
+        </li>
+        <li class="md-nav__item"><a href="#flask" class="md-nav__link">1.9.3.2. 案例二之发布Flask应用</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#docker-compose" class="md-nav__link">1.10. docker-compose（服务编排技术）</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id27" class="md-nav__link">1.10.1. 服务编排概念</a>
+        </li>
+        <li class="md-nav__item"><a href="#id28" class="md-nav__link">1.10.2. 日常命令</a>
+        </li>
+        <li class="md-nav__item"><a href="#mac" class="md-nav__link">1.10.3. 安装（Mac系统）</a>
+        </li>
+        <li class="md-nav__item"><a href="#nginx-flask-web" class="md-nav__link">1.10.4. 实例-发布简单Nginx+Flask-web应用</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id29" class="md-nav__link">1.11. 搭建私有仓库</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id30" class="md-nav__link">1.11.1. 创建私有仓库</a>
+        </li>
+        <li class="md-nav__item"><a href="#id31" class="md-nav__link">1.11.2. 传并拉镜像</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id32" class="md-nav__link">1.12. 结束</a>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/doc/虚拟化与容器技术/docker.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+             <section id="docker">
+<h1><span class="section-number">1. </span>Docker<a class="headerlink" href="#docker" title="Link to this heading">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>更新日期：2020-03-23</p>
 </div>
 <section id="id1">
-<h2><span class="section-number">1.1. </span>书籍推荐<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.1. </span>书籍推荐<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>访问 <a class="reference external" href="https://www.gitbook.com/download/pdf/book/yeasy/docker_practice">docker_practice</a> 下载。</p></li>
 <li><p>《Docker开发实践》</p></li>
@@ -233,7 +337,7 @@
 </ul>
 </section>
 <section id="id4">
-<h2><span class="section-number">1.2. </span>初识Docker<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.2. </span>初识Docker<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>总的来说，Docker属于运维部署领域。如果是应用者就是熟练的在合适的场景下操作相应的命令；如果是进一步研究其底层原理，那需要的基础就要多些了，比如虚拟化技术。</p>
@@ -258,23 +362,23 @@
 <p><em>Docker是一种容器技术，解决软件跨环境迁移的问题！</em></p>
 </section>
 <section id="id5">
-<h2><span class="section-number">1.3. </span>图述Docker<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.3. </span>图述Docker<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
 <a class="reference internal image-reference" href="../../_images/overview.png"><img alt="../../_images/overview.png" src="../../_images/overview.png" style="width: 600px;" />
 </a>
 </section>
 <section id="id6">
-<h2><span class="section-number">1.4. </span>Docker架构（组件）<a class="headerlink" href="#id6" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.4. </span>Docker架构（组件）<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
 <div class="admonition important">
 <p class="admonition-title">重要</p>
 <p>Docker采用C/S架构。Docker客户端（Client）可以通过命令行形式或API来与提供Docker服务（Server）的守护进程进行通信。</p>
 </div>
 <section id="id7">
-<h3><span class="section-number">1.4.1. </span>基本架构图<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.4.1. </span>基本架构图<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <a class="reference internal image-reference" href="../../_images/2020-03-06-docker架构.png"><img alt="../../_images/2020-03-06-docker%E6%9E%B6%E6%9E%84.png" src="../../_images/2020-03-06-docker%E6%9E%B6%E6%9E%84.png" style="width: 600px;" />
 </a>
 </section>
 <section id="id8">
-<h3><span class="section-number">1.4.2. </span>核心组件<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.4.2. </span>核心组件<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <div class="admonition important">
 <p class="admonition-title">重要</p>
 <p>Docker共包含三大核心组件：<strong>镜像（image）、容器（container）、仓库（Repository）</strong>。镜像和容器可以类比面向对象编程中类和实例的关系，image-&gt;class、container-&gt;instance。仓库可类别代码控制中心，负责存储和共享用户的镜像。</p>
@@ -308,7 +412,7 @@
 </ol>
 </section>
 <section id="id9">
-<h3><span class="section-number">1.4.3. </span>通过Docker开发和部署的流程图<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.4.3. </span>通过Docker开发和部署的流程图<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>利用下图能更好的理解Docker在日常开发、部署中的应用流程和三大组件。</p>
@@ -348,14 +452,14 @@
 </section>
 </section>
 <section id="docker-mac">
-<h2><span class="section-number">1.5. </span>安装Docker（MAC)并注册国内镜像加速器<a class="headerlink" href="#docker-mac" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.5. </span>安装Docker（MAC)并注册国内镜像加速器<a class="headerlink" href="#docker-mac" title="Link to this heading">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
 <p>MAC系统可以直接安装桌面版Docker，社区版就够用了。关于镜像加速器推荐使用国内阿里云镜像加速器，配置也比较容易，配置后再使用docker镜像就比较快了。
 官网下载太慢吗？推荐前往：<a class="reference external" href="http://get.daocloud.io/">http://get.daocloud.io/</a>。</p>
 </div>
 <section id="id10">
-<h3><span class="section-number">1.5.1. </span>安装<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.5.1. </span>安装<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>点击 <a class="reference external" href="https://hub.docker.com/editions/community/docker-ce-desktop-mac/">下载</a> docker桌面版。</p></li>
 <li><p>查看docker版本，验证是否安装成功</p></li>
@@ -368,7 +472,7 @@ Docker<span class="w"> </span>version<span class="w"> </span><span class="m">19<
 </div></blockquote>
 </section>
 <section id="id12">
-<h3><span class="section-number">1.5.2. </span>配置阿里云镜像加速器<a class="headerlink" href="#id12" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.5.2. </span>配置阿里云镜像加速器<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><dl class="field-list simple">
 <dt class="field-odd">step-1<span class="colon">:</span></dt>
@@ -384,13 +488,13 @@ Docker<span class="w"> </span>version<span class="w"> </span><span class="m">19<
 </section>
 </section>
 <section id="id14">
-<h2><span class="section-number">1.6. </span>Docker常用命令<a class="headerlink" href="#id14" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.6. </span>Docker常用命令<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>本章是docker知识的重点，基本都是命令。跟着命令敲起你的小键盘吧。</p>
 </div>
 <section id="docker-daemon">
-<h3><span class="section-number">1.6.1. </span>Docker服务（Daemon）相关命令<a class="headerlink" href="#docker-daemon" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.6.1. </span>Docker服务（Daemon）相关命令<a class="headerlink" href="#docker-daemon" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>mac系统下直接点击客户端就启动了docker服务，非常简单。使用Mac系统，就可以跳过这部分内容了。
@@ -440,7 +544,7 @@ Docs:<span class="w"> </span>https://docs.docker.com
 </ol>
 </section>
 <section id="docker-image">
-<h3><span class="section-number">1.6.2. </span>Docker镜像（Image）相关命令<a class="headerlink" href="#docker-image" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.6.2. </span>Docker镜像（Image）相关命令<a class="headerlink" href="#docker-image" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><dl>
 <dt>查看</dt><dd><div class="admonition tip">
@@ -570,7 +674,7 @@ Deleted:<span class="w"> </span>sha256:c8078e8ab06d8dabd6c30cffb03951fa035d85f75
 </ol>
 </section>
 <section id="docker-container">
-<h3><span class="section-number">1.6.3. </span>docker容器（container）相关命令<a class="headerlink" href="#docker-container" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.6.3. </span>docker容器（container）相关命令<a class="headerlink" href="#docker-container" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>查看</p>
 <blockquote>
@@ -704,15 +808,15 @@ CONTAINER<span class="w"> </span>ID<span class="w">        </span>IMAGE<span cla
 </section>
 </section>
 <section id="id16">
-<h2><span class="section-number">1.7. </span>Docker容器的数据卷<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.7. </span>Docker容器的数据卷<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
 <p>主要探讨容器中的应用数据管理相关话题。如数据如何保存、外部如何使用数据等。</p>
 </div>
 <section id="id17">
-<h3><span class="section-number">1.7.1. </span>概念及作用<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.7.1. </span>概念及作用<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <section id="id18">
-<h4><span class="section-number">1.7.1.1. </span>概念<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<h4><span class="section-number">1.7.1.1. </span>概念<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>数据卷是宿主机中的一个目录或文件。</p></li>
@@ -722,7 +826,7 @@ CONTAINER<span class="w"> </span>ID<span class="w">        </span>IMAGE<span cla
 </div></blockquote>
 </section>
 <section id="id19">
-<h4><span class="section-number">1.7.1.2. </span>作用<a class="headerlink" href="#id19" title="Link to this heading"></a></h4>
+<h4><span class="section-number">1.7.1.2. </span>作用<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>可持久化保存容器数据。</p></li>
@@ -733,7 +837,7 @@ CONTAINER<span class="w"> </span>ID<span class="w">        </span>IMAGE<span cla
 </section>
 </section>
 <section id="id20">
-<h3><span class="section-number">1.7.2. </span>配置数据卷<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.7.2. </span>配置数据卷<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
 <ol class="arabic simple">
@@ -808,7 +912,7 @@ $<span class="w"> </span>root@cfb85d4cb3c4:/#<span class="w"> </span>cat<span cl
 </ol>
 </section>
 <section id="id21">
-<h3><span class="section-number">1.7.3. </span>配置 数据卷容器<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.7.3. </span>配置 数据卷容器<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
 <ul class="simple">
@@ -860,7 +964,7 @@ $<span class="w"> </span>root@95025edc8a00:/#<span class="w"> </span>cat<span cl
 </section>
 </section>
 <section id="id22">
-<h2><span class="section-number">1.8. </span>Docker使用案例（应用部署实战）<a class="headerlink" href="#id22" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.8. </span>Docker使用案例（应用部署实战）<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <ul class="simple">
@@ -878,7 +982,7 @@ $<span class="w"> </span>root@95025edc8a00:/#<span class="w"> </span>cat<span cl
 </ul>
 </div>
 <section id="mysql">
-<h3><span class="section-number">1.8.1. </span>MySQL部署<a class="headerlink" href="#mysql" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.8.1. </span>MySQL部署<a class="headerlink" href="#mysql" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><dl>
 <dt>目标</dt><dd><p>实现在Docker中部署MySQL，并通过外部客户端操作该容器中的数据库。</p>
@@ -961,7 +1065,7 @@ $<span class="w"> </span>docker<span class="w"> </span>port<span class="w"> </sp
 </ol>
 </section>
 <section id="tomcat">
-<h3><span class="section-number">1.8.2. </span>Tomcat部署<a class="headerlink" href="#tomcat" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.8.2. </span>Tomcat部署<a class="headerlink" href="#tomcat" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><dl class="simple">
 <dt>目标</dt><dd><ul class="simple">
@@ -1037,7 +1141,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </ol>
 </section>
 <section id="nginx">
-<h3><span class="section-number">1.8.3. </span>Nginx部署<a class="headerlink" href="#nginx" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.8.3. </span>Nginx部署<a class="headerlink" href="#nginx" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><dl>
@@ -1106,7 +1210,7 @@ $<span class="w"> </span>访问0.0.0.0
 </div></blockquote>
 </section>
 <section id="redis-key-value">
-<h3><span class="section-number">1.8.4. </span>Redis部署（一个key-value存储系统）<a class="headerlink" href="#redis-key-value" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.8.4. </span>Redis部署（一个key-value存储系统）<a class="headerlink" href="#redis-key-value" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><dl class="simple">
@@ -1170,9 +1274,9 @@ $<span class="w"> </span><span class="m">0</span>.0.0.0:6379&gt;<span class="w">
 </section>
 </section>
 <section id="dockerfile">
-<h2><span class="section-number">1.9. </span>使用Dockerfile制作镜像<a class="headerlink" href="#dockerfile" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.9. </span>使用Dockerfile制作镜像<a class="headerlink" href="#dockerfile" title="Link to this heading">¶</a></h2>
 <section id="id23">
-<h3><span class="section-number">1.9.1. </span>镜像原理<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.9.1. </span>镜像原理<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <ul>
 <li><p>镜像是由特殊的文件系统叠加而成。</p></li>
 <li><p>采用分层的文件系统，通过在只读文件（镜像）上增加可读写层（容器）的形式来改变镜像。</p></li>
@@ -1207,9 +1311,9 @@ $<span class="w"> </span><span class="m">0</span>.0.0.0:6379&gt;<span class="w">
 </ul>
 </section>
 <section id="id24">
-<h3><span class="section-number">1.9.2. </span>Dockerfile的概念和作用<a class="headerlink" href="#id24" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.9.2. </span>Dockerfile的概念和作用<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h3>
 <section id="id25">
-<h4><span class="section-number">1.9.2.1. </span>镜像制作方法<a class="headerlink" href="#id25" title="Link to this heading"></a></h4>
+<h4><span class="section-number">1.9.2.1. </span>镜像制作方法<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
 <ol class="arabic">
 <li><p>容器转镜像（不常用）</p>
 <blockquote>
@@ -1292,9 +1396,9 @@ $<span class="w"> </span>docker<span class="w"> </span>images
 </section>
 </section>
 <section id="id26">
-<h3><span class="section-number">1.9.3. </span>案例<a class="headerlink" href="#id26" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.9.3. </span>案例<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h3>
 <section id="centosvim">
-<h4><span class="section-number">1.9.3.1. </span>案例一之CentOS安装Vim<a class="headerlink" href="#centosvim" title="Link to this heading"></a></h4>
+<h4><span class="section-number">1.9.3.1. </span>案例一之CentOS安装Vim<a class="headerlink" href="#centosvim" title="Link to this heading">¶</a></h4>
 <ul>
 <li><dl class="simple">
 <dt>任务</dt><dd><dl class="simple">
@@ -1351,7 +1455,7 @@ $ [root@aa24050fdab5 usr]# vim test.txt
 </ul>
 </section>
 <section id="flask">
-<h4><span class="section-number">1.9.3.2. </span>案例二之发布Flask应用<a class="headerlink" href="#flask" title="Link to this heading"></a></h4>
+<h4><span class="section-number">1.9.3.2. </span>案例二之发布Flask应用<a class="headerlink" href="#flask" title="Link to this heading">¶</a></h4>
 <ul>
 <li><dl class="simple">
 <dt>任务</dt><dd><p>定义Dockerfile，发布一个Hello,Flask版的Flask-Web项目</p>
@@ -1410,9 +1514,9 @@ $<span class="w"> </span>vim<span class="w"> </span>flask_dockefile
 </section>
 </section>
 <section id="docker-compose">
-<h2><span class="section-number">1.10. </span>docker-compose（服务编排技术）<a class="headerlink" href="#docker-compose" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.10. </span>docker-compose（服务编排技术）<a class="headerlink" href="#docker-compose" title="Link to this heading">¶</a></h2>
 <section id="id27">
-<h3><span class="section-number">1.10.1. </span>服务编排概念<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.10.1. </span>服务编排概念<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>目的：将一系列的容器创建自动化</p></li>
@@ -1437,7 +1541,7 @@ $<span class="w"> </span>vim<span class="w"> </span>flask_dockefile
 </div></blockquote>
 </section>
 <section id="id28">
-<h3><span class="section-number">1.10.2. </span>日常命令<a class="headerlink" href="#id28" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.10.2. </span>日常命令<a class="headerlink" href="#id28" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>修改docker-compose.yml文件后重启容器</p>
 <blockquote>
@@ -1451,7 +1555,7 @@ $ docker-compose up -d
 </ol>
 </section>
 <section id="mac">
-<h3><span class="section-number">1.10.3. </span>安装（Mac系统）<a class="headerlink" href="#mac" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.10.3. </span>安装（Mac系统）<a class="headerlink" href="#mac" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>Mac系统安装Docker后会包含这个工具，直接查看下版本</p></li>
@@ -1463,7 +1567,7 @@ docker-compose version 1.8.1, build 878cff1
 </div></blockquote>
 </section>
 <section id="nginx-flask-web">
-<h3><span class="section-number">1.10.4. </span>实例-发布简单Nginx+Flask-web应用<a class="headerlink" href="#nginx-flask-web" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.10.4. </span>实例-发布简单Nginx+Flask-web应用<a class="headerlink" href="#nginx-flask-web" title="Link to this heading">¶</a></h3>
 <blockquote>
 <div><div class="admonition note">
 <p class="admonition-title">备注</p>
@@ -1530,13 +1634,13 @@ $ docker-compose up # 后面-d参数将会后台运行，这里就不加了
 </section>
 </section>
 <section id="id29">
-<h2><span class="section-number">1.11. </span>搭建私有仓库<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.11. </span>搭建私有仓库<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>搭建自己的仓库。上传本地镜像并从私有拉取镜像</p>
 </div>
 <section id="id30">
-<h3><span class="section-number">1.11.1. </span>创建私有仓库<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.11.1. </span>创建私有仓库<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
 <ul>
 <li><dl>
 <dt>拉取私有仓库镜像</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker pull registry:2
@@ -1571,7 +1675,7 @@ $ docker-compose up # 后面-d参数将会后台运行，这里就不加了
 </ul>
 </section>
 <section id="id31">
-<h3><span class="section-number">1.11.2. </span>传并拉镜像<a class="headerlink" href="#id31" title="Link to this heading"></a></h3>
+<h3><span class="section-number">1.11.2. </span>传并拉镜像<a class="headerlink" href="#id31" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>传CentOs</p></li>
 </ul>
@@ -1640,40 +1744,70 @@ Status: Image is up to date for 0.0.0.0:9000/centos:7.1
 </section>
 </section>
 <section id="id32">
-<h2><span class="section-number">1.12. </span>结束<a class="headerlink" href="#id32" title="Link to this heading"></a></h2>
+<h2><span class="section-number">1.12. </span>结束<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h2>
 <p>至此，关于docker的基础知识及命令已完成，后续会继续网络、容器集群管理、终端运维管理相关的学习。</p>
 </section>
 </section>
 
-
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html" class="btn btn-neutral float-left" title="1. 关系数据库-MySQL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="k8s.html" class="btn btn-neutral float-right" title="2. Kubernetes（K8S）" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; 版权所有 2020, LiHangHang。</p>
-  </div>
-
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+<div class="section ablog__blog_comments">
    
+</div>
 
-</footer>
+          </article>
         </div>
       </div>
-    </section>
+    </main>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html" title="1. 关系数据库-MySQL"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> <span class="section-number">1. </span>关系数据库-MySQL </span>
+              </div>
+            </a>
+          
+          
+            <a href="k8s.html" title="2. Kubernetes（K8S）"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> <span class="section-number">2. </span>Kubernetes（K8S） </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020, LiHangHang.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
 </html>

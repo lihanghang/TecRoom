@@ -67,7 +67,7 @@
       from functools import reduce
 
       # example： reduce 
-      reduce(func, iterable)：reduce(lambda a, b: a * b, range(1, 5))
+      reduce(func, iterable): reduce(lambda a, b: a * b, range(1, 5))
       >>> 24
       ```
 

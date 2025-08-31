@@ -1,217 +1,321 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="zh-CN" data-content_root="../../">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>4. 自然语言理解 &mdash; Hang&#39;s Tec Room 1.1 文档</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+<html lang="zh-CN" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
 
   
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=e3d36c67"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../../_static/translations.js?v=beaddf03"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="../../_static/js/theme.js"></script>
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="../../_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="../../_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="../../_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="../../_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>4. 自然语言理解 &#8212; Hang&#39;s Tec Room 1.1 文档</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <script src="../../_static/documentation_options.js?v=e3d36c67"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
     <link rel="next" title="6. 知识图谱(Knowledge Graph)" href="kg.html" />
     <link rel="prev" title="3. 深度学习" href="dl.html" /> 
-</head>
-
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-
+  
+   
+   
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue-grey data-md-color-accent=blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#doc/机器智能系列/nlp" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="Hang&#39;s Tec Room 1.1 文档"
+           class="md-header-nav__button md-logo">
           
+            &nbsp;
           
-          <a href="../../index.html" class="icon icon-home">
-            Hang's Tec Room
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%85%B3%E4%BA%8E/index.html">公共资源</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">编程语言及开发框架</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E5%8F%8A%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/index.html">语言及框架</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">后端接口开发</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91.html">1. 接口（Interface）开发</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%8E%A5%E5%8F%A3%E5%BC%80%E5%8F%91/%E6%8E%A5%E5%8F%A3%E6%A1%86%E6%9E%B6.html">2. 常见接口框架</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">项目开发杂谈</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88/%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%9D%82%E8%B0%88.html">1. 项目开发杂谈</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">数据结构与算法系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html">1. 数据结构(Data Structure)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/dataStruct_algorithm.html#algorithm">2. 算法（Algorithm)</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">设计模式</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/design-pattern.html">1. 设计模式</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">计算机网络技术</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/computer-network.html">1. 计算机网络系列</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">数据库系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html">1. 关系数据库-MySQL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E5%88%97/mysql.html#redis">2. 非关系数据库--Redis</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">虚拟化与容器技术</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/docker.html">1. Docker</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E8%99%9A%E6%8B%9F%E5%8C%96%E4%B8%8E%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/k8s.html">2. Kubernetes（K8S）</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">服务器</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%9C%8D%E5%8A%A1%E5%99%A8/server.html">1. 服务器系列</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">分布式与微服务系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%B3%BB%E5%88%97/index.html">分布式与微服务</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">机器智能系列</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ml.html">1. 机器学习基础</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ml.html#id3">2. 机器学习应用</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dl.html">3. 深度学习</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">4. 自然语言理解</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">4.1. 书籍推荐</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">4.2. 什么是 自然语言 理解？</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">4.2.1. 自然语言？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">4.2.2. 自然语言理解？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">4.2.3. 自然语言的特点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">4.2.4. 难点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id8">4.2.5. 未来</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id9">4.2.6. 自然语言理解交叉科学</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id10">4.3. 自然语言技术方向</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#nlp">4.4. NLP国内外优秀学者及实验室</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#cs224n-2019-by-chris-manning">5. CS224n-2019-课程笔记 by Chris Manning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id11">5.1. 一些说明和资源</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#word-vectors">5.2. 词向量（Word Vectors)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id15">5.2.1. 自然语言和词义</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id17">5.2.2. Word Vectors(词向量)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#word2vector">5.2.3. Word2Vector介绍</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id18">5.2.3.1. 主要思想</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id19">5.2.4. Word2Vector目标函数</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id20">5.2.5. 梯度计算推导</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id21">5.2.6. word2vector的概览</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id22">5.2.7. 优化：梯度下降与随机梯度下降算法的要点</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id23">5.2.8. 小结</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id24">5.3. 词向量和语义</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#review-word2vec">5.3.1. Review：word2vec</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id25">5.3.1.1. 主要思想</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id26">5.3.1.2. 关于梯度计算</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#negative-sample">5.3.1.3. 基于负采样(negative sample)方法计算</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id27">5.3.2. 基于共现矩阵生成词向量</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#glove">5.3.3. Glove词向量模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id29">5.3.4. 怎样评估词向量？</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id30">5.3.5. 语义及其歧义性</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#classification">5.3.6. 分类（Classification）模型知识点回顾</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id32">5.3.7. 小结</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#id33">5.4. 神经网络</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#neural-network">5.4.1. Neural NetWork基础</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id34">5.4.2. 命名实体识别介绍</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#bp">5.5. 矩阵计算与BP（反向传播）算法</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id35">5.5.1. 矩阵的梯度计算</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id38">5.5.2. BP算法（重点）</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id39">5.5.3. 总结</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="kg.html">6. 知识图谱(Knowledge Graph)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A1%86%E6%9E%B6/pytorch.html">7. Pytorch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E6%A1%86%E6%9E%B6/tensorflow.html">8. Tensorflow</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E8%AE%A1%E7%AE%97%E8%AF%AD%E8%A8%80%E5%AD%A6.html">9. 计算语言学</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">开源工具</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html">1. ETL工具</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/ETL.html#kettle">2. Kettle工具使用笔记</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">数学物理计算机历史系列</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E6%95%B0%E5%AD%A6%E7%89%A9%E7%90%86%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%86%E5%8F%B2%E7%B3%BB%E5%88%97/math.html">1. 漫谈数学</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">团队与项目管理</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/team_project.html">1. 团队建设与项目管理</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/PM.html">2. 项目管理（Project Manager， PM）的理论与实践</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../%E5%9B%A2%E9%98%9F%E4%B8%8E%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/TecLeader.html">3. 技术负责人画像</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">道与术</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../%E9%81%93%E4%B8%8E%E6%9C%AF/tao-art.html">1. 道与术</a></li>
-</ul>
-
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Hang's Tec Room 1.1 文档</span>
+          <span class="md-header-nav__topic"> 4. 自然语言理解 </span>
         </div>
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Hang's Tec Room</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="页面导航">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><span class="section-number">4. </span>自然语言理解</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/doc/机器智能系列/nlp.rst.txt" rel="nofollow"> 查看页面源码</a>
-      </li>
-  </ul>
-  <hr/>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="../../search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder=""Search""
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="id1">
-<h1><span class="section-number">4. </span>自然语言理解<a class="headerlink" href="#id1" title="Link to this heading"></a></h1>
+
+      </div>
+      
+      
+  
+  <script src="../../_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = "../../"versions.json"",
+        target_loc = "../../../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="../../index.html" class="md-tabs__link">Hang's Tec Room 1.1 文档</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="Hang&#39;s Tec Room 1.1 文档" class="md-nav__button md-logo">
+      
+        <img src="../../_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="../../index.html"
+       title="Hang&#39;s Tec Room 1.1 文档">Hang's Tec Room 1.1 文档</a>
+  </label>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">"Contents"</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#doc-ji-qi-zhi-neng-xi-lie-nlp--page-root" class="md-nav__link">4. 自然语言理解</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id2" class="md-nav__link">4.1. 书籍推荐</a>
+        </li>
+        <li class="md-nav__item"><a href="#id3" class="md-nav__link">4.2. 什么是 自然语言 理解？</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id4" class="md-nav__link">4.2.1. 自然语言？</a>
+        </li>
+        <li class="md-nav__item"><a href="#id5" class="md-nav__link">4.2.2. 自然语言理解？</a>
+        </li>
+        <li class="md-nav__item"><a href="#id6" class="md-nav__link">4.2.3. 自然语言的特点</a>
+        </li>
+        <li class="md-nav__item"><a href="#id7" class="md-nav__link">4.2.4. 难点</a>
+        </li>
+        <li class="md-nav__item"><a href="#id8" class="md-nav__link">4.2.5. 未来</a>
+        </li>
+        <li class="md-nav__item"><a href="#id9" class="md-nav__link">4.2.6. 自然语言理解交叉科学</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id10" class="md-nav__link">4.3. 自然语言技术方向</a>
+        </li>
+        <li class="md-nav__item"><a href="#nlp" class="md-nav__link">4.4. NLP国内外优秀学者及实验室</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#cs224n-2019-by-chris-manning" class="md-nav__link">5. CS224n-2019-课程笔记 by Chris Manning</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id11" class="md-nav__link">5.1. 一些说明和资源</a>
+        </li>
+        <li class="md-nav__item"><a href="#word-vectors" class="md-nav__link">5.2. 词向量（Word Vectors)</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id15" class="md-nav__link">5.2.1. 自然语言和词义</a>
+        </li>
+        <li class="md-nav__item"><a href="#id17" class="md-nav__link">5.2.2. Word Vectors(词向量)</a>
+        </li>
+        <li class="md-nav__item"><a href="#word2vector" class="md-nav__link">5.2.3. Word2Vector介绍</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id18" class="md-nav__link">5.2.3.1. 主要思想</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id19" class="md-nav__link">5.2.4. Word2Vector目标函数</a>
+        </li>
+        <li class="md-nav__item"><a href="#id20" class="md-nav__link">5.2.5. 梯度计算推导</a>
+        </li>
+        <li class="md-nav__item"><a href="#id21" class="md-nav__link">5.2.6. word2vector的概览</a>
+        </li>
+        <li class="md-nav__item"><a href="#id22" class="md-nav__link">5.2.7. 优化：梯度下降与随机梯度下降算法的要点</a>
+        </li>
+        <li class="md-nav__item"><a href="#id23" class="md-nav__link">5.2.8. 小结</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id24" class="md-nav__link">5.3. 词向量和语义</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#review-word2vec" class="md-nav__link">5.3.1. Review：word2vec</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id25" class="md-nav__link">5.3.1.1. 主要思想</a>
+        </li>
+        <li class="md-nav__item"><a href="#id26" class="md-nav__link">5.3.1.2. 关于梯度计算</a>
+        </li>
+        <li class="md-nav__item"><a href="#negative-sample" class="md-nav__link">5.3.1.3. 基于负采样(negative sample)方法计算</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id27" class="md-nav__link">5.3.2. 基于共现矩阵生成词向量</a>
+        </li>
+        <li class="md-nav__item"><a href="#glove" class="md-nav__link">5.3.3. Glove词向量模型</a>
+        </li>
+        <li class="md-nav__item"><a href="#id29" class="md-nav__link">5.3.4. 怎样评估词向量？</a>
+        </li>
+        <li class="md-nav__item"><a href="#id30" class="md-nav__link">5.3.5. 语义及其歧义性</a>
+        </li>
+        <li class="md-nav__item"><a href="#classification" class="md-nav__link">5.3.6. 分类（Classification）模型知识点回顾</a>
+        </li>
+        <li class="md-nav__item"><a href="#id32" class="md-nav__link">5.3.7. 小结</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#id33" class="md-nav__link">5.4. 神经网络</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#neural-network" class="md-nav__link">5.4.1. Neural NetWork基础</a>
+        </li>
+        <li class="md-nav__item"><a href="#id34" class="md-nav__link">5.4.2. 命名实体识别介绍</a>
+        </li></ul>
+            </nav>
+        </li>
+        <li class="md-nav__item"><a href="#bp" class="md-nav__link">5.5. 矩阵计算与BP（反向传播）算法</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#id35" class="md-nav__link">5.5.1. 矩阵的梯度计算</a>
+        </li>
+        <li class="md-nav__item"><a href="#id38" class="md-nav__link">5.5.2. BP算法（重点）</a>
+        </li>
+        <li class="md-nav__item"><a href="#id39" class="md-nav__link">5.5.3. 总结</a>
+        </li></ul>
+            </nav>
+        </li></ul>
+            </nav>
+        </li>
+    
+<li class="md-nav__item"><a class="md-nav__extra_link" href="../../_sources/doc/机器智能系列/nlp.rst.txt">显示源代码</a> </li>
+
+<li id="searchbox" class="md-nav__item"></li>
+
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+             <section id="id1">
+<h1><span class="section-number">4. </span>自然语言理解<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>更新日期：2020年04月01日</p>
 </div>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>书籍推荐<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.1. </span>书籍推荐<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt><a class="reference external" href="https://book.douban.com/subject/2403834/">《Speech and Language Processing, 2nd Edition》</a></dt><dd><ul class="simple">
@@ -226,15 +330,15 @@
 </ol>
 </section>
 <section id="id3">
-<h2><span class="section-number">4.2. </span>什么是 自然语言 理解？<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.2. </span>什么是 自然语言 理解？<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
 <section id="id4">
-<h3><span class="section-number">4.2.1. </span>自然语言？<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.1. </span>自然语言？<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>和编程语言相对的语言称为自然语言。</p></li>
 </ol>
 </section>
 <section id="id5">
-<h3><span class="section-number">4.2.2. </span>自然语言理解？<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.2. </span>自然语言理解？<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>目的：使计算机理解人类的自然语言。</p></li>
 <li><p>本质：结构预测的过程。如输出一句话的句法结构或者语义结构。</p></li>
@@ -276,7 +380,7 @@
 </ol>
 </section>
 <section id="id6">
-<h3><span class="section-number">4.2.3. </span>自然语言的特点<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.3. </span>自然语言的特点<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt>歧义性多。</dt><dd><p><code class="docutils literal notranslate"><span class="pre">`</span>
@@ -310,7 +414,7 @@
 </ol>
 </section>
 <section id="id7">
-<h3><span class="section-number">4.2.4. </span>难点<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.4. </span>难点<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt>语言的语义表示</dt><dd><ul class="simple">
@@ -337,7 +441,7 @@
 </ol>
 </section>
 <section id="id8">
-<h3><span class="section-number">4.2.5. </span>未来<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.5. </span>未来<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>句子消歧。</p></li>
 <li><p>引入知识。如知识图谱。</p></li>
@@ -347,7 +451,7 @@
 </ol>
 </section>
 <section id="id9">
-<h3><span class="section-number">4.2.6. </span>自然语言理解交叉科学<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<h3><span class="section-number">4.2.6. </span>自然语言理解交叉科学<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><p>计算机科学</p></li>
 <li><p>脑科学</p></li>
@@ -359,7 +463,7 @@
 </section>
 </section>
 <section id="id10">
-<h2><span class="section-number">4.3. </span>自然语言技术方向<a class="headerlink" href="#id10" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.3. </span>自然语言技术方向<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>基于规则驱动</p></li>
 <li><dl class="simple">
@@ -373,14 +477,14 @@
 </ul>
 </section>
 <section id="nlp">
-<h2><span class="section-number">4.4. </span>NLP国内外优秀学者及实验室<a class="headerlink" href="#nlp" title="Link to this heading"></a></h2>
+<h2><span class="section-number">4.4. </span>NLP国内外优秀学者及实验室<a class="headerlink" href="#nlp" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://nlp.stanford.edu/~manning/">Christopher Manning</a></p></li>
 </ul>
 </section>
 </section>
 <section id="cs224n-2019-by-chris-manning">
-<h1><span class="section-number">5. </span>CS224n-2019-课程笔记 by Chris Manning<a class="headerlink" href="#cs224n-2019-by-chris-manning" title="Link to this heading"></a></h1>
+<h1><span class="section-number">5. </span>CS224n-2019-课程笔记 by Chris Manning<a class="headerlink" href="#cs224n-2019-by-chris-manning" title="Link to this heading">¶</a></h1>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
 <ul class="simple">
@@ -389,7 +493,7 @@
 </ul>
 </div>
 <section id="id11">
-<h2><span class="section-number">5.1. </span>一些说明和资源<a class="headerlink" href="#id11" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.1. </span>一些说明和资源<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="http://web.stanford.edu/class/cs224n/index.html">课程主页</a></p></li>
 <li><p>本笔记涉及代码部分将使用pipenv构建虚拟环境。（推荐）</p></li>
@@ -407,10 +511,10 @@
 </ul>
 </section>
 <section id="word-vectors">
-<h2><span class="section-number">5.2. </span>词向量（Word Vectors)<a class="headerlink" href="#word-vectors" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.2. </span>词向量（Word Vectors)<a class="headerlink" href="#word-vectors" title="Link to this heading">¶</a></h2>
 <img alt="../../_images/preface.jpg" src="../../_images/preface.jpg" />
 <section id="id15">
-<h3><span class="section-number">5.2.1. </span>自然语言和词义<a class="headerlink" href="#id15" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.1. </span>自然语言和词义<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
 <ol class="arabic simple">
 <li><dl class="simple">
 <dt>自然语言</dt><dd><ul class="simple">
@@ -497,7 +601,7 @@
 </ol>
 </section>
 <section id="id17">
-<h3><span class="section-number">5.2.2. </span>Word Vectors(词向量)<a class="headerlink" href="#id17" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.2. </span>Word Vectors(词向量)<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>根据一个的词的上下文，来为词构建密集的向量，以使得该向量与出现在类似上下文中的词相似</p></li>
 <li><dl class="simple">
@@ -521,13 +625,13 @@
             0.271 \end{pmatrix}\end{split}\]</div>
 </section>
 <section id="word2vector">
-<h3><span class="section-number">5.2.3. </span>Word2Vector介绍<a class="headerlink" href="#word2vector" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.3. </span>Word2Vector介绍<a class="headerlink" href="#word2vector" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>Word2vec (Mikolov et al. 2013) 是一种学习词向量的 <em>框架</em>。</p>
 </div>
 <section id="id18">
-<h4><span class="section-number">5.2.3.1. </span>主要思想<a class="headerlink" href="#id18" title="Link to this heading"></a></h4>
+<h4><span class="section-number">5.2.3.1. </span>主要思想<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>我们有个比较大的文本数据集。</p></li>
 <li><p>文本中的每个词通过一个固定长度的词向量表示。</p></li>
@@ -546,7 +650,7 @@
 </section>
 </section>
 <section id="id19">
-<h3><span class="section-number">5.2.4. </span>Word2Vector目标函数<a class="headerlink" href="#id19" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.4. </span>Word2Vector目标函数<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>思路(后面要说的Skip-grams模型）</p>
 <blockquote>
@@ -620,7 +724,7 @@
 </ul>
 </section>
 <section id="id20">
-<h3><span class="section-number">5.2.5. </span>梯度计算推导<a class="headerlink" href="#id20" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.5. </span>梯度计算推导<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
 <p>下面开始推导 <span class="math notranslate nohighlight">\(P(w_{t+j}|w_t;\theta)\)</span>:
 对 <span class="math notranslate nohighlight">\(v_c\)</span> 求偏微分</p>
 <div class="math notranslate nohighlight">
@@ -643,7 +747,7 @@
 </div>
 </section>
 <section id="id21">
-<h3><span class="section-number">5.2.6. </span>word2vector的概览<a class="headerlink" href="#id21" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.6. </span>word2vector的概览<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h3>
 <p>前面提到的Word2Vector是一种学习词向量的框架（模型），它包含两个实现算法：</p>
 <ol class="arabic">
 <li><p>Skip-grams (SG) （课上讲的就类似这种）</p>
@@ -680,7 +784,7 @@
 </ol>
 </section>
 <section id="id22">
-<h3><span class="section-number">5.2.7. </span>优化：梯度下降与随机梯度下降算法的要点<a class="headerlink" href="#id22" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.7. </span>优化：梯度下降与随机梯度下降算法的要点<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h3>
 <ul>
 <li><dl>
 <dt>梯度下降（Gradient Descent，GD）</dt><dd><ol class="arabic simple">
@@ -721,7 +825,7 @@
 </ul>
 </section>
 <section id="id23">
-<h3><span class="section-number">5.2.8. </span>小结<a class="headerlink" href="#id23" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.2.8. </span>小结<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>本节首先从语言的语义问题开始讲起，然后为了表示语义，引出了词向量概念，接着着重讲了Word2Vector框架、原理、算法推导等，最后简单提了下目标函数的优化的方式。</p></li>
 <li><dl class="simple">
@@ -743,16 +847,16 @@
 </section>
 </section>
 <section id="id24">
-<h2><span class="section-number">5.3. </span>词向量和语义<a class="headerlink" href="#id24" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.3. </span>词向量和语义<a class="headerlink" href="#id24" title="Link to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>本节课后，我们就能够开始读一些关于词嵌入方面的论文了。</p>
 </div>
 <img alt="../../_images/preface-2.png" src="../../_images/preface-2.png" />
 <section id="review-word2vec">
-<h3><span class="section-number">5.3.1. </span>Review：word2vec<a class="headerlink" href="#review-word2vec" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.1. </span>Review：word2vec<a class="headerlink" href="#review-word2vec" title="Link to this heading">¶</a></h3>
 <section id="id25">
-<h4><span class="section-number">5.3.1.1. </span>主要思想<a class="headerlink" href="#id25" title="Link to this heading"></a></h4>
+<h4><span class="section-number">5.3.1.1. </span>主要思想<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><dl class="simple">
 <dt>这里以skip-gram）模型为例</dt><dd><ol class="arabic simple">
@@ -765,7 +869,7 @@
 </ul>
 </section>
 <section id="id26">
-<h4><span class="section-number">5.3.1.2. </span>关于梯度计算<a class="headerlink" href="#id26" title="Link to this heading"></a></h4>
+<h4><span class="section-number">5.3.1.2. </span>关于梯度计算<a class="headerlink" href="#id26" title="Link to this heading">¶</a></h4>
 <ul class="simple">
 <li><p>GD。计算效率低，每次对所有样本进行梯度计算</p></li>
 <li><p>SGD。每次只对一个固定大小的样本窗口进行更新，效率较高。</p></li>
@@ -787,7 +891,7 @@
 </ul>
 </section>
 <section id="negative-sample">
-<h4><span class="section-number">5.3.1.3. </span>基于负采样(negative sample)方法计算<a class="headerlink" href="#negative-sample" title="Link to this heading"></a></h4>
+<h4><span class="section-number">5.3.1.3. </span>基于负采样(negative sample)方法计算<a class="headerlink" href="#negative-sample" title="Link to this heading">¶</a></h4>
 <ol class="arabic">
 <li><dl>
 <dt>计算下列式子：</dt><dd><div class="math notranslate nohighlight">
@@ -835,7 +939,7 @@
 </section>
 </section>
 <section id="id27">
-<h3><span class="section-number">5.3.2. </span>基于共现矩阵生成词向量<a class="headerlink" href="#id27" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.2. </span>基于共现矩阵生成词向量<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h3>
 <p>But why not capture co-occurrence counts directly?
 1. 主要思想</p>
 <blockquote>
@@ -911,7 +1015,7 @@
 </ol>
 </section>
 <section id="glove">
-<h3><span class="section-number">5.3.3. </span>Glove词向量模型<a class="headerlink" href="#glove" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.3. </span>Glove词向量模型<a class="headerlink" href="#glove" title="Link to this heading">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">小技巧</p>
 <p>可参考阅读 <a class="reference external" href="https://nlp.stanford.edu/projects/glove/">Glove</a> 主页</p>
@@ -983,7 +1087,7 @@
 </ol>
 </section>
 <section id="id29">
-<h3><span class="section-number">5.3.4. </span>怎样评估词向量？<a class="headerlink" href="#id29" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.4. </span>怎样评估词向量？<a class="headerlink" href="#id29" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>问题：如何评估NLP的模型。</p></li>
 <li><dl class="simple">
@@ -1070,7 +1174,7 @@
 </ol>
 </section>
 <section id="id30">
-<h3><span class="section-number">5.3.5. </span>语义及其歧义性<a class="headerlink" href="#id30" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.5. </span>语义及其歧义性<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>实际上，许多词都是一词多义的，特别是咱们的汉语，更甚有如今曾层出不穷的网络流行语，有时你不懂点八卦还真的猜不来词要表达的真实含义！这就是NLP绕不开的一个问题：歧义性，对应的任务就是：消歧。</p>
@@ -1106,7 +1210,7 @@
 </div></blockquote>
 </section>
 <section id="classification">
-<h3><span class="section-number">5.3.6. </span>分类（Classification）模型知识点回顾<a class="headerlink" href="#classification" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.6. </span>分类（Classification）模型知识点回顾<a class="headerlink" href="#classification" title="Link to this heading">¶</a></h3>
 <p>1. 样本（数据集）：<span class="math notranslate nohighlight">\(\{x^{(i)},y^{(i)}\}_{1}^{N}\)</span>，其中x_i为输入（词、句、文档等）y_i就是标签，
 预测的分类目标（正负向、文档主题等）`</p>
 <ol class="arabic" start="2">
@@ -1189,19 +1293,19 @@ C个类别的分布。因此更新模型的权值，我们需要 C⋅d个参数<
 </div></blockquote>
 </section>
 <section id="id32">
-<h3><span class="section-number">5.3.7. </span>小结<a class="headerlink" href="#id32" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.3.7. </span>小结<a class="headerlink" href="#id32" title="Link to this heading">¶</a></h3>
 <p>本节首先讲了词向量的训练基本过程和常用方法：解决维数高、复杂度高的问题；其次，讲了Golve的主要思想；最后通过分类引出神经网络的优势：非线性能力，能够更好地获取语义信息。后续小节将开始神经网络的篇章。</p>
 </section>
 </section>
 <section id="id33">
-<h2><span class="section-number">5.4. </span>神经网络<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.4. </span>神经网络<a class="headerlink" href="#id33" title="Link to this heading">¶</a></h2>
 <img alt="../../_images/preface-3.png" src="../../_images/preface-3.png" />
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>本小节主要讲神经网络的基础知识和NLP中的命名实体识别（NER）任务。</p>
 </div>
 <section id="neural-network">
-<h3><span class="section-number">5.4.1. </span>Neural NetWork基础<a class="headerlink" href="#neural-network" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.4.1. </span>Neural NetWork基础<a class="headerlink" href="#neural-network" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><p>神经网络是指由很多人工神经元构成的网络结构模型，这些人工神经元之间的连接强度是可学习的参数。</p></li>
 <li><p>人工神经网络（Artificial Neural Network，ANN）是一种模拟人脑神经网络而设计的数据模型或计算模型，它从结构、实现机理和功能上模拟人脑神经网络。</p></li>
@@ -1276,7 +1380,7 @@ C个类别的分布。因此更新模型的权值，我们需要 C⋅d个参数<
 </ol>
 </section>
 <section id="id34">
-<h3><span class="section-number">5.4.2. </span>命名实体识别介绍<a class="headerlink" href="#id34" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.4.2. </span>命名实体识别介绍<a class="headerlink" href="#id34" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
 <p>命名实体识别（Named Entity Recognition，NER）。NLP领域的一个基础型子任务。</p>
@@ -1410,9 +1514,9 @@ C个类别的分布。因此更新模型的权值，我们需要 C⋅d个参数<
 </section>
 </section>
 <section id="bp">
-<h2><span class="section-number">5.5. </span>矩阵计算与BP（反向传播）算法<a class="headerlink" href="#bp" title="Link to this heading"></a></h2>
+<h2><span class="section-number">5.5. </span>矩阵计算与BP（反向传播）算法<a class="headerlink" href="#bp" title="Link to this heading">¶</a></h2>
 <section id="id35">
-<h3><span class="section-number">5.5.1. </span>矩阵的梯度计算<a class="headerlink" href="#id35" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.5.1. </span>矩阵的梯度计算<a class="headerlink" href="#id35" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><dl class="simple">
 <dt>都是基础的高数计算，可直接查看 <a class="reference external" href="http://web.stanford.edu/class/cs224n/slides/cs224n-2020-lecture04-neuralnets.pdf">幻灯</a></dt><dd><ul>
@@ -1427,7 +1531,7 @@ C个类别的分布。因此更新模型的权值，我们需要 C⋅d个参数<
 </ul>
 </section>
 <section id="id38">
-<h3><span class="section-number">5.5.2. </span>BP算法（重点）<a class="headerlink" href="#id38" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.5.2. </span>BP算法（重点）<a class="headerlink" href="#id38" title="Link to this heading">¶</a></h3>
 <p>甜点 <a class="reference external" href="https://medium.com/&#64;karpathy/yes-you-should-understand-backprop-e2f06eab496b">Yes you should understand backprop</a></p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
@@ -1442,40 +1546,70 @@ C个类别的分布。因此更新模型的权值，我们需要 C⋅d个参数<
 </ol>
 </section>
 <section id="id39">
-<h3><span class="section-number">5.5.3. </span>总结<a class="headerlink" href="#id39" title="Link to this heading"></a></h3>
+<h3><span class="section-number">5.5.3. </span>总结<a class="headerlink" href="#id39" title="Link to this heading">¶</a></h3>
 </section>
 </section>
 </section>
 
-
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
-        <a href="dl.html" class="btn btn-neutral float-left" title="3. 深度学习" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
-        <a href="kg.html" class="btn btn-neutral float-right" title="6. 知识图谱(Knowledge Graph)" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; 版权所有 2020, LiHangHang。</p>
-  </div>
-
-  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
-    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+<div class="section ablog__blog_comments">
    
+</div>
 
-</footer>
+          </article>
         </div>
       </div>
-    </section>
+    </main>
   </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="dl.html" title="3. 深度学习"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> "Previous" </span> <span class="section-number">3. </span>深度学习 </span>
+              </div>
+            </a>
+          
+          
+            <a href="kg.html" title="6. 知识图谱(Knowledge Graph)"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> "Next" </span> <span class="section-number">6. </span>知识图谱(Knowledge Graph) </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2020, LiHangHang.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
 </html>
