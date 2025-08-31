@@ -3,7 +3,10 @@ on:
   push:
     branches:
       - master
-
+permissions:
+  contents: write
+  pull-requests: write
+  
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -12,15 +15,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Setup Node
-        uses: actions/setup-node@v1
+      - name: Changelog
+        uses: scottbrenner/generate-changelog-action@master
+        id: Changelog
         with:
-            node-version: 21
-      - name: Install
-        run: yarn
-      - name: Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        run: npx semantic-release
+            token: ${{ secrets.RELEASE_TOKEN }}
+            from-tag: v1.0.0
+            to-tag: HEAD
+            release-type: simple
 
      
