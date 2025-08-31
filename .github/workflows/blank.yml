@@ -10,13 +10,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Run a one-line script
         run: echo checkoutsuccess!
-      # - name: Run a multi-line script
-      #   run: |
-      #     echo Add other actions to build,
-      #     echo test, and deploy your project.
-      - name: Changelog
-        uses: scottbrenner/generate-changelog-action@master
-        id: Changelog
-        with:
-          from-tag: v1.0
-          to-tag: HEAD
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
