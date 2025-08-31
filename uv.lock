@@ -633,6 +633,18 @@ wheels = [
 ]
 
 [[package]]
+name = "sphinx-comments"
+version = "0.0.3"
+source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
+dependencies = [
+    { name = "sphinx" },
+]
+sdist = { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/c0/75/5bbf29e83eaf79843180cf424d0d550bda14a1792ca51dcf79daa065ba93/sphinx-comments-0.0.3.tar.gz", hash = "sha256:00170afff27019fad08e421da1ae49c681831fb2759786f07c826e89ac94cf21", size = 7960, upload-time = "2020-08-12T00:07:31.183Z" }
+wheels = [
+    { url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/packages/26/97/a5c39f619375d4f81d5422377fb027075898efa6b6202c1ccf1e5bb38a32/sphinx_comments-0.0.3-py3-none-any.whl", hash = "sha256:1e879b4e9bfa641467f83e3441ac4629225fc57c29995177d043252530c21d00", size = 4591, upload-time = "2020-08-12T00:07:30.297Z" },
+]
+
+[[package]]
 name = "sphinx-copybutton"
 version = "0.5.2"
 source = { registry = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple" }
@@ -790,6 +802,7 @@ dependencies = [
     { name = "recommonmark" },
     { name = "restructuredtext-lint" },
     { name = "sphinx-autobuild" },
+    { name = "sphinx-comments" },
     { name = "sphinx-copybutton" },
     { name = "sphinx-design" },
     { name = "sphinx-material" },
@@ -806,6 +819,7 @@ requires-dist = [
     { name = "recommonmark", specifier = ">=0.7.1" },
     { name = "restructuredtext-lint", specifier = ">=1.4.0" },
     { name = "sphinx-autobuild", specifier = ">=2025.8.25" },
+    { name = "sphinx-comments", specifier = ">=0.0.3" },
     { name = "sphinx-copybutton", specifier = ">=0.5.2" },
     { name = "sphinx-design", specifier = ">=0.6.1" },
     { name = "sphinx-material", specifier = ">=0.0.36" },

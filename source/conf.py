@@ -58,6 +58,7 @@ extensions = [
     "sphinx_togglebutton",
     # 'recommonmark'
     "myst_parser",
+    "sphinx_comments"
 ]
 
 html_sidebars = {
@@ -148,6 +149,8 @@ html_theme_options = {
     'globaltoc_includehidden': False,
     'globaltoc_collapse': False,
 }
+
+
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -264,3 +267,16 @@ intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}
 todo_include_todos = True
 html_use_index = True
 html_domain_indices = True
+comments_config = {
+    "utterances": {
+      "repo": "lihanghang/TecRoom",
+      "optional": "config",
+   }
+#    <script src="https://utteranc.es/client.js"
+#         repo="lihanghang/TecRoom"
+#         issue-term="pathname"
+#         theme="boxy-light"
+#         crossorigin="anonymous"
+#         async>
+# </script>
+}
