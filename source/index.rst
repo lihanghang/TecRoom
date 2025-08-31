@@ -1,9 +1,9 @@
 欢迎来到：计算机技术屋。Stay Hungry, Stay Foolish.
 ===================================================
-.. note::   
+.. note::
 
-    - 大家好，我是一名软件开发工程师，崇尚用技术解决实际问题，提高效率，致力于用技术创造无限价值。在这里主要整理日常的编程开发、数据库、数据结构、算法、机器智能等笔记，很高兴和各位小伙伴交流、探讨，分享。
-    - 更新时间：2025年7月19日.
+    - 大家好，我是一名喜欢数学物理哲学历史的软件开发工程师，崇尚用技术解决实际问题，提高效率，致力于用技术创造无限价值。在这里主要整理日常的编程开发、数据库、数据结构、算法、机器智能等笔记，很高兴和各位小伙伴交流、探讨，分享。
+    - 更新时间：2025年8月31日.
 
 目录:
 *****
@@ -26,7 +26,7 @@
     :maxdepth: 2
     :caption: 后端接口开发
     :numbered:
-    
+
     doc/接口开发/接口开发
     doc/接口开发/接口框架
 
@@ -60,10 +60,10 @@
     doc/计算机网络技术/computer-network
 
 .. toctree::
-	:caption: 数据库系列
-	:numbered:
+    :caption: 数据库系列
+    :numbered:
 
-	doc/数据库系列/mysql
+    doc/数据库系列/mysql
 
 
 .. toctree::
@@ -76,15 +76,15 @@
     doc/虚拟化与容器技术/k8s
 
 .. toctree::
-	:caption: 服务器
-	:numbered:
+    :caption: 服务器
+    :numbered:
 
-	doc/服务器/server
+    doc/服务器/server
 
 .. toctree::
-	:caption: 分布式与微服务系列
+    :caption: 分布式与微服务系列
 
-	doc/分布式与微服务系列/index
+    doc/分布式与微服务系列/index
 
 .. toctree::
     :maxdepth: 2
@@ -106,12 +106,14 @@
 
     doc/开源工具/ETL
 
-
 .. toctree::
-    :caption: 数学
+    :maxdepth: 3
+    :caption: 数学物理计算机历史系列
     :numbered:
 
-    doc/数学/math
+    doc/数学物理计算机历史系列/math
+    doc/数学物理计算机历史系列/physics
+    doc/数学物理计算机历史系列/computer
 
 
 .. toctree::
