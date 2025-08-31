@@ -1,8 +1,12 @@
 {
-  "packages": {
-    ".": {
-      "release-type": "simple",
-      "package-name": "TecRoom"
+    "packages": {
+        ".": {
+            "primary-branch": "master",
+            "release-type": "simple",
+            "package-name": "TecRoom",
+            "release-name": "${version}",
+            "tag-prefix": "v",
+            "branch-prefix": "release-please/"
+        }
     }
-  }
 }
