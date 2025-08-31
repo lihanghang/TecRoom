@@ -6,7 +6,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  
+
 jobs:
   release-please:
     runs-on: ubuntu-latest
@@ -20,7 +20,7 @@ jobs:
         id: Changelog
         with:
             token: ${{ secrets.RELEASE_TOKEN }}
-            from-tag: v1.0.0
+            from-tag: v2.0.0
             to-tag: HEAD
             release-type: simple
 
