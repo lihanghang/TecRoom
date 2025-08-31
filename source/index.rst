@@ -95,6 +95,7 @@ Hang's Tec Room
     :caption: 机器智能系列
     :numbered:
 
+    doc/机器智能系列/AGI/LLM
     doc/机器智能系列/ml
     doc/机器智能系列/dl
     doc/机器智能系列/nlp
