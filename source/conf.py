@@ -45,7 +45,8 @@ extensions = [
     'sphinx.ext.todo',
     'sphinx.ext.coverage',
     'sphinx.ext.mathjax',
-    'recommonmark'
+    # 'recommonmark'
+    'myst_parser'
 ]
 
 
