@@ -1,13 +1,10 @@
-# Tec Room  致读者
+# Hang's Tec Room  致读者
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 > 技术屋🏠会不断呈现体系化、层次化的技术内容。
->
 > 欢迎fans关注，关注后第一时间推送更新内容哦。
->
 > 也欢迎大家通过各种渠道方式提出建设性的意见。
->
 > 包括工程研发过程心得、使用工具、编码实践等总结。个人觉得，虽然这块定位是AI工程，但是对于工程来说最基本的编程思维和实操能力是必须的。因此，无论AI还是NO AI 还是重在工程（思维和具备一定应用场景的强撸代码能力）。
 
 - [详戳、详戳、详戳！新年新气象，建设技术屋](https://wiki.lihanghang.top/)
@@ -56,5 +53,5 @@ Thanks.
 - 注：这个工程的现有内容，后续会逐步转向[技术屋](https://wiki.lihanghang.top/)并周期性持久更新。
 - [个人网站](https://lihanghang.top/)
 - 邮箱：<hanghangli@aliyun.com>
-- Updated on February 26, 2023
+- Updated on August 31, 2025
 - Author: 李航航 北京朝阳
