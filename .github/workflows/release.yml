@@ -23,5 +23,3 @@ jobs:
             token: ${{ secrets.REPO_PAT }}
             from-tag: v2.0.0
             to-tag: HEAD
-
-     
