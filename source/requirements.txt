@@ -169,7 +169,7 @@ sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
 sphinxcontrib-youtube==1.4.1
     # via tecroom
-starlette==0.47.3
+starlette==0.49.1
     # via sphinx-autobuild
 stevedore==5.4.1
     # via doc8
